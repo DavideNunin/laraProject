@@ -1,0 +1,123 @@
+ *{
+  font-family: 'Archivo', sans-serif;
+  font-style: normal;
+  box-sizing: border-box;
+
+  }
+  
+  /* navbar style */
+  .link-navbar, .navbar-brand {
+	  font-weight: 600;
+	  color: #48141A!important;
+  }
+  
+  .image-home{
+	background-image: url(../images/image-home.jpg); 
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	height: 120vh;
+  }
+  
+  .super-title-home{
+  font-weight: 800;
+  font-size: 70px;
+  line-height: 108.3%;
+  color: #803841;
+  }
+  .text-how{
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 92.8%;
+  color: #161A26;
+  }
+  
+  .btn-home{
+  background: #FDFDFD;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 125.8%;
+  color: #803841;
+  justify-content: space-between;
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  }
+  
+  .how-icon{
+	  color: #161A26;
+  }
+  
+  .mission {
+	background-image: url(../images/image-mission.png); 
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	height: 50vh;
+	/* flex display */
+	  display: flex;
+	  justify-content: space-evenly;
+	  align-items: center;
+	/*text style */
+	color: white;
+  }
+  
+  .faq {
+	  background-color: #F8FBFF;
+  }
+  
+  .title-home {
+	  font-weight: 600;
+  font-size: 60px;
+  line-height: 1.5em
+  }
+  
+  .text-home {
+	  font-weight: 500;
+	  font-size: 20px;
+	  line-height: 1.2em
+  }
+  
+  .footer-home {
+	  background-color: #161A26;
+	  color: #fff;
+  }
+  
+  .title-footer-home {
+	  font-weight: 600;
+	  font-size: 40px;
+	  line-height: 1.5em
+  }
+/* ----------------- end style home -------------- */
+
+/* ------------------ style login register ------------ */
+.wrapper-login {
+	position: relative;
+	background-image: url(../images/back-login.jpg);
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	height: 100vh;
+	/*filter: blur(8px);
+  -webkit-filter: blur(8px);*/
+}
+
+.container-access {
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 50px;
+	height: 60vh;
+	width: 70vh;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+#content-access{
+	display: flex;
+    /* width: 50vh; */
+    justify-content: space-evenly;
+    align-items: center;
+}

@@ -10,8 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'PublicController@showHomeUser1')
+        ->name('homeUser1');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// pagina di login
+Route::get('/login', 'PublicController@login')
+        ->name('login');
+
+// rotte per il login e logout
+Route::post('login', array(
+        'uses' => 'MainController@doLogin'
+));
+Route::get('logout', array(
+        'uses' => 'MainController@doLogout'
+));   
+
+// pagina offerte
+Route::get('/offerte', 'PublicController@offerte')
+        ->name('offerte');
 
