@@ -26,6 +26,6 @@ Route::get('logout', array(
 ));   
 
 // pagina offerte
-Route::get('/offerte', 'PublicController@offerte')
+Route::get('/offerte', 'PublicController@offerte_user_1')
         ->name('offerte');
 

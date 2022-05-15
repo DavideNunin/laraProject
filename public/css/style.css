@@ -121,3 +121,9 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+
+/* ------------------ style offerta ------------ */
+.prova-image{
+  image: url(../images/back-login.jpg);
+}
