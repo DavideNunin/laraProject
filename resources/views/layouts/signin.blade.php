@@ -19,9 +19,7 @@
             
             <div id="content-access">
                 <div class="container-access">
-                    <div class="col-sm-4">
                         @yield('content')
-                    </div>
                 </div>
             </div>
         </div>
