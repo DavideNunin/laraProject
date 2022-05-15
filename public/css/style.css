@@ -2,7 +2,6 @@
   font-family: 'Archivo', sans-serif;
   font-style: normal;
   box-sizing: border-box;
-
   }
   
   /* navbar style */
@@ -124,6 +123,21 @@
 
 
 /* ------------------ style offerta ------------ */
-.prova-image{
-  image: url(../images/back-login.jpg);
+.single-offerta{
+  font-family: 'Archivo';
+  font-style: normal;
+}
+.title-offerta{
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 125.8%;
+}
+.subtitle-offerta{
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 125.8%;
+}
+.image-offerta{
+    border-radius: 20px;
+    border: solid 1px transparent;
 }

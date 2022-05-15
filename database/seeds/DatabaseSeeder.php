@@ -46,7 +46,6 @@ class DatabaseSeeder extends Seeder
         DB::table('faq')->insert([
             ['domanda' => 'è gratis?','risposta'=> 'Certo!!! la nostra non è un\' organizzazione a scopo di lucro. ',],
             ['domanda' => 'è per caso il treno del sagittario???','risposta'=> 'CIUUF CIUUUUF!!!',]
-
         ]);
     }
 }
