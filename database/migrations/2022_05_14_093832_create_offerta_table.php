@@ -19,11 +19,14 @@ class CreateOffertaTable extends Migration
             $table->integer('ncivico');
             $table->string('genereRichiesto',1);
             $table->string('citta',15);
+            $table->string('descrizione',50);
             $table->string('periodo',10);
             $table->string('titolo',20);
             $table->string('tipologia',1);
             $table->float('prezzo');
             $table->integer('etaRichiesta');
+            $table->string('user_id');
+            $table->foreign('user_id')->references('username')->on('utente');
             $table->timestamps();
         });
     }
