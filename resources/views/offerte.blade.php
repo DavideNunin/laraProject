@@ -4,6 +4,7 @@
 
 <!-- inizio sezione prodotti -->
 @section('content')
+@foreach ($catalogo as $offerta)
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
@@ -26,16 +27,18 @@
                 </a>
             </div>
         </div>
+        </div class=""
     </div>
 </div>
-
+<li>{{ $offerta->titolo }}</li>
+@endforeach
 
 <div id="content">
     <p>Utente di tipo: {{ $type_user }}</p>
 
-    @foreach ($catalogo as $offerta)
-                <li>{{ $offerta->titolo }}</li>
-    @endforeach
+    
+    
+    
 
 </div>
 
