@@ -32,5 +32,10 @@ class DatabaseSeeder extends Seeder
                 'genereRichiesto' => 'F', 'citta' => 'Ancona',
                 'periodo' => '10 mesi', 'titolo' => 'offerta 5', 'tipologia' => 'p', 'prezzo' => 800, 'etaRichiesta' => 18,]
         ]);
+        DB::table('faq')->insert([
+            ['domanda' => 'è gratis?','risposta'=> 'Certo!!! la nostra non è un\' organizzazione a scopo di lucro. ',],
+            ['domanda' => 'è per caso il treno del sagittario???','risposta'=> 'CIUUF CIUUUUF!!!',]
+
+        ]);
     }
 }
