@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('utente')->insert([
-            ['nome' => 'Gennaro', 'cognome' => 'Bullo', 'username' => 'gennaro.bullo', 'password' => 'lol', 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '3333333333',],
+            ['data_nascita' => '2000-08-10','nome' => 'Gennaro', 'cognome' => 'Bullo', 'username' => 'gennaro.bullo', 'password' => 'lol', 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '3333333333',],
         ]);
 
         DB::table('offerta')->insert([
@@ -46,6 +46,13 @@ class DatabaseSeeder extends Seeder
         DB::table('faq')->insert([
             ['domanda' => 'è gratis?','risposta'=> 'Certo!!! la nostra non è un\' organizzazione a scopo di lucro. ',],
             ['domanda' => 'è per caso il treno del sagittario???','risposta'=> 'CIUUF CIUUUUF!!!',]
+        ]);
+
+        DB::table('fotos')->insert([
+            ['nome_file' => 'cerchio.png','offerta_id'=> '2',],
+            ['nome_file' => 'cerchio.png','offerta_id'=> '3',],
+            ['nome_file' => 'quadrato.png','offerta_id'=> '1',]
+
         ]);
     }
 }

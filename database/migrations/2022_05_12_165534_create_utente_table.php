@@ -18,6 +18,7 @@ class CreateUtenteTable extends Migration
             $table->string('cognome');
             $table->string('username');
             $table->primary('username');
+            $table->date('data_nascita');
             $table->string('password');
             $table->string('tipologia', 1);
             $table->string('sesso',1);

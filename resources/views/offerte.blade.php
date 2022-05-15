@@ -9,27 +9,11 @@
 </div>
 @foreach ($catalogo as $offerta)
 <div class="container">
+</div>
+@include('carousel')
+<li>{{ $offerta->titolo }}</li>
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100 image-offerta" src="{{ asset('images/image-home.jpg') }}" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 image-offerta" src="{{ asset('images/back-login.jpg') }}" alt="Second slide">
-                </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
         <div class="col-sm-8">
             <div class="container">
                 <div class="row">
