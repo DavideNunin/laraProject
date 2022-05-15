@@ -23,7 +23,11 @@ Route::post('login', array(
 ));
 Route::get('logout', array(
         'uses' => 'MainController@doLogout'
-));   
+));
+
+//rotta per registrazione
+Route::get('/register', 'PublicController@register')
+        ->name('register');
 
 // pagina offerte
 Route::get('/offerte', 'PublicController@offerte_user_1')

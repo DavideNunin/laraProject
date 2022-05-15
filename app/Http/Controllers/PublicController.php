@@ -32,9 +32,11 @@ class PublicController extends Controller {
     }
 
     public function login() {
-
         return view('login');
+    }
 
+    public function register(){
+        return view('registration');
     }
 
     public function offerte_user_1() {
