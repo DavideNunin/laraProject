@@ -19,8 +19,8 @@ class CreateUtenteTable extends Migration
             $table->string('username');
             $table->primary('username');
             $table->string('password');
-            $table->string('tipologia');
-            $table->string('sesso');
+            $table->string('tipologia', 1);
+            $table->string('sesso',1);
             $table->string('telefono');
             $table->timestamps();
         });
