@@ -3,6 +3,7 @@
 namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Resources\Foto;
 
 class Offerta extends Model {
 
@@ -12,6 +13,6 @@ class Offerta extends Model {
 
     // restituisce un vettore con le righe delle foto relative all'offerta passata
     public function get_foto_offerta($offerta_id) {
-        return Fotos::withIn('offerta_id', $offerta_id)->get();
+        return Foto::whereIn('offerta_id', $offerta_id)->get();
     }
 }
