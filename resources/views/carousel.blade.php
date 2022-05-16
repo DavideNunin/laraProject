@@ -3,8 +3,8 @@
         <div class="col-sm-3">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    
-@foreach( $offerta->get_foto_offerta($offerta->id) as $nomefile)
+
+@foreach( $foto as $nomefile)
 
 
                 <div class="carousel-item @if( $loop->iteration == 1) active @endif">

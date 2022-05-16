@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">
-            @include('carousel')
+            @include('carousel', ['foto' => $offerta->get_foto_offerta($offerta->id)])
         </div>
         <div class="col-sm-8">
             <div class="container">

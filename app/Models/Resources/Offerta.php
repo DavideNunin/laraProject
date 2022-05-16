@@ -17,7 +17,7 @@ class Offerta extends Model {
 
     public function get_foto_offerta($offerta_id) {
         
-        $foto = Foto::join('offerta', 'fotos.offerta_id', '=', 'offerta.id')
+        $foto = Foto::whereIn('offerta_id', $offerta_id) -> join('offerta', 'fotos.offerta_id', '=', 'offerta.id')
                ->get(['fotos.nome_file']);
 
         return $foto;
