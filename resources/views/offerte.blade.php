@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        <h4>{{ $offerta->prezzo }}€</h4>
+                        <h4 class="price-offerta">{{ $offerta->prezzo }}€</h4>
                     </div>
                 </div>
             </div>

@@ -162,7 +162,7 @@
 }
 .title-offerta{
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 125.8%;
 }
 .subtitle-offerta{
@@ -173,4 +173,7 @@
 .image-offerta{
     border-radius: 20px;
     border: solid 1px transparent;
+}
+.price-offerta {
+  font-size: 20px;
 }
