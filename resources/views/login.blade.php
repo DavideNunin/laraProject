@@ -5,26 +5,34 @@
 <!-- inizio sezione prodotti -->
 @section('content')
 <!-- Username input -->
-<form action="">
-<div class="row justify-content-center">
-<h1 class="login-title"> LOGIN </h1>
-    <div class="col-lg-12 d-flex justify-content-center m-2">
-            <label for="username" class="form-label"> Username </label>
-            <input type="username" id="username" placeholder="inserisci il tuo username" require>
-    </div>
+
+  <!-- Email input -->
+<div class= row>  
+<div class="container">
+  <div class="text-center">
+    <h3>LOGIN </h3>
+  </div>
+</div>
+<form>
+  <div class="form-outline mb-4">
+  <label class="form-label" for="form2Example1" >Username</label>
+    <input type="email" id="form2Example1" placeholder="inserisci il tuo username" class="form-control" />
+  </div>
+
   <!-- Password input -->
-  <div class="col-lg-12 d-flex justify-content-center m-2">
-            <label for="password" class="form-label"> Password </label>
-            <input type="password" id="password" placeholder="inserisci la tua password" require>
-    </div>
+  <div class="form-outline mb-4">
+  <label class="form-label" for="form2Example2">Password</label>
+    <input type="password" id="form2Example2" class="form-control" placeholder="inserisci la tua password"/>
+  </div>
+
   <!-- Submit button -->
-  <div class="col-lg-12 ">
-  <button type="button" class="btn d-flex justify-content-center login-button btn-primary btn-block m-3" >Login</button>
-</div>
-<div class="col-lg-12 ">
-    <h7 class ="Link-registrati"><a href="{{ route('register') }}"> Non sei registrato?</a></h7>
-</div>
-</div>
+  <button type="button" class="btn btn-primary btn-block mb-6">Sign in</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Non sei registrato? <a href="{{ route('register')}}">Registrati</a></p>
+  </div>
+  </div>
 </form>
 </div>
 
