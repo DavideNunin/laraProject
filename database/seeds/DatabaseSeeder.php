@@ -49,9 +49,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('fotos')->insert([
+            ['nome_file' => 'quadrato.png','offerta_id'=> '1',],
             ['nome_file' => 'cerchio.png','offerta_id'=> '2',],
             ['nome_file' => 'cerchio.png','offerta_id'=> '3',],
-            ['nome_file' => 'quadrato.png','offerta_id'=> '1',]
+            ['nome_file' => 'cerchio.png','offerta_id'=> '1',],
+            ['nome_file' => 'quadrato.png','offerta_id'=> '2',],
+            ['nome_file' => 'quadrato.png','offerta_id'=> '3',],
 
         ]);
     }

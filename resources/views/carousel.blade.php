@@ -7,7 +7,7 @@
 @foreach( $offerta->get_foto_offerta($offerta->id) as $nomefile)
 
 
-                <div class="carousel-item active">
+                <div class="carousel-item @if( $loop->iteration == 1) active @endif">
                     <img class="d-block w-100" src="{{ asset('images/' . $nomefile->nome_file) }}" alt="Foto offerta">
                 </div>
 
