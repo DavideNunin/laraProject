@@ -1,21 +1,18 @@
 
-<?php
-echo "id offerta: $offerta->id <br>" ;
-?>
-    <div class="row">
+ <div class="row">
         <div class="col-sm-3">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-
+                    
 @foreach( $offerta->get_foto_offerta($offerta->id) as $nomefile)
 
 
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/') }}" alt="Foto offerta">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{{ asset('images/' . $nomefile->nome_file) }}" alt="Foto offerta">
                 </div>
 
 
-                <div class="carousel-item active">
+                <!--<div class="carousel-item active">
                     <img class="d-block w-100" src="{{ asset('images/image-home.jpg') }}" alt="First slide">
                 </div>
 
@@ -25,7 +22,7 @@ echo "id offerta: $offerta->id <br>" ;
 
                 <div class="carousel-item">
                     <img class="d-block w-100" src="{{ asset('images/back-login.jpg') }}" alt="Second slide">
-                </div>
+                </div>-->
 
 @endforeach
 

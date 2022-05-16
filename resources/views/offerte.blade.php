@@ -9,11 +9,10 @@
 </div>
 @foreach ($catalogo as $offerta)
 <div class="container">
-</div>
-@include('carousel')
-<li>{{ $offerta->titolo }}</li>
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">
+            @include('carousel')
+        </div>
         <div class="col-sm-8">
             <div class="container">
                 <div class="row">
@@ -41,8 +40,8 @@
             </div>
         </div>
 
-        </div>
     </div>
+</div>
 </div>
 @endforeach
 </div>

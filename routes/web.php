@@ -17,14 +17,6 @@ Route::get('/', 'PublicController@showHomeUser1')
 Route::get('/login', 'PublicController@login')
         ->name('login');
 
-// rotte per il login e logout
-Route::post('login', array(
-        'uses' => 'MainController@doLogin'
-));
-Route::get('logout', array(
-        'uses' => 'MainController@doLogout'
-));
-
 //rotta per registrazione
 Route::get('/register', 'PublicController@register')
         ->name('register');
