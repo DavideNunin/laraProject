@@ -15,10 +15,13 @@ class Offerta extends Model {
 
     // non so se ha senso metterla nel model della classe foto
 
-    public function get_foto_offerta($offerta_id) {
-        
-        $foto = Foto::whereIn('offerta_id', $offerta_id) -> join('offerta', 'fotos.offerta_id', '=', 'offerta.id')
-               ->get(['fotos.nome_file']);
+    public function get_foto_offerta() {
+
+        $foto = Foto::join('offerta', function ($join) {
+            $join->on('fotos.offerta_id', '=', 'offerta.id')
+                 ->where('offerta.id', '=', $this->id);
+        })
+        ->get();
 
         return $foto;
     }
