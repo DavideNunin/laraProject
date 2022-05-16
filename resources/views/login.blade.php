@@ -22,7 +22,7 @@
   <button type="button" class="btn d-flex justify-content-center login-button btn-primary btn-block m-3" >Login</button>
 </div>
 <div class="col-lg-12 ">
-    <h7 class ="Link-registrati"><a href="{{ route('register') }}">Non sei registrato?</a></h7>
+    <h7 class ="Link-registrati"><a href="{{ route('register') }}"> Non sei registrato?</a></h7>
 </div>
 </div>
 </form>
