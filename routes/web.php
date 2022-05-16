@@ -25,3 +25,6 @@ Route::get('/register', 'PublicController@register')
 Route::get('/offerte', 'PublicController@offerte_user_1')
         ->name('offerte');
 
+//rotta homelocatore
+Route::get('/homelocatore', 'PublicController@homelocatore')
+        ->name('homelocatore');

@@ -14,8 +14,19 @@
     <body>
             
             <div id="header">
-                
-                @include('layouts/navpublic', ['nav_type' => '1'])   
+               
+
+                    @switch($utente)
+                        @case(0)
+                        @include('layouts/navpublic')
+                        @break
+
+                        @case(1)
+                        @include('layouts/navlocatore') 
+                        @break
+                    
+                    @endswitch
+
             
             </div>
 

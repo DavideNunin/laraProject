@@ -1,7 +1,5 @@
 @extends('layouts.signin')
-
 @section('title', 'Login')
-
 <!-- inizio sezione prodotti -->
 @section('content')
 <!-- Username input -->
@@ -34,6 +32,7 @@
   </div>
   </div>
 </form>
+<a class="btn btn-primary btn-block mb-6" href="{{ route('homelocatore')}}">slkfdsfksdlk</a>
 </div>
 
 

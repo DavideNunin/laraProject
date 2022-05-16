@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\LocatoreController;
 
 class PublicController extends Controller {
 
@@ -14,25 +15,15 @@ class PublicController extends Controller {
     }
 
     public function showHomeUser1() {
-
-        //Categorie Top
-        //$topCats = 'prima PAROLA MAGICA';
-
-        return view('home');
-
-    }
-
-    public function showCatalog2($topCatId) {
-
-        //Categorie Top
-
-        return view('catalog')
-                        ->with('parola_magica', $topCatId);
+        $user = 0;
+        return view('home')
+            ->with('utente', $user);
 
     }
 
     public function login() {
         return view('login');
+
     }
 
     public function register(){
@@ -51,14 +42,14 @@ class PublicController extends Controller {
 
     }
 
-    /*public function login() {
-        return view('login');
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    //FUNZIONI LOCATARIO
+
+    public function homelocatore(){
+        $user = 1;
+        return view('home')
+            ->with('utente', $user);
     }
-
-
-
-  public function doLogin()
-    {
-    }*/
 
 }

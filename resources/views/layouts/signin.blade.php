@@ -14,7 +14,7 @@
     <body>
         
         <section class="wrapper-login">
-            @include('layouts/navpublic', ['nav_type' => '2'])
+            @include('layouts/navlogin')
             <!-- end #menu -->
             
             <div id="content-access">
