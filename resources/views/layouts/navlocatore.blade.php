@@ -6,11 +6,11 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item link-navbar-item">
+        <li class="nav-item link-navbar-item button-navbar">
             <a href="{{ route('offerte') }}" class="link-navbar">Le tue offerte </a>
         </li>
-        <li class="nav-item ">
-            <a href="{{ route('homeUser1') }}" class="link-navbar">  Esci </a></li>
+        <li class="nav-item">
+            <a href="{{ route('homeUser1') }}" class="navbar-icon">  <i class="fa-solid fa-arrow-right-from-bracket"></i> </a></li>
         </li> 
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Registrati</a>

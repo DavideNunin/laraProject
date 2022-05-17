@@ -11,7 +11,6 @@
   </div>
 </div>
 <div>
-{{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
 <form>
   <div class="row justify-content-center">
     <div class="col-lg-5">
@@ -33,16 +32,16 @@
     </div>
 
   <!-- Submit button -->
-  <div class="row justify-content-center">
-    <div class="col-lg-2 justify-content-center">
-      <button type="button" class="btn btn-primary btn-block mb-6">Sign in</button>
+  <div class ="row justify-content-center">
+    <div class="col-lg-5 register-button text-center">
+        <button type="button" class="login-button mb-4" >Accedi</button>
     </div>
-  </div>
+</div>
 
 
   <!-- Register buttons -->
   <div class="text-center">
-    <p>Non sei registrato? <a href="{{ route('register')}}">Registrati</a></p>
+    <p>Non sei registrato? <a href="{{ route('register')}}" class="link-website">Registrati</a></p>
   </div>
   </div>
 </form>

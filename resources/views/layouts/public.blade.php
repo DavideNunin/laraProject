@@ -2,24 +2,27 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
+        
         <title>Grp_11 | @yield('title', 'Home')</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;400;500;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
-	    <script src="https://kit.fontawesome.com/33316bb77f.js" crossorigin="anonymous"></script>
-
+	    
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
+        <script src="https://kit.fontawesome.com/33316bb77f.js" crossorigin="anonymous"></script>
 
     </head>
     <body>
-            
+        
+        <section class="image-home">            
             <div id="header">
                
-
                     @switch( $utente ?? '' )
                         @case(0)
                         @include('layouts/navpublic')
@@ -38,7 +41,7 @@
 
             <!-- end #menu -->
             
-            <div id="content">
+            <div id="content" class="mt-5">
                         @yield('content')
             </div>
 

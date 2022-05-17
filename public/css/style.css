@@ -1,26 +1,59 @@
-*{
-  font-family: 'Archivo', sans-serif;
-  font-style: normal;
-  box-sizing: border-box;
-  }
+  *{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    box-sizing: border-box;
+    }
   
+  .link-website {
+    color: #803841;
+    text-decoration: none;
+  }
+  .link-website:hover {
+    color: #803841;
+    text-decoration: underline;
+  }
   /* navbar style */
   .link-navbar, .navbar-brand {
 	  font-weight: 600;
 	  color: #48141A!important;
+    text-decoration: none;
   }
+
+  .button-navbar{
+    background-color:rgba(255, 255, 255, 0.5);
+    border-radius: 7px;
+    padding: 7px;
+    margin-right: 10px;
+  }
+  .button-navbar:hover{
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  .navbar-icon {
+    padding: 10px;
+    font-size: 20px;
+    color: #803841;
+  }
+  .navbar-icon:hover{
+    color: #48141A;
+  }
+
+  /* style home */
   
   .image-home{
-	background-image: url(../images/image-home.jpg); 
-	background-position: left;
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: relative;
-	height: 120vh;
+	background: url(../images/image-home.jpg);
+  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 120vh;
   }
   
   .super-title-home{
-  font-weight: 800;
+  font-weight: 900;
   font-size: 70px;
   line-height: 108.3%;
   color: #803841;
@@ -50,18 +83,15 @@
   }
   
   .mission {
-	background-image: url(../images/image-mission.png); 
+	background-image: url(../images/image-mission.png);
 	background-position: left;
 	background-repeat: no-repeat;
 	background-size: cover;
-	position: relative;
-	height: 50vh;
-	/* flex display */
-	  display: flex;
-	  justify-content: space-evenly;
-	  align-items: center;
-	/*text style */
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 	color: white;
+  height: 50vh;
   }
   
   .faq {
@@ -93,6 +123,16 @@
 /* ----------------- end style home -------------- */
 
 /* ------------------ style login register ------------ */
+
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem transparent !important;
+
+}
+
 .wrapper-login {
 	position: relative;
 	background-image: url(../images/back-login.jpg);
@@ -124,10 +164,15 @@
 }
 
 .login-button{
-  width: 20vh;
-  color: #fff;
+  font-size: 20px;
+  color: white;
   background-color: #803841;
-  border-color: #803841;
+  border-color: transparent;
+  border-radius: 10px;
+}
+
+.login-button:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .radioUser{
@@ -164,3 +209,13 @@
 .price-offerta {
   font-size: 20px;
 }
+
+
+
+
+
+
+
+
+
+/* MEDIA CSS */
