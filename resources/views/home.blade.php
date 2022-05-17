@@ -45,7 +45,7 @@
 
 <!-- La nostra mission section -->
 <section id="mission-section" class="mission">
-    <div class="container-fluid">
+    <div class="container-fluid mission-container">
         <div class="container">
             <div class="col-sm-12">
                 <h1 class="title-home"> La nostra mission </h1>
@@ -58,7 +58,11 @@
 </section> 
 
 <!-- Faq Section -->
-@include('faq')
+<div class="faq container mt-5 mb-5">
+    <h2 class="title-faq"> Faq </h2>
+    <p> Hai qualche domanda? </p>
+    @include('faq')
+</div>
 
 @endsection
 

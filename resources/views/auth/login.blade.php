@@ -45,7 +45,7 @@
   </div>
   </div>
 </form>
-<a class="btn btn-primary btn-block mb-6" href="{{ route('homelocatore')}}">slkfdsfksdlk</a>
+<a class="btn btn-primary btn-block mb-6" href="{{ route('homelocatore')}}">Login Prova</a>
 </div>
 </div>
 
