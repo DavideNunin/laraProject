@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
+        <li class="nav-item active button-navbar">
             <a href="{{ route('login') }}" class="link-navbar">Accedi </a></li>
         </li>
         <!-- <li class="nav-item">

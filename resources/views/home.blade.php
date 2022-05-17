@@ -4,8 +4,8 @@
 
 <!-- inizio sezione prodotti -->
 @section('content')
-<section class="image-home">
-    <div class="h-50 d-flex justify-content-center  flex-column align-items-center">
+<!-- <section class="image-home"> -->
+    <div class="d-flex justify-content-center align-items-center">
 		<div>
 			<p class="super-title-home"> Trova la <br> casa per i <br> tuoi studi </p>
 			<div class="d-grid gap-2">

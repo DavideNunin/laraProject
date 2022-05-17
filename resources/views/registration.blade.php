@@ -49,41 +49,43 @@
     </div>
 
     <div class ="row justify-content-center">
-        <div class="col-lg-4">
-            <label for="coajf" class="form-label">Ti vuoi iscrivere come:</label>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline1" name="tipo">
-                <label class="custom-control-label" for="defaultInline1">Locatore</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline2" name="tipo">
-                <label class="custom-control-label" for="defaultInline1">Locatario</label>
-            </div>
-      
-        </div>
-
-        <div class="col-lg-4">
-            <label for="fsdfs" class="form-label">Genere:</label>
-            
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="genereline1" name="genere">
-                <label class="custom-control-label" for="defaultInline1">Uomo</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="genereline2" name="genere">
-                <label class="custom-control-label" for="defaultInline1">Donna</label>
-            </div>
-
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="genereline3" name="genere">
-                <label class="custom-control-label" for="defaultInline1">Altro</label>
-            </div>
-        </div>
-
+        <div class="col-lg-10 row">
+            <div class="col-lg-4">
+                <label for="coajf" class="form-label">Ti vuoi iscrivere come:</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline1" name="tipo">
+                    <label class="custom-control-label" for="defaultInline1">Locatore</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline2" name="tipo">
+                    <label class="custom-control-label" for="defaultInline1">Locatario</label>
+                </div>
         
-        <div class="col-lg-4">
-            <label for="cognome" class="form-label"> Data di Nascita:</label>
-            <input type="date" id="date" placeholder="Inserisci la tua data di nascita" class="form-control" require>
+            </div>
+
+            <div class="col-lg-4">
+                <label for="fsdfs" class="form-label">Genere:</label>
+                
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="genereline1" name="genere">
+                    <label class="custom-control-label" for="defaultInline1">Uomo</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="genereline2" name="genere">
+                    <label class="custom-control-label" for="defaultInline1">Donna</label>
+                </div>
+
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="genereline3" name="genere">
+                    <label class="custom-control-label" for="defaultInline1">Altro</label>
+                </div>
+            </div>
+
+            
+            <div class="col-lg-4">
+                <label for="cognome" class="form-label"> Data di Nascita:</label>
+                <input type="date" id="date" placeholder="Inserisci la tua data di nascita" class="form-control" require>
+            </div>
         </div>
     </div>
 
