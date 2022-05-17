@@ -1,16 +1,20 @@
-@extends('layouts.public')
+@extends('layouts.public', ['home_type' => '0'])
 
 @section('title', 'Home')
 
 <!-- inizio sezione prodotti -->
 @section('content')
-<section class="image-home">
+
     <div class="d-flex justify-content-center align-items-center">
 		<div>
 			<p class="super-title-home"> Trova la <br> casa per i <br> tuoi studi </p>
 			<div class="d-grid gap-2">
-					<a class="btn btn-home" href="{{ route('offerte') }}">Vedi Offerte <i class="fa-solid fa-arrow-right"></i></a>
-			</div>
+                @if($utente)
+                    <a class="btn btn-home" href="{{ route('offerte_public_user2') }}">Vedi Offerte <i class="fa-solid fa-arrow-right"></i></a>
+                @else 
+                    <a class="btn btn-home" href="{{ route('offerte') }}">Vedi Offerte <i class="fa-solid fa-arrow-right"></i></a>
+                @endif
+            </div>
 		</div>
 	</div>
 </section>

@@ -41,6 +41,18 @@ class PublicController extends Controller {
 
         //Estraggo il catalogo delle offerte
         $catalogo_offerte = $this->_catalogModel->getAll();
+        $user_type = 0;
+
+        return view('offerte')
+                        ->with('catalogo', $catalogo_offerte)
+                        ->with('type_user', $user_type);
+
+    }
+
+    public function offerte_user_2() {
+
+        //Estraggo il catalogo delle offerte
+        $catalogo_offerte = $this->_catalogModel->getAll();
         $user_type = 1;
 
         return view('offerte')
@@ -67,6 +79,14 @@ class PublicController extends Controller {
 
         return view('offerte')
                         ->with('catalogo', $catalogo_offerte)
+                        ->with('type_user', $user_type);
+    }
+
+    public function offerta_singola($id_offerta){
+        $user_type = 1;
+
+        return view('singola_offerta')  
+                        ->with('id', $id_offerta)
                         ->with('type_user', $user_type);
     }
 

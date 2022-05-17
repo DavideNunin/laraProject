@@ -6,50 +6,50 @@
 <!-- Inizio sezione form di registrazione-->
 @section('content')
 <div class="container">
-    <div class= "text-center">
+    <div class= "text-center mt-3">
     <h3> REGISTRATI </h3>
 </div>
 <form action="">
     <div class="container">
     <div class ="row justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-lg-5 mb-3">
         <label for="nome" class="form-label"> Nome:</label>
         <input type="nome" id="nome" placeholder="Inserisci il tuo nome" class="form-control" require>
         </div>
         
-        <div class="col-lg-5">
+        <div class="col-lg-5 mb-3">
         <label for="cognome" class="form-label"> Cognome:</label>
         <input type="cognome" id="cognome" placeholder="Inserisci il tuo cognome" class="form-control" require>
         </div>
     </div>
 
     <div class ="row justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-lg-5 mb-3">
         <label for="cognome" class="form-label"> Password:</label>
         <input type="password" id="password" placeholder="Inserisci la tua password" class="form-control" require>
         </div>
 
-        <div class="col-lg-5">
+        <div class="col-lg-5 mb-3">
         <label for="cognome" class="form-label"> Conferma Password:</label>
         <input type="cPassword" id="cPassword" placeholder="Conferma la tua password" class="form-control" require>
         </div>
     </div>
 
     <div class ="row justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-lg-5 mb-3">
         <label for="cognome" class="form-label"> Username:</label>
         <input type="cognome" id="cognome" placeholder="Inserisci il tuo username" class="form-control" require>
         <small id="usernameHelp" class="form-text text-muted"> Il tuo username è unico, sceglilo con cura </small>
         </div>
 
-        <div class="col-lg-5">
+        <div class="col-lg-5 mb-3">
         <label for="cognome" class="form-label"> Recapito telefonico:</label>
         <input type="phonenumber" id="phone" placeholder="Inserisci il tuo telefono" class="form-control" require>
         </div>
     </div>
 
     <div class ="row justify-content-center">
-        <div class="col-lg-10 row">
+        <div class="col-lg-10 row mb-3">
             <div class="col-lg-4">
                 <label for="coajf" class="form-label">Ti vuoi iscrivere come:</label>
                 <div class="custom-control custom-radio custom-control-inline">

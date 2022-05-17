@@ -1,3 +1,3 @@
 require('./bootstrap');
 
-$('.carousel').carousel()
+//$('.carousel').carousel()
