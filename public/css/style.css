@@ -1,4 +1,4 @@
- *{
+*{
   font-family: 'Archivo', sans-serif;
   font-style: normal;
   box-sizing: border-box;
@@ -107,18 +107,6 @@
 .container-access {
 	background: rgba(255, 255, 255, 0.5);
 	border-radius: 50px;
-	height: 60vh;
-	width: 70vh;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-}
-
-#content-access{
-	display: flex;
-    /* width: 50vh; */
-    justify-content: space-evenly;
-    align-items: center;
 }
 
 .login-title{
@@ -137,6 +125,9 @@
 
 .login-button{
   width: 20vh;
+  color: #fff;
+  background-color: #803841;
+  border-color: #803841;
 }
 
 .radioUser{
@@ -149,10 +140,6 @@
   width: 1.25em;
   height: 1.25em;
 }
-
-.register-button{
-}
-
 
 
 /* ------------------ style offerta ------------ */

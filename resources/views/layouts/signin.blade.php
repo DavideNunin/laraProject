@@ -16,10 +16,11 @@
         <section class="wrapper-login">
             @include('layouts/navlogin')
             <!-- end #menu -->
-            
-            <div id="content-access">
-                <div class="container-access">
+            <div class="container col-lg-6">
+                <div class="row justify-content-center container-access">
+                    
                         @yield('content')
+                    
                 </div>
             </div>
         </div>
