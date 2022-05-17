@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalog;
+use App\Models\ElencoFaq;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\LocatoreController;
 
 class PublicController extends Controller {
 
     protected $_catalogModel;
+    protected $_faqModel;
 
     public function __construct() {
         $this->_catalogModel = new Catalog;
+        $this->_faqModel = new ElencoFaq;
     }
 
     public function showHomeUser1() {
         $user = 0;
+        $elfaq= $this->_faqModel->getAll();
         return view('home')
-            ->with('utente', $user);
-
+            ->with('utente', $user)
+            ->with('elfaq', $elfaq);
     }
 
     public function login() {
