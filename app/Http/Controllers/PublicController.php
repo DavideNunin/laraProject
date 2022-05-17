@@ -55,8 +55,10 @@ class PublicController extends Controller {
 
     public function homelocatore(){
         $user = 1;
+        $elfaq= $this->_faqModel->getAll();
         return view('home')
-            ->with('utente', $user);
+            ->with('utente', $user)
+            ->with('elfaq', $elfaq);
     }
 
     public function offerteLocatore(){
