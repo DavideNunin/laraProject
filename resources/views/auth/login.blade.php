@@ -10,6 +10,8 @@
     <h3>LOGIN </h3>
   </div>
 </div>
+<div>
+{{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
 <form>
   <div class="row justify-content-center">
     <div class="col-lg-5">
@@ -45,6 +47,8 @@
   </div>
 </form>
 <a class="btn btn-primary btn-block mb-6" href="{{ route('homelocatore')}}">slkfdsfksdlk</a>
+</div>
+</div>
 
 
 

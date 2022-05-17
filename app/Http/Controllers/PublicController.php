@@ -25,8 +25,11 @@ class PublicController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //login function
+
     public function login() {
-        return view('login');
+        return view('auth/login');
 
     }
 
@@ -54,6 +57,15 @@ class PublicController extends Controller {
         $user = 1;
         return view('home')
             ->with('utente', $user);
+    }
+
+    public function offerteLocatore(){
+        $catalogo_offerte = $this->_catalogModel->getAll();
+        $user_type = 1;
+
+        return view('offerte')
+                        ->with('catalogo', $catalogo_offerte)
+                        ->with('type_user', $user_type);
     }
 
 }

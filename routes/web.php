@@ -14,7 +14,7 @@ Route::get('/', 'PublicController@showHomeUser1')
         ->name('homeUser1');
 
 // pagina di login
-Route::get('/login', 'PublicController@login')
+Route::get('login', 'PublicController@login')
         ->name('login');
 
 //rotta per registrazione
@@ -25,6 +25,10 @@ Route::get('/register', 'PublicController@register')
 Route::get('/offerte', 'PublicController@offerte_user_1')
         ->name('offerte');
 
+Route::get('/locatore/offerte', 'PublicController@offerte_user_2')
+        ->name('offerteLocatore');
+
 //rotta homelocatore
 Route::get('/homelocatore', 'PublicController@homelocatore')
         ->name('homelocatore');
+
