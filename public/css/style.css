@@ -56,7 +56,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 120vh;
+  min-height: 120vh;
   }
   
   .super-title-home{
@@ -189,10 +189,14 @@
   background-color: #803841;
   border-color: transparent;
   border-radius: 10px;
+  /*delete after*/
+  padding: 7px;
 }
 
 .login-button:hover {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  /*delete after*/
+  color: white;
 }
 
 .radioUser{
@@ -209,8 +213,12 @@
 
 /* ------------------ style offerta ------------ */
 .single-offerta{
-  font-family: 'Archivo';
-  font-style: normal;
+  background-color: rgb(241, 241, 241);
+  border-radius: 20px;
+  padding: 2rem;
+}
+.single-offerta:hover{
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .title-offerta{
   font-weight: 600;

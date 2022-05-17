@@ -45,9 +45,6 @@
 </div>
 @endforeach
 </div>
-<div id="content">
-    <p>Utente di tipo: {{ $type_user }}</p>
-</div>
 
 <!-- fine sezione laterale -->
 @endsection

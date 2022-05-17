@@ -1,4 +1,4 @@
- <div class="row">
+ <div class="row justify-content-center">
         <div class="col-sm-3">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
