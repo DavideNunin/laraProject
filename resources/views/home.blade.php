@@ -9,7 +9,7 @@
 		<div>
 			<p class="super-title-home"> Trova la <br> casa per i <br> tuoi studi </p>
 			<div class="d-grid gap-2">
-					<a class="btn btn-home" href="{{ route('offerte') }}"">Vedi Offerte <i class="fa-solid fa-arrow-right"></i></a>
+					<a class="btn btn-home" href="{{ route('offerte') }}">Vedi Offerte <i class="fa-solid fa-arrow-right"></i></a>
 			</div>
 		</div>
 	</div>
