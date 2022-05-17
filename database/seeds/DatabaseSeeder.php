@@ -45,15 +45,9 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('faq')->insert([
             ['domanda' => 'è gratis?','risposta'=> 'Certo!!! la nostra non è un\' organizzazione a scopo di lucro. ',],
-            ['domanda' => 'la mamma mi ha fatto bello','risposta'=> 'Papà MILANISTA',],
-            ['domanda' => 'la mamma mi ha fatto bello','risposta'=> 'Papà MILANISTA',],
-            ['domanda' => 'la mamma mi ha fatto bello','risposta'=> 'Papà MILANISTA',],
-            ['domanda' => 'la mamma mi ha fatto bello','risposta'=> 'Papà MILANISTA',],
-            ['domanda' => 'la mamma mi ha fatto bello','risposta'=> 'Papà MILANISTA',],
-            ['domanda' => 'la mamma mi ha fatto bello','risposta'=> 'Papà MILANISTA',],
-            ['domanda' => 'la mamma mi ha fatto bello','risposta'=> 'Papà MILANISTA',],
-            ['domanda' => 'la mamma mi ha fatto bello','risposta'=> 'Papà MILANISTA',],
-            ['domanda' => 'è per caso il treno del sagittario???','risposta'=> 'CIUUF CIUUUUF!!!',]
+            ['domanda' => 'Come posso registrarmi?','risposta'=> 'è semplicissimo!!! basta cliccare sul bottone di registrazione nella sezione accedi',],
+            ['domanda' => 'Che dati devo inserire per la registrazione?','risposta'=> 'Sia nel caso di un utente locatore che nel caso di un utente studente bisogna inserire: nome, cognome, data di nascita, sesso, username e password',],
+            ['domanda' => 'FORZA MILAN','risposta'=> 'SEMPREEEEEE!!!',]
         ]);
 
         DB::table('fotos')->insert([
