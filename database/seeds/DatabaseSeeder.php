@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('utente')->insert([
             ['data_nascita' => '2000-08-10','nome' => 'Gennaro', 'cognome' => 'Bullo', 'username' => 'gennaro.bullo', 'password' => 'lol', 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '3333333333',],
+            ['data_nascita' => '2000-08-10','nome' => 'Mario', 'cognome' => 'Rossi', 'username' => 'mario.rossi', 'password' => 'lol', 'tipologia' => 'l', 'sesso' => 'M', 'telefono' => '3333333333',]
+
         ]);
 
         DB::table('offerta')->insert([
@@ -30,7 +32,11 @@ class DatabaseSeeder extends Seeder
                 'periodo' => '9 mesi', 'titolo' => 'offertissima', 'tipologia' => 'a', 'prezzo' => 400, 'etaRichiesta' => 18, 'user_id' => 'gennaro.bullo'],
                 ['via' => 'via 6', 'ncivico' => 10,
                 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC5',
-                'periodo' => '10 mesi', 'titolo' => 'offerta 5', 'tipologia' => 'p', 'prezzo' => 800, 'etaRichiesta' => 18, 'user_id' => 'gennaro.bullo']
+                'periodo' => '10 mesi', 'titolo' => 'offerta 5', 'tipologia' => 'p', 'prezzo' => 800, 'etaRichiesta' => 18, 'user_id' => 'gennaro.bullo'],
+                
+                ['via' => 'via Roma', 'ncivico' => 10,
+                'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'Piccola descrizione di Mario Rossi',
+                'periodo' => '10 mesi', 'titolo' => 'Appartamento Ancona', 'tipologia' => 'p', 'prezzo' => 800, 'etaRichiesta' => 18, 'user_id' => 'mario.rossi']
         ]);
 
         DB::table('posto_letto')->insert([
@@ -57,7 +63,7 @@ class DatabaseSeeder extends Seeder
             ['nome_file' => 'cerchio.png','offerta_id'=> '1',],
             ['nome_file' => 'quadrato.png','offerta_id'=> '2',],
             ['nome_file' => 'quadrato.png','offerta_id'=> '3',],
-
+            ['nome_file' => 'quadrato.png','offerta_id'=> '6',],
         ]);
     }
 }

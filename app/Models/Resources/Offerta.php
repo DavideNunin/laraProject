@@ -25,4 +25,5 @@ class Offerta extends Model {
 
         return $foto;
     }
+
 }
