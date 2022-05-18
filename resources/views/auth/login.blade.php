@@ -6,7 +6,7 @@
 
   <!-- Email input -->
 <div class="container">
-  <div class="text-center">
+  <div class="text-center mt-3">
     <h3>LOGIN </h3>
   </div>
 </div>

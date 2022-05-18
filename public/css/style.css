@@ -143,6 +143,12 @@
 /* ----------------- end style home -------------- */
 
 /* ------------------ style login register ------------ */
+.form-control{
+  border-radius: 10px!important;
+}
+.form-label {
+  margin-bottom: 0.3rem!important;
+}
 
 .form-control:focus {
   color: #212529;
@@ -150,7 +156,6 @@
   border: 1px solid #ced4da;
   outline: 0;
   box-shadow: 0 0 0 0.25rem transparent !important;
-
 }
 
 .wrapper-login {
@@ -213,21 +218,22 @@
 
 /* ------------------ style offerta ------------ */
 .single-offerta{
-  background-color: rgb(241, 241, 241);
+  background-color: #f9f9f9;
   border-radius: 20px;
   padding: 2rem;
 }
 .single-offerta:hover{
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+  cursor:pointer;
 }
 .title-offerta{
   font-weight: 600;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 125.8%;
 }
 .subtitle-offerta{
   font-weight: 500;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 125.8%;
 }
 .image-offerta{
@@ -238,7 +244,11 @@
   font-size: 20px;
 }
 
-
+.img-carousel{
+  object-fit: cover;
+  height: 50vh;
+  border-radius: 20px;
+}
 
 
 

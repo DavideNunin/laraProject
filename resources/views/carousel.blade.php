@@ -1,11 +1,11 @@
  <div class="row justify-content-center">
-        <div class="col-sm-3">
+        <div class="col-sm-12">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
 
                 @foreach($offerta->get_foto_offerta() as $nomefile) 
                     <div class="carousel-item @if( $loop->iteration == 1) active @endif">
-                        <img class="d-block w-100" src="{{ asset('images/' . $nomefile->nome_file) }}" alt="Foto offerta">
+                        <img class="d-block w-100 img-carousel" src="{{ asset('images/' . $nomefile->nome_file) }}" alt="Foto offerta">
                     </div>
                 @endforeach
 

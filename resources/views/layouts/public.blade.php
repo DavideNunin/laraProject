@@ -19,7 +19,9 @@
 
     </head>
     <body>
-                   
+        @if( ! $home_type ?? '')
+            <section class="image-home">
+        @endif
             <div id="header">
                
                     @switch( $utente ?? '' )
@@ -32,7 +34,7 @@
                         @break
                     
                         @default
-                        @include('layouts/navpublic')
+                        @include('layouts/navlocatore')
                     @endswitch
 
             
@@ -41,7 +43,7 @@
             <!-- end #menu -->
             
             <div id="content">
-                @yield('content')
+                        @yield('content')
             </div>
 
             <!-- end #content -->
@@ -54,7 +56,7 @@
                                 Mauris at purus nec velit elementum gravida eu porttitor magna. </p>
                          <a href="#"> Scrivi qui! </a>
                         </div>
-                        <div class="col-sm-6 ">
+                        <div class="col-sm-6 mt-5">
                             <h6 class ="title-footer-home">Dove siamo? </h6>
                             <div id="map-container" class="z-depth-1-half map-container" style="height: 500px">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2889.9487942499004!2d13.5144063!3d43.5867829!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d80233dd931ef%3A0x161719e4f3f5daaf!2sUniversit%C3%A0%20Politecnica%20delle%20Marche%20-%20Facolt%C3%A0%20di%20Ingegneria!5e0!3m2!1sit!2sit!4v1652779818054!5m2!1sit!2sit" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"> 
