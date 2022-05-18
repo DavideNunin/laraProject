@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item button-navbar">
-            <a href="{{ route('offerteLocatore') }}" class="link-navbar">Le tue offerte </a>
+            <a href="{{ route('offerte_locatore') }}" class="link-navbar">Le tue offerte </a>
         </li>
         <li class="nav-item link-navbar-item">
             <a href="{{ route('homeUser1') }}" class="navbar-icon">  <i class="fa-solid fa-arrow-right-from-bracket"></i> </a></li>

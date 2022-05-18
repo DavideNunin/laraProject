@@ -76,7 +76,7 @@ class PublicController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
-    public function offerte_user_2(){
+    public function offerte_locatore(){
         $catalogo_offerte = $this->_userModel->get_offerte_utente();
         $user_type = 1;
 

@@ -1,4 +1,4 @@
-@extends('layouts.public',[ 'utente' => '$type_user' ])
+@extends('layouts.public',['utente' => $type_user , 'home_type' => '$type_user'])
 
 @section('title', 'Offerte')
 
