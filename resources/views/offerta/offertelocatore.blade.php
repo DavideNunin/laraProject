@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">
-            @include('carousel')
+            @include('offerta/carousel')
         </div>
         <div class="col-sm-8">
             <div class="container">

@@ -38,5 +38,5 @@ Route::get('/locatore/offerte', 'PublicController@offerte_user_2')
 Route::get('/locatore/offerta{id}', 'PublicController@offerta_singola')
         ->name('single_offerta');
 
-Route::get('/locatore/letueofferte', 'PublicController@offerte_locatore')
+Route::get('/locatore/letueofferte', 'PublicController@offerteLocatore')
         ->name('offerte_locatore');
