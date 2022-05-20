@@ -20,4 +20,14 @@ class Utente extends Model
         return $offertautente;
     }
 
+    public function get_offerte_opzionate($id){
+        $utenti = Utente::find('gennaro.bullo');
+        $gino = Utente::join('opzionamento', function($join){
+            $join->on('utente.username', '=', 'opzionamento.user_id');
+                 
+        })
+        ->get();
+        return $utenti;
+    }
+
 }

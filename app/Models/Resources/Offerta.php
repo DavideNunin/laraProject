@@ -26,4 +26,8 @@ class Offerta extends Model {
         return $foto;
     }
 
+    public function get_offerta_from_id($id) {
+        return Offerta::find($id);
+    }
+
 }

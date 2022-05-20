@@ -9,15 +9,15 @@
 </div>
 @foreach ($catalogo as $offerta)
 <div class="container">
-    <div id="prova" class="row single-offerta mb-5" onclick="{{ route('single_offerta', ['id'=>$offerta->id]) }}">
+    <div id="prova" class="row single-offerta mb-5">
         <div class="col-sm-4">
-            @include('carousel')
+            @include('offerta/carousel')
         </div>
         <div class="col-sm-8">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 class="title-offerta"><a href="{{ route('single_offerta', ['id'=>$offerta->id]) }}">{{ $offerta->titolo }}</a></h3>
+                        <h3 class="title-offerta">@if ($type_user) <a href="{{ route('single_offerta', ['id'=>$offerta->id]) }}">{{ $offerta->titolo }}</a>@else{{ $offerta->titolo }}@endif </h3>
                         <div class="subtitle-offerta">
                             <div>Proposto da {{$offerta->user_id}}, 
                                 @if ($offerta->tipologia == 'a')

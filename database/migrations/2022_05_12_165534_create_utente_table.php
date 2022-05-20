@@ -16,8 +16,8 @@ class CreateUtenteTable extends Migration
         Schema::create('utente', function (Blueprint $table) {
             $table->string('nome');
             $table->string('cognome');
-            $table->string('username');
-            $table->primary('username');
+            $table->string('username')->primary();
+            //$table->primary('username');
             $table->date('data_nascita');
             $table->string('password');
             $table->string('tipologia', 1);

@@ -11,12 +11,15 @@
   </div>
 </div>
 <div>
-<form>
+<!-- Form::open(array('route' => 'newproduct.store', 'id' => 'addproduct', 'files' => true, 'class' => 'contact-form')) }} -->
+  {{ Form::open(array('id' => 'form-login', 'class' => 'login-form')) }}
   <div class="row justify-content-center">
     <div class="col-lg-5">
       <div class="form-outline mb-4">
-      <label class="form-label" for="form2Example1" >Username</label>
-        <input type="email" id="form2Example1" placeholder="inserisci il tuo username" class="form-control" />
+        {{ Form::label('username', 'Username', ['class' => 'form-label']) }}
+        {{ Form::text('username', '', ['class' => 'form-control', 'id' => 'username']) }}
+      <!--<label class="form-label" for="form2Example1" >Username</label>
+        <input type="email" id="form2Example1" placeholder="inserisci il tuo username" class="form-control" />-->
       </div>
     </div>
   </div>
@@ -25,12 +28,14 @@
     <div class="row justify-content-center">
       <div class="col-lg-5">
         <div class="form-outline mb-4">
-        <label class="form-label" for="form2Example2">Password</label>
-          <input type="password" id="form2Example2" class="form-control" placeholder="inserisci la tua password"/>
+          {{ Form::label('password', 'Password', ['class' => 'form-label']) }}
+          {{ Form::password('password', ['class' => 'form-control', 'id' => 'password']) }}
+        <!--<label class="form-label" for="form2Example2">Password</label>
+          <input type="password" id="form2Example2" class="form-control" placeholder="inserisci la tua password"/>-->
         </div>
       </div>   
     </div>
-</form>
+    {{ Form::close() }}
   <!-- Submit button -->
   <div class ="row justify-content-center">
     <div class="col-lg-5 register-button text-center">
