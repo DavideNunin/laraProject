@@ -14,8 +14,8 @@ class CreateDestinatarioTable extends Migration
     public function up()
     {
         Schema::create('destinatario', function (Blueprint $table) {
-            $table->string('destinatario');
-            $table->foreign('destinatario')->references('username')->on('utente');
+            $table->unsignedBigInteger('destinatario');
+            $table->foreign('destinatario')->references('id')->on('utente');
             $table->unsignedBigInteger('messaggio');
             $table->foreign('messaggio')->references('id')->on('messaggio');
             $table->timestamps();

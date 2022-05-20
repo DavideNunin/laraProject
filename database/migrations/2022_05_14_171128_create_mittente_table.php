@@ -14,9 +14,9 @@ class CreateMittenteTable extends Migration
     public function up()
     {
         Schema::create('mittente', function (Blueprint $table) {
-            $table->string('utente');
+            $table->unsignedBigInteger('utente');
             $table->unsignedBigInteger('messaggio');
-            $table->foreign('utente')->references('username')->on('utente')->after('utente');
+            $table->foreign('utente')->references('id')->on('utente')->after('utente');
             $table->foreign('messaggio')->references('id')->on('messaggio');
             $table->timestamps();
         });
