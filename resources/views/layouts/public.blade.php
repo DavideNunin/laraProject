@@ -19,7 +19,7 @@
 
     </head>
     <body>
-        @if( ! $home_type ?? '')
+        @if( $home_type ?? '')
             <section class="image-home">
         @endif
             <div id="header">

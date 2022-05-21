@@ -37,15 +37,15 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('/offerte', 'OffertaController@offerte_user_1')
         ->name('offerte');
 
-Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
-        ->name('offerteLocatore');
+//Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
+  //      ->name('offerteLocatore');
 
 //rotta homelocatore
 Route::get('/homelocatore', 'LocatoreController@index')
         ->name('homelocatore');
 
-Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
-        ->name('offerte_public_user2');
+//Route::get('/locatore/offerte', 'OffertaController@offerte_user_1')
+  //      ->name('offerte_public_user2');
 
 Route::get('/locatore/offerta{id}', 'OffertaController@offerta_singola')
         ->name('single_offerta');

@@ -31,9 +31,6 @@ class PublicController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //login function
-
     public function login() {
         return view('auth/login');
 

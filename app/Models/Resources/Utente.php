@@ -3,6 +3,7 @@
 namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Utente extends Model
 {
@@ -11,8 +12,7 @@ class Utente extends Model
     public $timestamps = false;
 
 
-    public function get_offerte_utente(){
-        $username =  Auth::user()->username;
+    public function get_offerte_utente($username){
         $offertautente = Offerta::join('utente', function($join){
             $join->on('offerta.user_id', '=', 'utente.id')
                  ->where('utente.username', '=', $username);

@@ -24,15 +24,12 @@ class OffertaController extends Controller
 
         //Estraggo il catalogo delle offerte
         $catalogo_offerte = $this->_catalogModel->getAll();
-        $user_type = 0;
 
         return view('offerta/offerte')
-                        ->with('catalogo', $catalogo_offerte)
-                        ->with('type_user', $user_type);
-
+                        ->with('catalogo', $catalogo_offerte);
     }
 
-    public function offerte_user_2() {
+    /*public function offerte_user_2() {
 
         //Estraggo il catalogo delle offerte
         $catalogo_offerte = $this->_catalogModel->getAll();
@@ -42,7 +39,7 @@ class OffertaController extends Controller
                         ->with('catalogo', $catalogo_offerte)
                         ->with('type_user', $user_type);
 
-    }
+    }*/
 
     
 

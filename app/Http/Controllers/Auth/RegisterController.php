@@ -71,19 +71,6 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        /*$tipologia = '';
-        if($data['type_user']=='Locatore')
-            $tipologia = 'l';
-        elseif ($data['type_user']=='Locatario')
-            $tipologia = 's';
-        
-        $gender = '';
-            if($data['gender']=='Uomo')
-                $tipologia = 'M';
-            elseif ($data['gender']=='Donna')
-                $tipologia = 'F';
-            elseif ($data['gender']=='Altro')
-                $tipologia = 'A';*/
         return User::create([
             'nome' => $data['name'],
             'cognome' => $data['cognome'],
