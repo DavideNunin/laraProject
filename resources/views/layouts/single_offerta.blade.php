@@ -33,7 +33,6 @@
                 @default
                 @include('layouts/navlocatore')
             @endswitch
-
     
     </div>
     <div class="container">

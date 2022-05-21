@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Resources\User;
+use App\User;
 use App\Models\Resources\Offerta;
 use App\Models\Catalog;
 

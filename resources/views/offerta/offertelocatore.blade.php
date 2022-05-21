@@ -1,4 +1,4 @@
-@extends('layouts.public',['home_type' => '$type_user'])
+@extends('layouts.public',['home_type' => '0'])
 
 @section('title', 'Offerte')
 
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <h3 class="title-offerta">
-                            <a href="{{ route('single_offerta', ['id'=>$offerta->id]) }}">{{ $offerta->titolo }}</a>{{ $offerta->titolo }}</a>
+                            {{ $offerta->titolo }}
                         </h3>
                         <div class="subtitle-offerta">
                             <div>@if ($offerta->tipologia == 'a')

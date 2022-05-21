@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
-use App\Models\Resources\User;
+use App\User;
 use App\Models\Resources\Offerta;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\LocatoreController;

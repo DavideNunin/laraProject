@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Resources\Offerta;
 
 use Illuminate\Notifications\Notifiable;
 
@@ -46,12 +47,22 @@ class User extends Authenticatable
     }
 
     public function get_offerte_utente($username){
-        $offertautente = Offerta::join('utente', function($join){
-            $join->on('offerta.user_id', '=', 'utente.id')
-                 ->where('utente.username', '=', $username);
+        $offertautente = Offerta::join('users', function($join) use ($username){
+            $join->on('offerta.user_id', '=', 'users.id')
+                 ->where('users.username', '=', $username);
         })
         ->get();
         return $offertautente;
     }
+
+    public function get_offerte_opzionate($id){
+        $utenti = User::join('opzionamento', function($join) use ($id){
+            $join->on('users.id', '=', 'opzionamento.user_id')
+            ->where('opzionamento.offerta_id', '=', $id);
+        })
+        ->get();
+        return $utenti;
+    }
+
 
 }

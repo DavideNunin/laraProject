@@ -53,6 +53,6 @@ Route::get('/locatore/offerta{id}', 'OffertaController@offerta_singola')
 Route::get('/locatore/letueofferte', 'LocatoreController@offerteLocatore')
         ->name('offerte_locatore');
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
