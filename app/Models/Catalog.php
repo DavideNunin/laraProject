@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Offerta;
-use App\Models\Resources\Utente;
+use App\Models\Resources\User;
 
 
 class Catalog {

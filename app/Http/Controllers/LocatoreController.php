@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
-use App\Models\Resources\Utente;
+use App\Models\Resources\User;
 use Illuminate\Support\Facades\Log;
 use Auth;
 
@@ -18,7 +18,7 @@ class LocatoreController extends Controller {
     public function __construct() {
         $this->middleware('can:isLocatore');
         $this->_faqModel = new ElencoFaq;
-        $this->_userModel = new Utente;
+        $this->_userModel = new User;
 
     }
 
@@ -37,8 +37,7 @@ class LocatoreController extends Controller {
     }
 
     public function offerteLocatore(){
-        
-        $catalogo_offerte = $this->_userModel->get_offerte_utente(Auth::user()->username);
+        $catalogo_offerte = $this->_userModel->get_offerte_utente();
 
         return view('offerta/offertelocatore')
                         ->with('catalogo', $catalogo_offerte);

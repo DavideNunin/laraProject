@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item button-navbar">
-            <a href="{{ route('offerte_locatore') }}" class="link-navbar">Le tue offerte </a>
+            <a href="{{ route('offerte_locatore') }}" class="link-navbar">Le tue offerte </a>  
         </li>
         <li class="nav-item link-navbar-item">
           <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>

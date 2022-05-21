@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Resources\Utente;
+use App\Models\Resources\User;
 use App\Models\Resources\Offerta;
 use App\Models\Catalog;
 
@@ -16,7 +16,7 @@ class OffertaController extends Controller
 
     public function __construct() {
         $this->_catalogModel = new Catalog;
-        $this->_userModel = new Utente;
+        $this->_userModel = new User;
         $this->_offertaModel = new Offerta;
     }
 

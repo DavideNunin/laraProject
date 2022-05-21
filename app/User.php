@@ -45,4 +45,13 @@ class User extends Authenticatable
         return in_array($this->tipologia, $role);
     }
 
+    public function get_offerte_utente($username){
+        $offertautente = Offerta::join('utente', function($join){
+            $join->on('offerta.user_id', '=', 'utente.id')
+                 ->where('utente.username', '=', $username);
+        })
+        ->get();
+        return $offertautente;
+    }
+
 }

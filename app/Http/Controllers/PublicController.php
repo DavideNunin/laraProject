@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
-use App\Models\Resources\Utente;
+use App\Models\Resources\User;
 use App\Models\Resources\Offerta;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\LocatoreController;
@@ -19,7 +19,7 @@ class PublicController extends Controller {
     public function __construct() {
         $this->_catalogModel = new Catalog;
         $this->_faqModel = new ElencoFaq;
-        $this->_userModel = new Utente;
+        $this->_userModel = new User;
         $this->_offertaModel = new Offerta;
     }
 

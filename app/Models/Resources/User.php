@@ -5,19 +5,20 @@ namespace App\Models\Resources;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Utente extends Model
+class User extends Model
 {
-    protected $table = 'utente';
+    protected $table = 'users';
     protected $primaryKey = 'id';
     public $timestamps = false;
 
 
-    public function get_offerte_utente($username){
-        $offertautente = Offerta::join('utente', function($join){
-            $join->on('offerta.user_id', '=', 'utente.id')
-                 ->where('utente.username', '=', $username);
+    public function get_offerte_utente(){
+        $offertautente = Offerta::join('users', function($join){
+            $join->on('offerta.user_id', '=', 'users.id')
+                 ->where('users.username', '=', $this->username);
         })
         ->get();
+
         return $offertautente;
     }
 
