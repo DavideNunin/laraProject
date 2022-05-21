@@ -22,21 +22,21 @@ Route::get('/register', 'PublicController@register')
         ->name('register');
 
 // pagina offerte
-Route::get('/offerte', 'PublicController@offerte_user_1')
+Route::get('/offerte', 'OffertaController@offerte_user_1')
         ->name('offerte');
 
-Route::get('/locatore/offerte', 'PublicController@offerte_user_2')
+Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
         ->name('offerteLocatore');
 
 //rotta homelocatore
 Route::get('/homelocatore', 'PublicController@homelocatore')
         ->name('homelocatore');
 
-Route::get('/locatore/offerte', 'PublicController@offerte_user_2')
+Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
         ->name('offerte_public_user2');
 
-Route::get('/locatore/offerta{id}', 'PublicController@offerta_singola')
+Route::get('/locatore/offerta{id}', 'OffertaController@offerta_singola')
         ->name('single_offerta');
 
-Route::get('/locatore/letueofferte', 'PublicController@offerteLocatore')
+Route::get('/locatore/letueofferte', 'OffertaController@offerteLocatore')
         ->name('offerte_locatore');

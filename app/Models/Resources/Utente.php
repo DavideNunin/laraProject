@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Utente extends Model
 {
     protected $table = 'utente';
-    protected $primaryKey = 'username';
+    protected $primaryKey = 'id';
     public $timestamps = false;
 
 
     public function get_offerte_utente(){
         $offertautente = Offerta::join('utente', function($join){
-            $join->on('offerta.user_id', '=', 'utente.username')
+            $join->on('offerta.user_id', '=', 'utente.id')
                  ->where('utente.username', '=', 'mario.rossi');
         })
         ->get();
@@ -21,10 +21,9 @@ class Utente extends Model
     }
 
     public function get_offerte_opzionate($id){
-        $utenti = Utente::find('gennaro.bullo');
-        $gino = Utente::join('opzionamento', function($join){
-            $join->on('utente.username', '=', 'opzionamento.user_id');
-                 
+        $utenti = Utente::join('opzionamento', function($join) use ($id){
+            $join->on('utente.id', '=', 'opzionamento.user_id')
+            ->where('opzionamento.offerta_id', '=', $id);
         })
         ->get();
         return $utenti;
