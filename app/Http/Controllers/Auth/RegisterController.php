@@ -51,8 +51,13 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'cognome' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phonenumber' => ['required', 'digits:10'],
+            'type_user' => ['required'],
+            'gender' => ['required'],
+            'data_nascita' => ['required', 'date'],
         ]);
     }
 
@@ -62,11 +67,31 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+
     protected function create(array $data)
     {
+        /*$tipologia = '';
+        if($data['type_user']=='Locatore')
+            $tipologia = 'l';
+        elseif ($data['type_user']=='Locatario')
+            $tipologia = 's';
+        
+        $gender = '';
+            if($data['gender']=='Uomo')
+                $tipologia = 'M';
+            elseif ($data['gender']=='Donna')
+                $tipologia = 'F';
+            elseif ($data['gender']=='Altro')
+                $tipologia = 'A';*/
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'nome' => $data['name'],
+            'cognome' => $data['cognome'],
+            'username' => $data['username'],
+            'data_nascita' => $data['data_nascita'],
+            'tipologia' => $data['type_user'],
+            'sesso' => $data['gender'],
+            'telefono' => $data['phonenumber'],
             'password' => Hash::make($data['password']),
         ]);
     }

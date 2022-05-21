@@ -22,9 +22,16 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')
         ->name('logout');
         
-//rotta per registrazione
-Route::get('/register', 'PublicController@register')
+
+// Rotte per la registrazione
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')
         ->name('register');
+
+Route::post('register', 'Auth\RegisterController@register');
+
+//rotta per registrazione
+//Route::get('/register', 'PublicController@register')
+       // ->name('register');
 
 // pagina offerte
 Route::get('/offerte', 'OffertaController@offerte_user_1')
