@@ -26,7 +26,7 @@ class CreateOffertaTable extends Migration
             $table->float('prezzo');
             $table->integer('etaRichiesta');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('utente');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

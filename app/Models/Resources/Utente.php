@@ -12,9 +12,10 @@ class Utente extends Model
 
 
     public function get_offerte_utente(){
+        $username =  Auth::user()->username;
         $offertautente = Offerta::join('utente', function($join){
             $join->on('offerta.user_id', '=', 'utente.id')
-                 ->where('utente.username', '=', 'mario.rossi');
+                 ->where('utente.username', '=', $username);
         })
         ->get();
         return $offertautente;

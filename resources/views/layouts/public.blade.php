@@ -23,21 +23,18 @@
             <section class="image-home">
         @endif
             <div id="header">
-               
-                    @switch( $utente ?? '' )
-                        @case(0)
-                        @include('layouts/navpublic')
-                        @break
+                @guest
+                    @include('layouts/navpublic')
+                @endguest  
 
-                        @case(1)
-                        @include('layouts/navlocatore') 
-                        @break
-                    
-                        @default
-                        @include('layouts/navlocatore')
-                    @endswitch
+                @can('isLocatore')
+                    @include('layouts/navlocatore') 
+                @endcan
 
-            
+                @can('isLocatario')
+                    @include('layouts/navlocatario') 
+                @endcan
+   
             </div>
 
             <!-- end #menu -->

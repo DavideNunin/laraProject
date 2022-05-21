@@ -11,11 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('utente')->insert([
-            ['data_nascita' => '2000-08-10','nome' => 'Gennaro', 'cognome' => 'Bullo', 'username' => 'gennarobullo', 'password' => 'lol', 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '3333333333',],
-            ['data_nascita' => '2000-08-10','nome' => 'Mario', 'cognome' => 'Rossi', 'username' => 'mario.rossi', 'password' => 'lol', 'tipologia' => 'l', 'sesso' => 'M', 'telefono' => '3333333333',],
-            ['data_nascita' => '2000-08-10','nome' => 'Giovanni', 'cognome' => 'IlMatto', 'username' => 'giovanni.matto', 'password' => 'lol', 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '3333333333',],   
-            ['data_nascita' => '2005-08-10','nome' => 'Gaia', 'cognome' => 'Turbo', 'username' => 'TurboFregna05', 'password' => 'sagittario', 'tipologia' => 's', 'sesso' => 'F', 'telefono' => '5235656498',]   
+        DB::table('users')->insert([
+            ['data_nascita' => '2000-08-10','nome' => 'Gennaro', 'cognome' => 'Bullo', 'username' => 'gennarobullo', 'password' => Hash::make('lol'), 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '3333333333',],
+            ['data_nascita' => '2000-08-10','nome' => 'Mario', 'cognome' => 'Rossi', 'username' => 'mario.rossi', 'password' => Hash::make('lol'), 'tipologia' => 'l', 'sesso' => 'M', 'telefono' => '3333333333',],
+            ['data_nascita' => '2000-08-10','nome' => 'Giovanni', 'cognome' => 'IlMatto', 'username' => 'giovanni.matto', 'password' => Hash::make('lol'), 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '3333333333',],   
+            ['data_nascita' => '2005-08-10','nome' => 'Gaia', 'cognome' => 'Turbo', 'username' => 'TurboFregna05', 'password' => Hash::make('sagittario'), 'tipologia' => 's', 'sesso' => 'F', 'telefono' => '5235656498',]   
         ]);
 
         DB::table('offerta')->insert([

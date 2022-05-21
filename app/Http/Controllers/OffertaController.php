@@ -44,14 +44,7 @@ class OffertaController extends Controller
 
     }
 
-    public function offerteLocatore(){
-        $catalogo_offerte = $this->_userModel->get_offerte_utente();
-        $user_type = 1;
-
-        return view('offerta/offertelocatore')
-                        ->with('catalogo', $catalogo_offerte)
-                        ->with('type_user', $user_type);
-    }
+    
 
     public function offerta_singola($id_offerta){
         // questa fa partire la view singola_locatore o singola_locatario

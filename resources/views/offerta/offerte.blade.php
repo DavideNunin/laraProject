@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 class="title-offerta">@if ($type_user) <a href="{{ route('single_offerta', ['id'=>$offerta->id]) }}">{{ $offerta->titolo }}</a>@else{{ $offerta->titolo }}@endif </h3>
+                        <h3 class="title-offerta">{{ $offerta->titolo }}</h3>
                         <div class="subtitle-offerta">
                             <div>Proposto da {{$offerta->user_id}}, 
                                 @if ($offerta->tipologia == 'a')

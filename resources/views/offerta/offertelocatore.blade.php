@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <h3 class="title-offerta">
-                            <a href="https://www.youtube.com/watch?v=Z2Y1pHUfamM">{{ $offerta->titolo }}</a>
+                            <a href="{{ route('single_offerta', ['id'=>$offerta->id]) }}">{{ $offerta->titolo }}</a>{{ $offerta->titolo }}</a>
                         </h3>
                         <div class="subtitle-offerta">
                             <div>@if ($offerta->tipologia == 'a')

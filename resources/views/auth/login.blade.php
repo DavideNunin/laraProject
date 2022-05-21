@@ -12,14 +12,19 @@
 </div>
 <div>
 <!-- Form::open(array('route' => 'newproduct.store', 'id' => 'addproduct', 'files' => true, 'class' => 'contact-form')) }} -->
-  {{ Form::open(array('id' => 'form-login', 'class' => 'login-form')) }}
+  {{ Form::open(array('route' => 'login', 'id' => 'form-login', 'class' => 'login-form')) }}
   <div class="row justify-content-center">
     <div class="col-lg-5">
       <div class="form-outline mb-4">
         {{ Form::label('username', 'Username', ['class' => 'form-label']) }}
         {{ Form::text('username', '', ['class' => 'form-control', 'id' => 'username']) }}
-      <!--<label class="form-label" for="form2Example1" >Username</label>
-        <input type="email" id="form2Example1" placeholder="inserisci il tuo username" class="form-control" />-->
+        @if ($errors->first('username'))
+        <ul class="errors">
+            @foreach ($errors->get('username') as $message)
+            <li>{{ $message }}</li>
+            @endforeach
+        </ul>
+        @endif
       </div>
     </div>
   </div>
@@ -30,31 +35,30 @@
         <div class="form-outline mb-4">
           {{ Form::label('password', 'Password', ['class' => 'form-label']) }}
           {{ Form::password('password', ['class' => 'form-control', 'id' => 'password']) }}
-        <!--<label class="form-label" for="form2Example2">Password</label>
-          <input type="password" id="form2Example2" class="form-control" placeholder="inserisci la tua password"/>-->
+          @if ($errors->first('password'))
+          <ul class="errors">
+              @foreach ($errors->get('password') as $message)
+              <li>{{ $message }}</li>
+              @endforeach
+          </ul>
+          @endif
         </div>
       </div>   
     </div>
-    {{ Form::close() }}
+   
   <!-- Submit button -->
-  <div class ="row justify-content-center">
-    <div class="col-lg-5 register-button text-center">
-        <a type="button" class="login-button mb-4" href="{{ route('homelocatore')}}">Accedi</a>
+    <div class ="row justify-content-center">
+        <div class="col-lg-5 register-button text-center">
+            {{ Form::submit('Login', ['class' => 'login-button mb-4']) }}
+        </div>
     </div>
-</div>
+    {{ Form::close() }}
 
 
   <!-- Register buttons -->
   <div class="text-center">
     <p>Non sei registrato? <a href="{{ route('register')}}" class="link-website">Registrati</a></p>
   </div>
-  </div>
 </div>
-</div>
-
-
-
-
 
 @endsection
-

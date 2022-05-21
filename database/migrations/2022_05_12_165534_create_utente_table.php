@@ -13,7 +13,7 @@ class CreateUtenteTable extends Migration
      */
     public function up()
     {
-        Schema::create('utente', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned()->index();   
             $table->string('nome');
             $table->string('cognome');
@@ -24,6 +24,7 @@ class CreateUtenteTable extends Migration
             $table->string('tipologia', 1);
             $table->string('sesso',1);
             $table->string('telefono');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

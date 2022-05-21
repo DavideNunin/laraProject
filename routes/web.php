@@ -13,10 +13,15 @@
 Route::get('/', 'PublicController@showHomeUser1')
         ->name('homeUser1');
 
-// pagina di login
-Route::get('login', 'PublicController@login')
+// Rotte per l'autenticazione
+Route::get('login', 'Auth\LoginController@showLoginForm')
         ->name('login');
 
+Route::post('login', 'Auth\LoginController@login');
+
+Route::post('logout', 'Auth\LoginController@logout')
+        ->name('logout');
+        
 //rotta per registrazione
 Route::get('/register', 'PublicController@register')
         ->name('register');
@@ -29,7 +34,7 @@ Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
         ->name('offerteLocatore');
 
 //rotta homelocatore
-Route::get('/homelocatore', 'PublicController@homelocatore')
+Route::get('/homelocatore', 'LocatoreController@index')
         ->name('homelocatore');
 
 Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
@@ -38,5 +43,9 @@ Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
 Route::get('/locatore/offerta{id}', 'OffertaController@offerta_singola')
         ->name('single_offerta');
 
-Route::get('/locatore/letueofferte', 'OffertaController@offerteLocatore')
+Route::get('/locatore/letueofferte', 'LocatoreController@offerteLocatore')
         ->name('offerte_locatore');
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
