@@ -19,26 +19,8 @@
 
     </head>
     <body>
-        @if( $home_type ?? '')
-            <section class="image-home">
-        @endif
             <div id="header">
-                @guest
-                    @include('layouts/navpublic')
-                @endguest  
-
-                @can('isLocatore')
-                    @include('layouts/navlocatore') 
-                @endcan
-
-                @can('isLocatario')
-                    @include('layouts/navlocatario') 
-                @endcan
-
-                @can('isAdmin')
-                    @include('layouts/navadmin') 
-                @endcan
-   
+                    @include('layouts/navadmin')
             </div>
 
             <!-- end #menu -->

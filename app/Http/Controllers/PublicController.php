@@ -31,15 +31,6 @@ class PublicController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
-    public function login() {
-        return view('auth/login');
-
-    }
-
-    public function register(){
-        return view('registration');
-    }
-
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     //FUNZIONI LOCATARIO

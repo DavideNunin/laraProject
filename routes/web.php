@@ -29,23 +29,15 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 
 Route::post('register', 'Auth\RegisterController@register');
 
-//rotta per registrazione
-//Route::get('/register', 'PublicController@register')
-       // ->name('register');
 
 // pagina offerte
 Route::get('/offerte', 'OffertaController@offerte_user_1')
         ->name('offerte');
 
-//Route::get('/locatore/offerte', 'OffertaController@offerte_user_2')
-  //      ->name('offerteLocatore');
-
 //rotta homelocatore
 Route::get('/homelocatore', 'LocatoreController@index')
         ->name('homelocatore');
 
-//Route::get('/locatore/offerte', 'OffertaController@offerte_user_1')
-  //      ->name('offerte_public_user2');
 
 Route::get('/locatore/offerta{id}', 'OffertaController@offerta_singola')
         ->name('single_offerta');
@@ -53,6 +45,14 @@ Route::get('/locatore/offerta{id}', 'OffertaController@offerta_singola')
 Route::get('/locatore/letueofferte', 'LocatoreController@offerteLocatore')
         ->name('offerte_locatore');
 
-Auth::routes();
+/* ------------------------ rotte admin ------------------ */
+Route::get('/homeadmin', 'AdminController@index')
+        ->name('homeadmin');
+
+Route::get('/faqmanager', 'AdminController@faqmanager')
+        ->name('faqmanager');
+
+
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
