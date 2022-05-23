@@ -56,12 +56,14 @@ class User extends Authenticatable
     }
 
     public function get_offerte_opzionate($id){
-        $utenti = User::join('opzionamento', function($join) use ($id){
-            $join->on('users.id', '=', 'opzionamento.user_id')
-            ->where('opzionamento.offerta_id', '=', $id);
-        })
-        ->get();
-        return $utenti;
+        $offerte_opz= Offerta::where('id')
+            ->whereIn("offerta.id", function($query){
+                    $query->from("opzionamento")
+                            ->select("offerta_id")
+                            ->where("opzionamento.user_id", "=", 1);
+            })
+            ->get();
+        return $offerte_opz;
     }
 
 

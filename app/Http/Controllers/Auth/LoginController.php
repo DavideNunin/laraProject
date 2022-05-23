@@ -29,7 +29,7 @@ class LoginController extends Controller
     protected function redirectTo() {        
         $role = auth()->user()->tipologia;
         switch ($role) {
-            case 's': return '/';
+            case 's': return '/homelocatario';
                 break;
             case 'l': return '/homelocatore';
                 break;

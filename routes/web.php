@@ -56,3 +56,8 @@ Route::get('/faqmanager', 'AdminController@faqmanager')
 //Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+/* ------------------------ rotte locatario ------------------ */
+Route::get('/homelocatario', 'LocatarioController@index')
+        ->name('homelocatario');
+Route::get('/offerteopzionate', 'LocatarioController@offerteOpzionate')
+        ->name('offerteopzionate');
