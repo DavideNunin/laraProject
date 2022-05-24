@@ -29,7 +29,7 @@ class LocatarioController extends Controller
             ->with('elfaq', $elfaq);
     }
     public function offerteOpzionate(){
-        $user_id= auth()->user()->username;
+        $user_id= auth()->user()->id;
         $offOpz = $this->_userModel->get_offerte_opzionate($user_id);
         return view('offerta/offerteopzionate')
                             ->with('offerte_opzionate', $offOpz );

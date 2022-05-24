@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Offerta;
+use App\Models\Resources\Opzionamento;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Notifications\Notifiable;
 
@@ -56,14 +58,13 @@ class User extends Authenticatable
     }
 
     public function get_offerte_opzionate($id){
-        $offerte_opz= Offerta::where('id')
-            ->whereIn("offerta.id", function($query){
-                    $query->from("opzionamento")
-                            ->select("offerta_id")
-                            ->where("opzionamento.user_id", "=", 1);
-            })
-            ->get();
-        return $offerte_opz;
+        $opzionamenti= Opzionamento::where('user_id',$id)->get()->pluck('offerta_id')->toArray();
+        $off_opz= Offerta::whereIn('id',$opzionamenti)->get();
+        Log::debug($id);
+        Log::debug($opzionamenti);
+        Log::debug($off_opz);
+        ///
+        return $off_opz;
     }
 
 
