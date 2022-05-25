@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\newOfferRequest;
 use App\Models\Resources\Offerta;
+use Carbon\Carbon;
 
 class LocatoreController extends Controller {
 
@@ -48,6 +49,8 @@ class LocatoreController extends Controller {
         $offerta = new Offerta;
         $utente = auth()->user();
         $offerta->user_id = $utente->id;
+        $mytime = Carbon::now();
+        $offerta->dataPubblicazione = $mytime;
         $offerta->fill($request->validated());
         $offerta->save();
 
