@@ -22,23 +22,23 @@ class DatabaseSeeder extends Seeder
         DB::table('offerta')->insert([
             ['via' => 'via 1', 'ncivico' => 5,
                 'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'DESC1',
-                'periodo' => '3 mesi', 'titolo' => 'offerta 1', 'tipologia' => 'a', 'prezzo' => 3000, 'etaRichiesta' => 18, 'user_id' => 3],
+                'periodo' => '3 mesi', 'titolo' => 'offerta 1', 'tipologia' => 'a', 'prezzo' => 3000, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
                 ['via' => 'via 2', 'ncivico' => 6,
                 'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'DESC2',
-                'periodo' => '6 mesi', 'titolo' => 'offerta 2', 'tipologia' => 'p', 'prezzo' => 200, 'etaRichiesta' => 18, 'user_id' => 3],
+                'periodo' => '6 mesi', 'titolo' => 'offerta 2', 'tipologia' => 'p', 'prezzo' => 200, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
                 ['via' => 'via 3', 'ncivico' => 7,
                 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC3',
-                'periodo' => '1 anno', 'titolo' => 'offerta 3', 'tipologia' => 'a', 'prezzo' => 500, 'etaRichiesta' => 18, 'user_id' => 3],
+                'periodo' => '1 anno', 'titolo' => 'offerta 3', 'tipologia' => 'a', 'prezzo' => 500, 'dataPubblicazione' => '2022-04-20', 'etaRichiesta' => 18, 'user_id' => 3],
                 ['via' => 'via 4', 'ncivico' => 9,
                 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC4',
-                'periodo' => '9 mesi', 'titolo' => 'offertissima', 'tipologia' => 'a', 'prezzo' => 400, 'etaRichiesta' => 18, 'user_id' => 3],
+                'periodo' => '9 mesi', 'titolo' => 'offertissima', 'tipologia' => 'a', 'prezzo' => 400, 'dataPubblicazione' => '2022-05-02', 'etaRichiesta' => 18, 'user_id' => 3],
                 ['via' => 'via 6', 'ncivico' => 10,
                 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC5',
-                'periodo' => '10 mesi', 'titolo' => 'offerta 5', 'tipologia' => 'p', 'prezzo' => 800, 'etaRichiesta' => 18, 'user_id' => 3],
+                'periodo' => '10 mesi', 'titolo' => 'offerta 5', 'tipologia' => 'p', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-10', 'etaRichiesta' => 18, 'user_id' => 3],
                 
                 ['via' => 'via Roma', 'ncivico' => 10,
                 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'Piccola descrizione di Mario Rossi',
-                'periodo' => '10 mesi', 'titolo' => 'Appartamento Ancona', 'tipologia' => 'p', 'prezzo' => 800, 'etaRichiesta' => 18, 'user_id' => 2]
+                'periodo' => '10 mesi', 'titolo' => 'Appartamento Ancona', 'tipologia' => 'p', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-24', 'etaRichiesta' => 18, 'user_id' => 2]
         ]);
 
         DB::table('posto_letto')->insert([
@@ -69,7 +69,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('opzionamento')->insert([
-            ['data' => '2022-05-20', 'user_id' => 1, 'offerta_id' => '3']
+            ['data' => '2022-05-20', 'user_id' => 1, 'offerta_id' => '3'],
+            ['data' => '2022-05-20', 'user_id' => 3, 'offerta_id' => '3']
+        ]);
+
+        DB::table('contratto')->insert([
+            ['dataStipula' => '2022-05-10', 'studente_id' => 1, 'locatore_id' => 2, 'offerta_id' => 6],
+            ['data' => '2022-05-20', 'studente_id' => 3, 'locatore_id' => 2, 'offerta_id' => 6]
         ]);
     }
 }

@@ -59,7 +59,18 @@ Route::get('/homeadmin', 'AdminController@index')
 Route::get('/faqmanager', 'AdminController@faqmanager')
         ->name('faqmanager');
 
+Route::post('/faqmanager', 'AdminController@newFaq')
+        ->name('faqmanager.newfaq');
 
 //Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+/* ------------------------ rotte locatario ------------------ */
+Route::get('/homelocatario', 'LocatarioController@index')
+        ->name('homelocatario');
+Route::get('/offerteopzionate', 'LocatarioController@offerteOpzionate')
+        ->name('offerteopzionate');
+Route::get('/stats', 'AdminController@stats')
+        ->name('stats');
+Route::post('/stats', 'AdminController@find')
+        ->name('stats.find');

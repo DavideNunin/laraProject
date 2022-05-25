@@ -32,16 +32,9 @@ class LocatoreController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
-    public function showViewLocatore(){
-        $user = 1;
-        return view('home')
-            ->with('utente', $user); 
-    }
-
     public function offerteLocatore(){
         $user_id = auth()->user()->username;
         $catalogo_offerte = $this->_userModel->get_offerte_utente($user_id);
-
         return view('offerta/offertelocatore')
                         ->with('catalogo', $catalogo_offerte);
     }
@@ -62,3 +55,4 @@ class LocatoreController extends Controller {
     }
 
 }
+

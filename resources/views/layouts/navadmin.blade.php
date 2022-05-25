@@ -7,6 +7,9 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item link-navbar-item">
+          <a href="{{ route('stats') }}" class="link-navbar"> Offerte & Stats </a>
+        </li>
+        <li class="nav-item link-navbar-item">
             <a href="{{ route('faqmanager') }}" class="link-navbar"> FaQ </a>
         </li>
         <li class="nav-item link-navbar-item">
