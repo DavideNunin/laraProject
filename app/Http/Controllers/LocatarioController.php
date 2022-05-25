@@ -35,4 +35,15 @@ class LocatarioController extends Controller
                             ->with('offerte_opzionate', $offOpz );
 
     }
+
+    public function myProfile(){
+        $user =auth()->user();
+        Log::debug($user);
+        return view('locatario/profilo')
+                            ->with('user_info',$user);
+    }
+    public function updateData(){
+        return null;
+
+    }
 }

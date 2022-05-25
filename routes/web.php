@@ -61,3 +61,7 @@ Route::get('/homelocatario', 'LocatarioController@index')
         ->name('homelocatario');
 Route::get('/offerteopzionate', 'LocatarioController@offerteOpzionate')
         ->name('offerteopzionate');
+Route::get('/myprofile', 'LocatarioController@myProfile')
+        ->name('info_profilo');
+Route::post('/myprofile', 'LocatarioController@updateData')
+        ->name('myprofile');

@@ -40,10 +40,7 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class = "col-3 text-end btn-sm ">
-                            <a type = "button" class ="elimina-button">Elimina annuncio</a>
-                        </div>
-                        <div class = "col-4 text-end btn-sm modifica-annuncio ">
-                            <a type = "button" class ="modifica-button">Modifica annuncio</a>
+                            <a type = "button" class ="rimuovi_opz">Rimuovi opzionamento</a>
                         </div>
                     </div>
                 </div>
