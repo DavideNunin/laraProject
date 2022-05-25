@@ -9,6 +9,7 @@ class Offerta extends Model {
 
     protected $table = 'offerta';
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
     public $timestamps = false;
 
     // restituisce un vettore con le righe delle foto relative all'offerta passata
