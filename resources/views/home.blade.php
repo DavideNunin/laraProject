@@ -9,7 +9,13 @@
 		<div>
 			<p class="super-title-home"> Trova la <br> casa per i <br> tuoi studi </p>
 			<div class="d-grid gap-2">
+                @if(Auth::check())
+                    @if ( Auth::user()->tipologia == 'a')
+                    <a class="btn btn-home" href="{{ route('stats') }}">Vedi Offerte e Statistiche <i class="fa-solid fa-arrow-right"></i></a>
+                    @endif    
+                @else
                     <a class="btn btn-home" href="{{ route('offerte') }}">Vedi Offerte <i class="fa-solid fa-arrow-right"></i></a>
+                @endif
             </div>
 		</div>
 	</div>

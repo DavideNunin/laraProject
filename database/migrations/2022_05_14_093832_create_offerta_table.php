@@ -24,6 +24,7 @@ class CreateOffertaTable extends Migration
             $table->string('titolo',20);
             $table->string('tipologia',1);
             $table->float('prezzo');
+            $table->date('dataPubblicazione');
             $table->integer('etaRichiesta');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
