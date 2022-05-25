@@ -9,7 +9,8 @@ use App\Models\Resources\User;
 class Catalog {
 
     public function getAll() {
-        return Offerta::all();
+        $offerta = Offerta::all();
+        return $offerta->paginate($paged) ;
     }
   
 }

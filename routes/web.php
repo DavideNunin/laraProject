@@ -45,6 +45,13 @@ Route::get('/locatore/offerta{id}', 'OffertaController@offerta_singola')
 Route::get('/locatore/letueofferte', 'LocatoreController@offerteLocatore')
         ->name('offerte_locatore');
 
+Route::get('/locatore/inserisciofferta', 'LocatoreController@inserisciofferta')
+        ->name('inserisci_offerta');
+
+Route::post('/locatore/inserisciofferta', 'LocatoreController@aggiungiListaOfferte')
+        ->name('newOffer.store');
+
+
 /* ------------------------ rotte admin ------------------ */
 Route::get('/homeadmin', 'AdminController@index')
         ->name('homeadmin');
@@ -52,6 +59,8 @@ Route::get('/homeadmin', 'AdminController@index')
 Route::get('/faqmanager', 'AdminController@faqmanager')
         ->name('faqmanager');
 
+Route::post('/faqmanager', 'AdminController@newFaq')
+        ->name('faqmanager.newfaq');
 
 //Auth::routes();
 
@@ -65,3 +74,7 @@ Route::get('/myprofile', 'LocatarioController@myProfile')
         ->name('info_profilo');
 Route::post('/myprofile', 'LocatarioController@updateData')
         ->name('myprofile');
+Route::get('/stats', 'AdminController@stats')
+        ->name('stats');
+Route::post('/stats', 'AdminController@find')
+        ->name('stats.find');

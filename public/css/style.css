@@ -257,9 +257,83 @@
 }
 
 
+/*--------------------- ADMIN ----------------------*/
 
+.addfaq a{
+  font-size: 20px;
+  background-color: rgb(248, 245, 245);
+  padding: 7px;
+  border-radius: 7px;
+  color: #803841;
+  text-decoration: none;
+}
 
+.linkfaq a {
+  font-size: 14px;
+  color:#212529;
+  padding: 5px;
+  font-weight: 400;
+  margin-right: 5px;
+  text-decoration: none;
+}
+.linkfaq a:hover {
+  text-decoration: underline;
+}
 
+/*popup style*/
+#overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #999;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  z-index: 100;
+}
 
+#popup {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  width: 500px;
+  height: 500px;
+  margin-left: -250px; /*Half the value of width to center div*/
+  margin-top: -250px; /*Half the value of height to center div*/
+  z-index: 200;
+  border-radius: 15px;
+}
+
+#popupclose {
+  float: right;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.popupcontent {
+  padding: 10px;
+}
+
+.title-popup {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.form-textarea {
+  max-height: 20vh;
+}
+
+/*style stats form*/
+.form-date-stats {
+  border-radius: 15px;
+    padding: 7px;
+    border: 1px solid black
+}
+.form-radio-stats:hover input{
+  background-color: #ccc;
+}
 
 /* MEDIA CSS */

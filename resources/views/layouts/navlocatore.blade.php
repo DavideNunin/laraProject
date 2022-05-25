@@ -4,10 +4,17 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <a class="navbar-brand" href="{{ route('offerte') }}">Vedi tutte le offerte</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item button-navbar">
             <a href="{{ route('offerte_locatore') }}" class="link-navbar">Le tue offerte </a>  
+        </li>
+        <li class="nav-item button-navbar">
+          <a href="{{route('inserisci_offerta')}}" class="link-navbar">Inserisci Offerta</a>
         </li>
         <li class="nav-item link-navbar-item">
           <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>

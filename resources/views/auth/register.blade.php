@@ -119,7 +119,6 @@
                     @endforeach
                 </ul>
             </div>
-
             
             <div class="col-lg-4">
                 

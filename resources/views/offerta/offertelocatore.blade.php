@@ -8,6 +8,7 @@
 <h2> Le tue Offerte </h2>
 </div>
 
+@isset($catalogo)
 @foreach ($catalogo as $offerta)
 <div class="container">
     <div class="row single-offerta mb-5">
@@ -53,5 +54,10 @@
     </div>
 </div>
 @endforeach
+
+
+@endisset()
+
+
 </div>
 @endsection

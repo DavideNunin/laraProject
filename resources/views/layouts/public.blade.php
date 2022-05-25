@@ -16,7 +16,9 @@
 	    
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
         <script src="https://kit.fontawesome.com/33316bb77f.js" crossorigin="anonymous"></script>
-
+        @show
+        @section('scripts')
+        @show
     </head>
     <body>
         @if( $home_type ?? '')
