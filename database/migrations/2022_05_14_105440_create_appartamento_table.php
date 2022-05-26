@@ -23,7 +23,7 @@ class CreateAppartamentoTable extends Migration
             $table->boolean('terrazzo');
             $table->float('superficie');
             $table->unsignedBigInteger('offerta_id');
-            $table->foreign('offerta_id')->references('id')->on('offerta');
+            $table->foreign('offerta_id')->references('offerta_id')->on('offerta');
             $table->timestamps();
         });
     }

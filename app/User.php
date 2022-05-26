@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function get_offerte_utente($username){
         $offertautente = Offerta::join('users', function($join) use ($username){
-            $join->on('offerta.user_id', '=', 'users.id')
+            $join->on('users.id', '=', 'offerta.user_id')
                  ->where('users.username', '=', $username);
         })
         ->get();

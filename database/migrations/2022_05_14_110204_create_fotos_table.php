@@ -17,7 +17,7 @@ class CreateFotosTable extends Migration
             $table->bigIncrements('id')->unsigned()->index();
             $table->string('nome_file',20);
             $table->unsignedBigInteger('offerta_id');
-            $table->foreign('offerta_id')->references('id')->on('offerta');
+            $table->foreign('offerta_id')->references('offerta_id')->on('offerta');
             $table->timestamps();
         });
     }

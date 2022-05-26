@@ -7,8 +7,11 @@
 <div class="container">
 <h2> Le tue Offerte </h2>
 </div>
-
-@isset($catalogo)
+@foreach ($catalogo as $offerta)
+<h3 class="title-offerta">
+{{ $offerta->offerta_id}}
+                    </h3>
+@endforeach
 @foreach ($catalogo as $offerta)
 <div class="container">
     <div class="row single-offerta mb-5">
@@ -20,7 +23,7 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <h3 class="title-offerta">
-                            {{ $offerta->titolo }}
+                            {{ $offerta->titolo }} {{ $offerta->id}}
                         </h3>
                         <div class="subtitle-offerta">
                             <div>@if ($offerta->tipologia == 'a')
@@ -41,9 +44,9 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class = "col-3 text-end btn-sm ">
-                            <a type = "button" class ="elimina-button">Elimina annuncio</a>
+                            <a type = "button" class ="elimina-button"  href="{{ route ('cancella_offerta', [$offerta->offerta_id]) }}">Elimina annuncio</a>
                         </div>
-                        <div class = "col-4 text-end btn-sm modifica-annuncio ">
+                        <div class = "col-4 text-end btn-sm modifica-annuncio " >
                             <a type = "button" class ="modifica-button">Modifica annuncio</a>
                         </div>
                     </div>

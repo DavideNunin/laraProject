@@ -51,6 +51,9 @@ Route::get('/locatore/inserisciofferta', 'LocatoreController@inserisciofferta')
 Route::post('/locatore/inserisciofferta', 'LocatoreController@aggiungiListaOfferte')
         ->name('newOffer.store');
 
+ Route::get('/locatore/inserisciofferta/{id}', 'LocatoreController@eliminaOffertaLocatore')
+        ->name('cancella_offerta'); 
+
 
 /* ------------------------ rotte admin ------------------ */
 Route::get('/homeadmin', 'AdminController@index')

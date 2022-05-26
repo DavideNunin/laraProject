@@ -19,8 +19,8 @@ class Offerta extends Model {
     public function get_foto_offerta() {
 
         $foto = Foto::join('offerta', function ($join) {
-            $join->on('fotos.offerta_id', '=', 'offerta.id')
-                 ->where('offerta.id', '=', $this->id);
+            $join->on('fotos.offerta_id', '=', 'offerta.offerta_id')
+                 ->where('offerta.offerta_id', '=', $this->id);
         })
         ->get();
 
