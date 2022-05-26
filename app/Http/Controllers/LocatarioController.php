@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
 use App\User;
+use App\Http\Requests\newModifyDataRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,8 +43,19 @@ class LocatarioController extends Controller
         return view('locatario/profilo')
                             ->with('user_info',$user);
     }
-    public function updateData(){
-        return null;
+    public function updateData(newModifyDataRequest $request){
+        Log::debug($request);
+        $utente=auth()->user();
+        Log::debug($utente);
+        $utente->fill($request->validated());
+        $utente->save();
+        return redirect()->action('LocatarioController@index');
+
+    }
+    public function chatMenu(){
+        $utente=auth()->user();
+        return view('chatmenu')
+            ->with('user_info',$utente);
 
     }
 }

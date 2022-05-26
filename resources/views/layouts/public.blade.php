@@ -21,8 +21,8 @@
         @show
     </head>
     <body>
-        @if( $home_type ?? '')
             <section class="image-home">
+        @if( $home_type ?? '')
         @endif
             <div id="header">
                 @guest

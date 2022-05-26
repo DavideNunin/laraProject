@@ -12,6 +12,11 @@
                 </a>
             </li>
             <li class="nav-item link-navbar-item">
+                <a href="{{ route('locatario_chatmenu')}}" class="link-navbar">
+                    Apri Chat
+                </a>
+            </li>
+            <li class="nav-item link-navbar-item">
                 <a href="{{ route('offerteopzionate')}}" class="link-navbar">
                     Offerte opzionate
                 </a>

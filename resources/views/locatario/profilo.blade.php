@@ -28,7 +28,7 @@
         {{ Form::text('data di nascita', '', ['class' => 'form-control', 'id' => 'datadinascita-input','placeholder' => $user_info->data_nascita, 'disabled' => '']) }} 
         </div>
         <div class="col-lg-4 ">
-        {{ Form::label('sesso', 'Sesso', ['class' => 'form-label']) }}
+        {{ Form::label('gender', 'Sesso', ['class' => 'form-label']) }}
             <div class="row">
                 <div class="col-lg-4">
                     <div class="custom-control custom-radio custom-control-inline">
@@ -57,7 +57,7 @@
     </div>
     <div class="row">
         <div class="col-lg-4 ">
-        {{ Form::label('username', 'Username', ['class' => 'form-lbel']) }}
+        {{ Form::label('username', 'Username', ['class' => 'form-label']) }}
         {{ Form::text('username', '', ['class' => 'form-control', 'id' => 'username','placeholder' => $user_info->nome, 'disabled' => '']) }} 
         </div>
 
@@ -72,6 +72,7 @@
         {{ Form::label('conferma-password', 'Conferma Password', ['class' => 'form-label']) }}
         {{ Form::text('conferma-password', '', ['class' => 'form-control', 'id' => 'conferma-password-input', 'disabled' => '']) }} 
     </div>
+                {{ Form::submit('Conferma', ['class' => 'form-label']) }}
 </div>
 <div class="row">
 <br>

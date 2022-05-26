@@ -62,19 +62,21 @@ Route::get('/faqmanager', 'AdminController@faqmanager')
 Route::post('/faqmanager', 'AdminController@newFaq')
         ->name('faqmanager.newfaq');
 
+Route::get('/stats', 'AdminController@stats')
+        ->name('stats');
+Route::post('/stats', 'AdminController@find')
+        ->name('stats.find');
 //Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 /* ------------------------ rotte locatario ------------------ */
 Route::get('/homelocatario', 'LocatarioController@index')
         ->name('homelocatario');
-Route::get('/offerteopzionate', 'LocatarioController@offerteOpzionate')
+Route::get('locatario/offerteopzionate', 'LocatarioController@offerteOpzionate')
         ->name('offerteopzionate');
-Route::get('/myprofile', 'LocatarioController@myProfile')
+Route::get('locatario/myprofile', 'LocatarioController@myProfile')
         ->name('info_profilo');
-Route::post('/myprofile', 'LocatarioController@updateData')
-        ->name('myprofile');
-Route::get('/stats', 'AdminController@stats')
-        ->name('stats');
-Route::post('/stats', 'AdminController@find')
-        ->name('stats.find');
+Route::post('locatario/myprofile', 'LocatarioController@updateData')
+        ->name('modify_user_data');
+Route::get('locatario/chatmenu', 'LocatarioController@chatMenu')
+        ->name('locatario_chatmenu');
