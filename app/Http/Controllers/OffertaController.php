@@ -56,4 +56,5 @@ class OffertaController extends Controller
                         ->with('type_user', $user_type);
     }
 
+
 }

@@ -20,8 +20,8 @@ class CreateTableContratto extends Migration
             $table->foreign('studente_id')->references('id')->on('users');
             $table->unsignedBigInteger('locatore_id');
             $table->foreign('locatore_id')->references('id')->on('users');
-            $table->unsignedBigInteger('offerta_id');
-            $table->foreign('offerta_id')->references('id')->on('offerta');
+            $table->unsignedBigInteger('offerta_id')-> nullable();
+            $table->foreign('offerta_id')->references('offerta_id')->on('offerta')->onDelete('set null');
             $table->timestamps();
         });
     }

@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\newOfferRequest;
 use App\Models\Resources\Offerta;
+use App\Models\Resources\Foto;
+use App\Models\Resources\PostoLetto;
+use App\Models\Resources\Appartamento;
+use App\Models\Resources\Contratto;
 use Carbon\Carbon;
 
 class LocatoreController extends Controller {
@@ -56,6 +60,18 @@ class LocatoreController extends Controller {
 
         return redirect()->action('LocatoreController@index');
     }
+
+    public function eliminaOffertaLocatore($id){
+        $foto = Foto::where('offerta_id',$id)->delete();
+
+        $appartamento = Appartamento::where('offerta_id',$id)->delete();
+        $postoLetto = PostoLetto::where('offerta_id', $id)->delete();
+
+        $offerta= Offerta::where('offerta_id',$id)->delete();
+
+        return redirect()->action('LocatoreController@index');
+    }
+
 
 }
 
