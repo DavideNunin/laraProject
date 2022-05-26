@@ -56,8 +56,8 @@
 @endforeach
 
 
+@include('pagination.paginator', ['paginator' => $catalogo])
 @endisset()
-
-
 </div>
+
 @endsection

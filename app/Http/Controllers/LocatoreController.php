@@ -33,11 +33,11 @@ class LocatoreController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
-    public function offerteLocatore(){
-        $user_id = auth()->user()->username;
-        $catalogo_offerte = $this->_userModel->get_offerte_utente($user_id);
+    public function offerteLocatore($paged = 3){
+        $user_id = auth()->user()->id;
+        $catalogo_offerte = Offerta::where('user_id',$user_id);
         return view('offerta/offertelocatore')
-                        ->with('catalogo', $catalogo_offerte);
+                        ->with('catalogo', $catalogo_offerte->paginate($paged));
     }
 
     public function inserisciofferta(){

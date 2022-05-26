@@ -31,7 +31,7 @@ Route::post('register', 'Auth\RegisterController@register');
 
 
 // pagina offerte
-Route::get('/offerte', 'OffertaController@offerte_user_1')
+Route::get('/offerte', 'HomeController@catalogoOfferteStandard')
         ->name('offerte');
 
 //rotta homelocatore
@@ -39,7 +39,7 @@ Route::get('/homelocatore', 'LocatoreController@index')
         ->name('homelocatore');
 
 
-Route::get('/locatore/offerta{id}', 'OffertaController@offerta_singola')
+Route::get('/locatore/offerta{id}', 'LocatoreController@offerta_singola')
         ->name('single_offerta');
 
 Route::get('/locatore/letueofferte', 'LocatoreController@offerteLocatore')

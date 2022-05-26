@@ -39,14 +39,11 @@ class LocatarioController extends Controller
 
     public function myProfile(){
         $user =auth()->user();
-        Log::debug($user);
         return view('locatario/profilo')
                             ->with('user_info',$user);
     }
     public function updateData(newModifyDataRequest $request){
-        Log::debug($request);
         $utente=auth()->user();
-        Log::debug($utente);
         $utente->fill($request->validated());
         $utente->save();
         return redirect()->action('LocatarioController@index');
