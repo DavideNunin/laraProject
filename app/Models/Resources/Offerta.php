@@ -8,8 +8,8 @@ use App\Models\Resources\Foto;
 class Offerta extends Model {
 
     protected $table = 'offerta';
-    protected $primaryKey = 'id';
-    protected $guarded = ['id'];
+    protected $primaryKey = 'offerta_id';
+    protected $guarded = ['offerta_id'];
     public $timestamps = false;
 
     // restituisce un vettore con le righe delle foto relative all'offerta passata
@@ -20,7 +20,7 @@ class Offerta extends Model {
 
         $foto = Foto::join('offerta', function ($join) {
             $join->on('fotos.offerta_id', '=', 'offerta.offerta_id')
-                 ->where('offerta.offerta_id', '=', $this->id);
+                 ->where('offerta.offerta_id', '=', $this->offerta_id);
         })
         ->get();
 
