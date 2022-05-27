@@ -25,7 +25,9 @@ class NewStatsRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'tipo' => 'required'
+            'tipo' => 'required',
+            'start_stats' => 'required',
+            'end_stats' => 'required'
         ];
     }
 

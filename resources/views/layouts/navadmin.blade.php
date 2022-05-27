@@ -10,7 +10,8 @@
           <a href="{{ route('stats') }}" class="link-navbar"> Offerte & Stats </a>
         </li>
         <li class="nav-item link-navbar-item">
-            <a href="{{ route('faqmanager') }}" class="link-navbar"> FaQ </a>
+          <!--  route('faqmanager')  -->
+            <a href="{{route('faqmanager')}}" class="link-navbar"> FaQ </a>
         </li>
         <li class="nav-item link-navbar-item">
           <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>

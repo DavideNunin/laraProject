@@ -1,3 +1,5 @@
+<!-- se non la usi più, eliminala -->
+
 @extends('layouts.public',['home_type' => '0'])
 
 @section('title', 'Offerte')

@@ -1,50 +1,60 @@
-function getErrorHtml(elemErrors) {
-    if ((typeof (elemErrors) === 'undefined') || (elemErrors.length < 1))
-        return;
-    var out = '<ul class="errors">';
-    for (var i = 0; i < elemErrors.length; i++) {
-        out += '<li>' + elemErrors[i] + '</li>';
-    }
-    out += '</ul>';
-    return out;
+
+$(function () {
+    $("#addfaq").on('click', function(){
+    openPopup(popupAdd);
+    });
+    
+    $(".closePopup").on('click', function(){
+    closePopup(popupDel, popupAdd, popupUpdate);
+    });
+});
+
+function closePopup(first, second, third) {
+    const body = document.querySelector("body");
+    var overlay = document.getElementById("overlay");
+    overlay.style.display = 'none';
+	first.style.display = 'none';
+    second.style.display = 'none';
+    third.style.display = 'none';
+    body.style.overflow = 'auto';
 }
 
-function doElemValidation(id, actionUrl, formId) {
-    
-    var formElems;
+function openPopup(nomePopup, domanda, risposta) {
+    console.log(nomePopup);
+    const body = document.querySelector("body");
+    var overlay = document.getElementById("overlay");
+    //var popupDel = document.getElementById(nomePopup);
+    overlay.style.display = 'block';
+    nomePopup.style.display = 'block';
+    body.style.overflow = 'hidden';
 
-    function addFormToken() {
-        var tokenVal = $("#" + formId + " input[name=_token]").val();
-        formElems.append('_token', tokenVal);
+    if(domanda!='' && risposta!=''){
+        $('#domanda_update').attr('value',domanda);
+        $('#risposta_update').text(risposta);
+    }
+}
+
+function getErrorHtml(elemErrors, update) {
+    let first, second = '';
+    if(update){
+        first='errDomandaUpdate';
+        second='errRispostaUpdate';
+    }
+    else {
+        first='errDomanda';
+        second='errRisposta';
     }
 
-    function sendAjaxReq() {
-        console.log(id);
-        $.ajax({
-            type: 'POST',
-            url: actionUrl,
-            data: formElems,
-            dataType: "json",
-            error: function (data) {
-                if (data.status === 422) {
-                    var errMsgs = JSON.parse(data.responseText);
-                    $("#" + id).parent().find('.errors').html(' ');
-                    $("#" + id).after(getErrorHtml(errMsgs[id]));
-                }
-            },
-            contentType: false,
-            processData: false
-        });
-    }
 
-    var elem = $("#" + formId + " :input[name=" + id + "]");
-    inputVal = elem.val();
-    
-    formElems = new FormData();
-    formElems.append(id, inputVal);
-    addFormToken();
-    sendAjaxReq();
+    $.each(elemErrors.domanda, function (id){
+        $("#"+first).empty();
+        $("#"+first).append(elemErrors.domanda[id]+ "<br>");
+    });
 
+    $.each(elemErrors.risposta, function (id){
+        $("#"+second).empty();
+        $("#"+second).append(elemErrors.risposta[id] + "<br>");
+    });
 }
 
 function doFormValidation(actionUrl, formId) {
@@ -59,8 +69,7 @@ function doFormValidation(actionUrl, formId) {
             if (data.status === 422) {
                 var errMsgs = JSON.parse(data.responseText);
                 $.each(errMsgs, function (id) {
-                    $("#" + id).parent().find('.errors').html(' ');
-                    $("#" + id).after(getErrorHtml(errMsgs[id]));
+                    getErrorHtml(errMsgs[id], false);
                 });
             }
         },
@@ -70,7 +79,71 @@ function doFormValidation(actionUrl, formId) {
         contentType: false,
         processData: false
     });
+
 }
 
+function UpdateFaq(actionUrl, formId, id_Faq) {
 
+    var form = new FormData(document.getElementById(formId));
+    form.append("id", id_Faq);
+    $.ajax({
+        type: 'POST',
+        url: actionUrl,
+        data: form,
+        dataType: "json",
+        error: function (data) {
+            if (data.status === 422) {
+                var errMsgs = JSON.parse(data.responseText);
+                $.each(errMsgs, function (id) {
+                    getErrorHtml(errMsgs[id], true);
+                });
+            }
+        },
+        success: function (data) {
+            console.log(data.id);
+            window.location.replace(data.redirect);
+        },
+        contentType: false,
+        processData: false
+    });
 
+}
+
+function deleteFaq(id_Faq) {
+    $.ajax({
+        type: 'GET',
+        url: 'faqmanager/delete?id='+id_Faq,
+        dataType: "json",
+        error: function (data) {
+            alert("errore");
+        },
+        success: function (data) {
+            console.log(data);
+            window.location.replace(data.redirect);
+        },
+        contentType: false,
+        processData: false
+    });
+
+}
+
+function requestPopup(id_Faq) {
+
+    $.ajax({
+        type: 'GET',
+        url: 'faqmanager/load?id='+id_Faq,
+        dataType: "json",
+        error: function (data) {
+            alert("errore");
+        },
+        success: function (data) {
+            console.log(data.domanda);
+            console.log(data.risposta);
+            console.log(data.idupdate);
+            openPopup(popupUpdate, data.domanda, data.risposta);
+        },
+        contentType: false,
+        processData: false
+    });
+
+}

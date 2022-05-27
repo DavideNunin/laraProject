@@ -258,6 +258,9 @@
 
 
 /*--------------------- ADMIN ----------------------*/
+.addfaq {
+  cursor: pointer;
+}
 
 .addfaq a{
   font-size: 20px;
@@ -293,37 +296,35 @@
   z-index: 100;
 }
 
-#popup {
+#popupAdd, #popupDel, #popupUpdate {
   display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   background: #fff;
-  width: 500px;
-  height: 500px;
-  margin-left: -250px; /*Half the value of width to center div*/
-  margin-top: -250px; /*Half the value of height to center div*/
   z-index: 200;
   border-radius: 15px;
 }
 
 #popupclose {
-  float: right;
   padding: 10px;
   cursor: pointer;
+  font-size: 20px;
 }
-
 .popupcontent {
   padding: 10px;
 }
-
 .title-popup {
   font-size: 22px;
   font-weight: 500;
 }
-
 .form-textarea {
   max-height: 20vh;
+}
+.newfaq-button {
+    font-size: 16px;
+    color: white;
+    background-color: #803841;
+    border-color: transparent;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 /*style stats form*/

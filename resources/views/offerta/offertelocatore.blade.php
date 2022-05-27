@@ -9,6 +9,7 @@
 </div>
 
 @foreach ($catalogo as $offerta)
+{{$offerta->id}}
 <div class="container">
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">

@@ -108,11 +108,6 @@
                     {{ Form::radio('gender', 'Donna', false) }}
                 </div>
 
-                <div class="custom-control custom-radio custom-control-inline">
-                    {{ Form::label('altro', 'Altro', ['class' => 'form-label']) }}
-                    {{ Form::radio('gender', 'Altro', false) }}
-                </div>
-
                 <ul class="errors">
                     @foreach ($errors->get('gender') as $message)
                     <li>{{ $message }}</li>
