@@ -7,11 +7,7 @@
 <div class="container">
 <h2> Le tue Offerte </h2>
 </div>
-@foreach ($catalogo as $offerta)
-<h3 class="title-offerta">
-{{ $offerta->offerta_id}}
-                    </h3>
-@endforeach
+
 @foreach ($catalogo as $offerta)
 <div class="container">
     <div class="row single-offerta mb-5">
