@@ -123,7 +123,7 @@
             </div>
             <div class="wrap-contact col-lg-5">
                 <div  class="wrap-input  rs1-wrap-input border-radius text-left">
-                {{ Form::label('prezzo', 'Prezzo della Proposta di locazione del porcodio o della madonna farfalla', ['class' => 'label-input']) }}
+                {{ Form::label('prezzo', 'Prezzo dell'offerta', ['class' => 'label-input']) }}
                 {{ Form::text('prezzo', '', ['class' => 'input', 'id' => 'prezzo']) }}
                 @if ($errors->first('prezzo'))
                     <ul class="errors">
@@ -136,7 +136,7 @@
             </div>
             <div class="wrap-contact col-lg-5">
                 <div  class="wrap-input  rs1-wrap-input border-radius text-left">
-                {{ Form::label('etaRichiesta', 'Età richiesta por la locacion', ['class' => 'label-input']) }}
+                {{ Form::label('etaRichiesta', 'Età minima richiesta', ['class' => 'label-input']) }}
                 {{ Form::text('etaRichiesta', '', ['class' => 'input', 'id' => 'etaRichiesta']) }}
                 @if ($errors->first('etaRichiesta'))
                     <ul class="errors">
@@ -148,7 +148,7 @@
                 </div>
             </div>
             <div class="container-form-btn">                
-                {{ Form::submit('Aggiungi Prodotto', ['class' => 'form-btn1']) }}
+                {{ Form::submit('Aggiungi Offerta', ['class' => 'form-btn1']) }}
             </div>
             {{ Form::close()}}
         </div>

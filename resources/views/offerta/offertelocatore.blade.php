@@ -44,7 +44,7 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class = "col-3 text-end btn-sm ">
-                            <a type = "button" class ="elimina-button"  href="{{ route ('cancella_offerta', [$offerta->offerta_id]) }}">Elimina annuncio</a>
+                            <a type = "button" class ="elimina-button" onclick="return confirm('Sei sicuro di voler eliminare questo annuncio?')" href="{{ route ('cancella_offerta', [$offerta->offerta_id]) }}">Elimina annuncio</a>
                         </div>
                         <div class = "col-4 text-end btn-sm modifica-annuncio " >
                             <a type = "button" class ="modifica-button">Modifica annuncio</a>
@@ -57,10 +57,6 @@
     </div>
 </div>
 @endforeach
-
-
-@include('pagination.paginator', ['paginator' => $catalogo])
-@endisset()
 </div>
 
 @endsection
