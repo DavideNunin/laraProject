@@ -10,7 +10,7 @@
   <p>This is some text.</p>
   <p>This is another text.</p>
 </div>
-        {{ Form::open(array('route' => 'myprofile', 'class' => 'modify-form')) }}
+        {{ Form::open(array('route' => 'modify_user_data', 'class' => 'modify-form')) }}
 <div class="container">
     <div class="row">
         <div class="col-lg-4 ">
@@ -72,7 +72,13 @@
         {{ Form::label('conferma-password', 'Conferma Password', ['class' => 'form-label']) }}
         {{ Form::text('conferma-password', '', ['class' => 'form-control', 'id' => 'conferma-password-input', 'disabled' => '']) }} 
     </div>
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
                 {{ Form::submit('Conferma', ['class' => 'form-label']) }}
+    </div>
+    <div class="col-lg-4"></div>
+</div>
 </div>
 <div class="row">
 <br>
