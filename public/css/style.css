@@ -337,4 +337,8 @@
   background-color: #ccc;
 }
 
+.page-button-inactive{
+    background-color=#FF9900;
+    border-radius=5px;
+}
 /* MEDIA CSS */

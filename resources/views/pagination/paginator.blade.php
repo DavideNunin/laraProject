@@ -1,38 +1,40 @@
-<div class="row">
-    @if ($paginator->lastPage() != 1)
-            <div class="col-lg-2">
-                {{ $paginator->firstItem() }} - {{ $paginator->lastItem() }} di {{ $paginator->total() }} ---
+@if ($paginator->lastPage() != 1)
+<div id="pagination" class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-auto">
+        <div class="row">
+            @if (!$paginator->onFirstPage())
+            <div class="col-lg-auto page-button-inactive">
+                <a href="{{ $paginator->previousPageUrl() }}">Precedente</a>
             </div>
-        @if (!$paginator->onFirstPage())
-            <div class="col-lg-2">
-                <a href="{{ $paginator->url(1) }}">Inizio</a> | Inizio |
-            </div>
-        @else
-            
-        @endif
+            @endif
 
-        @if ($paginator->currentPage() != 1)
-            <div class="col-lg-2">
-                <a href="{{ $paginator->previousPageUrl() }}">&lt; Precedente</a> |&lt; Precedente |
+            @if ($paginator->currentPage() != 1)
+            <div class="col-lg-auto page-button-inactive">
+                <a href="{{ $paginator->url(1) }}">1</a>
             </div>
-        @else
-            
-        @endif
+            @endif
 
-        @if ($paginator->hasMorePages())
-            <div class="col-lg-2">
-                <a href="{{ $paginator->nextPageUrl() }}">Successivo &gt;</a> |Successivo &gt; |
+            @if ($paginator->lastPage()!=1)
+            @for ( $i = $paginator->currentPage() - 2 ; $i <= $paginator->currentPage() +2 ; $i++)
+                @if ($i>1 && $i< $paginator->lastPage() )
+                <div class="col-lg-auto page-button-inactive">
+                    <a href="{{ $paginator->url($i)}}">{{$i}}</a>
+                </div>
+                @endif
+            @endfor
+            @if ($paginator->currentPage()!= $paginator->lastPage())
+            <div class="col-lg-auto page-button-inactive">
+                <a href="{{ $paginator->url($paginator->lastPage()) }}">{{$paginator->lastPage()}}</a>
             </div>
-        @else
-        @endif
+            <div class="col-lg-auto page-button-inactive">
+                <a href="{{ $paginator->nextPageUrl() }}">Successivo </a>
+            </div>
+            @endif
+            @endif
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
 
-        @if ($paginator->hasMorePages())
-            <div class="col-lg-2">
-                <a href="{{ $paginator->url($paginator->lastPage()) }}">Fine</a>
-            </div>
-        @else
-            <div class="col-lg-2">Fine
-            </div>
-        @endif
-    @endif
 </div>
+@endif

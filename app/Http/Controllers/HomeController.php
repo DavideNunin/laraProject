@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function catalogoOfferteStandard($paged = 4)
+    public function catalogoOfferteStandard($paged = 3)
     {
         $catalogo_offerte = Offerta::paginate($paged);
         return view('offerta/offerte')

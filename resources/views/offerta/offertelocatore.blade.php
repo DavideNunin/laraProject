@@ -56,4 +56,5 @@
 @endforeach
 </div>
 
+@include('pagination.paginator', ['paginator' => $catalogo])
 @endsection

@@ -15,11 +15,11 @@ class CreateOffertaTable extends Migration
     {
         Schema::create('offerta', function (Blueprint $table) {
             $table->bigIncrements('offerta_id')->unsigned()->index();   
-            $table->string('via',25);
+            $table->string('via',40);
             $table->integer('ncivico');
             $table->string('genereRichiesto',1);
             $table->string('citta',15);
-            $table->string('descrizione',50);
+            $table->string('descrizione',100);
             $table->string('periodo',10);
             $table->string('titolo',20);
             $table->string('tipologia',1);

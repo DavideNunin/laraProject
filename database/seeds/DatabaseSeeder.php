@@ -20,21 +20,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('offerta')->insert([
-            ['via' => 'via 1', 'ncivico' => 5,
-                'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'DESC1',
-                'periodo' => '3 mesi', 'titolo' => 'offerta 1', 'tipologia' => 'a', 'prezzo' => 3000, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
-                ['via' => 'via 2', 'ncivico' => 6,
-                'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'DESC2',
-                'periodo' => '6 mesi', 'titolo' => 'offerta 2', 'tipologia' => 'p', 'prezzo' => 200, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
-                ['via' => 'via 3', 'ncivico' => 7,
-                'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC3',
-                'periodo' => '1 anno', 'titolo' => 'offerta 3', 'tipologia' => 'a', 'prezzo' => 500, 'dataPubblicazione' => '2022-04-20', 'etaRichiesta' => 18, 'user_id' => 3],
-                ['via' => 'via 4', 'ncivico' => 9,
-                'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC4',
-                'periodo' => '9 mesi', 'titolo' => 'offertissima', 'tipologia' => 'a', 'prezzo' => 400, 'dataPubblicazione' => '2022-05-02', 'etaRichiesta' => 18, 'user_id' => 3],
-                ['via' => 'via 6', 'ncivico' => 10,
-                'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC5',
-                'periodo' => '10 mesi', 'titolo' => 'offerta 5', 'tipologia' => 'p', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-10', 'etaRichiesta' => 18, 'user_id' => 3],
+            ['via' => 'via 1', 'ncivico' => 5, 'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'DESC1', 'periodo' => '3 mesi', 'titolo' => 'offerta 1', 'tipologia' => 'a', 'prezzo' => 3000, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
+
+                ['via' => 'via 2', 'ncivico' => 6, 'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'DESC2', 'periodo' => '6 mesi', 'titolo' => 'offerta 2', 'tipologia' => 'p', 'prezzo' => 200, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
+
+            ['via' => 'via 3', 'ncivico' => 4, 'genereRichiesto' => 'F', 'citta' => 'Montesilvano', 'descrizione' => 'era una casa piccina piccina senza soff...', 'periodo' => '3 mesi', 'titolo' => 'offerta pazzesca', 'tipologia' => 'a', 'prezzo' => 3000, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
+
+                ['via' => 'via 3', 'ncivico' => 7, 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC3', 'periodo' => '1 anno', 'titolo' => 'offerta 3', 'tipologia' => 'a', 'prezzo' => 500, 'dataPubblicazione' => '2022-04-20', 'etaRichiesta' => 18, 'user_id' => 3],
+
+                ['via' => 'via 4', 'ncivico' => 9, 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC4', 'periodo' => '9 mesi', 'titolo' => 'offertissima', 'tipologia' => 'a', 'prezzo' => 400, 'dataPubblicazione' => '2022-05-02', 'etaRichiesta' => 18, 'user_id' => 3],
+
+                ['via' => 'via 6', 'ncivico' => 10, 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC5', 'periodo' => '10 mesi', 'titolo' => 'offerta 5', 'tipologia' => 'p', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-10', 'etaRichiesta' => 18, 'user_id' => 3],
+
+                ['via' => 'via lazio', 'ncivico' => 14,
+                'genereRichiesto' => 'M', 'citta' => 'New York', 'descrizione' => 'Offerta di affitto per studenti di new york',
+                'periodo' => '1 Anno', 'titolo' => 'Sere Nere', 'tipologia' => 'p', 'prezzo' => 10000, 'dataPubblicazione' => '2022-02-10', 'etaRichiesta' => 18, 'user_id' => 3],
+
+                ['via' => 'via del tutto eccezionale', 'ncivico' => 14,
+                'genereRichiesto' => 'M', 'citta' => 'New York', 'descrizione' => 'Offerta Modesta',
+                'periodo' => '1 Anno', 'titolo' => 'Rosso Relativo', 'tipologia' => 'p', 'prezzo' => 10000, 'dataPubblicazione' => '2022-02-10', 'etaRichiesta' => 18, 'user_id' => 3],
                 
                 ['via' => 'via Roma', 'ncivico' => 10,
                 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'Piccola descrizione di Mario Rossi',
