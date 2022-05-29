@@ -10,7 +10,7 @@
   <p>This is some text.</p>
   <p>This is another text.</p>
 </div>
-        {{ Form::open(array('route' => 'modify_user_data', 'class' => 'modify-form')) }}
+        {{ Form::open(array( 'id' => 'modifica_user', 'files' => 'true', 'class' => 'modify-form')) }}
 <div class="container">
     <div class="row">
         <div class="col-lg-4 ">
@@ -96,8 +96,7 @@
         @endif
         </div>
 
-
-
+<!--
     <div class="row">
         <div class="col-lg-4 ">
         {{ Form::label('password', 'Password', ['class' => 'form-label']) }}
@@ -121,10 +120,11 @@
                     </ul>
         @endif
     </div>
+-->
 <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
-                {{ Form::submit('Conferma', ['class' => 'form-label', 'onclick' => "return confirm('sei sicuroooooooooooooo????')"]) }}
+                {{ Form::submit('Conferma', ['class' => 'form-label']) }}
     </div>
     <div class="col-lg-4"></div>
 </div>
