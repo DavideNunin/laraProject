@@ -8,6 +8,9 @@ use App\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\newOfferRequest;
+use App\Http\Requests\newAppartamentoRequest;
+use App\Http\Requests\newPostolettoRequest;
+use App\Http\Requests\newFotoRequest;
 use App\Models\Resources\Offerta;
 use App\Models\Resources\Foto;
 use App\Models\Resources\PostoLetto;
@@ -37,7 +40,7 @@ class LocatoreController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
-    public function offerteLocatore($paged = 3){
+    public function offerteLocatore($paged = 200){
         $user_id = auth()->user()->id;
         $catalogo_offerte = Offerta::where('user_id',$user_id);
         return view('offerta/offertelocatore')
@@ -51,6 +54,10 @@ class LocatoreController extends Controller {
     public function aggiungiListaOfferte(newOfferRequest $request){
 
         $offerta = new Offerta;
+        $appartamento = new Appartamento;
+        $postoLetto = new PostoLetto;
+        $foto = new Foto;
+
         $utente = auth()->user();
         $offerta->user_id = $utente->id;
         $mytime = Carbon::now();
@@ -58,8 +65,24 @@ class LocatoreController extends Controller {
         $offerta->fill($request->validated());
         $offerta->save();
 
-        return redirect()->action('LocatoreController@index');
-    }
+        $idOffer = $offerta -> offerta_id;       //dd($idOffer); 
+        
+        if($offerta->tipologia == 'A'){
+            $appartamento-> offerta_id = $idOffer;
+            $appartamento -> fill ($request->validated());
+            $appartamento->save();
+        }
+
+        else{
+        $postoLetto -> offerta_id = $idOffer;
+        $postoLetto -> fill ($request->validated());
+        $postoLetto->save();
+        }
+
+        return redirect()->action('LocatoreController@offerteLocatore');
+
+        }
+    
 
     public function eliminaOffertaLocatore($id){
         $foto = Foto::where('offerta_id',$id)->delete();
@@ -69,7 +92,7 @@ class LocatoreController extends Controller {
 
         $offerta= Offerta::where('offerta_id',$id)->delete();
 
-        return redirect()->action('LocatoreController@index');
+        return redirect()->action('LocatoreController@offetelocatore');
     }
 
 

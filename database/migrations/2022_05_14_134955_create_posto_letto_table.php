@@ -18,7 +18,7 @@ class CreatePostoLettoTable extends Migration
             $table->boolean('doppia');
             $table->boolean('luogoStudio');
             $table->boolean('finestra');
-            $table->float('superficie');
+            $table->float('superficie_postoletto');
             $table->unsignedBigInteger('offerta_id'); 
             $table->foreign('offerta_id')->references('offerta_id')->on('offerta');    
             $table->timestamps();   

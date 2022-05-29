@@ -42,8 +42,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('posto_letto')->insert([
-            ['doppia' => true, 'luogoStudio' => true, 'finestra' => false, 'superficie' => 20, 'offerta_id' => 2],
-            ['doppia' => false, 'luogoStudio' => true, 'finestra' => false, 'superficie' => 15, 'offerta_id' => 5]
+            ['doppia' => true, 'luogoStudio' => true, 'finestra' => false, 'superficie_postoletto' => 20, 'offerta_id' => 2],
+            ['doppia' => false, 'luogoStudio' => true, 'finestra' => false, 'superficie_postoletto' => 15, 'offerta_id' => 5]
         ]);
 
         DB::table('appartamento')->insert([
