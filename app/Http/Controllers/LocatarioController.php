@@ -43,6 +43,7 @@ class LocatarioController extends Controller
                             ->with('user_info',$user);
     }
     public function updateData(newModifyDataRequest $request){
+        Log::debug($request);
         $utente=auth()->user();
         $utente->fill($request->validated());
         $utente->save();

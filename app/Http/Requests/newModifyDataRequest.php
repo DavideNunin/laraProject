@@ -30,10 +30,11 @@ class newModifyDataRequest extends FormRequest
             'nome'=> 'required',
             'cognome'=> 'required',
             'username' => 'required',
-            'data-nascita' => 'required',
+            'data_nascita' => 'required',
             'sesso' => 'required',
             'numero_di_telefono' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'conforma_password' => 'required'
 
         ];
     }
