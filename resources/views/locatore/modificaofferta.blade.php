@@ -1,12 +1,7 @@
 @extends('layouts.public',['home_type' => '0'])
 
-@section('title', 'Inserisci_offerta')
+@section('title', 'Modifica_offerta')
 
-@section('scripts')
-
-@parent
-<script src="{{ asset('js/insertInputFields.js') }}" ></script>
-@endsection
 
 @section('content')
 <div class="static">
@@ -318,8 +313,3 @@
     </div>
 </div>
 @endsection
-
-
-
-
-

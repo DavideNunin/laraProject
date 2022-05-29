@@ -8,6 +8,7 @@ class PostoLetto extends Model
 {
     protected $table = 'posto_letto';
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
     public $timestamps = false;
 }
 

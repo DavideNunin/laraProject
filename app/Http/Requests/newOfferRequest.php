@@ -34,7 +34,22 @@ class newOfferRequest extends FormRequest {
             'titolo'=>'required|max:20',
             'tipologia'=>'required|max:1',
             'prezzo' => 'required|numeric|min:0',
-            'etaRichiesta' => 'required|integer|min:18'
+            'etaRichiesta' => 'required|integer|min:18',
+            
+            //campi appartamento
+            'superficie' => 'numeric|min:0|nullable|required_if:tipologia,A',
+            'loc_ricr' => 'integer|max:1|required_if:tipologia,A',
+            'npostiletto' => 'integer|required_if:tipologia,A',
+            'ncamere'=>'integer|required_if:tipologia,A',
+            'nbagni'=>'integer|required_if:tipologia,A',
+            'cucina' => 'integer|max:1|required_if:tipologia,A',
+            'terrazzo' => 'integer|max:1|required_if:tipologia,A',
+
+            //campi posto letto
+            'superficie_postoletto' => 'sometimes|numeric|min:0|nullable|required_if:tipologia,P',
+            'doppia' => 'integer|max:1|required_if:tipologia,P',
+            'luogoStudio' => 'integer|max:1|required_if:tipologia,P',
+            'finestra'=>'integer|max:1|required_if:tipologia,P'
         ];
     }
 
