@@ -337,8 +337,10 @@
   background-color: #ccc;
 }
 
-.page-button-inactive{
-    background-color=#FF9900;
-    border-radius=5px;
+
+/* ------------------ style chat ---------------------- */
+#title-chat {
+  color: white!important;
 }
+
 /* MEDIA CSS */

@@ -48,6 +48,10 @@ class User extends Authenticatable
         return in_array($this->tipologia, $role);
     }
 
+    public function isAuth() {
+        return Auth::check();
+    }
+
     public function get_offerte_utente($username){
         $offertautente = Offerta::join('users', function($join) use ($username){
             $join->on('users.id', '=', 'offerta.user_id')

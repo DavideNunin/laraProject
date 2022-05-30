@@ -44,15 +44,15 @@ class Offerta extends Model {
 
         if($tipo=='all') {
             $offerte = Offerta::join('opzionamento', function($join) use($tipo, $start, $end) {
-            $join->on('offerta.id', '=', 'opzionamento.offerta_id')->whereBetween('opzionamento.data', [$start, $end]);
-        })->distinct('offerta.id')->count('offerta.id');
+            $join->on('offerta.offerta_id', '=', 'opzionamento.offerta_id')->whereBetween('opzionamento.data', [$start, $end]);
+        })->distinct('offerta.offerta_id')->count('offerta.offerta_id');
         }
 
         else {
             $offerte = Offerta::join('opzionamento', function($join) use($tipo, $start, $end) {
-                $join->on('offerta.id', '=', 'opzionamento.offerta_id')
+                $join->on('offerta.offerta_id', '=', 'opzionamento.offerta_id')
                 ->where('offerta.tipologia', '=', $tipo)->whereBetween('opzionamento.data', [$start, $end]);
-            })->distinct('offerta.id')->count('offerta.id');
+            })->distinct('offerta.offerta_id')->count('offerta.offerta_id');
         }
         return $offerte;
     }
@@ -60,12 +60,12 @@ class Offerta extends Model {
     public function offerte_in_website($tipo, $start, $end) {
         if($tipo=='all') {
             $offerte = Offerta::whereBetween('offerta.dataPubblicazione', [$start, $end])
-                        ->count('offerta.id');
+                        ->count('offerta.offerta_id');
         }
 
         else {
             $offerte = Offerta::where('offerta.tipologia', '=', $tipo)->whereBetween('offerta.dataPubblicazione', [$start, $end])
-                        ->count('offerta.id');
+                        ->count('offerta.offerta_id');
         }
         return $offerte;
     }
