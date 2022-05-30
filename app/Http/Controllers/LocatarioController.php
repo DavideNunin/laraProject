@@ -8,6 +8,7 @@ use App\User;
 use App\Http\Requests\newModifyDataRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LocatarioController extends Controller
 {
@@ -43,12 +44,25 @@ class LocatarioController extends Controller
                             ->with('user_info',$user);
     }
     public function updateData(newModifyDataRequest $request){
-        $id=auth()->user()->id;
-        dd($id);
-        $utente= Utente::find($id);
-
-        $utente->fill($request->validated());
+        Log::debug("guarda giuse");
+        Log::debug($request->validated());
+        $utente=auth()->user();
+        Log::debug("utente prima dell' update");
+        Log::debug($utente);
+        foreach( $request->validated() as $key => $value){
+                Log::debug($key);
+                Log::debug($value);
+                Log::debug(property_exists($utente,$key));
+            if(!is_null($value) && $key!="old_password" && $key!="conferma_password" ){
+                if($key=="password") $value= Hash::make($value);
+                $utente->{$key} = $value;
+            }
+        }
+        
         $utente->update();
+        Log::debug("utente dopo dell' update");
+        Log::debug($utente);
+
         return redirect()->action('LocatarioController@index');
 
     }

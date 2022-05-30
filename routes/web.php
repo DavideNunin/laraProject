@@ -84,11 +84,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* ------------------------ rotte locatario ------------------ */
 Route::get('/homelocatario', 'LocatarioController@index')
         ->name('homelocatario');
-Route::get('locatario/offerteopzionate', 'LocatarioController@offerteOpzionate')
+Route::get('/locatario/offerteopzionate', 'LocatarioController@offerteOpzionate')
         ->name('offerteopzionate');
-Route::get('locatario/myprofile', 'LocatarioController@myProfile')
+
+Route::get('/locatario/myprofile', 'LocatarioController@myProfile')
         ->name('info_profilo');
-Route::post('locatario/myprofile', 'LocatarioController@updateData')
+
+Route::post('/locatario/myprofile', 'LocatarioController@updateData')
         ->name('modify_user_data');
+
 Route::get('locatario/chatmenu', 'LocatarioController@chatMenu')
         ->name('locatario_chatmenu');

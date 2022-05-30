@@ -23,9 +23,9 @@
                             {{ $offerta->titolo }} {{ $offerta->id}}
                         </h3>
                         <div class="subtitle-offerta">
-                            <div>@if ($offerta->tipologia == 'a')
+                            <div>@if ($offerta->tipologia == 'A')
                                     appartamento
-                                @elseif ($offerta->tipologia == 'p')
+                                @elseif ($offerta->tipologia == 'P')
                                     Posto letto
                                 @endif
                             </div>

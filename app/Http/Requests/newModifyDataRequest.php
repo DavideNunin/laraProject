@@ -27,15 +27,20 @@ class newModifyDataRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome'=> 'required',
-            'cognome'=> 'required',
-            'username' => 'required',
-            'data_nascita' => 'required',
-            'sesso' => 'required',
-            'numero_di_telefono' => 'required',
-            'password' => 'required',
-            'conforma_password' => 'required'
-
+            'nome'=> 'sometimes',
+            'cognome'=> 'sometimes',
+            'username' => 'sometimes',
+            'data_nascita' => 'sometimes',
+            'sesso' => 'sometimes',
+            'telefono' => 'sometimes',
+            'old_password' => 'required|password',
+            'password' => 'sometimes|required_with:conferma_password|same:conferma_password',
+            'conferma_password' => 'sometimes|required_with:password|same:password'
         ];
+    }
+    public function messages(){
+            return [
+            'old_password.password' => 'wrong password'
+                                    ];
     }
 }

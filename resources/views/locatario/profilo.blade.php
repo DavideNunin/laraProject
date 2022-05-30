@@ -10,14 +10,14 @@
   <p>This is some text.</p>
   <p>This is another text.</p>
 </div>
-        {{ Form::open(array( 'id' => 'modifica_user', 'files' => 'true', 'class' => 'modify-form')) }}
 <div class="container">
+        {{ Form::open(array( 'id' => 'modifica_user', 'files' => 'true', 'class' => 'modify-form')) }}
     <div class="row">
         <div class="col-lg-4 ">
         {{ Form::label('nome', 'Nome', ['class' => 'form-label']) }}
         {{ Form::text('nome',isset($user_info->nome) ? $user_info->nome : '' ,['class' => 'form-control', 'id' => 'nome' ]) }} 
         @if ($errors->first('nome'))
-         <ul class="errors">
+                     <ul class="errors">
                     @foreach ($errors->get('nome') as $message)
                             <li>{{ $message }}</li>
                     @endforeach
@@ -38,15 +38,15 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
-        {{ Form::label('data di nascita', 'Data di nascita', ['class' => 'form-label']) }}
-        {{ Form::text('data_nascita' , isset($user_info->data_nascita) ? $user_info->data_nascita : '' , ['class' => 'form-control', 'id' => 'data_nascita']) }} 
-        @if ($errors->first('data_nascita'))
-         <ul class="errors">
-                    @foreach ($errors->get('data_nascita') as $message)
-                            <li>{{ $message }}</li>
-                    @endforeach
-                    </ul>
-        @endif
+            {{ Form::label('data di nascita', 'Data di nascita', ['class' => 'form-label']) }}
+            {{ Form::text('data_nascita' , isset($user_info->data_nascita) ? $user_info->data_nascita : '' , ['class' => 'form-control', 'id' => 'data_nascita']) }} 
+            @if ($errors->first('data_nascita'))
+                 <ul class="errors">
+                        @foreach ($errors->get('data_nascita') as $message)
+                                <li>{{ $message }}</li>
+                        @endforeach
+                </ul>
+            @endif
         </div>
         <div class="col-lg-4 ">
         {{ Form::label('gender', 'Sesso', ['class' => 'form-label']) }}
@@ -55,18 +55,15 @@
                     <div class="custom-control custom-radio custom-control-inline">
 
                     Maschio
-                    {{ Form::radio('gender', 'maschio', ['class' => 'form-control', 'id' => 'button-maschio']) }}  
+                    {{ Form::radio('sesso', 'M', ['class' => 'form-control', 'id' => 'button-maschio']) }}  
 
-</div>
+                    </div>
                     <div class="custom-control custom-radio custom-control-inline">
 
                     Femmina
-                    {{ Form::radio('gender', 'femmina', ['class' => 'form-control', 'id' => 'button-femmina']) }}        
-</div>
-            </div>
-<div class="row">
+                    {{ Form::radio('sesso', 'F', ['class' => 'form-control', 'id' => 'button-femmina']) }}        
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -95,8 +92,22 @@
                     </ul>
         @endif
         </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+        {{ Form::label('vecchia_password', 'Vecchia Password', ['class' => 'form-label']) }}
+        {{ Form::password('old_password' , ['class' => 'form-control', 'id' => 'old_password']) }} 
+        @if ($errors->first('old_password'))
+         <ul class="errors">
+                    @foreach ($errors->get('old_password') as $message)
+                            <li>{{ $message }}</li>
+                    @endforeach
+                    </ul>
+        @endif
+        
+        </div>
+    </div>
 
-<!--
     <div class="row">
         <div class="col-lg-4 ">
         {{ Form::label('password', 'Password', ['class' => 'form-label']) }}
@@ -112,22 +123,23 @@
         <div class="col-lg-4 ">
         {{ Form::label('conferma_password', 'Conferma Password', ['class' => 'form-label']) }}
         {{ Form::password('conferma_password', ['class' => 'form-control', 'id' => 'conferma_password']) }} 
-        @if ($errors->first('conferma_password'))
-         <ul class="errors">
-                    @foreach ($errors->get('conferma_password') as $message)
-                            <li>{{ $message }}</li>
-                    @endforeach
-                    </ul>
-        @endif
+            @if ($errors->first('conferma_password'))
+             <ul class="errors">
+                        @foreach ($errors->get('conferma_password') as $message)
+                                <li>{{ $message }}</li>
+                        @endforeach
+            </ul>
+            @endif
+        </div>
     </div>
--->
-<div class="row">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
-                {{ Form::submit('Conferma', ['class' => 'form-label']) }}
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+                    {{ Form::submit('Conferma', ['class' => 'form-label', 'onclick'=> 'return confirm("E SE POI TE NE PENTI???")']) }}
+        </div>
+        <div class="col-lg-4"></div>
     </div>
-    <div class="col-lg-4"></div>
-</div>
+                {{ Form::close() }}
 </div>
 <div class="row">
 <br>
@@ -135,8 +147,5 @@
 
 
 
-
-    </div>
-</div>
 
 @endsection
