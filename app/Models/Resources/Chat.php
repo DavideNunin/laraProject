@@ -34,6 +34,8 @@ class Chat extends Model
         ->select('chat.mittente', 'users.username')
         ->union($a)
         ->get();
+        dd($a); 
+        dd($b);
 
         return $b;
     }

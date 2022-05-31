@@ -162,5 +162,20 @@ class LocatoreController extends Controller {
         
     }
 
+    public function singolaOfferta($id){
+        $offerta = Offerta::find($id);
+
+        $appartamento = Appartamento::where('offerta_id',$id)->get();
+        $postoLetto = PostoLetto::where('offerta_id',$id)->get();
+        $opzionamento = Opzionamento::where('offerta_id', $id)->get();
+
+        return view('locatore/singolaoffertaLocatore')
+                    ->with('offerta', $offerta)
+                    ->with('appartamento', $appartamento)
+                    ->with('postoletto', $postoLetto)
+                    ->with('opzionamento', $opzionamento);
+
+    }
+
 }
 
