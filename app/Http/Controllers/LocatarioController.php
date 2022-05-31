@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
+use App\Models\Resources\Offerta;
+use App\Models\Resources\Opzionamento;
+
 use App\User;
 use App\Http\Requests\newModifyDataRequest;
 use Illuminate\Support\Facades\Log;
@@ -30,12 +33,15 @@ class LocatarioController extends Controller
             ->with('utente', $user)
             ->with('elfaq', $elfaq);
     }
-    public function offerteOpzionate(){
-        $user_id= auth()->user()->id;
-        $offOpz = $this->_userModel->get_offerte_opzionate($user_id);
-        return view('offerta/offerteopzionate')
-                            ->with('offerte_opzionate', $offOpz );
+    public function offerteOpzionate($paged = 4){
+        $opzionamenti= Offerta::join('opzionamento',function($join){
+            $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
+            })->paginate($paged);
 
+        Log::debug($opzionamenti);
+
+        return view('offerta/offerteopzionate')
+            ->with('offerte_opzionate',$opzionamenti);
     }
 
     public function myProfile(){
@@ -66,10 +72,24 @@ class LocatarioController extends Controller
         return redirect()->action('LocatarioController@index');
 
     }
+    public function rimuoviOpzionamento ($id_offerta){
+        $user_id=auth()->user()->id;
+        $opzionamento=Opzionamento::where('offerta_id','=',$id_offerta)->where('user_id','=',$user_id);
+        $opzionamento->delete();
+        return redirect()->action('LocatarioController@index');
+
+
+    }
+    public function ricercaOfferte($paged = 4){
+        $offerte= Offerta::paginate($paged);
+        return view('locatario/ricerca')->with('risultati',$offerte);
+
+    }
     public function chatMenu(){
         $utente=auth()->user();
         return view('chatmenu')
             ->with('user_info',$utente);
 
     }
+
 }

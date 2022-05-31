@@ -30,11 +30,11 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 Route::post('register', 'Auth\RegisterController@register');
 
 
-// pagina offerte
+/* ------------------------ rotte offerte ------------------ */
 Route::get('/offerte', 'HomeController@catalogoOfferteStandard')
         ->name('offerte');
 
-//rotta homelocatore
+/* ------------------------ rotte locatore ------------------ */
 Route::get('/homelocatore', 'LocatoreController@index')
         ->name('homelocatore');
 
@@ -90,11 +90,16 @@ Route::get('/locatario/offerteopzionate', 'LocatarioController@offerteOpzionate'
 Route::get('/locatario/myprofile', 'LocatarioController@myProfile')
         ->name('info_profilo');
 
+Route::get('/locatario/rimuoviopzionamento/{id}', 'LocatarioController@rimuoviOpzionamento')
+        ->name('rimuoviopzionamento');
+
 Route::post('/locatario/myprofile', 'LocatarioController@updateData')
         ->name('modify_user_data');
 
 Route::get('locatario/chatmenu', 'LocatarioController@chatMenu')
         ->name('locatario_chatmenu');
+Route::get('locatario/ricercaofferte', 'LocatarioController@ricercaOfferte')
+        ->name('locatario_ricerca');
 
 
 /* ------------------------ rotte chat ------------------ */

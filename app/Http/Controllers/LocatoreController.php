@@ -43,7 +43,7 @@ class LocatoreController extends Controller {
     public function offerteLocatore($paged = 200){
         $user_id = auth()->user()->id;
         $catalogo_offerte = Offerta::where('user_id',$user_id);
-        return view('offerta/offertelocatore')
+        return view('locatore/offertelocatore')
                         ->with('catalogo', $catalogo_offerte->paginate($paged));
     }
 

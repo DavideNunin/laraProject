@@ -60,16 +60,4 @@ class User extends Authenticatable
         ->get();
         return $offertautente;
     }
-
-    public function get_offerte_opzionate($id){
-        $opzionamenti= Opzionamento::where('user_id',$id)->get()->pluck('offerta_id')->toArray();
-        $off_opz= Offerta::whereIn('id',$opzionamenti)->get();
-        Log::debug($id);
-        Log::debug($opzionamenti);
-        Log::debug($off_opz);
-        ///
-        return $off_opz;
-    }
-
-
 }
