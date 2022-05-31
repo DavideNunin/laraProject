@@ -37,23 +37,25 @@ Route::get('/offerte', 'HomeController@catalogoOfferteStandard')
 /* ------------------------ rotte locatore ------------------ */
 Route::get('/homelocatore', 'LocatoreController@index')
         ->name('homelocatore');
-
-
 Route::get('/locatore/offerta{id}', 'LocatoreController@offerta_singola')
-        ->name('single_offerta');
+        ->name('single_offerta');       
 
 Route::get('/locatore/letueofferte', 'LocatoreController@offerteLocatore')
         ->name('offerte_locatore');
 
 Route::get('/locatore/inserisciofferta', 'LocatoreController@inserisciofferta')
         ->name('inserisci_offerta');
-
 Route::post('/locatore/inserisciofferta', 'LocatoreController@aggiungiListaOfferte')
         ->name('newOffer.store');
 
- Route::get('/locatore/inserisciofferta/{id}', 'LocatoreController@eliminaOffertaLocatore')
+Route::get('/locatore/inserisciofferta/{id}', 'LocatoreController@eliminaOffertaLocatore')
         ->name('cancella_offerta'); 
 
+//rotta per la modifica di un'offerta
+Route::get ('/locatore/modificaofferta/{id}', 'LocatoreController@modificaOfferta')
+        ->name('modifica_offerta');
+Route::post('/locatore/modificaofferta/{id}', 'LocatoreController@updateOffer')
+        ->name('updateOffer.store');
 
 /* ------------------------ rotte admin ------------------ */
 Route::get('/homeadmin', 'AdminController@index')
@@ -63,8 +65,10 @@ Route::get('/faqmanager', 'AdminController@faqmanager')
         ->name('faqmanager');
 Route::post('faqmanager', 'AdminController@newfaq')
         ->name('faqmanager.result');
+
 Route::get('faqmanager/delete', 'AdminController@deletefaq')
         ->name('faqmanager.delete');
+
 Route::get('faqmanager/load', 'AdminController@loadfaq');
 Route::post('faqmanager/update', 'AdminController@updatefaq')
         ->name('faqmanager.update');
@@ -84,6 +88,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* ------------------------ rotte locatario ------------------ */
 Route::get('/homelocatario', 'LocatarioController@index')
         ->name('homelocatario');
+
 Route::get('/locatario/offerteopzionate', 'LocatarioController@offerteOpzionate')
         ->name('offerteopzionate');
 

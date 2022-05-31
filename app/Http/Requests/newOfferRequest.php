@@ -25,7 +25,7 @@ class newOfferRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'ncivico' => 'required',
+            'ncivico' => 'required|integer',
             'via' => 'required|max:25',
             'genereRichiesto' => 'required|max:1',
             'citta'=>'required|max:15',
@@ -46,10 +46,13 @@ class newOfferRequest extends FormRequest {
             'terrazzo' => 'integer|max:1|required_if:tipologia,A',
 
             //campi posto letto
-            'superficie_postoletto' => 'sometimes|numeric|min:0|nullable|required_if:tipologia,P',
+            'superficie_postoletto' => 'numeric|min:0|nullable|required_if:tipologia,P',
             'doppia' => 'integer|max:1|required_if:tipologia,P',
             'luogoStudio' => 'integer|max:1|required_if:tipologia,P',
-            'finestra'=>'integer|max:1|required_if:tipologia,P'
+            'finestra'=>'integer|max:1|required_if:tipologia,P',
+
+            //campi foto
+            'nome_file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048|nullable'
         ];
     }
 

@@ -310,11 +310,16 @@
                     @endif
                 </div>
             </div>
+            <div  class="wrap-input  rs1-wrap-input">
+                {{ Form::label('nome_file', 'Immagine', ['class' => 'label-input']) }}
+                {{ Form::file('nome_file', ['class' => 'input', 'id' => 'image']) }}
+            </div>
             <div class="container-form-btn">                
                     {{ Form::submit('Aggiungi offerta', ['class' => 'form-btn1']) }}
             </div>
             {{ Form::close()}}
         </div>
+
     </div>
 </div>
 @endsection

@@ -17,6 +17,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    
     public function catalogoOfferteStandard($paged = 3)
     {
         if(isset(auth()->user()->tipologia)){
