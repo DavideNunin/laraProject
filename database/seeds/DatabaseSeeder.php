@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
             ['data_nascita' => '2000-08-10','nome' => 'Mario', 'cognome' => 'Rossi', 'username' => 'mario.rossi', 'password' => Hash::make('lol'), 'tipologia' => 'l', 'sesso' => 'M', 'telefono' => '3333333333',],
             ['data_nascita' => '2000-08-10','nome' => 'Giovanni', 'cognome' => 'IlMatto', 'username' => 'giovanni.matto', 'password' => Hash::make('lol'), 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '3333333333',],   
             ['data_nascita' => '2005-08-10','nome' => 'Gaia', 'cognome' => 'Turbo', 'username' => 'TurboFregna05', 'password' => Hash::make('sagittario'), 'tipologia' => 's', 'sesso' => 'F', 'telefono' => '5235656498',],  
-            ['data_nascita' => '2005-08-10','nome' => 'mino', 'cognome' => 'ad', 'username' => 'admin', 'password' => Hash::make('admin'), 'tipologia' => 'a', 'sesso' => 'F', 'telefono' => '5235656498',]   
+            ['data_nascita' => '2005-08-10','nome' => 'mino', 'cognome' => 'ad', 'username' => 'admin', 'password' => Hash::make('admin'), 'tipologia' => 'a', 'sesso' => 'F', 'telefono' => '5235656498',],
+            ['data_nascita' => '2005-08-10','nome' => 'loca', 'cognome' => 'loca', 'username' => 'localoca', 'password' => Hash::make('localoca'), 'tipologia' => 'l', 'sesso' => 'F', 'telefono' => '5235656498',],
+            ['data_nascita' => '2005-08-10','nome' => 'lario', 'cognome' => 'lario', 'username' => 'lariolario', 'password' => Hash::make('lariolario'), 'tipologia' => 's', 'sesso' => 'M', 'telefono' => '5235656498',]   
         ]);
 
         DB::table('offerta')->insert([
@@ -80,6 +82,18 @@ class DatabaseSeeder extends Seeder
         DB::table('contratto')->insert([
             ['dataStipula' => '2022-05-10', 'studente_id' => 1, 'locatore_id' => 2, 'offerta_id' => 6],
             ['data' => '2022-05-20', 'studente_id' => 3, 'locatore_id' => 2, 'offerta_id' => 6]
+        ]);
+
+        DB::table('messaggio')->insert([
+            ['testo' => 'testo primo messaggio', 'letto' => 0, 'data_ora_invio' => '2008-11-11 13:23:44'],
+            ['testo' => 'testo secondo messaggio', 'letto' => 0, 'data_ora_invio' => '2008-11-11 13:23:44'],
+        ]);
+
+        DB::table('chat')->insert([
+            ['mittente' => 7, 'messaggio' => 1, 'destinatario' => 6,],
+            ['mittente' => 4, 'messaggio' => 2, 'destinatario' => 6,],
+            ['mittente' => 6, 'messaggio' => 2, 'destinatario' => 4,],
+            ['mittente' => 6, 'messaggio' => 2, 'destinatario' => 1,],
         ]);
     }
 }

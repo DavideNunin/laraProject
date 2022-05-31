@@ -100,3 +100,8 @@ Route::post('/locatario/myprofile', 'LocatarioController@updateData')
 
 Route::get('locatario/chatmenu', 'LocatarioController@chatMenu')
         ->name('locatario_chatmenu');
+
+
+/* ------------------------ rotte chat ------------------ */
+Route::get('/chat', 'ChatController@index')
+        ->name('chat');

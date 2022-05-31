@@ -14,7 +14,7 @@ class CreateMessaggioTable extends Migration
     public function up()
     {
         Schema::create('messaggio', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned()->index();
             $table->string('testo');
             $table->boolean('letto');
             $table->dateTime('data_ora_invio');
