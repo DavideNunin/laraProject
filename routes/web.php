@@ -105,3 +105,6 @@ Route::get('locatario/chatmenu', 'LocatarioController@chatMenu')
 /* ------------------------ rotte chat ------------------ */
 Route::get('/chat', 'ChatController@index')
         ->name('chat');
+Route::get('/chat/cliccato', 'ChatController@startChat');
+Route::post('/chat', 'ChatController@sendMessage')
+        ->name('chat.send');

@@ -316,12 +316,15 @@
   font-weight: 500;
 }
 .form-textarea {
+  max-width: 70vw;
   max-height: 20vh;
+  border-radius: 20px;
+  padding: 10px;
 }
-.newfaq-button {
+.button-form {
     font-size: 16px;
     color: white;
-    background-color: #803841;
+    background-color: #66171A;
     border-color: transparent;
     border-radius: 10px;
     padding: 5px;
@@ -339,8 +342,42 @@
 
 
 /* ------------------ style chat ---------------------- */
-#title-chat {
+.title-chat {
   color: white!important;
 }
 
+.single-message{
+  background-color: #DDD;
+  border-radius: 8px;
+  padding: 10px;
+}
+.info-message {
+  font-size: 12px;
+}
+
+.item-chat{
+  background-color: rgb(237, 234, 234);
+    border-radius: 21px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.item-chat:hover{
+  background-color: #66171A;
+}
+
+.active-chat{
+  background-color: #66171A;
+}
+
+.single-chat-link {
+  color: #000;
+}
+.single-chat-link:hover {
+  color: #f9f9f9;
+}
+
+#errMessaggio {
+  color: #aaa;
+}
 /* MEDIA CSS */

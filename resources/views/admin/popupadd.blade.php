@@ -25,7 +25,7 @@
                     <span id="errRisposta"></span>
                 </div>
                 <div class="col-lg-12">
-                    {{ Form::submit('Aggiungi', ['class' => 'newfaq-button mb-4', 'id' => 'newfaq-submit']) }}
+                    {{ Form::submit('Aggiungi', ['class' => 'button-form mb-4', 'id' => 'newfaq-submit']) }}
                 </div>
                 {{ Form::close() }}
             </div>
