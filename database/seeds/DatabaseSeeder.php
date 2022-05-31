@@ -86,13 +86,15 @@ class DatabaseSeeder extends Seeder
 
         DB::table('messaggio')->insert([
             ['testo' => 'testo primo messaggio', 'letto' => 0, 'data_ora_invio' => '2008-11-11 13:23:44'],
-            ['testo' => 'testo secondo messaggio', 'letto' => 0, 'data_ora_invio' => '2008-11-11 13:23:44'],
+            ['testo' => 'testo secondo messaggio', 'letto' => 0, 'data_ora_invio' => '2009-11-11 13:23:44'],
+            ['testo' => 'testo terzo messaggio', 'letto' => 1, 'data_ora_invio' => '2009-11-11 13:23:45'],
         ]);
 
         DB::table('chat')->insert([
             ['mittente' => 7, 'messaggio' => 1, 'destinatario' => 6,],
-            ['mittente' => 4, 'messaggio' => 2, 'destinatario' => 6,],
+            ['mittente' => 4, 'messaggio' => 1, 'destinatario' => 6,],
             ['mittente' => 6, 'messaggio' => 2, 'destinatario' => 4,],
+            ['mittente' => 4, 'messaggio' => 3, 'destinatario' => 6,],
             ['mittente' => 6, 'messaggio' => 2, 'destinatario' => 1,],
         ]);
     }

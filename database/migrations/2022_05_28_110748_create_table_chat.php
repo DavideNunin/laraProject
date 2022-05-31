@@ -14,6 +14,7 @@ class CreateTableChat extends Migration
     public function up()
     {
         Schema::create('chat', function (Blueprint $table) {
+            $table->bigIncrements('id_chat')->unsigned()->index();
             $table->unsignedBigInteger('mittente');
             $table->unsignedBigInteger('destinatario');
             $table->unsignedBigInteger('messaggio');
