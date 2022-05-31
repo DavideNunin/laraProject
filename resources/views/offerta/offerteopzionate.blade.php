@@ -40,7 +40,7 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class = "col-3 text-end btn-sm ">
-                            <a type = "button" class ="rimuovi_opz">Rimuovi opzionamento</a>
+                            <a type = "button" href="{{route('rimuoviopzionamento',['id' => $offerta->offerta_id ])}}" class ="rimuovi_opz">Rimuovi opzionamento</a>
                         </div>
                     </div>
                 </div>
@@ -51,4 +51,5 @@
 </div>
 @endforeach
 </div>
+@include('pagination.paginator', ['paginator' => $offerte_opzionate])
 @endsection

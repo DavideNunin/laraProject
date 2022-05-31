@@ -20,6 +20,13 @@ class HomeController extends Controller
     
     public function catalogoOfferteStandard($paged = 3)
     {
+        if(isset(auth()->user()->tipologia)){
+            $tipologia_utente=auth()->user()->tipologia;
+            if($tipologia_utente=='s'){
+                $catalogo_offerte = Offerta::paginate($paged);
+                return view('locatario/ricerca')->with('risultati',$catalogo_offerte);
+            }
+        }
         $catalogo_offerte = Offerta::paginate($paged);
         return view('offerta/offerte')
                         ->with('catalogo', $catalogo_offerte);
