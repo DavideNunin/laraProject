@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <h3 class="title-offerta">
-                            {{ $offerta->titolo }} {{ $offerta->id}}
+                            <a href="{{ route('single_offerta', [$offerta->offerta_id]) }}"> {{ $offerta->titolo }} {{ $offerta->id}} </a>
                         </h3>
                         <div class="subtitle-offerta">
                             <div>@if ($offerta->tipologia == 'A')
@@ -44,7 +44,7 @@
                             <a type = "button" class ="elimina-button" onclick="return confirm('Sei sicuro di voler eliminare questo annuncio?')" href="{{ route ('cancella_offerta', [$offerta->offerta_id]) }}">Elimina annuncio</a>
                         </div>
                         <div class = "col-4 text-end btn-sm modifica-annuncio " >
-                            <a type = "button" class ="modifica-button">Modifica annuncio</a>
+                            <a type = "button" class ="modifica-button" href ="{{ route('modifica_offerta', [$offerta->offerta_id]) }}">Modifica annuncio</a>
                         </div>
                     </div>
                 </div>

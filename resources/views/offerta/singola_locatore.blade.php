@@ -5,7 +5,7 @@
 <!-- inizio sezione prodotti -->
 @section('content')
     <p> offerta identificativo: {{ $offerta->id }} </p>
-    <p>{{$utenti}}  </p>
+    <p>{{$utenti}} </p>
 
 <div class="container">
     <div class="accordion" id="accordionExample">

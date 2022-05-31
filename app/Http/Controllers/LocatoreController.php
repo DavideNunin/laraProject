@@ -7,6 +7,7 @@ use App\Models\ElencoFaq;
 use App\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\newOfferRequest;
 use App\Http\Requests\newAppartamentoRequest;
 use App\Http\Requests\newPostolettoRequest;
@@ -79,22 +80,87 @@ class LocatoreController extends Controller {
         $postoLetto->save();
         }
 
+        $foto-> offerta_id = $idOffer;
+        if(!is_null (request()->nome_file)){
+        $imageName = time().'.'.request()->nome_file->getClientOriginalExtension();
+        request()->nome_file->move(public_path('images'), $imageName);
+        $foto -> nome_file = $imageName;
+        $foto -> save();    
+        }
+
+        else{
+        $foto -> nome_file = 'missing_foto.jpg';
+        $foto -> save(); 
+        }
+  
+        //inserimento foto merdose del cazzo del pipo del culo
         return redirect()->action('LocatoreController@offerteLocatore');
 
         }
     
 
     public function eliminaOffertaLocatore($id){
-        $foto = Foto::where('offerta_id',$id)->delete();
+        $foto = Foto::where('offerta_id',$id)->first();
+        $filename=$foto->nome_file;
+        
+        $foto->delete();
+        if(File::exists(public_path('images/' . $filename)) && $filename != 'missing_foto.jpg'){
+            File::delete(public_path('images/'.$filename));
+
+        }
 
         $appartamento = Appartamento::where('offerta_id',$id)->delete();
         $postoLetto = PostoLetto::where('offerta_id', $id)->delete();
 
         $offerta= Offerta::where('offerta_id',$id)->delete();
 
-        return redirect()->action('LocatoreController@offetelocatore');
+        return redirect()->action('LocatoreController@offerteLocatore');
     }
 
+    public function modificaOfferta($id){
+        $offerta = Offerta::find($id);
+
+        $appartamento = Appartamento::where('offerta_id',$id)->get();
+        $postoLetto = PostoLetto::where('offerta_id',$id)->get();
+
+        return view('locatore/modificaofferta')
+                ->with('offerta', $offerta)
+                ->with('appartamento', $appartamento)
+                ->with('postoletto', $postoLetto);
+    }
+
+    public function updateOffer(newOfferRequest $request, $id){
+        $offerta = Offerta::find($id);
+        $appartamento = Appartamento::where('offerta_id',$id)->first();
+        $postoLetto = PostoLetto::where('offerta_id',$id)->first();
+        $foto = Foto::where('offerta_id', $id)->first();
+
+        $offerta->fill($request->validated());
+        $offerta->update();
+        
+        if($offerta->tipologia == 'A'){
+            $appartamento-> offerta_id = $id;
+            $appartamento -> fill ($request->validated());
+            $appartamento->update();
+        }
+
+        else{
+        $postoLetto -> offerta_id = $id;
+        $postoLetto -> fill ($request->validated());
+        $postoLetto->update();
+        }
+
+
+        if(!is_null (request()->nome_file)){
+            $imageName = time().'.'.request()->nome_file->getClientOriginalExtension();
+            request()->nome_file->move(public_path('images'), $imageName);
+            $foto -> nome_file = $imageName;
+            $foto -> save();    
+        }
+        
+        return redirect()->action('LocatoreController@offerteLocatore');
+        
+    }
 
 }
 
