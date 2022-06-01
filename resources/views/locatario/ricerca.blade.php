@@ -8,54 +8,106 @@
 </div>
 <!--ci andrà la navbar-->
 
+<script>
+$( 
+)
+    function sendFilter(){
+        var inputs=$('.campo');
+        console.log(inputs);
+        var json= jsonifier(inputs);
+        $.ajax({
+            type: 'POST',
+            url: 'TODO',
+            data: inputs,
+            dataType: "json",
+            error: function (data) {
+            alert("errore");
+            },
+            success: function (data) {
+            console.log(data.messaggi);
+            console.log(data.user);
+            displayChat(data.messaggi, data.user);
+            },
+            contentType: false,
+            processData: false
+            });
+        return null;
+    }
+    function test(){
+        var inputs=$('.campo');
+        console.log(inputs);
+        var json= jsonifier(inputs);
+        console.log(json);
+    }
 
+    function jsonifier(inputs){
+        jsonobj={};
+
+        inputs.each ( function(){
+            var type= $(this).attr("id");
+            var value= $(this).val();
+            jsonobj[type]=value;
+        }
+        )
+        console.log(jsonobj);
+        return jsonobj;
+    }
+</script>
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {{Form::open(array( 'id' => 'form-filtri', 'files' => 'true', 'class' => 'form-filtri' ))}}
     <ul class="navbar-nav mr-auto">
-        <div>
-            Stai cercando in: 
+        <div class="col-lg-1 d-flex justify-content-center">
+            Filtri:
         </div>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Cerca città" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
-    </form>
+        <div class="my-2 mylg-0">
+                <div>Stai cercando in</div>
+                {{ Form::search('ciaone','', array( 'class' => 'form-control mr-sm-2 campo' , 'id' => 'citta-field', 'onchange' => 'sendFilter()', 'placeholder' => 'Cerca città', 'aria-label' => 'Search' )) }}
+              <!-- <input class="form-control mr-sm-2 campo" id="" type="search" onchange="sendFilter()" placeholder="Cerca città" aria-label="Search"> -->
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+        </div>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Prezzi
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+      <li>
+        <div class="my-2 mylg-0">
+                  <div>Età minima</div>
+            {{ Form::number('ciaone','18', array( 'type' => 'number', 'min' => '18', 'max'=> '100', 'onchange' => 'sendFilter()', 'class' => 'form-control campo')) }}
+                      <!-- <input type="number" min="18" max="100" onchange="sendFilter()" class="form-control campo"> -->
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Tipologia di affitto
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Appartamento</a>
-          <a class="dropdown-item" href="#">Posto letto</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+        <li>
+            <div class="my-2 mylg-0">
+            <div>
+                Data inizio locazione
+            </div>
+            {{ Form::date('ciaone', '', array( 'class' => 'form-control campo', 'onchange' => 'sendFilter()') ) }}
+            <!-- <input class="form-control campo" onchange="sendFilter()" type="date"></div> -->
+        </li>
+
+        <li class="nav-item dropdown">
+            <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option class="dropdown-item campo" value="A" selected >Appartamento</option>
+                    <option class="dropdown-item campo" value="P" >Posto letto</option>
+            </select>
+        </li>
+        <li class="nav-item dropdown">
+            <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option class="dropdown-item campo" value="0-100" selected >0-100€</option>
+                    <option class="dropdown-item campo" value="100-300" >100€-300€</option>
+            </select>
+        </li>
+
+    <li>
+        <div class="my-2 mylg-0">
+            <div>
+            Presenza locale ricreativo
+            </div>
+            <input class="campo" type="checkbox" onclick="sendFilter()" checked>
         </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+    </li>
     </ul>
+    {{ Form::close()}}
   </div>
 </nav>
 
