@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <h3 class="title-offerta">
-                            <a href="{{ route('single_offerta', [$offerta->offerta_id]) }}"> {{ $offerta->titolo }} {{ $offerta->id}} </a>
+                            <a href="{{ route('dettaglioOfferta', [$offerta->offerta_id]) }}"> {{ $offerta->titolo }} {{ $offerta->id}} </a>
                         </h3>
                         <div class="subtitle-offerta">
                             <div>@if ($offerta->tipologia == 'A')

@@ -14,6 +14,7 @@ use App\Http\Requests\newPostolettoRequest;
 use App\Http\Requests\newFotoRequest;
 use App\Models\Resources\Offerta;
 use App\Models\Resources\Foto;
+use App\Models\Resources\Opzionamento;
 use App\Models\Resources\PostoLetto;
 use App\Models\Resources\Appartamento;
 use App\Models\Resources\Contratto;
@@ -123,6 +124,7 @@ class LocatoreController extends Controller {
         $appartamento = Appartamento::where('offerta_id',$id)->get();
         $postoLetto = PostoLetto::where('offerta_id',$id)->get();
 
+
         return view('locatore/modificaofferta')
                 ->with('offerta', $offerta)
                 ->with('appartamento', $appartamento)
@@ -163,17 +165,25 @@ class LocatoreController extends Controller {
     }
 
     public function singolaOfferta($id){
-        $offerta = Offerta::find($id);
+        //devo spostare queste 5 righe nei model cosi da dover richiamare solo 4 funzioni, è molto bello
+            $offerta = Offerta::find($id);
 
         $appartamento = Appartamento::where('offerta_id',$id)->get();
         $postoLetto = PostoLetto::where('offerta_id',$id)->get();
-        $opzionamento = Opzionamento::where('offerta_id', $id)->get();
 
+        $opzionamento  = Opzionamento::whereIn('offerta_id', [$id])->get();
+            
+        $users = User::join('opzionamento', 'users.id', '=', 'opzionamento.user_id')
+                    ->where('opzionamento.offerta_id', '=', $id)
+                    ->distinct('users.username')
+                    ->get(['users.*']);
+         
         return view('locatore/singolaoffertaLocatore')
                     ->with('offerta', $offerta)
                     ->with('appartamento', $appartamento)
                     ->with('postoletto', $postoLetto)
-                    ->with('opzionamento', $opzionamento);
+                    ->with('opz', $opzionamento)
+                    ->with('user', $users);
 
     }
 

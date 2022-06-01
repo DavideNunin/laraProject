@@ -31,7 +31,7 @@ class newOfferRequest extends FormRequest {
             'citta'=>'required|max:15',
             'descrizione' => 'required|max:50',
             'periodo' => 'required| max:10',
-            'titolo'=>'required|max:20',
+            'titolo'=>'required|max:40',
             'tipologia'=>'required|max:1',
             'prezzo' => 'required|numeric|min:0',
             'etaRichiesta' => 'required|integer|min:18',
