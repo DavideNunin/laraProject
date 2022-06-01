@@ -25,6 +25,19 @@ class ChatController extends Controller
             ->with('id', $utenti_in_chat);
     }
 
+    /*public function index_cliccato(Request $request){
+        $user=User::find($request->get('id'));
+        
+        $utenti_in_chat = $this->_chatModel->get_utenti_chat();
+        dd($utenti_in_chat);
+        $users = $utenti_in_chat->toArray();
+        array_push($users, $user);
+        //return response()->json(['redirect' => 'pippo']);
+        dd($users);
+        return view('chat.chat')
+            ->with('id', $users);
+    }*/
+
     public function startChat(Request $request) {
         $user=User::find($request->get('id'));
         $this->_chatModel->set_read($request->get('id'));

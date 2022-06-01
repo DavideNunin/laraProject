@@ -37,8 +37,6 @@ Route::get('/offerte', 'HomeController@catalogoOfferteStandard')
 /* ------------------------ rotte locatore ------------------ */
 Route::get('/homelocatore', 'LocatoreController@index')
         ->name('homelocatore');
-Route::get('/locatore/offerta{id}', 'LocatoreController@offerta_singola')
-        ->name('single_offerta');       
 
 Route::get('/locatore/letueofferte', 'LocatoreController@offerteLocatore')
         ->name('offerte_locatore');
@@ -56,6 +54,10 @@ Route::get ('/locatore/modificaofferta/{id}', 'LocatoreController@modificaOffert
         ->name('modifica_offerta');
 Route::post('/locatore/modificaofferta/{id}', 'LocatoreController@updateOffer')
         ->name('updateOffer.store');
+
+//rotta per vedere i dettagli della singola offerta
+Route::get('/locatore/dettaglioofferta/{id}', 'LocatoreController@singolaOfferta')
+        ->name('dettaglioOfferta');
 
 /* ------------------------ rotte admin ------------------ */
 Route::get('/homeadmin', 'AdminController@index')
