@@ -21,23 +21,22 @@ class ChatController extends Controller
 
     public function index() {
         $utenti_in_chat = $this->_chatModel->get_utenti_chat();
-        //$prova = $this->_chatModel->add_utente_chat($utenti_in_chat, '2');
-        //dd($users);
         return view('chat.chat')
             ->with('id', $utenti_in_chat);
     }
 
-    public function index_cliccato(Request $request){
-
+    /*public function index_cliccato(Request $request){
         $user=User::find($request->get('id'));
+        
         $utenti_in_chat = $this->_chatModel->get_utenti_chat();
+        dd($utenti_in_chat);
         $users = $utenti_in_chat->toArray();
-        array_push($users, $prova);
-
-        //return response()->json(['redirect' => $user, 'messaggi' =>$messaggi]);
+        array_push($users, $user);
+        //return response()->json(['redirect' => 'pippo']);
+        dd($users);
         return view('chat.chat')
             ->with('id', $users);
-    }
+    }*/
 
     public function startChat(Request $request) {
         $user=User::find($request->get('id'));

@@ -112,8 +112,6 @@ Route::get('locatario/ricercaofferte', 'LocatarioController@ricercaOfferte')
 /* ------------------------ rotte chat ------------------ */
 Route::get('/chat', 'ChatController@index')
         ->name('chat');
-Route::post('/chat/utente', 'ChatController@index_cliccato')
-        ->name('chat.utente');
 Route::get('/chat/cliccato', 'ChatController@startChat');
 Route::post('/chat', 'ChatController@sendMessage')
         ->name('chat.send');

@@ -137,7 +137,7 @@
                 Nato il: {{$utente->data_nascita}}        
             </p> 
             <div class="text-end">
-                    <a href="#" type="button">Apri chat con {{$utente->username}}</a> 
+                <a href="#" type="button" id="$utente->id}}" class="open-chat">Apri chat con $utente->username}}</a> 
             </div>    
         </div>
 
