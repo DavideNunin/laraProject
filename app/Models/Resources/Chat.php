@@ -16,13 +16,14 @@ class Chat extends Model
     public function get_utenti_chat(){
         $utente_auth = Auth::user()->id;
 
+        //if($id_nuovo != '-1') 
         //query che ritorna tutti gli utenti con i quali sto parlando
         $a = DB::table('chat')->join('users', function($join) use ($utente_auth){
             $join->on('users.id', '=', 'chat.destinatario');
         })
         ->where('chat.mittente', '=', $utente_auth)
         ->distinct('chat.destinatario')
-       ->select('chat.destinatario', 'users.username');
+       ->select('chat.destinatario', 'users.username', 'users.id');
 
         //$b = User::where('users.id', '=', $utente_auth)->get();
 
@@ -31,10 +32,38 @@ class Chat extends Model
         })
         ->where('chat.destinatario', '=', $utente_auth)
         ->distinct('chat.mittente')
-        ->select('chat.mittente', 'users.username')
+        ->select('chat.mittente', 'users.username', 'users.id')
         ->union($a)
         ->get();
+        
+
+        /*if($id_nuovo != '-1') {
+            $c = DB::table('chat')
+            ->rightJoin('users', 'chat.mittente', '=', 'users.id')
+            ->where('users.id', '=', $id_nuovo)
+            ->distinct('chat.mittente')
+            ->select('chat.mittente', 'users.username')
+            ->union($a)
+            ->union($b)
+            ->get();
+
+            return $c;
+        }*/
+
+        
         return $b;
+    }
+
+
+    public function add_utente_chat($id){
+        $c = DB::table('chat')
+            ->rightJoin('users', 'chat.mittente', '=', 'users.id')
+            ->where('users.id', '=', $id)
+            ->distinct('chat.mittente')
+            ->select('chat.mittente', 'users.username')
+            ->get();
+
+            return $c;
     }
 
 

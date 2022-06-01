@@ -51,14 +51,14 @@ function sendMessage(URL, id_talking) {
 
 }
 
-
+// questa funzione parte dopo la partenza della chat, alla selezione di un utente
 function startChat(id_user) {
 
     $.ajax({
         type: 'GET',
         url: 'chat/cliccato?id=' + parseInt(id_user),
         dataType: "json",
-        error: function (data) {
+        error: function () {
             alert("errore");
         },
         success: function (data) {
@@ -69,8 +69,36 @@ function startChat(id_user) {
         contentType: false,
         processData: false
     });
-
 }
+
+
+
+//questa funzione fa partire la chat con un utente specifico
+function startChatUser(URL, id_user) {
+
+    $.ajax({
+        type: 'POST',
+        url: URL,
+        data: id_user,
+        dataType: "json",
+        error: function (data) {
+            alert("errore");
+                //$("#errMessaggio").append(errMsgs.errors.messaggio[0]);
+                //$("#errMessaggio").append(errMsgs.errors.messaggio[1]);
+            },
+        success: function (data) {
+        console.log(data);
+        startChat(data.destinatario);
+        },
+        contentType: false,
+        processData: false
+    });
+}
+
+
+
+
+
 
 function displayChat(messaggi, user) {
     $("#container-message").empty();

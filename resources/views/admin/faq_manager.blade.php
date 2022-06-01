@@ -87,7 +87,7 @@
                             {{ $singlefaq->domanda}}
                                             </button>
                                         </h2>
-                                    </div>
+                                    </div>  
                                     <div class="row col-lg-4 d-flex align-items-center">
                                         <div class="col-lg d-flex justify-content-end linkfaq">
                                             <a id="{{$singlefaq->id}}" class="update-faq-btn"> Modifica </a>    
