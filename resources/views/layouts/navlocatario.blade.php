@@ -7,22 +7,27 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item link-navbar-item">
-                <a href="{{ route('info_profilo')}}" class="link-navbar">
-                    Il mio Profilo
+                <a href="{{ route('offerte')}}" class="link-navbar button-navbar">
+                    Ricerca offerte
                 </a>
             </li>
             <li class="nav-item link-navbar-item">
-                <a href="{{ route('locatario_chatmenu')}}" class="link-navbar">
-                    Apri Chat
-                </a>
-            </li>
-            <li class="nav-item link-navbar-item">
-                <a href="{{ route('offerteopzionate')}}" class="link-navbar">
+                <a href="{{ route('offerteopzionate')}}" class="link-navbar button-navbar">
                     Offerte opzionate
                 </a>
             </li>
             <li class="nav-item link-navbar-item">
-                <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                <a href="{{ route('info_profilo')}}" class="link-navbar">
+                    <i class="fa-solid fa-user chat-button"></i>
+                </a>
+            </li>
+            <li class="nav-item link-navbar-item">
+                <a href="{{ route('chat')}}" class="link-navbar">
+                    <i class="fa-solid fa-comments chat-button"></i>
+                </a>
+            </li>
+            <li class="nav-item link-navbar-item">
+                <a href="" title="Esci dal sito" class="highlight logout-button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
             </form>

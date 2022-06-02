@@ -8,6 +8,9 @@
 <div class="container">
     <div class= "text-center mt-3">
     <h3> REGISTRATI </h3>
+    @foreach($errors->all() as $error)
+   {{ $error  }}
+@endforeach
 </div>
 {{ Form::open(array('route' => 'register', 'class' => 'registration-form')) }}
 <div class="container">
@@ -83,11 +86,11 @@
                 <label for="coajf" class="form-label">Ti vuoi iscrivere come:</label>
                 <div class="custom-control custom-radio custom-control-inline">
                     {{ Form::label('locatore', 'Locatore', ['class' => 'form-label']) }}
-                    {{ Form::radio('type_user', 'Locatore', false) }}
+                    {{ Form::radio('type_user', 'l', false) }}
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     {{ Form::label('locatario', 'Locatario', ['class' => 'form-label']) }}
-                    {{ Form::radio('type_user', 'Locatario', false) }}
+                    {{ Form::radio('type_user', 's', false) }}
                 </div>
                 <ul class="errors">
                     @foreach ($errors->get('type_user') as $message)
@@ -101,11 +104,11 @@
                 
                 <div class="custom-control custom-radio custom-control-inline">
                     {{ Form::label('uomo', 'Uomo', ['class' => 'form-label']) }}
-                    {{ Form::radio('gender', 'Uomo', false) }}
+                    {{ Form::radio('gender', 'M', false) }}
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     {{ Form::label('donna', 'Donna', ['class' => 'form-label']) }}
-                    {{ Form::radio('gender', 'Donna', false) }}
+                    {{ Form::radio('gender', 'F', false) }}
                 </div>
 
                 <ul class="errors">
