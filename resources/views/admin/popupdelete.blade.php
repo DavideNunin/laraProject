@@ -10,18 +10,15 @@
                 <span id="popupclose" class="closePopup"><i class="fa-solid fa-xmark"></i></span>
             </div>
         </div>
-        <div class="popupcontent">
-            <div class="container">
-
+        <div>
                 {{ Form::open(array('id' => 'deletefaq-form', 'class' => 'addnewfaq-form')) }}
                 <div class="col-lg-12">
                     {{ Form::label('domanda', 'Sei sicuro di voler eliminare?', ['class' => 'form-label']) }}
                 </div>
                 <div class="col-lg-12">
-                    {{ Form::submit('Elimina', ['class' => 'delfaq-button mb-4', 'id' => 'delfaq-submit']) }}
+                    {{ Form::submit('Elimina', ['class' => 'delfaq-button button-form mb-4', 'id' => 'delfaq-submit']) }}
                 </div>
                 {{ Form::close() }}
-            </div>
         </div>
     </div>
 </div>
