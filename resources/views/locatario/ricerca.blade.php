@@ -7,13 +7,10 @@
 <h2>Offerte Opzionate </h2>
 </div>
 <!--ci andrà la navbar-->
-
 <script>
-$( 
-)
     function sendFilter(){
-        var inputs=$('.campo');
-        console.log(inputs);
+        console.log('caricamento sendFilter');
+        /*
         var json= jsonifier(inputs);
         $.ajax({
             type: 'POST',
@@ -32,26 +29,44 @@ $(
             processData: false
             });
         return null;
-    }
+         */
+    } 
+/* 
     function test(){
         var inputs=$('.campo');
         console.log(inputs);
         var json= jsonifier(inputs);
         console.log(json);
     }
+ */
 
-    function jsonifier(inputs){
-        jsonobj={};
+$(document).ready(function () {
 
-        inputs.each ( function(){
-            var type= $(this).attr("id");
-            var value= $(this).val();
-            jsonobj[type]=value;
-        }
-        )
-        console.log(jsonobj);
-        return jsonobj;
-    }
+     function sliderInput(slider,input){
+         slider.value=input.value;
+         //sendFilter();
+     }
+     function inputSlider(input,slider){
+         input.value=slider.value;
+         //sendFilter();
+     }
+    var slider=document.getElementById('slider');
+    var input=document.getElementById('numberfield');
+    input.addEventListener('change',function(){
+        slider.value=input.value;
+        sendFilter();
+    });
+    slider.addEventListener('change',function(){
+        input.value=slider.value;
+        sendFilter();
+    });
+    $('select > option ').addClass('nav-link dropdown-toggle opt');
+    $('select').change(sendFilter());
+    console.log("pipo");
+    console.log(input);
+    console.log(slider);
+}
+);
 </script>
 
 
@@ -66,13 +81,15 @@ $(
                 <div>Stai cercando in</div>
                 {{ Form::search('ciaone','', array( 'class' => 'form-control mr-sm-2 campo' , 'id' => 'citta-field', 'onchange' => 'sendFilter()', 'placeholder' => 'Cerca città', 'aria-label' => 'Search' )) }}
               <!-- <input class="form-control mr-sm-2 campo" id="" type="search" onchange="sendFilter()" placeholder="Cerca città" aria-label="Search"> -->
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
         </div>
 
       <li>
         <div class="my-2 mylg-0">
                   <div>Età minima</div>
-            {{ Form::number('ciaone','18', array( 'type' => 'number', 'min' => '18', 'max'=> '100', 'onchange' => 'sendFilter()', 'class' => 'form-control campo')) }}
+                <div id="rangeBox">
+                    {{Form::number('ciaone',null, array('id'=>'numberfield', 'type' => 'number', 'min' => '18', 'max'=> '100', 'class' => 'form-control campo')) }}
+                    {{Form::range('ciaone', null ,array('step'=>'1', 'id' => 'slider','min' => '18', 'max' => '100'))}}
+                </div>
                       <!-- <input type="number" min="18" max="100" onchange="sendFilter()" class="form-control campo"> -->
         </div>
       </li>
@@ -86,16 +103,21 @@ $(
         </li>
 
         <li class="nav-item dropdown">
+                {{Form::select('ciaone',array("A" => "Appartamento", "P" => "Posto letto"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle ', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+<!--
             <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <option class="dropdown-item campo" value="A" selected >Appartamento</option>
                     <option class="dropdown-item campo" value="P" >Posto letto</option>
             </select>
+-->
         </li>
         <li class="nav-item dropdown">
-            <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{Form::select('ciaone',array("0-100" => "0-100€", "100-300" => "100€-300€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+        <!--    <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <option class="dropdown-item campo" value="0-100" selected >0-100€</option>
                     <option class="dropdown-item campo" value="100-300" >100€-300€</option>
             </select>
+-->
         </li>
 
     <li>
