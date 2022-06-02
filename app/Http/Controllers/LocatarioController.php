@@ -70,26 +70,24 @@ class LocatarioController extends Controller
         Log::debug($utente);
 
         return redirect()->action('LocatarioController@index');
-
     }
+
     public function rimuoviOpzionamento ($id_offerta){
         $user_id=auth()->user()->id;
         $opzionamento=Opzionamento::where('offerta_id','=',$id_offerta)->where('user_id','=',$user_id);
         $opzionamento->delete();
         return redirect()->action('LocatarioController@index');
-
-
     }
+
     public function ricercaOfferte($paged = 4){
         $offerte= Offerta::paginate($paged);
         return view('locatario/ricerca')->with('risultati',$offerte);
-
     }
+
     public function chatMenu(){
         $utente=auth()->user();
         return view('chatmenu')
             ->with('user_info',$utente);
-
     }
 
 }

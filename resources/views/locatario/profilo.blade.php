@@ -7,8 +7,6 @@
     <h1>Il tuo Profilo</h1>
     <p>Qui puoi modificare e visualizzare le informazioni riguardanti il tuo profilo utente</p>
   </div>
-  <p>This is some text.</p>
-  <p>This is another text.</p>
 </div>
 <div class="container">
         {{ Form::open(array( 'id' => 'modifica_user', 'files' => 'true', 'class' => 'modify-form')) }}
@@ -132,12 +130,10 @@
             @endif
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-                    {{ Form::submit('Conferma', ['class' => 'form-label', 'onclick'=> 'return confirm("E SE POI TE NE PENTI???")']) }}
+    <div class="row col-lg-8 justify-content-center mt-3">
+        <div class="col-lg-4 justify-content-center d-flex">
+            {{ Form::submit('Conferma', ['class' => 'form-label button-form', 'onclick'=> 'return confirm("E SE POI TE NE PENTI???")']) }}
         </div>
-        <div class="col-lg-4"></div>
     </div>
                 {{ Form::close() }}
 </div>

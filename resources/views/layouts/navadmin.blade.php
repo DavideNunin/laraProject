@@ -7,14 +7,14 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item link-navbar-item">
-          <a href="{{ route('stats') }}" class="link-navbar"> Offerte & Stats </a>
+          <a href="{{ route('stats') }}" class="link-navbar button-navbar"> Statistiche </a>
         </li>
         <li class="nav-item link-navbar-item">
           <!--  route('faqmanager')  -->
-            <a href="{{route('faqmanager')}}" class="link-navbar"> FaQ </a>
+            <a href="{{route('faqmanager')}}" class="link-navbar button-navbar"> FaQ </a>
         </li>
         <li class="nav-item link-navbar-item">
-          <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+          <a href="" title="Esci dal sito" class="highlight logout-button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               {{ csrf_field() }}
           </form>

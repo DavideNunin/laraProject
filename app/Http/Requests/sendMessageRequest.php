@@ -26,7 +26,7 @@ class sendMessageRequest extends FormRequest
     {
         return [
            'messaggio' => 'required',
-           'destinatario' => 'numeric',
+           'destinatario' => 'required',
         ];
     }
 }

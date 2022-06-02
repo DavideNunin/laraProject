@@ -82,7 +82,7 @@ class AdminController extends Controller {
 
     public function stats() {
         $catalogo_offerte = $this->_catalogModel->getAll();
-        return view('stats');
+        return view('admin.stats');
     }
 
     public function find(NewStatsRequest $request) {
@@ -91,10 +91,21 @@ class AdminController extends Controller {
         $offerte_nel_sito = $this->_offertaModel->offerte_in_website($request->tipo, $request->start_stats, $request->end_stats);
         $contratti_locati = $this->_contrattoModel->get_contratti($request->tipo, $request->start_stats, $request->end_stats);
 
-        return view('stats')
+        $tipo = '';
+        if($request->tipo == 'p') {
+            $tipo = 'Posto letto';
+        }
+        elseif($request->tipo == 'a') {
+            $tipo = 'Appartamento';
+        }
+        elseif($request->tipo == 'all'){
+            $tipo = 'Posto letto & Appartamento';
+        }
+
+        return view('admin.stats')
         ->with('start', $request->start_stats)
         ->with('end', $request->end_stats)
-        ->with('tipo', $request->tipo)
+        ->with('tipo', $tipo)
         ->with('offerte_opzionate', $offerte_opzionate)
         ->with('contratti_locati', $contratti_locati)
         ->with('offerte_nel_sito', $offerte_nel_sito);    

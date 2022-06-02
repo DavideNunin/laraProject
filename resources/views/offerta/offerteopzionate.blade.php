@@ -14,8 +14,7 @@
         <div class="col-sm-4">
             @include('offerta/carousel')
         </div>
-        <div class="col-sm-8">
-            <div class="container">
+        <div class="row col-sm-8">
                 <div class="row">
                     <div class="col-sm-10">
                         <h3 class="title-offerta">
@@ -35,16 +34,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 justify-content-end">
                         <h4 class="price-offerta">{{ $offerta->prezzo }}€</h4>
                     </div>
-                    <div class="row justify-content-end">
-                        <div class = "col-3 text-end btn-sm ">
-                            <a type = "button" href="{{route('rimuoviopzionamento',['id' => $offerta->offerta_id ])}}" class ="rimuovi_opz">Rimuovi opzionamento</a>
-                        </div>
+                </div>
+                <div class="row d-flex align-items-end">
+                    <div class = "col-lg-12 d-flex justify-content-end btn-sm ">
+                        <a type = "button" href="{{route('rimuoviopzionamento',['id' => $offerta->offerta_id ])}}" class ="rimuovi_opz">Rimuovi opzionamento</a>
                     </div>
                 </div>
-            </div>
         </div>
 
     </div>

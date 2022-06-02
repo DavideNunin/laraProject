@@ -62,8 +62,8 @@
             </div>
         </div>
         <div class="row col-lg-8 p-3">
-            <div class="col-lg-4">
-                {{ Form::label('descrizione', 'Piccola Descrizione', ['class' => 'label-input']) }}
+            <div class="col-lg-5">
+                {{ Form::label('descrizione', 'Descrizione', ['class' => 'label-input']) }}
                 {{ Form::textarea('descrizione', '', ['class' => 'input form-control form-textarea', 'id' => 'descrizione', 'rows' => 2, 'maxlength' => '2000']) }}
                 @if ($errors->first('descrizione'))
                     <ul class="errors">
@@ -74,7 +74,7 @@
                 @endif
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="row justify-content-center">Genere richiesto:</div>
                 <div class="row justify-content-center">
                 <div class="col-lg-3">

@@ -81,6 +81,7 @@ function startChat(id_user) {
 
 function displayChat(messaggi, user) {
     $("#container-message").empty();
+    $("#container-message").append("<span class='row mb-2 chat-subtitle'> Stai parlando con " + user.username + "</span>");
     $.each(messaggi, function (i, messaggio) {
         if(messaggio.mittente == user.id) {
             console.log("mittente" + messaggio.mittente);

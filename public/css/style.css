@@ -3,6 +3,9 @@
     font-style: normal;
     box-sizing: border-box;
     }
+  .navbar-toggler-icon{
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
   
   .link-website {
     color: #803841;
@@ -43,6 +46,37 @@
   .navbar-icon:hover{
     color: #48141A;
   }
+  .logout-button, .chat-button {
+    color: #66171A;
+    border-color: transparent;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  .logout-button:hover {
+    background-color: #66171A;
+    color: white;
+  }
+  .chat-button {
+    font-size: 20px;
+  }
+  .chat-button:hover {
+    color: #48141A;
+  }
+  .btn:focus {
+    box-shadow: none!important;
+  }
+
+  /* style paginator */
+  .paginate {
+    background-color: #66171A;
+    border-radius: 5px;
+  }
+  .link-paginate {
+    color: #ddd;
+  }
+  .link-paginate:hover {
+    color: white;
+  }
 
   /* style home */
   
@@ -66,10 +100,12 @@
   color: #803841;
   }
   .text-how{
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 92.8%;
+  font-size: 20px;
   color: #161A26;
+  }
+  .text-how-title {
+    color: #161A26;
+    font-weight: 700;
   }
   
   .btn-home{
@@ -121,12 +157,15 @@
   .footer-home {
 	  background-color: #161A26;
 	  color: #fff;
+    bottom: 0;
+    left:0;
+    right:0;
   }
   
   .title-footer-home {
 	  font-weight: 600;
 	  font-size: 40px;
-	  line-height: 1.5em
+	  line-height: 1.2em;
   }
 
   /* style faq section */
@@ -163,9 +202,9 @@
 	position: relative;
 	background-image: url(../images/back-login.jpg);
 	background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-	height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 	/*filter: blur(8px);
   -webkit-filter: blur(8px);*/
 }
@@ -225,7 +264,6 @@
 }
 .single-offerta:hover{
   box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-  cursor:pointer;
 }
 .offerta-view {
   background-color: #f9f9f9;
@@ -290,8 +328,10 @@
 /*popup style*/
 #overlay {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
   background: #999;
   width: 100%;
@@ -300,14 +340,18 @@
   z-index: 100;
 }
 
-#popupAdd, #popupDel, #popupUpdate {
+#popupAdd, #popupDel, #popupUpdate, #popupMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: none;
   background: #fff;
   z-index: 200;
   border-radius: 15px;
 }
 
-#popupclose {
+.closePopup {
   padding: 10px;
   cursor: pointer;
   font-size: 20px;
@@ -343,11 +387,39 @@
 .form-radio-stats:hover input{
   background-color: #ccc;
 }
+.stats {
+  background-color: #eee;
+  border-radius: 8px;
+}
+.stats-card {
+  background-color: #66171A;
+    border-radius: 10px;
+}
+.icon-stats {
+  font-size: 35px;
+  color: white;
+}
+.title-card-stats {
+  color: #ddd;
+  font-size: 18px;
+}
+.result-stats {
+  font-size: 50px;
+  color: white;
+}
+.title-stats {
+  font-size: 1rem;
+  font-weight: 500;
+}
 
 
 /* ------------------ style chat ---------------------- */
 .title-chat {
   color: white!important;
+}
+
+.chat-subtitle {
+  color: #aaa;
 }
 
 .single-message{
