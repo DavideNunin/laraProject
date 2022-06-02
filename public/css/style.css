@@ -415,6 +415,10 @@
   color: white!important;
 }
 
+.chat-subtitle {
+  color: #aaa;
+}
+
 .single-message{
   background-color: #DDD;
   border-radius: 8px;
