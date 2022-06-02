@@ -9,7 +9,6 @@
 <script>
     $(function () {
         var addUrl = "{{ route('offerte.sendMessage') }}";
-        var formAdd = 'newfaq-form';
         let id_talking;
 
         $(".send-message").on('click', function(){
@@ -76,7 +75,7 @@
 <h2>Offerte Opzionate </h2>
 </div>
 <!--ci andrà la navbar-->
-@include('locatario/popupmessage')
+@include('popupmessage')
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
         {{Form::open(array( 'id' => 'form-filtri', 'files' => 'true', 'class' => 'form-filtri' ))}}

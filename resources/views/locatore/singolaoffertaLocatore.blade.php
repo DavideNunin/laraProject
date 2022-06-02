@@ -2,7 +2,35 @@
 
 @section('title', 'Inserisci_offerta')
 
+@section('scripts')
+@parent
+
+<script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
+<script>
+    $(function () {
+        var addUrl = "{{ route('offerte.sendMessage') }}";
+        var formAdd = 'newfaq-form';
+        let id_talking;
+
+        $(".open-chat").on('click', function(){
+        id_talking = $(this).attr("id");
+        console.log(id_talking);
+        openPopup(popupMessage);
+        });
+
+        // clic per inviare un messaggio
+        $("#formSendMessage").on('submit', function (event) {
+            event.preventDefault(); 
+            // devo passare anche l'utente, il destinatario
+            sendMessage(addUrl, id_talking);
+        });
+    });
+    </script>
+
+@endsection
+
 @section('content')
+@include('popupmessage')
 <div class="container">
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">
@@ -137,7 +165,7 @@
                 Nato il: {{$utente->data_nascita}}        
             </p> 
             <div class="text-end">
-                <a href="#" type="button" id="$utente->id}}" class="open-chat">Apri chat con $utente->username}}</a> 
+                <a href="#" type="button" id="{{$utente->id}}" class="open-chat">Invia un messaggio a {{$utente->username}}</a> 
             </div>    
         </div>
 

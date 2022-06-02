@@ -62,6 +62,9 @@
   .chat-button:hover {
     color: #48141A;
   }
+  .btn:focus {
+    box-shadow: none!important;
+  }
 
   /* style paginator */
   .paginate {

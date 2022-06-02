@@ -6,7 +6,7 @@
             <div class="btn-group mr-2 paginate" role="group" aria-label="group">
                 @if (!$paginator->onFirstPage())
                 <a href="{{ $paginator->previousPageUrl() }}" type="button" class="btn link-paginate" >
-                    Precedente
+                    <i class="fa-solid fa-angle-left"></i>
                 </a>
                 @endif
 
@@ -29,7 +29,7 @@
                     {{$paginator->lastPage()}}
                 </a>
                 <a href="{{ $paginator->nextPageUrl() }}" type="button" class="btn link-paginate" >
-                    Successivo
+                    <i class="fa-solid fa-angle-right"></i>
                 </a>
                 @endif
                 @endif
