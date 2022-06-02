@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -120,16 +121,19 @@ class LocatoreController extends Controller {
     }
 
     public function modificaOfferta($id){
+        
         $offerta = Offerta::find($id);
-
         $appartamento = Appartamento::where('offerta_id',$id)->get();
         $postoLetto = PostoLetto::where('offerta_id',$id)->get();
 
-
-        return view('locatore/modificaofferta')
-                ->with('offerta', $offerta)
-                ->with('appartamento', $appartamento)
-                ->with('postoletto', $postoLetto);
+        
+        if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
+            return view('locatore/modificaofferta')
+                    ->with('offerta', $offerta)
+                    ->with('appartamento', $appartamento)
+                    ->with('postoletto', $postoLetto);
+        }
+        else return 'ehi Coniglio, hai fegato?';
     }
 
     public function updateOffer(newOfferRequest $request, $id){
@@ -167,7 +171,8 @@ class LocatoreController extends Controller {
 
     public function singolaOfferta($id){
         //devo spostare queste 5 righe nei model cosi da dover richiamare solo 4 funzioni, è molto bello
-            $offerta = Offerta::find($id);
+        $url = "https://www.youtube.com/shorts/Pd8E3bJ04VM";
+        $offerta = Offerta::find($id);
 
         $appartamento = Appartamento::where('offerta_id',$id)->get();
         $postoLetto = PostoLetto::where('offerta_id',$id)->get();
@@ -178,13 +183,16 @@ class LocatoreController extends Controller {
                     ->where('opzionamento.offerta_id', '=', $id)
                     ->distinct('users.username')
                     ->get(['users.*']);
-         
+
+        if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
         return view('locatore/singolaoffertaLocatore')
                     ->with('offerta', $offerta)
                     ->with('appartamento', $appartamento)
                     ->with('postoletto', $postoLetto)
                     ->with('opz', $opzionamento)
                     ->with('user', $users);
+        }
+        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
 
     }
 
