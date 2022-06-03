@@ -17,7 +17,7 @@
                 </a>
             </li>
             <li class="nav-item link-navbar-item">
-                <a href="{{ route('info_profilo')}}" class="link-navbar">
+                <a href="{{ route('info_profilo_locatario')}}" class="link-navbar">
                     <i class="fa-solid fa-user chat-button"></i>
                 </a>
             </li>

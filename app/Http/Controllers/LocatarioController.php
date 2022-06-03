@@ -40,13 +40,13 @@ class LocatarioController extends Controller
 
         Log::debug($opzionamenti);
 
-        return view('offerta/offerteopzionate')
+        return view('locatario/offerteopzionate')
             ->with('offerte_opzionate',$opzionamenti);
     }
 
     public function myProfile(){
         $user =auth()->user();
-        return view('locatario/profilo')
+        return view('/profilo')
                             ->with('user_info',$user);
     }
     public function updateData(newModifyDataRequest $request){

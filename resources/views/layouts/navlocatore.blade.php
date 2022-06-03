@@ -16,7 +16,7 @@
           <a href="{{route('inserisci_offerta')}}" class="link-navbar button-navbar">Inserisci Offerta</a>
         </li>
         <li class="nav-item link-navbar-item">
-          <a href="{{ route('info_profilo')}}" class="link-navbar">
+          <a href="{{ route('info_profilo_locatore')}}" class="link-navbar">
               <i class="fa-solid fa-user chat-button"></i>
           </a>
       </li>

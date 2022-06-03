@@ -66,6 +66,19 @@
             console.log(jsonobj);
             return jsonobj;
         }
+$(document).ready(function () {
+
+    var slider=document.getElementById('slider');
+    var input=document.getElementById('numberfield');
+    input.addEventListener('change',function(){
+        slider.value=input.value;
+    });
+    slider.addEventListener('change',function(){
+        input.value=slider.value;
+    });
+    $('select > option ').addClass('nav-link dropdown-toggle opt');
+    $('select').change(sendFilter());
+}
     </script>
 
 @endsection

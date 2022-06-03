@@ -55,6 +55,11 @@ Route::get ('/locatore/modificaofferta/{id}', 'LocatoreController@modificaOffert
 Route::post('/locatore/modificaofferta/{id}', 'LocatoreController@updateOffer')
         ->name('updateOffer.store');
 
+Route::get('/locatore/myprofile', 'LocatoreController@myProfile')
+        ->name('info_profilo_locatore');
+
+Route::post('/locatore/myprofile', 'LocatarioController@updateData')
+        ->name('modify_user_data');
 //rotta per vedere i dettagli della singola offerta
 Route::get('/locatore/dettaglioofferta/{id}', 'LocatoreController@singolaOfferta')
         ->name('dettaglioOfferta');
@@ -95,7 +100,7 @@ Route::get('/locatario/offerteopzionate', 'LocatarioController@offerteOpzionate'
         ->name('offerteopzionate');
 
 Route::get('/locatario/myprofile', 'LocatarioController@myProfile')
-        ->name('info_profilo');
+        ->name('info_profilo_locatario');
 
 Route::get('/locatario/rimuoviopzionamento/{id}', 'LocatarioController@rimuoviOpzionamento')
         ->name('rimuoviopzionamento');
