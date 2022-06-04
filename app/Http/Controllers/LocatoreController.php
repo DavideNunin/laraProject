@@ -200,7 +200,9 @@ class LocatoreController extends Controller {
         $id = $request->input()['id'];
         $opzionamento = Opzionamento::find($id);
         $opzionamento->delete();
-        return response()->json(['success'=>'Hai rimosso la richiesta di opzionamento con successo!']);
+        //return response()->json(['redirect'=>$request->input()['offerta']]);
+
+        return response()->json(['pippo'=>route('dettaglioOfferta', ['id' => $request->input()['offerta']])]);
     }
 
 }

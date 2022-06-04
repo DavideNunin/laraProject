@@ -3,7 +3,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <script>
-        function deleteOpzionamento(id){
+        function deleteOpzionamento(id, offerta_id){
             if(confirm("sicuro di voler eliminare?")){
                 $.ajax({
                     headers: {
@@ -12,15 +12,16 @@
                     type:'POST',
                     url: "{{route('delete.Opzionamento')}}",
                     data: {
-                            id: id},
+                            id: id,
+                            offerta: offerta_id},
                     dataType: 'json',
                     error: function(response){
                         console.log(response);
                         alert("errore");
                     },
-                    success:function(response){
-                       console.log("ti prego");
-                        },
+                    success:function(data){
+                        window.location.replace(data.pippo);
+                    },
                 })
             }
         }
@@ -146,7 +147,7 @@
         <div class="row mb-5">
             <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} 
             <div class="text-end">
-                    <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}})" class="btn btn-danger">Annulla</a> 
+                    <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
                     <a href="#" type="button">Assegna</a> 
             </div>   
             </h5>
