@@ -29,7 +29,7 @@
 @section('title', 'Inserisci_offerta')
 @section('content')
 <div class="container">
-    <div class="row single-offerta mb-5">
+    <div class="row offerta mb-5">
         <div class="col-sm-4">
             @include('offerta/carousel')
         </div>
@@ -143,7 +143,7 @@
     @foreach($opz as $opzionamento)
     @foreach($user as $utente)
     @if($opzionamento->user_id == $utente->id)
-        <div class="row single-offerta mb-5">
+        <div class="row mb-5">
             <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} 
             <div class="text-end">
                     <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}})" class="btn btn-danger">Annulla</a> 

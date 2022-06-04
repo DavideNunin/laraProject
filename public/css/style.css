@@ -265,6 +265,11 @@
 .single-offerta:hover{
   box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
 }
+.offerta {
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  padding: 2rem;
+}
 .offerta-view {
   background-color: #f9f9f9;
   border-radius: 20px;
