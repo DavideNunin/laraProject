@@ -205,5 +205,10 @@ class LocatoreController extends Controller {
         return response()->json(['pippo'=>route('dettaglioOfferta', ['id' => $request->input()['offerta']])]);
     }
 
+    public function contratto(Request $request) {
+        dd($request->offerta_id);
+        return response()->json(['pippo'=>'ciao']);
+    }
+
 }
 
