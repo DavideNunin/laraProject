@@ -113,6 +113,7 @@ class LocatoreController extends Controller {
 
         $appartamento = Appartamento::where('offerta_id',$id)->delete();
         $postoLetto = PostoLetto::where('offerta_id', $id)->delete();
+        $opzionamento = Opzionamento::where('offerta_id', $id)->delete();
 
         $offerta= Offerta::where('offerta_id',$id)->delete();
 
@@ -125,14 +126,16 @@ class LocatoreController extends Controller {
         $appartamento = Appartamento::where('offerta_id',$id)->get();
         $postoLetto = PostoLetto::where('offerta_id',$id)->get();
 
-        
+        if ($offerta != null){
         if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
             return view('locatore/modificaofferta')
                     ->with('offerta', $offerta)
                     ->with('appartamento', $appartamento)
                     ->with('postoletto', $postoLetto);
         }
-        else return 'ehi Coniglio, hai fegato?';
+        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
+        }
+        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
     }
 
     public function updateOffer(newOfferRequest $request, $id){
@@ -183,6 +186,7 @@ class LocatoreController extends Controller {
                     ->distinct('users.username')
                     ->get(['users.*']);
 
+        if ($offerta != null){
         if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
         return view('locatore/singolaoffertaLocatore')
                     ->with('offerta', $offerta)
@@ -192,6 +196,9 @@ class LocatoreController extends Controller {
                     ->with('user', $users);
         }
         else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
+        }
+        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
+
 
 
     }
