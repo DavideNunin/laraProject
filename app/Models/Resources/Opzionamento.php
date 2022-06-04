@@ -11,3 +11,4 @@ class Opzionamento extends Model
     public $timestamps = false;
     //
 }
+

@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\newOfferRequest;
-use App\Http\Requests\newAppartamentoRequest;
-use App\Http\Requests\newPostolettoRequest;
-use App\Http\Requests\newFotoRequest;
+use App\Http\Requests\newOpzionamentoRequest;
 use App\Models\Resources\Offerta;
 use App\Models\Resources\Foto;
 use App\Models\Resources\Opzionamento;
@@ -194,6 +193,14 @@ class LocatoreController extends Controller {
         }
         else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
 
+
+    }
+
+    public function deleteOpzionamento(Request $request){
+        $id = $request->input()['id'];
+        $opzionamento = Opzionamento::find($id);
+        $opzionamento->delete();
+        return response()->json(['success'=>'Hai rimosso la richiesta di opzionamento con successo!']);
     }
 
 }

@@ -1,36 +1,33 @@
 @extends('layouts.public',['home_type' => '0'])
 
-@section('title', 'Inserisci_offerta')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
-@section('scripts')
-@parent
-
-<script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
 <script>
-    $(function () {
-        var addUrl = "{{ route('offerte.sendMessage') }}";
-        var formAdd = 'newfaq-form';
-        let id_talking;
+        function deleteOpzionamento(id){
+            if(confirm("sicuro di voler eliminare?")){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    type:'POST',
+                    url: "{{route('delete.Opzionamento')}}",
+                    data: {
+                            id: id},
+                    dataType: 'json',
+                    error: function(response){
+                        console.log(response);
+                        alert("errore");
+                    },
+                    success:function(response){
+                       console.log("ti prego");
+                        },
+                })
+            }
+        }
+</script>
 
-        $(".open-chat").on('click', function(){
-        id_talking = $(this).attr("id");
-        console.log(id_talking);
-        openPopup(popupMessage);
-        });
-
-        // clic per inviare un messaggio
-        $("#formSendMessage").on('submit', function (event) {
-            event.preventDefault(); 
-            // devo passare anche l'utente, il destinatario
-            sendMessage(addUrl, id_talking);
-        });
-    });
-    </script>
-
-@endsection
-
+@section('title', 'Inserisci_offerta')
 @section('content')
-@include('popupmessage')
 <div class="container">
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">
@@ -149,7 +146,7 @@
         <div class="row single-offerta mb-5">
             <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} 
             <div class="text-end">
-                    <a href="#" type="button">Annulla</a> 
+                    <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}})" class="btn btn-danger">Annulla</a> 
                     <a href="#" type="button">Assegna</a> 
             </div>   
             </h5>
@@ -165,7 +162,7 @@
                 Nato il: {{$utente->data_nascita}}        
             </p> 
             <div class="text-end">
-                <a href="#" type="button" id="{{$utente->id}}" class="open-chat">Invia un messaggio a {{$utente->username}}</a> 
+                <a href="#" type="button" id="{{$utente->id}}" class="open-chat">Apri chat con {{$utente->username}}</a> 
             </div>    
         </div>
 
@@ -173,6 +170,7 @@
     @endif
     @endforeach
     @endforeach
+
 </div>
 @endsection
 

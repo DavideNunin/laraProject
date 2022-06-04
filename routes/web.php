@@ -59,6 +59,10 @@ Route::post('/locatore/modificaofferta/{id}', 'LocatoreController@updateOffer')
 Route::get('/locatore/dettaglioofferta/{id}', 'LocatoreController@singolaOfferta')
         ->name('dettaglioOfferta');
 
+//rotta per eliminare l'opzionamento da parte di uno studente di un'offerta
+Route::post('/deleteOpzionamento', 'LocatoreController@deleteOpzionamento')
+        ->name('delete.Opzionamento');
+
 /* ------------------------ rotte admin ------------------ */
 Route::get('/homeadmin', 'AdminController@index')
         ->name('homeadmin');
