@@ -1,9 +1,34 @@
 @extends('layouts.public',['home_type' => '0'])
+@section('title', 'Singola Offerta')
+
+@section('scripts')
+
+@parent
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
 
 <script>
-        function deleteOpzionamento(id, offerta_id){
+    $(function () {
+        var addUrl = "{{ route('offerte.sendMessage') }}";
+        var formAdd = 'newfaq-form';
+        let id_talking;
+
+        $(".open-chat").on('click', function(){
+        id_talking = $(this).attr("id");
+        console.log(id_talking);
+        openPopup(popupMessage);
+        });
+
+        // clic per inviare un messaggio
+        $("#formSendMessage").on('submit', function (event) {
+            event.preventDefault(); 
+            // devo passare anche l'utente, il destinatario
+            sendMessage(addUrl, id_talking);
+        });
+    });
+
+    function deleteOpzionamento(id, offerta_id){
             if(confirm("sicuro di voler eliminare?")){
                 $.ajax({
                     headers: {
@@ -24,11 +49,13 @@
                     },
                 })
             }
-        }
+    }
 </script>
+@endsection
 
-@section('title', 'Inserisci_offerta')
+
 @section('content')
+@include('popupmessage')
 <div class="container">
     <div class="row offerta mb-5">
         <div class="col-sm-4">
@@ -148,7 +175,7 @@
             <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} 
             <div class="text-end">
                     <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
-                    <a href="#" type="button">Assegna</a> 
+                    <a href="javascript:void(0)" onclick="stiupulaContratto({{$opzionamento->id}}, {{$offerta->offerta_id}}, {{ route('contratto') }})">Assegna</a> 
             </div>   
             </h5>
             <hr>
@@ -163,7 +190,7 @@
                 Nato il: {{$utente->data_nascita}}        
             </p> 
             <div class="text-end">
-                <a href="#" type="button" id="{{$utente->id}}" class="open-chat">Apri chat con {{$utente->username}}</a> 
+                <a href="#" type="button" id="{{$utente->id}}" class="open-chat">Invia un messaggio a {{$utente->username}}</a> 
             </div>    
         </div>
 

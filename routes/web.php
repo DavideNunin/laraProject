@@ -63,8 +63,11 @@ Route::get('/locatore/dettaglioofferta/{id}', 'LocatoreController@singolaOfferta
 Route::post('/deleteOpzionamento', 'LocatoreController@deleteOpzionamento')
         ->name('delete.Opzionamento');
 
-        Route::post('/deleteOpzionamento', 'LocatoreController@deleteOpzionamento')
-        ->name('delete.Opzionamento');
+Route::get('/contratto', 'LocatoreController@contratto')
+        ->name('contratto');
+
+Route::post('/contratto', 'LocatoreController@contratto')
+        ->name('offerta.contratto');
 
 /* ------------------------ rotte admin ------------------ */
 Route::get('/homeadmin', 'AdminController@index')
