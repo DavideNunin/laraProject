@@ -9,6 +9,7 @@ use App\Models\Resources\Opzionamento;
 
 use App\User;
 use App\Http\Requests\newModifyDataRequest;
+use App\Http\Requests\FilterRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -78,10 +79,64 @@ class LocatarioController extends Controller
         $opzionamento->delete();
         return redirect()->action('LocatarioController@index');
     }
+    public function filter($paged=4){
+    }
 
-    public function ricercaOfferte($paged = 4){
-        $offerte= Offerta::paginate($paged);
+    public function ricercaOfferte($paged = 4, FilterRequest $request){
+
+        Log::debug($request);
+
+        if(count($request->all())!=0){
+            $offerte= new Offerta;
+            if(isset($request->tipologia)){
+                if($request->tipologia=='A'){
+                    $offerte=$offerte->IsAppartamento();
+                    if(isset($request->locale_ricreativo) && $request->locale_ricreativo==1){
+                        $offerte=$offerte->HasLocRic();
+                    }
+                    if(isset($request->terrazzo) && $request->terrazzo==1){
+                        $offerte=$offerte->HasTerrazzo();
+                    }
+                    if(isset($request->ncamere)){
+                        $offerte=$offerte->Hasncamere($request->ncamere);
+                    }
+                    if(isset($request->nbagni)){
+                        $offerte=$offerte->Hasnbagni($request->nbagni);
+                    }
+                }
+                else{
+                    $offerte=$offerte->isPostoletto();
+                    if(isset($request->doppia)){
+                        $offerte=$offerte->IsDoppia($request->doppia);
+                    }
+                    if(isset($request->luogo_studio) && $request->luogo_studio==1){
+                        $offerte=$offerte->HasLuogoStudio();
+                    }
+                }
+            }
+            if(isset($request->fascia_prezzo)){
+                $offerte=$offerte->IsInRange($request->fascia_prezzo);
+            }
+            if(isset($request->eta_minima)){
+                $offerte=$offerte->EtaMin($request->eta_minima);
+            }
+            Log::debug('query:');
+            Log::debug($offerte->toSql());
+            $toappend= array();
+            foreach($request as $key => $value){
+                if (!is_null($value)){
+                    $toappend[$key]=$value;
+                }
+                
+            }
+            Log::debug($toappend);
+            $offerte=$offerte->paginate($paged);
+            return view('locatario/ricerca')->with('risultati',$offerte);
+        }
+        else{
+            $offerte=Offerta::paginate($paged);//->appends($request);
         return view('locatario/ricerca')->with('risultati',$offerte);
+        }
     }
 
     public function chatMenu(){

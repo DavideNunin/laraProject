@@ -23,10 +23,7 @@ class HomeController extends Controller
         if(isset(auth()->user()->tipologia)){
             $tipologia_utente=auth()->user()->tipologia;
             if($tipologia_utente=='s'){
-                $catalogo_offerte = Offerta::join('users',function($join){
-                    $join->on('offerta.user_id','=','users.id');
-                    })->paginate($paged);
-                return view('locatario/ricerca')->with('risultati',$catalogo_offerte);
+                return redirect('/locatario/ricercaofferte');
             }
         }
         $catalogo_offerte = Offerta::paginate($paged);

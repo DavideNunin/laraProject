@@ -25,47 +25,6 @@
         });
     });
 
-        function sendFilter(){
-            var inputs=$('.campo');
-            console.log(inputs);
-            var json= jsonifier(inputs);
-            $.ajax({
-                type: 'POST',
-                url: 'TODO',
-                data: inputs,
-                dataType: "json",
-                error: function (data) {
-                alert("errore");
-                },
-                success: function (data) {
-                console.log(data.messaggi);
-                console.log(data.user);
-                displayChat(data.messaggi, data.user);
-                },
-                contentType: false,
-                processData: false
-                });
-            return null;
-        }
-        function test(){
-            var inputs=$('.campo');
-            console.log(inputs);
-            var json= jsonifier(inputs);
-            console.log(json);
-        }
-    
-        function jsonifier(inputs){
-            jsonobj={};
-    
-            inputs.each ( function(){
-                var type= $(this).attr("id");
-                var value= $(this).val();
-                jsonobj[type]=value;
-            }
-            )
-            console.log(jsonobj);
-            return jsonobj;
-        }
 $(document).ready(function () {
 
     var slider=document.getElementById('slider');
@@ -77,8 +36,11 @@ $(document).ready(function () {
         input.value=slider.value;
     });
     $('select > option ').addClass('nav-link dropdown-toggle opt');
-    $('select').change(sendFilter());
-}
+    //$("option:contains('Appartamento')").click($('.appartamento-field').prop('disabled',false),$('.posto_letto-field').prop('disabled',true).hide());
+    //$("option:contains('Posto letto')").click($('.appartamento-field').prop('disabled',true).hide(),$('.posto_letto-field').prop('disabled',false));
+    console.log($("option:contains('Appartamento')"));
+
+});
     </script>
 
 @endsection
@@ -91,14 +53,14 @@ $(document).ready(function () {
 @include('popupmessage')
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        {{Form::open(array( 'id' => 'form-filtri', 'files' => 'true', 'class' => 'form-filtri' ))}}
+        {{Form::open(array( 'id' => 'form-filtri','route'=> 'locatario_ricerca', 'files' => 'true', 'method' => 'GET' , 'class' => 'form-filtri' ))}}
     <ul class="navbar-nav mr-auto">
         <div class="col-lg-1 d-flex justify-content-center">
             Filtri:
         </div>
         <div class="my-2 mylg-0">
                 <div>Stai cercando in</div>
-                {{ Form::search('ciaone','', array( 'class' => 'form-control mr-sm-2 campo' , 'id' => 'citta-field', 'onchange' => 'sendFilter()', 'placeholder' => 'Cerca città', 'aria-label' => 'Search' )) }}
+                {{ Form::search('citta','', array( 'class' => 'form-control mr-sm-2 campo' , 'id' => 'citta-field', 'placeholder' => 'Cerca città', 'aria-label' => 'Search' )) }}
               <!-- <input class="form-control mr-sm-2 campo" id="" type="search" onchange="sendFilter()" placeholder="Cerca città" aria-label="Search"> -->
         </div>
 
@@ -106,7 +68,7 @@ $(document).ready(function () {
         <div class="my-2 mylg-0">
                   <div>Età minima</div>
                 <div id="rangeBox">
-                    {{Form::number('ciaone',null, array('id'=>'numberfield', 'type' => 'number', 'min' => '18', 'max'=> '100', 'class' => 'form-control campo')) }}
+                    {{Form::number('eta_minima',null, array('id'=>'numberfield', 'type' => 'number', 'min' => '18', 'max'=> '100', 'class' => 'form-control campo')) }}
                     {{Form::range('ciaone', null ,array('step'=>'1', 'id' => 'slider','min' => '18', 'max' => '100'))}}
                 </div>
                       <!-- <input type="number" min="18" max="100" onchange="sendFilter()" class="form-control campo"> -->
@@ -117,21 +79,11 @@ $(document).ready(function () {
             <div>
                 Data inizio locazione
             </div>
-            {{ Form::date('ciaone', '', array( 'class' => 'form-control campo', 'onchange' => 'sendFilter()') ) }}
+            {{ Form::date('data_inizio_locazione', '', array( 'class' => 'form-control campo') ) }}
             <!-- <input class="form-control campo" onchange="sendFilter()" type="date"></div> -->
         </li>
-
         <li class="nav-item dropdown">
-                {{Form::select('ciaone',array("A" => "Appartamento", "P" => "Posto letto"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle ', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
-<!--
-            <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <option class="dropdown-item campo" value="A" selected >Appartamento</option>
-                    <option class="dropdown-item campo" value="P" >Posto letto</option>
-            </select>
--->
-        </li>
-        <li class="nav-item dropdown">
-                {{Form::select('ciaone',array("0-100" => "0-100€", "100-300" => "100€-300€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+                {{Form::select('fascia_prezzo',array("0-100" => "0-100€", "100-300" => "100€-300€", "300-1000"=>"300€-1000€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
         <!--    <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <option class="dropdown-item campo" value="0-100" selected >0-100€</option>
                     <option class="dropdown-item campo" value="100-300" >100€-300€</option>
@@ -139,14 +91,61 @@ $(document).ready(function () {
 -->
         </li>
 
-    <li>
-        <div class="my-2 mylg-0">
-            <div>
-            Presenza locale ricreativo
+        <li class="nav-item dropdown">
+                {{Form::select('tipologia',array("A" => "Appartamento", "P" => "Posto letto"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle ', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+<!--
+            <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option class="dropdown-item campo" value="A" selected >Appartamento</option>
+                    <option class="dropdown-item campo" value="P" >Posto letto</option>
+            </select>
+-->
+        </li>
+
+        <li>
+            <div class="my-2 mylg-0">
+                <div>
+                Presenza locale ricreativo
+                </div>
+            {{ Form::checkbox('locale_ricreativo' , 1, array('class' =>'appartamento-field'))}}
             </div>
-            <input class="campo" type="checkbox" onclick="sendFilter()" checked>
-        </div>
-    </li>
+        </li>
+        <li>
+            <div class="my-2 mylg-0">
+                <div>Terrazzo/balcone:</div>
+                {{Form::checkbox('terrazzo','1',array('class'=>'appartamento-field', 'id'=>'terrazzo-field'))}}
+            </div>
+        </li>
+        <li>
+            <div class="my-2 mylg-0">
+                <div>Numero minimo di camere richieste:</div>
+                {{Form::number('ncamere',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'ncamere-field' ))}}
+            </div>
+        </li>
+        <li>
+            <div class="my-2 mylg-0">
+                <div>Numero minimo di bagni richiesti:</div>
+                {{Form::number('nbagni',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'nbagni-field' ))}}
+            </div>
+        </li>
+       <li>
+           <div class="my-2 mylg-0">Tipo di camera
+                    <div>Singola</div>
+                {{Form::radio('doppia','0',true,array('class'=>'posto_letto-field'))}}
+                    <div>Doppia</div>
+                {{Form::radio('doppia','1',false,array('class'=>'posto_letto-field'))}}
+            </div>
+       </li>
+        <li>
+            <div class="my-2 mylg-0">
+                <div>luogo studio:</div>
+                {{Form::checkbox('luogo_studio','1',array('class'=>'posto_letto-field', 'id'=>'luogo_studio-field'))}}
+            </div>
+        </li>
+        <li>
+            <div class="my-2 mylg-0">
+                {{Form::submit()}}
+            </div>
+        </li>
     </ul>
     {{ Form::close()}}
   </div>
@@ -207,4 +206,5 @@ $(document).ready(function () {
 </div>
 @endforeach
 </div>
+@include('pagination.paginator', ['paginator' => $risultati])
 @endsection

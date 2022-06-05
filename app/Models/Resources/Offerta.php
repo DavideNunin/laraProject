@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models\Resources;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Foto;
 
@@ -68,6 +68,37 @@ class Offerta extends Model {
                         ->count('offerta.offerta_id');
         }
         return $offerte;
+    }
+    public function scopeIsAppartamento($query){
+        return $query->join('appartamento','appartamento.offerta_id','=','offerta.offerta_id',)->select('offerta.*');
+    }
+    public function scopeIsPostoletto($query){
+        return $query->join('posto_letto','posto_letto.offerta_id','=','offerta.offerta_id',)->select('offerta.*');
+    }
+    public function scopeHasLocRic($query){
+        return $query->where('appartamento.loc_ricr',1);
+    }
+    public function scopeHasncamere($query,$ncamere){
+        return $query->where('appartamento.ncamere','>=',$ncamere);
+    }
+    public function scopeIsInRange($query,$fascia_prezzo){
+        $boundaries=explode('-',$fascia_prezzo);
+        return $query->where('offerta.prezzo','>=',$boundaries[0])->where('offerta.prezzo','<=',$boundaries[1]);
+    }
+    public function scopeEtaMin($query,$eta){
+        return $query->where('offerta.etaRichiesta','<=',$eta);
+    }
+    public function scopeHasnbagni($query,$nbagni){
+        return $query->where('appartamento.nbagni','>=',$nbagni);
+    }
+    public function scopeHasTerrazzo($query){
+        return $query->where('appartamento.terrazzo',1);
+    }
+    public function scopeIsDoppia($query,$doppiaval){
+        return $query->where('posto_letto.doppia','=',$doppiaval);
+    }
+    public function scopeHasLuogoStudio($query){
+        return $query->where('posto_letto.luogoStudio',1);
     }
 }
 
