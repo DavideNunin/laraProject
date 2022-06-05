@@ -74,6 +74,11 @@ Route::get('/contratto', 'LocatoreController@contratto')
 Route::post('/contratto', 'LocatoreController@contratto')
         ->name('offerta.contratto');
 
+Route::get('/locatore/myprofile', 'LocatoreController@myProfile')
+        ->name('info_profilo_locatore');
+Route::post('/locatore/myprofile', 'LocatoreController@updateData')
+        ->name('modify_locatore_data');
+
 /* ------------------------ rotte admin ------------------ */
 Route::get('/homeadmin', 'AdminController@index')
         ->name('homeadmin');

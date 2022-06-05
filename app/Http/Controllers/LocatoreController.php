@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\newOfferRequest;
+use App\Http\Requests\newModifyDataRequest;
 use App\Models\Resources\Offerta;
 use App\Models\Resources\Foto;
 use App\Models\Resources\Opzionamento;
@@ -41,21 +42,16 @@ class LocatoreController extends Controller {
             ->with('utente', $user)
             ->with('elfaq', $elfaq);
     }
+    
     public function myProfile(){
         $user =auth()->user();
         return view('/profilo')
                             ->with('user_info',$user);
     }
+
     public function updateData(newModifyDataRequest $request){
-        Log::debug("guarda giuse");
-        Log::debug($request->validated());
         $utente=auth()->user();
-        Log::debug("utente prima dell' update");
-        Log::debug($utente);
         foreach( $request->validated() as $key => $value){
-                Log::debug($key);
-                Log::debug($value);
-                Log::debug(property_exists($utente,$key));
             if(!is_null($value) && $key!="old_password" && $key!="conferma_password" ){
                 if($key=="password") $value= Hash::make($value);
                 $utente->{$key} = $value;
@@ -63,8 +59,6 @@ class LocatoreController extends Controller {
         }
         
         $utente->update();
-        Log::debug("utente dopo dell' update");
-        Log::debug($utente);
 
         return redirect()->action('LocatoreController@index');
     }

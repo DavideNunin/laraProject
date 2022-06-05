@@ -54,7 +54,6 @@ class LocatarioController extends Controller
                             ->with('user_info',$user);
     }
     public function updateData(newModifyDataRequest $request){
-        Log::debug("guarda giuse");
         Log::debug($request->validated());
         $utente=auth()->user();
         Log::debug("utente prima dell' update");
