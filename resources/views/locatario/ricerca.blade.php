@@ -38,8 +38,8 @@ $(document).ready(function () {
         input.value=slider.value;
     });
     $('select > option ').addClass('nav-link dropdown-toggle opt');
-    //$("option:contains('Appartamento')").click($('.appartamento-field').prop('disabled',false),$('.posto_letto-field').prop('disabled',true).hide());
-    //$("option:contains('Posto letto')").click($('.appartamento-field').prop('disabled',true).hide(),$('.posto_letto-field').prop('disabled',false));
+    $("option:contains('Appartamento')").click(console.log("pippo"),$('.appartamento-field').prop('disabled',false).show(),$('.posto_letto-field').prop('disabled',true).hide());
+    $("option:contains('Posto letto')").click($('.appartamento-field').prop('disabled',true).hide(),$('.posto_letto-field').prop('disabled',false).show());
     console.log($("option:contains('Appartamento')"));
 
 });
@@ -149,7 +149,7 @@ $(document).ready(function () {
             <!-- <input class="form-control campo" onchange="sendFilter()" type="date"></div> -->
         </li>
         <li class="nav-item dropdown">
-                {{Form::select('fascia_prezzo',array("0-100" => "0-100€", "100-300" => "100€-300€", "300-1000"=>"300€-1000€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+                {{Form::select('fascia_prezzo',array(null => "Seleziona","0-100" => "0-100€", "100-300" => "100€-300€", "300-1000"=>"300€-1000€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
         <!--    <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <option class="dropdown-item campo" value="0-100" selected >0-100€</option>
                     <option class="dropdown-item campo" value="100-300" >100€-300€</option>
@@ -158,7 +158,7 @@ $(document).ready(function () {
         </li>
 
         <li class="nav-item dropdown">
-                {{Form::select('tipologia',array("A" => "Appartamento", "P" => "Posto letto"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle ', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+                {{Form::select('tipologia',array(null =>"Seleziona","A" => "Appartamento", "P" => "Posto letto"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle ', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
 <!--
             <select class="nav-link dropdown-toggle" id="navbarDropdown" onchange="sendFilter()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <option class="dropdown-item campo" value="A" selected >Appartamento</option>

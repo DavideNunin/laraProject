@@ -85,7 +85,7 @@ class LocatarioController extends Controller
     public function filter($paged=4){
     }
 
-    public function ricercaOfferte($paged = 4, FilterRequest $request){
+    public function ricercaOfferte($paged = 3, FilterRequest $request){
 
         Log::debug($request);
 
@@ -134,6 +134,9 @@ class LocatarioController extends Controller
             }
             Log::debug($toappend);
             $offerte=$offerte->paginate($paged);
+            $offertedebug=$offerte;
+            $offertedebug=$offertedebug->appends($request->all());
+            Log::debug($offertedebug);
             return view('locatario/ricerca')->with('risultati',$offerte);
         }
         else{
