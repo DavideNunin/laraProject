@@ -17,9 +17,9 @@ class CreateTableOpzionamento extends Migration
             $table->bigIncrements('id');
             $table->date('data');
             $table->unsignedBigInteger('offerta_id'); 
-            $table->unsignedBigInteger('user_id'); 
-            $table->foreign('offerta_id')->references('offerta_id')->on('offerta');  
-            $table->foreign('user_id')->references('id')->on('users');  
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('offerta_id')->references('offerta_id')->on('offerta');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unique(array('user_id','offerta_id'));
             $table->timestamps();
         });

@@ -83,14 +83,13 @@ class DatabaseSeeder extends Seeder
             ['nome_file' => 'test-image-3.jpg','offerta_id'=> '1',],
             ['nome_file' => 'test-image-1.jpg','offerta_id'=> '2',],
             ['nome_file' => 'test-image-2.jpg','offerta_id'=> '3',],
-
+            ['nome_file' => 'missing_foto.jpg','offerta_id'=> '11',],
+            ['nome_file' => 'missing_foto.jpg','offerta_id'=> '10',],
         ]);
 
         DB::table('opzionamento')->insert([
             ['data' => '2022-05-20', 'user_id' => 1, 'offerta_id' => '3'],
             ['data' => '2022-05-20', 'user_id' => 3, 'offerta_id' => '3'],
-            ['data' => '2022-05-20', 'user_id' => 1, 'offerta_id' => '10'],
-            ['data' => '2022-05-20', 'user_id' => 1, 'offerta_id' => '11'],
             ['data' => '2022-05-20', 'user_id' => 3, 'offerta_id' => '11']
 
 

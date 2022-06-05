@@ -1,14 +1,16 @@
 @extends('layouts.public',['home_type' => '0'])
-
-@section('title', 'Inserisci_offerta')
+@section('title', 'Singola Offerta')
 
 @section('scripts')
+
 @parent
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
+
 <script>
     $(function () {
-        var addUrl = "{{ route('offerte.sendMessage') }}";
+        var addUrl = "{{ route('chat.send') }}";
         var formAdd = 'newfaq-form';
         let id_talking;
 
@@ -25,14 +27,37 @@
             sendMessage(addUrl, id_talking);
         });
     });
-    </script>
 
+    function deleteOpzionamento(id, offerta_id){
+            if(confirm("sicuro di voler eliminare?")){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    type:'POST',
+                    url: "{{route('delete.Opzionamento')}}",
+                    data: {
+                            id: id,
+                            offerta: offerta_id},
+                    dataType: 'json',
+                    error: function(response){
+                        console.log(response);
+                        alert("errore");
+                    },
+                    success:function(data){
+                        window.location.replace(data.pippo);
+                    },
+                })
+            }
+    }
+</script>
 @endsection
+
 
 @section('content')
 @include('popupmessage')
 <div class="container">
-    <div class="row single-offerta mb-5">
+    <div class="row offerta mb-5">
         <div class="col-sm-4">
             @include('offerta/carousel')
         </div>
@@ -146,11 +171,11 @@
     @foreach($opz as $opzionamento)
     @foreach($user as $utente)
     @if($opzionamento->user_id == $utente->id)
-        <div class="row single-offerta mb-5">
+        <div class="row mb-5">
             <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} 
             <div class="text-end">
-                    <a href="#" type="button">Annulla</a> 
-                    <a href="#" type="button">Assegna</a> 
+                    <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
+                    <a href="javascript:void(0)" onclick="stiupulaContratto({{$opzionamento->id}}, {{$offerta->offerta_id}}, {{ route('contratto') }})">Assegna</a> 
             </div>   
             </h5>
             <hr>
@@ -166,13 +191,14 @@
             </p> 
             <div class="text-end">
                 <a href="#" type="button" id="{{$utente->id}}" class="open-chat">Invia un messaggio a {{$utente->username}}</a> 
-            </div>    
+                </div>    
         </div>
 
 
     @endif
     @endforeach
     @endforeach
+
 </div>
 @endsection
 

@@ -6,13 +6,16 @@ use App\Models\Catalog;
 use App\Models\ElencoFaq;
 use App\Models\Resources\Offerta;
 use App\Models\Resources\Opzionamento;
-
+use App\Http\Requests\newOpzionamentoRequest;
+use Illuminate\Http\Request;    
 use App\User;
 use App\Http\Requests\newModifyDataRequest;
 use App\Http\Requests\FilterRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+
 
 class LocatarioController extends Controller
 {
@@ -135,7 +138,7 @@ class LocatarioController extends Controller
         }
         else{
             $offerte=Offerta::paginate($paged);//->appends($request);
-        return view('locatario/ricerca')->with('risultati',$offerte);
+            return view('locatario/ricerca')->with('risultati',$offerte);
         }
     }
 
@@ -145,4 +148,22 @@ class LocatarioController extends Controller
             ->with('user_info',$utente);
     }
 
+    public function opzionaOfferta(newOpzionamentoRequest $request){
+        Log::debug("Entrato");
+        $opzionamento = new Opzionamento;
+        $id = $request->input()['id'];
+
+        $utente = auth()->user();
+        $mytime = Carbon::now();
+
+        $opzionamento->user_id = $utente->id;
+        $opzionamento-> data = $mytime;
+        $opzionamento -> offerta_id = $id;
+
+        $opzionamento->fill($request->validated());
+
+        $opzionamento->save();
+
+        return response()->json(['redirect'=>route('offerteopzionate')]);
+    }
 }

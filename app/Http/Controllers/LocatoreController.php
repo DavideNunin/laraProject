@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\newOfferRequest;
-use App\Http\Requests\newAppartamentoRequest;
-use App\Http\Requests\newPostolettoRequest;
-use App\Http\Requests\newFotoRequest;
 use App\Models\Resources\Offerta;
 use App\Models\Resources\Foto;
 use App\Models\Resources\Opzionamento;
@@ -140,6 +139,7 @@ class LocatoreController extends Controller {
 
         $appartamento = Appartamento::where('offerta_id',$id)->delete();
         $postoLetto = PostoLetto::where('offerta_id', $id)->delete();
+        $opzionamento = Opzionamento::where('offerta_id', $id)->delete();
 
         $offerta= Offerta::where('offerta_id',$id)->delete();
 
@@ -147,16 +147,21 @@ class LocatoreController extends Controller {
     }
 
     public function modificaOfferta($id){
+        
         $offerta = Offerta::find($id);
-
         $appartamento = Appartamento::where('offerta_id',$id)->get();
         $postoLetto = PostoLetto::where('offerta_id',$id)->get();
 
-
-        return view('locatore/modificaofferta')
-                ->with('offerta', $offerta)
-                ->with('appartamento', $appartamento)
-                ->with('postoletto', $postoLetto);
+        if ($offerta != null){
+        if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
+            return view('locatore/modificaofferta')
+                    ->with('offerta', $offerta)
+                    ->with('appartamento', $appartamento)
+                    ->with('postoletto', $postoLetto);
+        }
+        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
+        }
+        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
     }
 
     public function updateOffer(newOfferRequest $request, $id){
@@ -194,7 +199,8 @@ class LocatoreController extends Controller {
 
     public function singolaOfferta($id){
         //devo spostare queste 5 righe nei model cosi da dover richiamare solo 4 funzioni, è molto bello
-            $offerta = Offerta::find($id);
+        $url = "https://www.youtube.com/shorts/Pd8E3bJ04VM";
+        $offerta = Offerta::find($id);
 
         $appartamento = Appartamento::where('offerta_id',$id)->get();
         $postoLetto = PostoLetto::where('offerta_id',$id)->get();
@@ -205,14 +211,36 @@ class LocatoreController extends Controller {
                     ->where('opzionamento.offerta_id', '=', $id)
                     ->distinct('users.username')
                     ->get(['users.*']);
-         
+
+        if ($offerta != null){
+        if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
         return view('locatore/singolaoffertaLocatore')
                     ->with('offerta', $offerta)
                     ->with('appartamento', $appartamento)
                     ->with('postoletto', $postoLetto)
                     ->with('opz', $opzionamento)
                     ->with('user', $users);
+        }
+        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
+        }
+        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
 
+
+
+    }
+
+    public function deleteOpzionamento(Request $request){
+        $id = $request->input()['id'];
+        $opzionamento = Opzionamento::find($id);
+        $opzionamento->delete();
+        //return response()->json(['redirect'=>$request->input()['offerta']]);
+
+        return response()->json(['pippo'=>route('dettaglioOfferta', ['id' => $request->input()['offerta']])]);
+    }
+
+    public function contratto(Request $request) {
+        dd($request->offerta_id);
+        return response()->json(['pippo'=>'ciao']);
     }
 
 }

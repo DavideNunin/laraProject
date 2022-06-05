@@ -64,6 +64,16 @@ Route::post('/locatore/myprofile', 'LocatarioController@updateData')
 Route::get('/locatore/dettaglioofferta/{id}', 'LocatoreController@singolaOfferta')
         ->name('dettaglioOfferta');
 
+//rotta per eliminare l'opzionamento da parte di uno studente di un'offerta
+Route::post('/deleteOpzionamento', 'LocatoreController@deleteOpzionamento')
+        ->name('delete.Opzionamento');
+
+Route::get('/contratto', 'LocatoreController@contratto')
+        ->name('contratto');
+
+Route::post('/contratto', 'LocatoreController@contratto')
+        ->name('offerta.contratto');
+
 /* ------------------------ rotte admin ------------------ */
 Route::get('/homeadmin', 'AdminController@index')
         ->name('homeadmin');
@@ -114,12 +124,15 @@ Route::get('locatario/chatmenu', 'LocatarioController@chatMenu')
 Route::get('locatario/ricercaofferte', 'LocatarioController@ricercaOfferte')
         ->name('locatario_ricerca');
 
-Route::post('/offerte', 'ChatController@sendMessage')
-        ->name('offerte.sendMessage');
+//Route::post('/offerte', 'ChatController@sendMessage')
+//        ->name('offerte.sendMessage');
 
+Route::post('/offerte','LocatarioController@opzionaOfferta')
+        ->name('opziona_offerta');
 /* ------------------------ rotte chat ------------------ */
 Route::get('/chat', 'ChatController@index')
         ->name('chat');
 Route::get('/chat/cliccato', 'ChatController@startChat');
+
 Route::post('/chat', 'ChatController@sendMessage')
         ->name('chat.send');
