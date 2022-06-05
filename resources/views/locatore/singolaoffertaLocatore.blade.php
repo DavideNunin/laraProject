@@ -172,12 +172,25 @@
     @foreach($user as $utente)
     @if($opzionamento->user_id == $utente->id)
         <div class="row mb-5">
-            <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} 
-            <div class="text-end">
+             
+            @if($contratti->isNotEmpty())
+                @if($contratti[0]->studente_id == $utente->id)
+                    <h5> Hai assegnato l'offerta all'utente {{$utente->username}} che ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
+                    <div class="text-end"><a href="{{ route('vediContratto', [$contratti[0]->id]) }}">Vedi il contratto</a></div>
+                @else
+                <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
+                <div class="text-end">
                     <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
-                    <a href="javascript:void(0)" onclick="stiupulaContratto({{$opzionamento->id}}, {{$offerta->offerta_id}}, {{ route('contratto') }})">Assegna</a> 
-            </div>   
-            </h5>
+                    <a href="{{ route('contratto', [$opzionamento->id]) }}">Assegna</a> 
+                </div>
+                @endif
+            @else
+            <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
+            <div class="text-end">
+                <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
+                <a href="{{ route('contratto', [$opzionamento->id]) }}">Assegna</a> 
+            </div>
+            @endif
             <hr>
             <p class ="subtitle col-sm-4">
                 Nome: {{$utente->nome}} <br>
