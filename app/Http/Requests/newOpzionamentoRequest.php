@@ -25,8 +25,11 @@ class newOpzionamentoRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'id' => 'required|integer'
-        ];
+            'id' => 'integer',
+            'date' => 'text|max:10',
+            'user_id' => 'integer',
+            'offerta_id' => 'integer'
+       ];
     }
 
 }

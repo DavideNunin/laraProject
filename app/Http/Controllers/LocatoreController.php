@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\newOfferRequest;
-use App\Http\Requests\newOpzionamentoRequest;
 use App\Models\Resources\Offerta;
 use App\Models\Resources\Foto;
 use App\Models\Resources\Opzionamento;

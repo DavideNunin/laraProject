@@ -117,9 +117,12 @@ Route::get('locatario/chatmenu', 'LocatarioController@chatMenu')
         ->name('locatario_chatmenu');
 Route::get('locatario/ricercaofferte', 'LocatarioController@ricercaOfferte')
         ->name('locatario_ricerca');
+        
 Route::post('/offerte', 'ChatController@sendMessage')
         ->name('offerte.sendMessage');
 
+Route::post('/offerte','LocatarioController@opzionaOfferta')
+        ->name('opziona_offerta');
 /* ------------------------ rotte chat ------------------ */
 Route::get('/chat', 'ChatController@index')
         ->name('chat');

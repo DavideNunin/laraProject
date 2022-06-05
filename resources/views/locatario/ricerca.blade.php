@@ -7,23 +7,25 @@
 
 <script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
 <script>
-    $(function () {
-        var addUrl = "{{ route('offerte.sendMessage') }}";
-        let id_talking;
+        $(function () {
+            var addUrl = "{{ route('offerte.sendMessage') }}";
+            let id_talking;
 
-        $(".send-message").on('click', function(){
-        id_talking = $(this).attr("id");
-        console.log(id_talking);
-        openPopup(popupMessage);
+            $(".send-message").on('click', function(){
+            id_talking = $(this).attr("id");
+            console.log(id_talking);
+            openPopup(popupMessage);
+            });
+
+            // clic per inviare un messaggio
+            $("#formSendMessage").on('submit', function (event) {
+                event.preventDefault(); 
+                // devo passare anche l'utente, il destinatario
+                sendMessage(addUrl, id_talking);
+            });
         });
 
-        // clic per inviare un messaggio
-        $("#formSendMessage").on('submit', function (event) {
-            event.preventDefault(); 
-            // devo passare anche l'utente, il destinatario
-            sendMessage(addUrl, id_talking);
-        });
-    });
+
 
         function sendFilter(){
             var inputs=$('.campo');
@@ -66,7 +68,30 @@
             console.log(jsonobj);
             return jsonobj;
         }
-    </script>
+
+        function createOpzionamento(id){
+            if(confirm("Sei sicuro di voler opzionare quest'offerta ?")){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    type:'POST',
+                    url: "{{route('opziona_offerta')}}",
+                    data: {
+                            id: id},
+
+                    dataType: 'json',
+                    error: function(response){
+                        console.log(response);
+                        alert("non puoi opzionare due volte la stessa offerta");
+                    },
+                    success:function(data){
+                        window.location.replace(data.redirect);
+                    },
+                })
+            }
+         }
+</script>
 
 @endsection
 
@@ -180,10 +205,9 @@
                 <div class="col-lg-6 d-flex justify-content-start">
                     <!-- qui sull'id ci metto l'id dell'utente a cui invia un messaggio -->
                     <a type="button" class ="send-message" id="{{$offerta->id}}">Invia un messaggio</a>
-                </div>
+                </div>                
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <a type = "button" class ="aggiungi_opz">Opziona offerta</a>
-                    <a type = "button" class ="rimuovi_opz">Rimuovi opzionamento</a>
+                    <a href ="javascript:void(0)" onclick="createOpzionamento({{$offerta->offerta_id}})">Opziona offerta</a>
                 </div>
                 
             </div>
@@ -192,6 +216,7 @@
 
     </div>
 </div>
-@endforeach
+@endforeach 
 </div>
+@include('pagination.paginator', ['paginator' => $risultati])
 @endsection

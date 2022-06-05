@@ -191,7 +191,7 @@
             </p> 
             <div class="text-end">
                 <a href="#" type="button" id="{{$utente->id}}" class="open-chat">Invia un messaggio a {{$utente->username}}</a> 
-            </div>    
+                </div>    
         </div>
 
 

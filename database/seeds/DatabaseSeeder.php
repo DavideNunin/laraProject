@@ -90,8 +90,6 @@ class DatabaseSeeder extends Seeder
         DB::table('opzionamento')->insert([
             ['data' => '2022-05-20', 'user_id' => 1, 'offerta_id' => '3'],
             ['data' => '2022-05-20', 'user_id' => 3, 'offerta_id' => '3'],
-            ['data' => '2022-05-20', 'user_id' => 1, 'offerta_id' => '10'],
-            ['data' => '2022-05-20', 'user_id' => 1, 'offerta_id' => '11'],
             ['data' => '2022-05-20', 'user_id' => 3, 'offerta_id' => '11']
 
 
