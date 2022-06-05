@@ -38,8 +38,8 @@ $(document).ready(function () {
         input.value=slider.value;
     });
     $('select > option ').addClass('nav-link dropdown-toggle opt');
-    $("option:contains('Appartamento')").click(console.log("pippo"),$('.appartamento-field').prop('disabled',false).show(),$('.posto_letto-field').prop('disabled',true).hide());
-    $("option:contains('Posto letto')").click($('.appartamento-field').prop('disabled',true).hide(),$('.posto_letto-field').prop('disabled',false).show());
+    //$("option:contains('Appartamento')").click(console.log("pippo"),$('.appartamento-field').prop('disabled',false).show(),$('.posto_letto-field').prop('disabled',true).hide());
+    //$("option:contains('Posto letto')").click($('.appartamento-field').prop('disabled',true).hide(),$('.posto_letto-field').prop('disabled',false).show());
     console.log($("option:contains('Appartamento')"));
 
 });
@@ -172,13 +172,13 @@ $(document).ready(function () {
                 <div>
                 Presenza locale ricreativo
                 </div>
-            {{ Form::checkbox('locale_ricreativo' , 1, array('class' =>'appartamento-field'))}}
+            {{ Form::checkbox('locale_ricreativo' , 1,false, array('class' =>'appartamento-field'))}}
             </div>
         </li>
         <li>
             <div class="my-2 mylg-0">
                 <div>Terrazzo/balcone:</div>
-                {{Form::checkbox('terrazzo','1',array('class'=>'appartamento-field', 'id'=>'terrazzo-field'))}}
+                {{Form::checkbox('terrazzo','1',false,array('class'=>'appartamento-field', 'id'=>'terrazzo-field'))}}
             </div>
         </li>
         <li>
@@ -193,6 +193,12 @@ $(document).ready(function () {
                 {{Form::number('nbagni',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'nbagni-field' ))}}
             </div>
         </li>
+        <li>
+            <div class="my-2 mylg-0">
+                <div>Numero minimo di posti letto richiesti:</div>
+                {{Form::number('nposti_letto',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'nposti_letto-field' ))}}
+            </div>
+        </li>
        <li>
            <div class="my-2 mylg-0">Tipo di camera
                     <div>Singola</div>
@@ -204,7 +210,13 @@ $(document).ready(function () {
         <li>
             <div class="my-2 mylg-0">
                 <div>luogo studio:</div>
-                {{Form::checkbox('luogo_studio','1',array('class'=>'posto_letto-field', 'id'=>'luogo_studio-field'))}}
+                {{Form::checkbox('luogo_studio','1',false,array('class'=>'posto_letto-field', 'id'=>'luogo_studio-field'))}}
+            </div>
+        </li>
+        <li>
+            <div class="my-2 mylg-0">
+                <div>Presenza finestra:</div>
+                {{Form::checkbox('finestra','1',false,array('class'=>'posto_letto-field', 'id'=>'finestra-field'))}}
             </div>
         </li>
         <li>
@@ -220,6 +232,16 @@ $(document).ready(function () {
 
 <!--sopra stà la navbar-->
 
+@isset($ricerca)
+    <div>
+    Abbiamo cercato le città che contengono le lettere:
+        <ul>
+@foreach($ricerca as $lettera)
+            <li>{{$lettera}}</li>
+        </ul>
+@endforeach
+    </div>
+@endisset
 
 @foreach ($risultati as $offerta)
 <div class="container">

@@ -108,5 +108,20 @@ class Offerta extends Model {
     public function scopeHasLuogoStudio($query){
         return $query->where('posto_letto.luogoStudio',1);
     }
+    public function scopeHasFinestra($query){
+        return $query->where('posto_letto.finestra',1);
+    }
+    public function scopeHasnpostiletto($query,$minpostiletto){
+        return $query->where('appartamento.npostiletto','>=',$minpostiletto);
+    }
+    public function scopeSearchByCity($query,$citta){
+        $searchexpr="%";
+        $caratteri=str_split($citta);
+        foreach($caratteri as $letter){
+            $searchexpr=$searchexpr.$letter.'%';
+        }
+        Log::debug($searchexpr);
+        return $query->where('offerta.citta','LIKE',$searchexpr);
+    }
 }
 
