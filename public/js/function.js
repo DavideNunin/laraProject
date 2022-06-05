@@ -48,24 +48,6 @@ function sendMessage(URL, id_talking) {
     });
 }
 
-function stiupulaContratto(opzinamento_id, offerta_id, URL) {
-    console.log("prova");
-    var form = new FormData();
-    form.append("opzinamento_id",opzinamento_id); 
-    form.append("offerta_id",offerta_id); 
-    $.ajax({
-        type: 'POST',
-        url: URL,
-        data: form,
-        dataType: "json",
-        error: function (data) {
-            alert("errore");
-        },
-        success: function (data) {
-            console.log(data);
-        },
-        contentType: false,
-        processData: false
-    });
-}
+
+
 

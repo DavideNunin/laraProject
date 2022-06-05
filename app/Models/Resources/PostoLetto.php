@@ -10,6 +10,10 @@ class PostoLetto extends Model
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function get_postoLetto($id){
+        return PostoLetto::where('offerta_id', '=', $id)->get();
+    }
 }
 
 ?>

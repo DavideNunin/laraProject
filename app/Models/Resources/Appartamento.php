@@ -9,4 +9,8 @@ class Appartamento extends Model{
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function get_appartamento($id){
+        return Appartamento::where('offerta_id', '=', $id)->get();
+    }
 }
