@@ -300,7 +300,6 @@
 }
 
 
-/* offerta modifica form */
 
 
 
@@ -479,4 +478,26 @@
   background-color: #eee;
   border-radius: 10px;
   padding: 10px;
+}
+
+
+/* stile contratto */
+.title-contratto {
+  font-size: 40px;
+  font-weight: 600;
+}
+.subtitle-contratto {
+  font-size: 25px;
+  font-weight: 500;
+}
+.title-offer {
+  text-decoration: underline;
+}
+.descrizione-offerta {
+  font-weight: 500;
+}
+.box-firma {
+  height: 7vh;
+    width: 35vh;
+    border-bottom: solid 2px black;
 }

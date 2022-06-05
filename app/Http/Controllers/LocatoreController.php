@@ -25,13 +25,22 @@ class LocatoreController extends Controller {
     protected $_locatoreModel;
     protected $_faqModel;
     protected $_userModel;
+    protected $_opzionamentoModel;
+    protected $_offertaModel;
+    protected $_contrattoModel;
+    protected $_appartamentoModel;
+    protected $_postoLettoModel;
 
 
     public function __construct() {
         $this->middleware('can:isLocatore');
         $this->_faqModel = new ElencoFaq;
         $this->_userModel = new User;
-
+        $this->_opzionamentoModel = new Opzionamento;
+        $this->_offertaModel = new Offerta;
+        $this->_contrattoModel = new Contratto;
+        $this->_appartamentoModel = new Appartamento;
+        $this->_postoLettoModel = new PostoLetto;
     }
 
     public function index() {
@@ -213,15 +222,19 @@ class LocatoreController extends Controller {
                     ->get(['users.*']);
 
         if ($offerta != null){
-        if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
-        return view('locatore/singolaoffertaLocatore')
-                    ->with('offerta', $offerta)
-                    ->with('appartamento', $appartamento)
-                    ->with('postoletto', $postoLetto)
-                    ->with('opz', $opzionamento)
-                    ->with('user', $users);
-        }
-        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
+        $contratti = $this->_contrattoModel->get_contratti_utente($id);
+        //dd($contratti);
+
+            if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
+            return view('locatore/singolaoffertaLocatore')
+                        ->with('offerta', $offerta)
+                        ->with('appartamento', $appartamento)
+                        ->with('postoletto', $postoLetto)
+                        ->with('opz', $opzionamento)
+                        ->with('user', $users)
+                        ->with('contratti', $contratti);
+            }
+            else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
         }
         else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
 
@@ -238,10 +251,52 @@ class LocatoreController extends Controller {
         return response()->json(['pippo'=>route('dettaglioOfferta', ['id' => $request->input()['offerta']])]);
     }
 
-    public function contratto(Request $request) {
-        dd($request->offerta_id);
-        return response()->json(['pippo'=>'ciao']);
+    public function contratto($id_opzionamento) {
+        $opzionamento = $this->_opzionamentoModel->get_opzionamento_from_id($id_opzionamento);
+        $proprietario = Auth::user();
+            //stipula contratto
+        $contratto = $this->_contrattoModel->stipulaContratto($opzionamento->user_id, $proprietario->id, $opzionamento->offerta_id);
+        
+        $info = $this->_contrattoModel->get_contratto_info($contratto->id);
+        $this->_opzionamentoModel->contratto_stipulato($opzionamento->offerta_id, $id_opzionamento);
+
+            $details_offerta = '';
+            if($info[0]->tipologia == 'A') {
+            $details_offerta = $this->_appartamentoModel->get_appartamento($info[0]->offerta_id); 
+            }
+        elseif($info[0]->tipologia == 'P'){
+            $details_offerta = $this->_postoLettoModel->get_postoLetto($info[0]->offerta_id);     
+        }
+        
+        return view('locatore.contratto')
+                    ->with('contratto_info', $info)
+                    ->with('info_casa', $details_offerta[0]);
     }
+
+    public function vediContratto($contratto_id) {
+        
+        $contratto = $this->_contrattoModel->get_contratto_info($contratto_id);
+
+        $details_offerta = '';
+        if($contratto[0]->tipologia == 'A') {
+           $details_offerta = $this->_appartamentoModel->get_appartamento($contratto[0]->offerta_id); 
+        }
+        elseif($contratto[0]->tipologia == 'P'){
+            $details_offerta = $this->_postoLettoModel->get_postoLetto($contratto[0]->offerta_id);     
+        }
+
+        if (Gate::forUser(Auth()->user())->allows('yourContract', auth()->user(), $contratto)){
+            return view('locatore.contratto')
+                    ->with('contratto_info', $contratto)
+                    ->with('info_casa', $details_offerta[0]);
+        }
+        else return back();
+    }
+
+    
+
+
+
 
 }
 

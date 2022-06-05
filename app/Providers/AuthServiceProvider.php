@@ -50,5 +50,12 @@ class AuthServiceProvider extends ServiceProvider
                 return false;
         });
 
+        Gate::define('yourContract', function( $user, $contratto){
+            if($user->username == $contratto->username){
+                return true;
+            }
+                return false;
+        });
+
     }
 }
