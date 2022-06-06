@@ -28,6 +28,8 @@ class LocatarioController extends Controller
         $this->middleware('can:isLocatario');
         $this->_faqModel = new ElencoFaq;
         $this->_userModel = new User;
+        $this->_offertaModel = new Offerta;
+        $this->_opzionamentoModel = new Opzionamento;
     }
     //
     public function index() {
@@ -38,9 +40,11 @@ class LocatarioController extends Controller
             ->with('elfaq', $elfaq);
     }
     public function offerteOpzionate($paged = 4){
-        $opzionamenti= Offerta::join('opzionamento',function($join){
-            $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
-            })->paginate($paged);
+        $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate();
+        //$opzionamenti= Offerta::join('opzionamento',function($join){
+         //   $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
+          //  })->paginate($paged);
+        $opzionamenti->paginate($paged);
 
         Log::debug($opzionamenti);
 
@@ -77,8 +81,9 @@ class LocatarioController extends Controller
 
     public function rimuoviOpzionamento ($id_offerta){
         $user_id=auth()->user()->id;
-        $opzionamento=Opzionamento::where('offerta_id','=',$id_offerta)->where('user_id','=',$user_id);
-        $opzionamento->delete();
+        $opzionamento = $this->_opzionamentoModel->remove_opzionamento($id_offerta, $user_id);
+        //$opzionamento=Opzionamento::where('offerta_id','=',$id_offerta)->where('user_id','=',$user_id);
+        //$opzionamento->delete();
         return redirect()->action('LocatarioController@index');
     }
     public function filter($paged=4){
@@ -90,6 +95,7 @@ class LocatarioController extends Controller
 
         if(count($request->all())!=0){
             $offerte= new Offerta;
+
             if(isset($request->tipologia)){
                 if($request->tipologia=='A'){
                     $offerte=$offerte->IsAppartamento();
@@ -105,8 +111,11 @@ class LocatarioController extends Controller
                     if(isset($request->nbagni)){
                         $offerte=$offerte->Hasnbagni($request->nbagni);
                     }
+                    if(isset($request->nposti_letto)){
+                        $offerte=$offerte->Hasnpostiletto($request->nposti_letto);
+                    }
                 }
-                else{
+                if($request->tipologia=='P'){
                     $offerte=$offerte->isPostoletto();
                     if(isset($request->doppia)){
                         $offerte=$offerte->IsDoppia($request->doppia);
@@ -114,33 +123,35 @@ class LocatarioController extends Controller
                     if(isset($request->luogo_studio) && $request->luogo_studio==1){
                         $offerte=$offerte->HasLuogoStudio();
                     }
+                    if(isset($request->finestra) && $request->finestra == 1){
+                        $offerte=$offerte->HasFinestra();
+                    }
                 }
             }
+
             if(isset($request->fascia_prezzo)){
                 $offerte=$offerte->IsInRange($request->fascia_prezzo);
             }
             if(isset($request->eta_minima)){
                 $offerte=$offerte->EtaMin($request->eta_minima);
             }
+
+            if(isset($request->citta)){
+                $offerte=$offerte->SearchByCity($request->citta)->paginate($paged)->appends($request->all());
+                return view('locatario/ricerca')->with('risultati',$offerte)->with('ricerca',str_split($request->citta));
+            }
             Log::debug('query:');
             Log::debug($offerte->toSql());
-            $toappend= array();
-            foreach($request as $key => $value){
-                if (!is_null($value)){
-                    $toappend[$key]=$value;
-                }
-                
-            }
-            Log::debug($toappend);
-            $offerte=$offerte->paginate($paged);
-            $offertedebug=$offerte;
-            $offertedebug=$offertedebug->appends($request->all());
-            Log::debug($offertedebug);
+
+            $offerte=$offerte->paginate($paged)->appends($request->all());
+            Log::debug($offerte);
             return view('locatario/ricerca')->with('risultati',$offerte);
         }
-        else{
+        else{    
             $offerte=Offerta::paginate($paged);//->appends($request);
-            return view('locatario/ricerca')->with('risultati',$offerte);
+            //dd($offerte[0]->offerta_id);
+            return view('locatario/ricerca')
+                ->with('risultati',$offerte);
         }
     }
 

@@ -33,6 +33,16 @@ class Opzionamento extends Model
         ->where('id', '!=', $id_opzionamento)
         ->delete();
     }
+
+    public function remove_opzionamento($offerta, $user){
+        Opzionamento::where('offerta_id','=',$offerta)->where('user_id','=',$user)->delete();
+    }
+
+    public function get_offerte_opzionate(){
+        return Offerta::join('opzionamento',function($join){
+            $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
+        });
+    }
 }
 
 

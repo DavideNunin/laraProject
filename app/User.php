@@ -52,6 +52,10 @@ class User extends Authenticatable
         return Auth::check();
     }
 
+    public function get_user($id){
+        return User::find($id);
+    }
+
     public function get_offerte_utente($username){
         $offertautente = Offerta::join('users', function($join) use ($username){
             $join->on('users.id', '=', 'offerta.user_id')

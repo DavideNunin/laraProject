@@ -179,43 +179,61 @@
     @foreach($opz as $opzionamento)
     @foreach($user as $utente)
     @if($opzionamento->user_id == $utente->id)
-        <div class="row mb-5" id ="superMario">
-             
+
+        <div class="row mb-5">             
             @if($contratti->isNotEmpty())
                 @if($contratti[0]->studente_id == $utente->id)
+                <div class="col-lg-9">
                     <h5> Hai assegnato l'offerta all'utente {{$utente->username}} che ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
-                    <div class="text-end"><a href="{{ route('vediContratto', [$contratti[0]->id]) }}">Vedi il contratto</a></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="text-end"><a class="link-website" href="{{ route('vediContratto', [$contratti[0]->id]) }}">Vedi il contratto</a></div>
+                </div>
                 @else
+                <div class="col-lg-9">
+                    <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
+                </div>
+                <div class="col-lg-3">
+                    <div class="text-end">
+                        <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
+                        <a href="{{ route('contratto', [$opzionamento->id]) }}">Assegna</a> 
+                    </div>
+                </div>
+                @endif
+            @else
+            <div class="col-lg-9">
                 <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
+            </div>
+            <div class="col-lg-3">
                 <div class="text-end">
                     <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
                     <a href="{{ route('contratto', [$opzionamento->id]) }}">Assegna</a> 
                 </div>
-                @endif
-            @else
-            <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
-            <div class="text-end">
-                <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
-                <a href="{{ route('contratto', [$opzionamento->id]) }}">Assegna</a> 
             </div>
             @endif
             <hr>
-            <p class ="subtitle col-sm-4">
-                Nome: {{$utente->nome}} <br>
-                Cognome: {{$utente->cognome}}
-            </p>
-            <p class = "subtitle col-sm-4">
-                Genere: @if($utente->sesso == 'M') Uomo
-                        @else Donna
-                        @endif <br>
-                Nato il: {{$utente->data_nascita}}        
-            </p> 
-            <div class="text-end">
-                <a href="#" type="button" id="{{$utente->id}}" class="open-chat">Invia un messaggio a {{$utente->username}}</a> 
-                </div>    
         </div>
-
-
+        <div class="row mb-3">
+            <div class="col-lg-4">
+                <p class ="subtitle">
+                    Nome: {{$utente->nome}} <br>
+                    Cognome: {{$utente->cognome}}
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <p class = "subtitle">
+                    Genere: @if($utente->sesso == 'M') Uomo
+                            @else Donna
+                            @endif <br>
+                    Nato il: {{$utente->data_nascita}}        
+                </p>
+            </div>
+            <div class="col-lg-4 justify-content-end align-items-center d-flex">
+                <div class="text-end">
+                    <a type="button" id="{{$utente->id}}" class="open-chat link-open-chat">Invia un messaggio a {{$utente->username}}</a> 
+                </div>
+            </div>
+        </div>   
     @endif
     @endforeach
     @endforeach

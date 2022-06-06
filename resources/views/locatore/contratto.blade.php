@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-lg-4"> {{$contratto_info[0]->descrizione}} </div>
             <div class="col-lg-3"> {{$contratto_info[0]->citta}}, {{$contratto_info[0]->via}} {{$contratto_info[0]->ncivico}}</div>
-            <div class="col-lg-3"> Prezzo: {{$contratto_info[0]->prezzo}} </div>
+            <div class="col-lg-3"> Prezzo: {{$contratto_info[0]->prezzo}}€ </div>
         </div>
 
     </div>

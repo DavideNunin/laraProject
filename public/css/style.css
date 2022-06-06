@@ -6,17 +6,49 @@
   .navbar-toggler-icon{
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   }
+
+  .link-registrati {
+    text-decoration: none;
+    color: #66171A;
+  }
+  .link-registrati:hover{
+    color: #66171A;
+    font-weight: 500;
+  }
   
   .link-website {
-    color: #803841;
     text-decoration: none;
+    padding: 7px;
+    border-radius: 7px;
+    font-weight: 500;
+    color: #66171A;
+    background-color: #eee;
   }
   .link-website:hover {
-    color: #803841;
-    text-decoration: underline;
+    color: #eee;
+    background-color: #803841;
+    padding: 7px;
   }
   .link-website:focus{
     box-shadow: 0 0 0 0.25rem transparent!important;
+  }
+  .default-text {
+    color: #706e6e;
+  }
+  .link-offerta-title {
+    color: #48141A;
+    text-decoration: none;
+  }
+  .link-offerta-title:hover {
+    text-decoration: underline;
+    color: #66171A;
+  }
+  .link-open-chat {
+    color: #66171A;
+    text-decoration: underline;
+  }
+  .link-open-chat:hover {
+    color: #48141A;
   }
   /* navbar style */
   .link-navbar, .navbar-brand {
@@ -204,7 +236,7 @@
 	background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 150vh;
 	/*filter: blur(8px);
   -webkit-filter: blur(8px);*/
 }
@@ -258,13 +290,13 @@
 
 /* ------------------ style offerta ------------ */
 .single-offerta{
-  background-color: #f9f9f9;
+  background-color: #fbfbfb;
   border-radius: 20px;
   padding: 2rem;
 }
-.single-offerta:hover{
-  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-}
+/*.single-offerta:hover{
+  box-shadow: rgba(149, 157, 165, 0.3) 0px 8px 24px;
+}*/
 .offerta {
   background-color: #f9f9f9;
   border-radius: 20px;
@@ -460,6 +492,10 @@
 #errMessaggio {
   color: #aaa;
 }
+
+.message-down {
+  background-color: white;
+}
 /* MEDIA CSS */
 
 
@@ -500,4 +536,18 @@
   height: 7vh;
     width: 35vh;
     border-bottom: solid 2px black;
+}
+
+/*style filters*/
+.filters{
+    background-color: #eee;
+    border-radius: 15px;
+    padding: 15px;
+    display: none;
+}
+.filters-toopen {
+  cursor: pointer;
+}
+.filters-toopen:hover {
+  font-weight: 500;
 }

@@ -76,7 +76,8 @@ class LocatoreController extends Controller {
 
     public function offerteLocatore($paged = 200){
         $user_id = auth()->user()->id;
-        $catalogo_offerte = Offerta::where('user_id',$user_id);
+        $catalogo_offerte =  $this->_offertaModel->get_offerta_from_user($user_id);
+        //$catalogo_offerte = Offerta::where('user_id',$user_id);
         return view('locatore/offertelocatore')
                         ->with('catalogo', $catalogo_offerte->paginate($paged));
     }
@@ -144,6 +145,7 @@ class LocatoreController extends Controller {
         $appartamento = $this->_appartamentoModel->delete_appartamento_from_offertaId($id);
         $postoLetto = $this->_postoLettoModel->delete_postoLetto_from_offertaId($id);
         $opzionamento = $this->_opzionamentoModel->delete_opzionamento_from_offertaId($id);
+
 
         $offerta= $this->_offertaModel->delete_offerta($id);
 
@@ -243,10 +245,16 @@ class LocatoreController extends Controller {
 
     public function contratto($id_opzionamento) {
         $opzionamento = $this->_opzionamentoModel->get_opzionamento_from_id($id_opzionamento);
+        if(!$opzionamento){
+            //errore! Hai cercato un contratto che non hai stipulato tu
+            return redirect()->action('LocatoreController@index');
+        }
         $proprietario = Auth::user();
             //stipula contratto
         $contratto = $this->_contrattoModel->stipulaContratto($opzionamento->user_id, $proprietario->id, $opzionamento->offerta_id);
-        
+        $this->_offertaModel->set_opzionabile_off($opzionamento->offerta_id);
+
+
         $info = $this->_contrattoModel->get_contratto_info($contratto->id);
         $this->_opzionamentoModel->contratto_stipulato($opzionamento->offerta_id, $id_opzionamento);
 
@@ -269,14 +277,18 @@ class LocatoreController extends Controller {
     public function vediContratto($contratto_id) {
         $contratto = $this->_contrattoModel->get_contratto_info($contratto_id);
 
+        if($contratto->isEmpty()){
+            //errore! Hai cercato un contratto che non hai stipulato tu
+            return redirect()->action('LocatoreController@index');
+        }
+        $details_offerta = '';
+        if($contratto[0]->tipologia == 'A') {
+           $details_offerta = $this->_appartamentoModel->get_appartamento($contratto[0]->offerta_id); 
+        }
+        elseif($contratto[0]->tipologia == 'P'){
+            $details_offerta = $this->_postoLettoModel->get_postoLetto($contratto[0]->offerta_id);     
+        }
 
-            $details_offerta = '';
-            if($contratto[0]->tipologia == 'A') {
-               $details_offerta = $this->_appartamentoModel->get_appartamento_from_offertaId($contratto[0]->offerta_id); 
-            }
-            elseif($contratto[0]->tipologia == 'P'){
-                $details_offerta = $this->_postoLettoModel->get_postoLetto_from_offertaId($contratto[0]->offerta_id);     
-            } 
 
         dd($contratto);
         if($contratto != null){

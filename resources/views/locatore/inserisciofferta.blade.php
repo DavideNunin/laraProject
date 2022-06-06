@@ -85,6 +85,10 @@
                     {{ Form::label('genereRichiesto', 'F', ['class' => 'form-label']) }}
                     {{ Form::radio('genereRichiesto', 'F', false, ['class' => 'radio-form']) }}
                 </div>
+                <div class="col-lg-3">
+                    {{ Form::label('genereRichiesto', 'A', ['class' => 'form-label']) }}
+                    {{ Form::radio('genereRichiesto', 'A', false, ['class' => 'radio-form']) }}
+                </div>
                 @if ($errors->first('genereRichiesto'))
                     <ul class="errors">
                         @foreach ($errors->get('genereRichiesto') as $message)

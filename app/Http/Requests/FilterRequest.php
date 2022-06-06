@@ -36,6 +36,8 @@ class FilterRequest extends FormRequest
             'terrazzo'=>'nullable|sometimes|numeric|max:1|min:1',
             'doppia' => 'nullable|sometimes|numeric',
             'luogo_studio'=> 'nullable|sometimes|numeric',
+            'finestra'=>'nullable|sometimes|numeric|max:1|min:1',
+            'nposti_letto'=>'nullable|sometimes|numeric',
             'locale_ricreativo' => 'nullable|sometimes|numeric|max:1|min:1'
         ];
     }

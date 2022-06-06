@@ -11,6 +11,9 @@ class CreateDestinatarioTable extends Migration
      *
      * @return void
      */
+    
+
+    // DA ELIMINARE
     public function up()
     {
         Schema::create('destinatario', function (Blueprint $table) {

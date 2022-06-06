@@ -18,7 +18,6 @@ class Appartamento extends Model{
         return Appartamento::where('offerta_id', '=', $id)->get();
     }
 
-
     public function delete_appartamento_from_offertaId($id){
         return Appartamento::where('offerta_id', '=', $id)->delete();
 

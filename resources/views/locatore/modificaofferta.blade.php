@@ -97,6 +97,11 @@
                     @if($offerta->genereRichiesto == 'F') {{ Form::radio('genereRichiesto', 'F', true, ['class' => 'radio-form']) }}
                     @else {{ Form::radio('genereRichiesto', 'F', false, ['class' => 'radio-form']) }}
                     @endif
+
+                    {{ Form::label('genereRichiesto', 'A', ['class' => 'form-label']) }}
+                    @if($offerta->genereRichiesto == 'A') {{ Form::radio('genereRichiesto', 'A', true, ['class' => 'radio-form']) }}
+                    @else {{ Form::radio('genereRichiesto', 'A', false, ['class' => 'radio-form']) }}
+                    @endif
                 @if ($errors->first('genereRichiesto'))
                     <ul class="errors">
                         @foreach ($errors->get('genereRichiesto') as $message)
