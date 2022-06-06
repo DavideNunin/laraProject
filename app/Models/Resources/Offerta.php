@@ -150,7 +150,7 @@ class Offerta extends Model {
         }
     }
     public function scopeDataFilter($query,$date){
-        return $query->whereDate('offerta.dataPubblicazione','<=',$date);
+        return $query->whereDate('offerta.dataInizioLocazione','<=',$date);
     }
 }
 
