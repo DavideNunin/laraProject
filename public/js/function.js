@@ -74,6 +74,25 @@ function sendMessageFromPopup(URL, id_talking) {
     });
 }
 
+function sendMessageFromPopup(URL, id_talking) {
+    var form = new FormData(document.getElementById('formSendMessage'));
+    form.append("destinatario",id_talking); 
+    $.ajax({
+        type: 'POST',
+        url: URL,
+        data: form,
+        dataType: "json",
+        error: function (data) {
+            $("#errMessaggio").text("Devi scrivere un messaggio");
+        },
+        success: function (data) {
+            closePopup("popupMessage-close");
+        },
+        contentType: false,
+        processData: false
+    });
+}
+
 
 /* FUNCTIONS FAQ */
 

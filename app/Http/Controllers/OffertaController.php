@@ -21,31 +21,14 @@ class OffertaController extends Controller
     }
 
     public function offerte_user_1() {
-
-        //Estraggo il catalogo delle offerte
         $catalogo_offerte = $this->_catalogModel->getAll();
 
         return view('offerta/offerte')
                         ->with('catalogo', $catalogo_offerte);
     }
-
-    /*public function offerte_user_2() {
-
-        //Estraggo il catalogo delle offerte
-        $catalogo_offerte = $this->_catalogModel->getAll();
-        $user_type = 1;
-
-        return view('offerta/offerte')
-                        ->with('catalogo', $catalogo_offerte)
-                        ->with('type_user', $user_type);
-
-    }*/
-
     
 
     public function offerta_singola($id_offerta){
-        // questa fa partire la view singola_locatore o singola_locatario
-        // in base all'utente autenticato
         $user_type = 1;
         $offerta = $this->_offertaModel->get_offerta_from_id($id_offerta);
         $utenti_opzione = $this->_userModel->get_offerte_opzionate($id_offerta);

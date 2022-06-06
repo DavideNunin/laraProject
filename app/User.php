@@ -80,4 +80,8 @@ class User extends Authenticatable
                     ->get(['users.*']);
 
     }
+
+    public function get_locatori(){
+        return User::where('tipologia', '=', 'l')->get();
+    }
 }
