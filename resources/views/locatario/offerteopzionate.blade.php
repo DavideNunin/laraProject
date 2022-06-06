@@ -40,7 +40,7 @@
                 </div>
                 <div class="row d-flex align-items-end">
                     <div class = "col-lg-12 d-flex justify-content-end btn-sm ">
-                        <a type = "button" href="{{route('rimuoviopzionamento',['id' => $offerta->offerta_id ])}}" class ="rimuovi_opz">Rimuovi opzionamento</a>
+                        <a href="{{route('rimuoviopzionamento',['id' => $offerta->offerta_id ])}}" class ="rimuovi_opz link-website">Rimuovi opzionamento</a>
                     </div>
                 </div>
         </div>

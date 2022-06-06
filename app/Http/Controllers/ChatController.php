@@ -16,6 +16,7 @@ class ChatController extends Controller
     protected $_chatModel;
     public function __construct() {
         $this->middleware('can:isAuth');
+        $this->_userModel = new User;
         $this->_chatModel = new Chat;
     }
 
@@ -39,7 +40,8 @@ class ChatController extends Controller
     }*/
 
     public function startChat(Request $request) {
-        $user=User::find($request->get('id'));
+        $user = $this->_userModel->get_user($request->get('id'));
+        //$user=User::find($request->get('id'));
         $this->_chatModel->set_read($request->get('id'));
         $messaggi = $this->_chatModel->get_messaggi($request->get('id'));
 

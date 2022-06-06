@@ -11,6 +11,7 @@ class CreateMittenteTable extends Migration
      *
      * @return void
      */
+    // DA ELIMINARE
     public function up()
     {
         Schema::create('mittente', function (Blueprint $table) {

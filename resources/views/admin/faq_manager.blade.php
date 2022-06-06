@@ -83,7 +83,7 @@
                                 <div class="row">
                                     <div class="col-lg-8">
                                         <h2 class="mb-0">
-                                            <button class="btn link-website text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $singlefaq->id}}" aria-expanded="true" aria-controls="collapse{{ $singlefaq->id }}">
+                                            <button class="btn link-faq text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $singlefaq->id}}" aria-expanded="true" aria-controls="collapse{{ $singlefaq->id }}">
                             {{ $singlefaq->domanda}}
                                             </button>
                                         </h2>

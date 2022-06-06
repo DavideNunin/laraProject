@@ -28,6 +28,8 @@ class LocatarioController extends Controller
         $this->middleware('can:isLocatario');
         $this->_faqModel = new ElencoFaq;
         $this->_userModel = new User;
+        $this->_offertaModel = new Offerta;
+        $this->_opzionamentoModel = new Opzionamento;
     }
     //
     public function index() {
@@ -38,9 +40,11 @@ class LocatarioController extends Controller
             ->with('elfaq', $elfaq);
     }
     public function offerteOpzionate($paged = 4){
-        $opzionamenti= Offerta::join('opzionamento',function($join){
-            $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
-            })->paginate($paged);
+        $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate();
+        //$opzionamenti= Offerta::join('opzionamento',function($join){
+         //   $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
+          //  })->paginate($paged);
+        $opzionamenti->paginate($paged);
 
         Log::debug($opzionamenti);
 
@@ -77,8 +81,9 @@ class LocatarioController extends Controller
 
     public function rimuoviOpzionamento ($id_offerta){
         $user_id=auth()->user()->id;
-        $opzionamento=Opzionamento::where('offerta_id','=',$id_offerta)->where('user_id','=',$user_id);
-        $opzionamento->delete();
+        $opzionamento = $this->_opzionamentoModel->remove_opzionamento($id_offerta, $user_id);
+        //$opzionamento=Opzionamento::where('offerta_id','=',$id_offerta)->where('user_id','=',$user_id);
+        //$opzionamento->delete();
         return redirect()->action('LocatarioController@index');
     }
     public function filter($paged=4){
@@ -142,9 +147,11 @@ class LocatarioController extends Controller
             Log::debug($offerte);
             return view('locatario/ricerca')->with('risultati',$offerte);
         }
-        else{
-            $offerte=Offerta::paginate($paged);//->appends($request->all());
-            return view('locatario/ricerca')->with('risultati',$offerte);
+        else{    
+            $offerte=Offerta::paginate($paged);//->appends($request);
+            //dd($offerte[0]->offerta_id);
+            return view('locatario/ricerca')
+                ->with('risultati',$offerte);
         }
     }
 
