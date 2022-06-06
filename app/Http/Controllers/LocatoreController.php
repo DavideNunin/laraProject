@@ -288,14 +288,13 @@ class LocatoreController extends Controller {
         }
         $details_offerta = '';
         if($contratto[0]->tipologia == 'A') {
-           $details_offerta = $this->_appartamentoModel->get_appartamento($contratto[0]->offerta_id); 
+           $details_offerta = $this->_appartamentoModel->get_appartamento_from_offertaId($contratto[0]->offerta_id); 
         }
         elseif($contratto[0]->tipologia == 'P'){
-            $details_offerta = $this->_postoLettoModel->get_postoLetto($contratto[0]->offerta_id);     
+            $details_offerta = $this->_postoLettoModel->get_postoLetto_from_offertaId($contratto[0]->offerta_id);     
         }
 
 
-        dd($contratto);
         if($contratto != null){
             if (Gate::forUser(Auth()->user())->allows('yourContract', auth()->user(), $contratto)){       
             return view('locatore.contratto')
