@@ -10,7 +10,17 @@ class Appartamento extends Model{
     protected $guarded = ['id'];
     public $timestamps = false;
 
-    public function get_appartamento($id){
+    public function first_appartamento_from_offertaId($id){
+        return Appartamento::where('offerta_id', '=', $id)->first();
+    }
+
+    public function get_appartamento_from_offertaId($id){
         return Appartamento::where('offerta_id', '=', $id)->get();
+    }
+
+
+    public function delete_appartamento_from_offertaId($id){
+        return Appartamento::where('offerta_id', '=', $id)->delete();
+
     }
 }

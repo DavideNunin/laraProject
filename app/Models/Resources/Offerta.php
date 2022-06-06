@@ -31,6 +31,10 @@ class Offerta extends Model {
         return Offerta::find($id);
     }
 
+    public function delete_offerta($id){
+        return Offerta::where('offerta_id',$id)->delete();
+    }
+
     public function get_offerta_from_opzionamentoId($id) {
         return Offerta::join('opzionamento', function ($join) use ($id) {
             $join->on('offerta.offerta_id', '=', 'opzionamento.offerta_id')

@@ -4,6 +4,13 @@
 
 
 @section('content')
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
 <div class="container">
     <h3>Modifica "{{ $offerta->titolo}}"  </h3>
     {{ Form::open(array( 'id' => 'modifyOfferta', 'files' => true, 'class' => 'contact-form')) }}

@@ -60,11 +60,20 @@ class User extends Authenticatable
         ->get();
         return $offertautente;
     }
+
     public function get_locatario_from_opzionamentoId($id) {
         return User::join('opzionamento', function ($join) use ($id) {
             $join->on('users.id', '=', 'opzionamento.user_id')
             ->where('opzionamento.id', '=', $id);
         })
         ->get();    
+    }
+
+    public function get_richieste_opzionamento($id){
+       return User::join('opzionamento', 'users.id', '=', 'opzionamento.user_id')
+                    ->where('opzionamento.offerta_id', '=', $id)
+                    ->distinct('users.username')
+                    ->get(['users.*']);
+
     }
 }

@@ -55,4 +55,8 @@ class Contratto extends Model
         ->where('contratto.id', '=', $id)
         ->get();
     }
+
+    public function get_contratto_from_offerta($id){
+        return Contratto::where('offerta_id','=',$id)->get();
+    }
 }

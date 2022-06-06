@@ -4,6 +4,13 @@
 
 <!-- inizio sezione prodotti -->
 @section('content')
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
 <div class="container">
     <div class="mt-3 d-flex justify-content-center title-contratto">Contratto di Locazione  </div>
 

@@ -11,8 +11,17 @@ class PostoLetto extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
 
-    public function get_postoLetto($id){
+    public function first_postoLetto_from_offertaId($id){
+        return PostoLetto::where('offerta_id', '=', $id)->first();
+    }
+
+    public function get_postoLetto_from_offertaId($id){
         return PostoLetto::where('offerta_id', '=', $id)->get();
+    }
+
+
+    public function delete_postoLetto_from_offertaId($id){
+        return PostoLetto::where('offerta_id', '=', $id)->delete();
     }
 }
 

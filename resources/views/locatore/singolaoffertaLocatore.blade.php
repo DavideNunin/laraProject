@@ -56,6 +56,14 @@
 
 @section('content')
 @include('popupmessage')
+
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
 <div class="container">
     <div class="row offerta mb-5">
         <div class="col-sm-4">
@@ -171,7 +179,7 @@
     @foreach($opz as $opzionamento)
     @foreach($user as $utente)
     @if($opzionamento->user_id == $utente->id)
-        <div class="row mb-5">
+        <div class="row mb-5" id ="superMario">
              
             @if($contratti->isNotEmpty())
                 @if($contratti[0]->studente_id == $utente->id)
