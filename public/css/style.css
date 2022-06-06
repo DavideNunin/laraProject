@@ -547,7 +547,11 @@
 }
 .filters-toopen {
   cursor: pointer;
+  font-size: 18px;
 }
 .filters-toopen:hover {
   font-weight: 500;
+}
+.number_result {
+  color: #999;
 }

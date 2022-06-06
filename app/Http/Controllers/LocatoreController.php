@@ -77,9 +77,14 @@ class LocatoreController extends Controller {
     public function offerteLocatore($paged = 200){
         $user_id = auth()->user()->id;
         $catalogo_offerte =  $this->_offertaModel->get_offerta_from_user($user_id);
+        $offerteOff = false;
+        if(!$catalogo_offerte->count()){
+            $offerteOff = true;
+        }
         //$catalogo_offerte = Offerta::where('user_id',$user_id);
         return view('locatore/offertelocatore')
-                        ->with('catalogo', $catalogo_offerte->paginate($paged));
+                        ->with('catalogo', $catalogo_offerte->paginate($paged))
+                        ->with('off', $offerteOff);
     }
 
     public function inserisciofferta(){

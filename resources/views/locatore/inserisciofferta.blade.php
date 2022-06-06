@@ -6,7 +6,9 @@
 
 @parent
 <script src="{{ asset('js/insertInputFields.js') }}" ></script>
+
 @endsection
+
 
 @section('content')
 <div class="container">
