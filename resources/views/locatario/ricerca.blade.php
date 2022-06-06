@@ -192,9 +192,7 @@
     @endisset
 </div>
 
-{{$locatori}}
 @foreach ($risultati as $offerta)
-{{$offerta->user_id}}
 <div class="container">
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">
@@ -231,7 +229,7 @@
                 <div class="col-lg-6 d-flex justify-content-start">
                     @foreach($locatori as $locatore)
                         @if($locatore->id == $offerta->user_id)
-                            <a type="button" class ="send-message link-website" id="{{$offerta->user_id}}">Invia un messaggio a {{$locatore->username}}</a>
+                            <a type="button" class ="send-message link-website" id="{{$offerta->user_id}}">Invia un messaggio a {{$locatore->nome}} {{$locatore->cognome}}</a>
                         @endif
                     @endforeach
                 </div>                

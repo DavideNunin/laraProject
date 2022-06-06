@@ -82,6 +82,6 @@ class User extends Authenticatable
     }
 
     public function get_locatori(){
-        return User::where('tipologia', '=', 'l')->get();
+        return User::where('tipologia', '=', 'l')->get(['id', 'nome', 'cognome']);
     }
 }
