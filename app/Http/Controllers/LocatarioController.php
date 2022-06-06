@@ -109,6 +109,9 @@ class LocatarioController extends Controller
                     if(isset($request->nposti_letto)){
                         $offerte=$offerte->Hasnpostiletto($request->nposti_letto);
                     }
+                    if(isset($request->superficie)){
+                        $offerte=$offerte->HasSuperficie($request->superficie);
+                    }
                 }
                 if($request->tipologia=='P'){
                     $offerte=$offerte->isPostoletto();
@@ -130,10 +133,16 @@ class LocatarioController extends Controller
             if(isset($request->eta_minima)){
                 $offerte=$offerte->EtaMin($request->eta_minima);
             }
+            if(isset($request->sesso)){
+                $offerte=$offerte->IsGender($request->sesso);
+            }
 
             if(isset($request->citta)){
                 $offerte=$offerte->SearchByCity($request->citta)->paginate($paged)->appends($request->all());
                 return view('locatario/ricerca')->with('risultati',$offerte)->with('ricerca',str_split($request->citta));
+            }
+            if(isset($request->data_inizio_locazione)){
+                $offerte=$offerte->DataFilter($request->data_inizio_locazione);
             }
             Log::debug('query:');
             Log::debug($offerte->toSql());

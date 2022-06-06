@@ -123,5 +123,22 @@ class Offerta extends Model {
         Log::debug($searchexpr);
         return $query->where('offerta.citta','LIKE',$searchexpr);
     }
+    public function scopeHasSuperficie($query,$sup){
+        return $query->where('appartamento.superficie','>=',$sup);
+    }
+    public function scopeIsGender($query,$gender){
+        if($gender=='M'){
+            return $query->where('offerta.genereRichiesto','=','M')->orWhere('offerta.genereRichiesto','=','A');
+        }
+        if($gender=='F'){
+            return $query->where('offerta.genereRichiesto','=','F')->orWhere('offerta.genereRichiesto','=','A');
+        }
+        else{
+            return $query->where('offerta.genereRichiesto','=','A');
+        }
+    }
+    public function scopeDataFilter($query,$date){
+        return $query->whereDate('offerta.dataPubblicazione','<=',$date);
+    }
 }
 

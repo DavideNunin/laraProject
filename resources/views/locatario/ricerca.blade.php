@@ -140,7 +140,7 @@ $(document).ready(function () {
     {{Form::open(array( 'id' => 'form-filtri','route'=> 'locatario_ricerca', 'files' => 'true', 'method' => 'GET' , 'class' => 'form-filtri' ))}}
     <div id="filters" class="filters">
         <div class="row col-lg-12">  
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                         <div>Stai cercando in</div>
                         {{ Form::search('citta','', array( 'class' => 'form-control mr-sm-2 campo' , 'id' => 'citta-field', 'placeholder' => 'Cerca città', 'aria-label' => 'Search' )) }}
             </div>
@@ -163,6 +163,12 @@ $(document).ready(function () {
                 <div>Tipo</div>
                 {{Form::select('tipologia',array(null =>"Seleziona","A" => "Appartamento", "P" => "Posto letto"), null ,array( 'id'=>'tipo-filter', 'class' => 'form-control dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false'))}}
             </div>
+            <div class="col-lg-1">
+                <div>Sesso:</div>
+                <div>Maschio</div>
+                {{Form::radio('sesso','M',true,array('class'=>'sesso-field'))}}
+                    <div>Femmina</div>
+                {{Form::radio('sesso','F',false,array('class'=>'sesso-field'))}}            </div>
             <div class="col-lg-1 d-flex align-items-center justify-content-center">
                 {{Form::submit()}}
             </div>
@@ -177,13 +183,21 @@ $(document).ready(function () {
                 <div>Terrazzo/<br>balcone:</div>
                     {{Form::checkbox('terrazzo','1',array('class'=>'appartamento-field', 'id'=>'terrazzo-field'))}}
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                     <div>Numero minimo di camere richieste:</div>
                     {{Form::number('ncamere',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'ncamere-field' ))}}
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div>Numero minimo di bagni richiesti:</div>
                 {{Form::number('nbagni',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'nbagni-field' ))}}
+            </div>
+            <div class="col-lg-2">
+                <div>Numero minimo di posti letto richiesti:</div>
+                {{Form::number('nposti_letto',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'nposti_letto-field' ))}}
+            </div>
+            <div class="col-lg-2">
+                <div>Supreficie minima accettata:</div>
+                {{Form::number('superficie',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'superficie-field' ))}}
             </div>
         </div>  
 
@@ -196,7 +210,11 @@ $(document).ready(function () {
                 {{Form::radio('doppia','1',false,array('class'=>'posto_letto-field'))}}            </div>
             <div class="col-lg-3">
                 <div>Luogo studio:</div>
-                {{Form::checkbox('luogo_studio','1',array('class'=>'posto_letto-field', 'id'=>'luogo_studio-field'))}}
+                {{Form::checkbox('luogo_studio','1',false,array('class'=>'posto_letto-field', 'id'=>'luogo_studio-field'))}}
+            </div>
+            <div class="col-lg-3">
+                <div>Presenza finestra:</div>
+                {{Form::checkbox('finestra','1',false,array('class'=>'posto_letto-field', 'id'=>'finestra-field'))}}
             </div>
         </div> 
 

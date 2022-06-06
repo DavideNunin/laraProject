@@ -38,9 +38,4 @@ class newModifyDataRequest extends FormRequest
             'conferma_password' => 'sometimes|required_with:password|same:password'
         ];
     }
-    public function messages(){
-            return [
-            'old_password.password' => 'wrong password'
-                                    ];
-    }
 }
