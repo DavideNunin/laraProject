@@ -31,6 +31,7 @@ class LocatoreController extends Controller {
     protected $_contrattoModel;
     protected $_appartamentoModel;
     protected $_postoLettoModel;
+    protected $_fotoModel;
 
 
     public function __construct() {
@@ -42,6 +43,7 @@ class LocatoreController extends Controller {
         $this->_contrattoModel = new Contratto;
         $this->_appartamentoModel = new Appartamento;
         $this->_postoLettoModel = new PostoLetto;
+        $this->_fotoModel = new Foto;
     }
 
     public function index() {
@@ -75,9 +77,14 @@ class LocatoreController extends Controller {
     public function offerteLocatore($paged = 200){
         $user_id = auth()->user()->id;
         $catalogo_offerte =  $this->_offertaModel->get_offerta_from_user($user_id);
+        $offerteOff = false;
+        if(!$catalogo_offerte->count()){
+            $offerteOff = true;
+        }
         //$catalogo_offerte = Offerta::where('user_id',$user_id);
         return view('locatore/offertelocatore')
-                        ->with('catalogo', $catalogo_offerte->paginate($paged));
+                        ->with('catalogo', $catalogo_offerte->paginate($paged))
+                        ->with('off', $offerteOff);
     }
 
     public function inserisciofferta(){
@@ -132,30 +139,29 @@ class LocatoreController extends Controller {
     
 
     public function eliminaOffertaLocatore($id){
-        $foto = Foto::where('offerta_id',$id)->first();
+        $foto = $this->_fotoModel->get_Foto_from_offerta_id($id);
         $filename=$foto->nome_file;
-        
         $foto->delete();
+
         if(File::exists(public_path('images/' . $filename)) && $filename != 'missing_foto.jpg'){
             File::delete(public_path('images/'.$filename));
-
         }
 
-        $appartamento = $this->_appartamentoModel->delete_appartamento_from_offerta($id);
-        //$appartamento = Appartamento::where('offerta_id',$id)->delete();
-        $postoLetto = PostoLetto::where('offerta_id', $id)->delete();
-        $opzionamento = Opzionamento::where('offerta_id', $id)->delete();
+        $appartamento = $this->_appartamentoModel->delete_appartamento_from_offertaId($id);
+        $postoLetto = $this->_postoLettoModel->delete_postoLetto_from_offertaId($id);
+        $opzionamento = $this->_opzionamentoModel->delete_opzionamento_from_offertaId($id);
 
-        $offerta= Offerta::where('offerta_id',$id)->delete();
+
+        $offerta= $this->_offertaModel->delete_offerta($id);
 
         return redirect()->action('LocatoreController@offerteLocatore');
     }
 
     public function modificaOfferta($id){
         
-        $offerta = Offerta::find($id);
-        $appartamento = Appartamento::where('offerta_id',$id)->get();
-        $postoLetto = PostoLetto::where('offerta_id',$id)->get();
+        $offerta = $this->_offertaModel->get_offerta_from_id($id);
+        $appartamento = $this->_appartamentoModel->get_appartamento_from_offertaId($id);
+        $postoLetto =  $this->_postoLettoModel->get_postoLetto_from_offertaId($id);
 
         if ($offerta != null){
         if (Gate::forUser(Auth()->user())->allows('yourOffer', $offerta, auth()->user())){
@@ -164,16 +170,18 @@ class LocatoreController extends Controller {
                     ->with('appartamento', $appartamento)
                     ->with('postoletto', $postoLetto);
         }
-        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
-        }
-        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
+        else return redirect()->back()->with('success', "Attenzione! Hai provato a modificare un'offerta che non ti appartiene");   
+    }
+        else return redirect()->back()->with('success', "Attenzione! Hai provato a modificare un'offerta che non ti appartiene");   
+
     }
 
     public function updateOffer(newOfferRequest $request, $id){
-        $offerta = Offerta::find($id);
-        $appartamento = Appartamento::where('offerta_id',$id)->first();
-        $postoLetto = PostoLetto::where('offerta_id',$id)->first();
-        $foto = Foto::where('offerta_id', $id)->first();
+
+        $offerta = $this->_offertaModel->get_offerta_from_id($id);
+        $appartamento = $this->_appartamentoModel->first_appartamento_from_offertaId($id);
+        $postoLetto =  $this->_postoLettoModel->first_postoLetto_from_offertaId($id);
+        $foto = $this->_fotoModel->get_Foto_from_offerta_id($id);
 
         $offerta->fill($request->validated());
         $offerta->update();
@@ -205,17 +213,14 @@ class LocatoreController extends Controller {
     public function singolaOfferta($id){
         //devo spostare queste 5 righe nei model cosi da dover richiamare solo 4 funzioni, è molto bello
         $url = "https://www.youtube.com/shorts/Pd8E3bJ04VM";
-        $offerta = Offerta::find($id);
+        $offerta = $this->_offertaModel->get_offerta_from_id($id);
 
-        $appartamento = Appartamento::where('offerta_id',$id)->get();
-        $postoLetto = PostoLetto::where('offerta_id',$id)->get();
+        $appartamento = $this->_appartamentoModel->get_appartamento_from_offertaId($id);
+        $postoLetto = $this->_postoLettoModel->get_postoLetto_from_offertaId($id);
 
-        $opzionamento  = Opzionamento::whereIn('offerta_id', [$id])->get();
+        $opzionamento  = $this->_opzionamentoModel->get_opzionamento_from_offertaId($id);
             
-        $users = User::join('opzionamento', 'users.id', '=', 'opzionamento.user_id')
-                    ->where('opzionamento.offerta_id', '=', $id)
-                    ->distinct('users.username')
-                    ->get(['users.*']);
+        $users = $this->_userModel->get_richieste_opzionamento($id);
 
         if ($offerta != null){
         $contratti = $this->_contrattoModel->get_contratti_utente($id);
@@ -230,19 +235,15 @@ class LocatoreController extends Controller {
                         ->with('user', $users)
                         ->with('contratti', $contratti);
             }
-            else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
+            else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un'offerta che non ti appartiene");   
         }
-        else return redirect()->to("https://www.youtube.com/shorts/Pd8E3bJ04VM");
-
-
+        else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un'offerta che non ti appartiene");   
 
     }
 
     public function deleteOpzionamento(Request $request){
         $id = $request->input()['id'];
-        $opzionamento = Opzionamento::find($id);
-        $opzionamento->delete();
-        //return response()->json(['redirect'=>$request->input()['offerta']]);
+        $opzionamento = $this->_opzionamentoModel->delete_opzionamento($id);
 
         return response()->json(['pippo'=>route('dettaglioOfferta', ['id' => $request->input()['offerta']])]);
     }
@@ -264,20 +265,23 @@ class LocatoreController extends Controller {
 
             $details_offerta = '';
             if($info[0]->tipologia == 'A') {
-            $details_offerta = $this->_appartamentoModel->get_appartamento($info[0]->offerta_id); 
+            $details_offerta = $this->_appartamentoModel->get_appartamento_from_offertaId($info[0]->offerta_id); 
             }
         elseif($info[0]->tipologia == 'P'){
-            $details_offerta = $this->_postoLettoModel->get_postoLetto($info[0]->offerta_id);     
+            $details_offerta = $this->_postoLettoModel->get_postoLetto_from_offertaId($info[0]->offerta_id);     
         }
-        
+        if (Gate::forUser(Auth()->user())->allows('yourContract', auth()->user(), $contratto)){
         return view('locatore.contratto')
                     ->with('contratto_info', $info)
                     ->with('info_casa', $details_offerta[0]);
-    }
+        }
+        else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un contratto che non hai stipulato");
+
+    }       
 
     public function vediContratto($contratto_id) {
-        
         $contratto = $this->_contrattoModel->get_contratto_info($contratto_id);
+
         if($contratto->isEmpty()){
             //errore! Hai cercato un contratto che non hai stipulato tu
             return redirect()->action('LocatoreController@index');
@@ -290,12 +294,17 @@ class LocatoreController extends Controller {
             $details_offerta = $this->_postoLettoModel->get_postoLetto($contratto[0]->offerta_id);     
         }
 
-        if (Gate::forUser(Auth()->user())->allows('yourContract', auth()->user(), $contratto)){
+
+        dd($contratto);
+        if($contratto != null){
+            if (Gate::forUser(Auth()->user())->allows('yourContract', auth()->user(), $contratto)){       
             return view('locatore.contratto')
                     ->with('contratto_info', $contratto)
                     ->with('info_casa', $details_offerta[0]);
+                             }
+        else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un contratto che non hai stipulato");
         }
-        else return back();
+        else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un contratto che non hai stipulato");
     }
 
     

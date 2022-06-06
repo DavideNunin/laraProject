@@ -28,12 +28,12 @@ class newOfferRequest extends FormRequest {
             'ncivico' => 'required|integer',
             'via' => 'required|max:25',
             'genereRichiesto' => 'required|max:1',
-            'citta'=>'required|max:15',
-            'descrizione' => 'required|max:50',
-            'periodo' => 'required| max:10',
+            'citta'=>'required|max:40',
+            'descrizione' => 'max:700',
+            'dataInizioLocazione' => 'required|max:10|date',
             'titolo'=>'required|max:40',
             'tipologia'=>'required|max:1',
-            'prezzo' => 'required|numeric|min:0',
+            'prezzo' => 'required|numeric|min:0|max:99999999',
             'etaRichiesta' => 'required|integer|min:18',
             
             //campi appartamento

@@ -6,7 +6,9 @@
 
 @parent
 <script src="{{ asset('js/insertInputFields.js') }}" ></script>
+
 @endsection
+
 
 @section('content')
 <div class="container">
@@ -77,7 +79,7 @@
             <div class="col-lg-3">
                 <div class="row justify-content-center">Genere richiesto:</div>
                 <div class="row justify-content-center">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     {{ Form::label('genereRichiesto', 'M', ['class' => 'form-label']) }}
                     {{ Form::radio('genereRichiesto', 'M', false, ['class' => 'radio-form']) }}
                 </div>
@@ -86,7 +88,7 @@
                     {{ Form::radio('genereRichiesto', 'F', false, ['class' => 'radio-form']) }}
                 </div>
                 <div class="col-lg-3">
-                    {{ Form::label('genereRichiesto', 'A', ['class' => 'form-label']) }}
+                    {{ Form::label('genereRichiesto', 'E', ['class' => 'form-label']) }}
                     {{ Form::radio('genereRichiesto', 'A', false, ['class' => 'radio-form']) }}
                 </div>
                 @if ($errors->first('genereRichiesto'))
@@ -115,11 +117,11 @@
 
         <div class="row p-3">
             <div class="col-lg-4">
-                {{ Form::label('periodo', 'Inizio periodo di locazione', ['class' => 'label-input']) }}
-                {{ Form::date('periodo', '', ['class' => 'input form-control', 'id' => 'name']) }}
-                @if ($errors->first('periodo'))
+                {{ Form::label('dataInizioLocazione', 'Inizio dataInizioLocazione di locazione', ['class' => 'label-input']) }}
+                {{ Form::date('dataInizioLocazione', '', ['class' => 'input form-control', 'id' => 'name']) }}
+                @if ($errors->first('dataInizioLocazione'))
                     <ul class="errors">
-                        @foreach ($errors->get('periodo') as $message)
+                        @foreach ($errors->get('dataInizioLocazione') as $message)
                         <li>{{ $message }}</li>
                         @endforeach
                     </ul>
@@ -167,7 +169,7 @@
                         <div class="col-lg-9">
                             {{ Form::label('superficie', 'superficie dell appartamento ', ['class' => 'label-input']) }}
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 appartamento" >
                         {{ Form::text('superficie', '', ['class' => 'input form-control', 'id' => 'superficie']) }}
                         </div>
                         @if ($errors->first('superficie'))
@@ -180,17 +182,17 @@
                     </div>
 
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 appartamento">
                             {{ Form::label('npostiletto', 'Posti letto dell appartamento', ['class' => 'form-label']) }}
                             {{ Form::select('npostiletto', [1 =>  1, 2 => 2, 3 => 3, 4 => 4, 5 => 5 , 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10], 1, ['class' => 'input select-form','id' => 'npostiletto']) }}
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 appartamento">
                             {{ Form::label('ncamere', 'Numero camere dell appartamento', ['class' => 'form-label']) }}
                             {{ Form::select('ncamere', [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5,  6 => 6, 7 => 7, 8 => 8], 1, ['class' => 'input select-form','id' => 'ncamere']) }}
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 appartamento">
                             {{ Form::label('nbagni', 'Numero bagni dell appartamento', ['class' => 'form-label']) }}
-                            {{ Form::select('nbagni', [1 => 1, '2' => 2, '3' => '3', '4' => '4', '5'=>'5'], 1, ['class' => 'input select-form','id' => 'ncamere']) }}
+                            {{ Form::select('nbagni', [1 => 1, '2' => 2, '3' => '3', '4' => '4', '5'=>'5'], 1, ['class' => 'input select-form','id' => 'nbagni']) }}
                     </div>
 
                 </div>
@@ -198,13 +200,13 @@
                 
                 <div class="row col-lg-6 p-3 details-offerta">
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 appartamento">
                         <div class="col-lg-12">Presenza di un locale ricreativo:</div>
                             {{ Form::label('loc_ricr', 'Si', ['class' => 'form-label']) }}
-                            {{ Form::radio('loc_ricr', 1 , false, ['class' => 'radio-form']) }}
+                            {{ Form::radio('loc_ricr', 1 , false, ['class' => 'radio-form', 'id' => 'loc_ricr']) }}
 
                             {{ Form::label('loc_ricr', 'No', ['class' => 'form-label']) }}
-                            {{ Form::radio('loc_ricr', 0 , false, ['class' => 'radio-form']) }}
+                            {{ Form::radio('loc_ricr', 0 , false, ['class' => 'radio-form', 'id' => 'loc_ricr1']) }}
                         @if ($errors->first('loc_ricr'))
                             <ul class="errors">
                                 @foreach ($errors->get('loc_ricr') as $message)
@@ -215,14 +217,14 @@
                     </div>
     
                     
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 appartamento">
                         <div class="col-lg-12">Presenza della cucina:</div>
 
                             {{ Form::label('cucina', 'Si', ['class' => 'form-label']) }}
-                            {{ Form::radio('cucina', 1 , false, ['class' => 'radio-form']) }}
+                            {{ Form::radio('cucina', 1 , false, ['class' => 'radio-form', 'id' => 'cucina']) }}
                         
                             {{ Form::label('cucina', 'No', ['class' => 'form-label']) }}
-                            {{ Form::radio('cucina', 0 , false, ['class' => 'radio-form']) }}
+                            {{ Form::radio('cucina', 0 , false, ['class' => 'radio-form','id' => 'cucina1']) }}
                         
                         @if ($errors->first('cucina'))
                             <ul class="errors">
@@ -233,14 +235,14 @@
                         @endif
                     </div>
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 appartamento">
                         <div class="col-lg-12">Presenza del terrazzo:</div>
                         
                             {{ Form::label('terrazzo', 'Si', ['class' => 'form-label']) }}
-                            {{ Form::radio('terrazzo', 1 , false, ['class' => 'radio-form']) }}
+                            {{ Form::radio('terrazzo', 1 , false, ['class' => 'radio-form', 'id' => 'terrazzo']) }}
                         
                             {{ Form::label('terrazzo', 'No', ['class' => 'form-label']) }}
-                            {{ Form::radio('terrazzo', 0 , false, ['class' => 'radio-form']) }}
+                            {{ Form::radio('terrazzo', 0 , false, ['class' => 'radio-form', 'id' => 'terrazzo1']) }}
                         
                         @if ($errors->first('terrazzo'))
                             <ul class="errors">
@@ -260,13 +262,13 @@
         <div class="row p-3 col-lg-8 details-offerta">
             <div class="row">
 
-                <div class="col-lg-6">
+                <div class="col-lg-6 appartamento">
                     <div class="col-lg-12">Tipo di stanza:</div>
                         {{ Form::label('doppia', 'Singola', ['class' => 'form-label']) }}
-                        {{ Form::radio('doppia', 1 , false, ['class' => 'radio-form']) }}
+                        {{ Form::radio('doppia', 1 , false, ['class' => 'radio-form','id' => 'doppia']) }}
                         
                         {{ Form::label('doppia', 'Doppia', ['class' => 'form-label']) }}
-                        {{ Form::radio('doppia', 0 , false, ['class' => 'radio-form']) }}
+                        {{ Form::radio('doppia', 0 , false, ['class' => 'radio-form', 'id' => 'doppia1']) }}
                     @if ($errors->first('doppia'))
                         <ul class="errors">
                             @foreach ($errors->get('doppia') as $message)
@@ -276,6 +278,7 @@
                     @endif
                 </div>
 
+<!-- Campi per il posto letto -->
                 <div  class="col-lg-4">
                     {{ Form::label('superficie_postoletto', 'superficie della stanza ', ['class' => 'label-input']) }}
                     {{ Form::text('superficie_postoletto', '', ['class' => 'input form-control', 'id' => 'superficie_postoletto']) }}
@@ -294,10 +297,10 @@
                 <div class="col-lg-6">
                     <div class="col-lg-12">Presenza di un luogo per studiare:</div>
                         {{ Form::label('luogoStudio', 'Si', ['class' => 'form-label']) }}
-                        {{ Form::radio('luogoStudio', 1 , false, ['class' => 'radio-form']) }}
+                        {{ Form::radio('luogoStudio', 1 , false, ['class' => 'radio-form', 'id' => 'luogoStudio']) }}
 
                         {{ Form::label('luogoStudio', 'No', ['class' => 'form-label']) }}
-                        {{ Form::radio('luogoStudio', 0 , false, ['class' => 'radio-form']) }}
+                        {{ Form::radio('luogoStudio', 0 , false, ['class' => 'radio-form', 'id' => 'luogoStudio1']) }}
 
                     @if ($errors->first('luogoStudio'))
                         <ul class="errors">
@@ -311,10 +314,10 @@
                 <div class="col-lg-4">
                     <div class="col-lg-12">Presenza di una finestra:</div>
                         {{ Form::label('finestra', 'Si', ['class' => 'form-label']) }}
-                        {{ Form::radio('finestra', 1 , false, ['class' => 'radio-form']) }}
+                        {{ Form::radio('finestra', 1 , false, ['class' => 'radio-form', 'id' => 'finestra']) }}
 
                         {{ Form::label('finestra', 'No', ['class' => 'form-label']) }}
-                        {{ Form::radio('finestra', 0 , false, ['class' => 'radio-form']) }}
+                        {{ Form::radio('finestra', 0 , false, ['class' => 'radio-form', 'id' => 'finestra1']) }}
 
                     @if ($errors->first('finestra'))
                         <ul class="errors">
@@ -333,10 +336,15 @@
                 {{ Form::label('nome_file', 'Immagine', ['class' => 'label-input']) }}
                 {{ Form::file('nome_file', ['class' => 'input', 'id' => 'image']) }}
             </div>
-            <div class="row p-3 col-lg-3">                
-                    {{ Form::submit('Aggiungi offerta', ['class' => 'button-form']) }}
-            </div>
+            <div class ="row">
+                <div class="p-3 col-lg-3">                
+                        {{ Form::submit('Aggiungi offerta', ['class' => 'button-form']) }}
+                </div>
+                <div class="p-3 col-lg-3">                
+                        {{ Form::reset('Resetta campi', ['class' => 'button-form', 'onclick'=>'return confirm("Sicuro di voler svuotare tutti i campi?")']) }}
+                </div>
             {{ Form::close()}}
+            </div>
         </div>
 
     </div>

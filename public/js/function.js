@@ -38,7 +38,7 @@ function sendMessage(URL, id_talking) {
         data: form,
         dataType: "json",
         error: function (data) {
-            alert("errore");
+            $("#errMessaggio").text("Devi scrivere un messaggio");
         },
         success: function (data) {
             closePopup("popupMessage-close");

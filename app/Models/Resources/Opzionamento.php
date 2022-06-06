@@ -16,6 +16,18 @@ class Opzionamento extends Model
         return Opzionamento::find($id);
     }
 
+    public function get_opzionamento_from_offertaId($id){
+        return Opzionamento::whereIn('offerta_id', [$id])->get();
+    }
+
+    public function delete_opzionamento_from_offertaId($id){
+        return Opzionamento::where('offerta_id','=', $id)->delete();
+    }
+
+    public function delete_opzionamento($id){
+       return Opzionamento::find($id)->delete();
+    }
+
     public function contratto_stipulato($offerta_id, $id_opzionamento){
         return Opzionamento::where('offerta_id', '=', $offerta_id)
         ->where('id', '!=', $id_opzionamento)
@@ -26,10 +38,10 @@ class Opzionamento extends Model
         Opzionamento::where('offerta_id','=',$offerta)->where('user_id','=',$user)->delete();
     }
 
-    public function get_offerte_opzionate(){
+    public function get_offerte_opzionate($paged){
         return Offerta::join('opzionamento',function($join){
             $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
-        });
+        })->paginate($paged);
     }
 }
 

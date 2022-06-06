@@ -10,6 +10,10 @@ class Foto extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
+    public function get_Foto_from_offerta_id($id){
+        return Foto::where('offerta_id', '=', $id)->first();
+    }
+
 }
 
 ?>

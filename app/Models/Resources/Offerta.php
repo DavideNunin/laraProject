@@ -32,6 +32,10 @@ class Offerta extends Model {
         return Offerta::find($id);
     }
 
+    public function delete_offerta($id){
+        return Offerta::where('offerta_id',$id)->delete();
+	}
+	
     public function get_offerta_from_user($user_id){
         return Offerta::where('user_id',$user_id);
     }

@@ -4,6 +4,13 @@
 
 <!-- inizio sezione prodotti -->
 @section('content')
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
 <div class="container">
     <div class="mt-3 d-flex justify-content-center title-contratto">Contratto di Locazione  </div>
 
@@ -14,7 +21,7 @@
 
     <div class="row">
         <div class="col-lg-6 mt-3">
-            <div class="subtitle-contratto">Dettagli del locatore</div>
+            <div class="subtitle-contratto"><i class="fa-solid fa-house-circle-check"></i> Dettagli del locatore</div>
             <div class="col-lg-12">{{Auth::user()->nome}} {{Auth::user()->cognome}}</div>
             <div class="col-lg-12">
                 @if(Auth::user()->sesso == 'M')
@@ -34,7 +41,7 @@
             </div>
         </div>
         <div class="col-lg-6 mt-3">
-            <div class="subtitle-contratto">Dettagli del locatario</div>
+            <div class="subtitle-contratto"><i class="fa-solid fa-address-book"></i> Dettagli del locatario</div>
             <div class="col-lg-12">{{$contratto_info[0]->nome}} {{$contratto_info[0]->cognome}}</div>
             <div class="col-lg-12">
                 @if($contratto_info[0]->sesso == 'M')
@@ -55,7 +62,7 @@
         </div>
     </div>
     <div class="col-lg-12 mt-5">
-        <div class="subtitle-contratto"> Dettagli dell'offerta </div>
+        <div class="subtitle-contratto"><i class="fa-brands fa-buffer"></i> Dettagli dell'offerta </div>
         <div class="row">
             <div class="col-lg-4 title-offer">{{$contratto_info[0]->titolo}}</div>
             @if($contratto_info[0]->tipologia == 'A')
