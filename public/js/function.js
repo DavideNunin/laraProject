@@ -340,7 +340,7 @@ function createOpzionamento(id){
                     id: id},
 
             dataType: 'json',
-            error: function(response){
+            error: function(    ){
                 alert("non puoi opzionare due volte la stessa offerta");
             },
             success:function(data){

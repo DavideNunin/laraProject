@@ -128,7 +128,7 @@
         </div>
     </div>
     <div class="row col-lg-2 mt-3">
-        {{ Form::submit('Conferma', ['class' => 'form-label button-form', 'onclick'=> 'return confirm("E SE POI TE NE PENTI???")']) }}
+        {{ Form::submit('Conferma', ['class' => 'form-label button-form', 'onclick'=> 'return confirm("Sicuro di voler modificare i tuoi dati?")']) }}
     </div>
     {{ Form::close() }}
 </div>

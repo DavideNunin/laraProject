@@ -56,6 +56,28 @@
             });
 
     });
+
+    function createOpzionamento(id){
+    if(confirm("Sei sicuro di voler opzionare quest'offerta ?")){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            type:'POST',
+            url: "{{route('opziona_offerta')}}",
+            data: {
+                    id: id},
+
+            dataType: 'json',
+            error: function(data){
+                alert("non puoi opzionare due volte la stessa offerta");
+            },
+            success:function(data){
+                window.location.replace(data.redirect);
+            },
+        })
+    }
+ }
         
 </script>
 

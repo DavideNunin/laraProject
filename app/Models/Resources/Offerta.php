@@ -56,6 +56,14 @@ class Offerta extends Model {
         Offerta::find($offerta_id)->update(['opzionabile' => false]);
     }
 
+    public function get_utente_by_offerta($id){
+        return Offerta::join('users', function ($join) use ($id) {
+            $join->on('offerta.user_id', '=', 'users.id')
+            ->where('offerta.offerta_id', '=', $id);
+        })
+        ->first();
+    }
+
 
     public function get_offerte_opzionate($tipo, $start, $end) {
 
