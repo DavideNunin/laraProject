@@ -50,17 +50,14 @@
         {{ Form::label('gender', 'Sesso', ['class' => 'form-label']) }}
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="custom-control custom-radio custom-control-inline">
-
                     Maschio
-                    {{ Form::radio('sesso', 'M', ['class' => 'form-control', 'id' => 'button-maschio']) }}  
+                    {{ Form::radio('sesso', 'M', ['class' => 'radio-form', 'id' => 'button-maschio']) }}  
 
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
 
                     Femmina
-                    {{ Form::radio('sesso', 'F', ['class' => 'form-control', 'id' => 'button-femmina']) }}        
-                    </div>
+                    {{ Form::radio('sesso', 'F', ['class' => 'radio-form', 'id' => 'button-femmina']) }}        
                 </div>
             </div>
         </div>
@@ -130,15 +127,10 @@
             @endif
         </div>
     </div>
-    <div class="row col-lg-8 justify-content-center mt-3">
-        <div class="col-lg-4 justify-content-center d-flex">
-            {{ Form::submit('Conferma', ['class' => 'form-label button-form', 'onclick'=> 'return confirm("E SE POI TE NE PENTI???")']) }}
-        </div>
+    <div class="row col-lg-2 mt-3">
+        {{ Form::submit('Conferma', ['class' => 'form-label button-form', 'onclick'=> 'return confirm("E SE POI TE NE PENTI???")']) }}
     </div>
-                {{ Form::close() }}
-</div>
-<div class="row">
-<br>
+    {{ Form::close() }}
 </div>
 
 

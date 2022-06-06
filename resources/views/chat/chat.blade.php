@@ -66,7 +66,7 @@ $(function () {
                     <!-- Messages with jQuery -->
                 </div>
 
-                <div class="footer-message fixed-bottom">
+                <div class="message-down fixed-bottom pt-4">
                     <div class="container d-flex justify-content-center">
                         {{ Form::open(array('id' => 'sendMessage-form', 'class' => 'Messageform')) }}
                         <div class="col-lg-12">

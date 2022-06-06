@@ -4,6 +4,7 @@ namespace App\Models\Resources;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Foto;
+use App\Models\Resources\Contratto;
 
 class Offerta extends Model {
 
@@ -31,6 +32,10 @@ class Offerta extends Model {
         return Offerta::find($id);
     }
 
+    public function get_offerta_from_user($user_id){
+        return Offerta::where('user_id',$user_id);
+    }
+
     public function get_offerta_from_opzionamentoId($id) {
         return Offerta::join('opzionamento', function ($join) use ($id) {
             $join->on('offerta.offerta_id', '=', 'opzionamento.offerta_id')
@@ -39,13 +44,9 @@ class Offerta extends Model {
         ->get();
     }
 
-
-    /*$utenti = User::join('opzionamento', function($join) use ($id){
-        $join->on('users.id', '=', 'opzionamento.user_id')
-        ->where('opzionamento.offerta_id', '=', $id);
-    })
-    ->get();
-    return $utenti;*/
+    public function set_opzionabile_off($offerta_id){
+        Offerta::find($offerta_id)->update(['opzionabile' => false]);
+    }
 
 
     public function get_offerte_opzionate($tipo, $start, $end) {
@@ -77,6 +78,9 @@ class Offerta extends Model {
         }
         return $offerte;
     }
+
+
+
     public function scopeIsAppartamento($query){
         return $query->join('appartamento','appartamento.offerta_id','=','offerta.offerta_id',)->select('offerta.*');
     }

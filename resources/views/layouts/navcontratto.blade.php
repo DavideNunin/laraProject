@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item link-navbar-item">
-          <a href="{{ route('homeadmin') }}" class="link-navbar button-navbar"> <i class="fa-solid fa-house"></i> </a>
+          <a href="{{ route('homelocatore') }}" class="link-navbar button-navbar"> <i class="fa-solid fa-house"></i> </a>
         </li>
       </ul>
     </div>

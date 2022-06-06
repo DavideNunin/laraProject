@@ -21,7 +21,7 @@
         @if ($errors->first('username'))
         <ul class="errors">
             @foreach ($errors->get('username') as $message)
-            <li>{{ $message }}</li>
+            {{ $message }}</br>
             @endforeach
         </ul>
         @endif
@@ -38,7 +38,7 @@
           @if ($errors->first('password'))
           <ul class="errors">
               @foreach ($errors->get('password') as $message)
-              <li>{{ $message }}</li>
+              {{ $message }}</br>
               @endforeach
           </ul>
           @endif
@@ -57,7 +57,7 @@
 
   <!-- Register buttons -->
   <div class="text-center">
-    <p>Non sei registrato? <a href="{{ route('register')}}" class="link-website">Registrati</a></p>
+    <p>Non sei registrato? <a href="{{ route('register')}}" class="link-registrati">Registrati</a></p>
   </div>
 </div>
 

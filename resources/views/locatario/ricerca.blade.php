@@ -136,9 +136,9 @@ $(document).ready(function () {
 <!--ci andrà la navbar-->
 @include('popupmessage')
 <div class="container">
-    <div id="open-filter" class="filters-toopen">Filters <i class="fa-solid fa-filter"></i></div>
+    <div id="open-filter" class="filters-toopen col-lg-1 mb-2">Filters <i class="fa-solid fa-filter"></i></div>
     {{Form::open(array( 'id' => 'form-filtri','route'=> 'locatario_ricerca', 'files' => 'true', 'method' => 'GET' , 'class' => 'form-filtri' ))}}
-    <div id="filters" class="filters">
+    <div id="filters" class="filters mb-4">
         <div class="row col-lg-12">  
             <div class="col-lg-2">
                         <div>Stai cercando in</div>
@@ -270,11 +270,16 @@ $(document).ready(function () {
             </div>
             <div class="row d-flex align-items-end">
                 <div class="col-lg-6 d-flex justify-content-start">
+                    
                     <!-- qui sull'id ci metto l'id dell'utente a cui invia un messaggio -->
-                    <a type="button" class ="send-message" id="{{$offerta->id}}">Invia un messaggio</a>
+                    <a type="button" class ="send-message link-website" id="{{$offerta->offerta_id}}">Invia un messaggio</a>
                 </div>                
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <a href ="javascript:void(0)" onclick="createOpzionamento({{$offerta->offerta_id}})">Opziona offerta</a>
+                    @if($offerta->opzionabile) 
+                        <a href ="javascript:void(0)" onclick="createOpzionamento({{$offerta->offerta_id}})" class="link-website">Opziona offerta</a>
+                    @else
+                        <span class="default-text">Non più opzionabile</span>
+                    @endif
                 </div>
                 
             </div>

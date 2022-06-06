@@ -24,20 +24,21 @@ class AdminController extends Controller {
 
     public function __construct() {
         $this->middleware('can:isAdmin');
-        $this->_faqModel = new ElencoFaq;
+        $this->_faqModel = new Faq;
+        $this->_listFaqModel = new ElencoFaq;
         $this->_catalogModel = new Catalog;
         $this->_offertaModel = new Offerta;
         $this->_contrattoModel = new Contratto;
     }
 
     public function index() {
-        $elfaq= $this->_faqModel->getAll();
+        $elfaq= $this->_listFaqModel->getAll();
         return view('home')
             ->with('elfaq', $elfaq);
     }
 
     public function faqmanager() {
-        $elfaq= $this->_faqModel->getAll();
+        $elfaq= $this->_listFaqModel->getAll();
         return view('admin.faq_manager')
             ->with('elfaq', $elfaq);
     }
@@ -56,14 +57,12 @@ class AdminController extends Controller {
     }
     public function deleteFaq(Request $request) {
         $id_todelete = $request->get('id');
-        $faq=Faq::find($id_todelete);
-        $faq->delete();
-        //return json_encode($faq->delete());
+        $faq = $this->_faqModel->delete_faq($id_todelete);
         return response()->json(['redirect' => route('faqmanager')]);
     }
 
     public function loadFaq(Request $request) {
-        $faq=Faq::find($request->get('id'));
+        $faq = $this->_faqModel->get_faq($request->get('id'));
         $domanda = $faq->domanda;
         $risposta = $faq->risposta;
         return response()->json(['domanda' => $domanda, 'risposta' =>$risposta]);
@@ -73,8 +72,8 @@ class AdminController extends Controller {
         $id = $request->id;
         $domanda = $request->domanda;
         $risposta = $request->risposta;
-
-       Faq::where('id', '=', $id)->update(['domanda' => $domanda, 'risposta' => $risposta]);
+        
+        $this->_faqModel->update_faq($id, $domanda, $risposta);
         return response()->json(['redirect' => route('faqmanager')]);
     }
 
@@ -86,6 +85,26 @@ class AdminController extends Controller {
     }
 
     public function find(NewStatsRequest $request) {
+        $data_inizio = '';
+        $data_fine = '';
+        $tipo = '';
+        if($request->start_stats == null){
+            $request->start_stats = '1900-03-08';
+            $data_inizio = 'Sempre';
+        }
+        else {
+            $data_inizio = $request->start_stats;
+        }
+        if($request->end_stats == null){
+            $request->end_stats = '3000-03-08';
+            $data_fine = 'Sempre';
+        }
+        else {
+            $data_fine = $request->end_stats;
+        }
+        if($request->tipo == null){
+            $request->tipo = 'all';
+        }
 
         $offerte_opzionate = $this->_offertaModel->get_offerte_opzionate($request->tipo, $request->start_stats, $request->end_stats);
         $offerte_nel_sito = $this->_offertaModel->offerte_in_website($request->tipo, $request->start_stats, $request->end_stats);
@@ -103,8 +122,8 @@ class AdminController extends Controller {
         }
 
         return view('admin.stats')
-        ->with('start', $request->start_stats)
-        ->with('end', $request->end_stats)
+        ->with('start', $data_inizio)
+        ->with('end', $data_fine)
         ->with('tipo', $tipo)
         ->with('offerte_opzionate', $offerte_opzionate)
         ->with('contratti_locati', $contratti_locati)

@@ -8,9 +8,6 @@
 <div class="container">
     <div class= "text-center mt-3">
     <h3> REGISTRATI </h3>
-    @foreach($errors->all() as $error)
-   {{ $error  }}
-@endforeach
 </div>
 {{ Form::open(array('route' => 'register', 'class' => 'registration-form')) }}
 <div class="container">
@@ -20,7 +17,7 @@
             {{ Form::text('nome', '', ['class' => 'form-control', 'id' => 'nome']) }} 
             <ul class="errors">
                 @foreach ($errors->get('nome') as $message)
-                <li>{{ $message }}</li>
+                {{ $message }}<br>
                 @endforeach
             </ul>  
         </div>
@@ -30,7 +27,7 @@
             {{ Form::text('cognome', '', ['class' => 'form-control', 'id' => 'cognome']) }} 
             <ul class="errors">
                 @foreach ($errors->get('cognome') as $message)
-                <li>{{ $message }}</li>
+                {{ $message }}<br>
                 @endforeach
             </ul>
         </div>
@@ -42,7 +39,7 @@
             {{ Form::password('password', ['class' => 'form-control', 'id' => 'password']) }} 
             <ul class="errors">
                     @foreach ($errors->get('password') as $message)
-                    <li>{{ $message }}</li>
+                    {{ $message }}</br>
                     @endforeach
                 </ul>
             </div>
@@ -52,7 +49,7 @@
             {{ Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password-confirm']) }}
             <ul class="errors">
                 @foreach ($errors->get('password_confirmation') as $message)
-                <li>{{ $message }}</li>
+                {{ $message }}</br>>
                 @endforeach
             </ul>
         </div>
@@ -64,7 +61,7 @@
             {{ Form::text('username', '', ['class' => 'form-control', 'id' => 'username']) }}
             <ul class="errors">
                 @foreach ($errors->get('username') as $message)
-                <li>{{ $message }}</li>
+                {{ $message }}</br>
                 @endforeach
             </ul>
         </div>
@@ -74,7 +71,7 @@
             {{ Form::text('phonenumber', '', ['class' => 'form-control', 'id' => 'phonenumber']) }}
             <ul class="errors">
                 @foreach ($errors->get('phonenumber') as $message)
-                <li>{{ $message }}</li>
+                {{ $message }}</br>
                 @endforeach
             </ul>
         </div>
@@ -94,7 +91,7 @@
                 </div>
                 <ul class="errors">
                     @foreach ($errors->get('type_user') as $message)
-                    <li>{{ $message }}</li>
+                    {{ $message }}</br>
                     @endforeach
                 </ul>
             </div>
@@ -110,10 +107,14 @@
                     {{ Form::label('donna', 'Donna', ['class' => 'form-label']) }}
                     {{ Form::radio('gender', 'F', false) }}
                 </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    {{ Form::label('altro', 'Altro', ['class' => 'form-label']) }}
+                    {{ Form::radio('gender', 'A', false) }}
+                </div>
 
                 <ul class="errors">
                     @foreach ($errors->get('gender') as $message)
-                    <li>{{ $message }}</li>
+                    {{ $message }}</br>
                     @endforeach
                 </ul>
             </div>
@@ -124,7 +125,7 @@
                 {{ Form::date('data_nascita', \Carbon\Carbon::now()) }}
                 <ul class="errors">
                     @foreach ($errors->get('data_nascita') as $message)
-                    <li>{{ $message }}</li>
+                    {{ $message }}</br>
                     @endforeach
                 </ul>
             </div>

@@ -20,7 +20,7 @@
                     @if ($errors->first('start_stats'))
                         <ul class="errors">
                             @foreach ($errors->get('start_stats') as $message)
-                            <li>{{ $message }}</li>
+                            {{ $message }}</br>
                             @endforeach
                         </ul>
                     @endif
@@ -31,7 +31,7 @@
                     @if ($errors->first('end_stats'))
                         <ul class="errors">
                             @foreach ($errors->get('end_stats') as $message)
-                            <li>{{ $message }}</li>
+                            {{ $message }}</br>
                             @endforeach
                         </ul>
                     @endif
@@ -54,7 +54,7 @@
             @if ($errors->first('tipo'))
                     <ul class="errors">
                         @foreach ($errors->get('tipo') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}</br>
                         @endforeach
                     </ul>
             @endif
