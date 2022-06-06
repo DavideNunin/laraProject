@@ -5,7 +5,7 @@
 @section('scripts')
 
 @parent
-<script src="{{ asset('js/insertInputFields.js') }}" ></script>
+<script src="{{ asset('js/function.js') }}" ></script>
 
 @endsection
 

@@ -17,6 +17,10 @@ class Offerta extends Model {
 
     // non so se ha senso metterla nel model della classe foto
 
+    public function get_all_offerte(){
+        return Offerta::all();
+    }
+
     public function get_foto_offerta() {
 
         $foto = Foto::join('offerta', function ($join) {

@@ -22,6 +22,8 @@ class LocatarioController extends Controller
     protected $_locatarioModel;
     protected $_faqModel;
     protected $_userModel;
+    protected $_offertaModel;
+    protected $_opzionamentoModel;
 
 
     public function __construct() {
@@ -164,7 +166,7 @@ class LocatarioController extends Controller
                 ->with('number_result', $number_result);
         }
         else{
-            $number_result = $offerte->count();
+            $number_result = $this->_offertaModel->get_all_offerte()->count();
             $offerte=Offerta::paginate($paged);//->appends($request);
             //dd($offerte[0]->offerta_id);
             return view('locatario/ricerca')

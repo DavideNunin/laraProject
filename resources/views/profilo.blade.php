@@ -8,9 +8,9 @@
     <p>Qui puoi modificare e visualizzare le informazioni riguardanti il tuo profilo utente</p>
   </div>
 </div>
-<div class="container">
+<div class="container mb-3">
         {{ Form::open(array( 'id' => 'modifica_user', 'files' => 'true', 'class' => 'modify-form')) }}
-    <div class="row">
+    <div class="row">   
         <div class="col-lg-4 ">
         {{ Form::label('nome', 'Nome', ['class' => 'form-label']) }}
         {{ Form::text('nome',isset($user_info->nome) ? $user_info->nome : '' ,['class' => 'form-control', 'id' => 'nome' ]) }} 

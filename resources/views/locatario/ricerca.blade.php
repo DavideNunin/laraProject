@@ -7,7 +7,7 @@
 
 <script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
 <script>
-        $(function () {
+    $(function () {
             $("#filters-appartamento").hide();
             $("#filters-postoletto").hide();
             var addUrl = "{{ route('chat.send') }}";
@@ -23,7 +23,7 @@
             $("#formSendMessage").on('submit', function (event) {
                 event.preventDefault(); 
                 // devo passare anche l'utente, il destinatario
-                sendMessage(addUrl, id_talking);
+                sendMessageFromPopup(addUrl, id_talking);
             });
             
             $("#tipo-filter").change(function(){
@@ -44,87 +44,19 @@
                     $('#filters').hide(); 
                 }
             });
-        });
 
+            var slider=document.getElementById('slider');
+            var input=document.getElementById('numberfield');
 
+            input.addEventListener('change',function(){
+                slider.value=input.value;
+            });
+            slider.addEventListener('change',function(){
+                input.value=slider.value;
+            });
 
-$(document).ready(function () {
-
-    var slider=document.getElementById('slider');
-    var input=document.getElementById('numberfield');
-
-    input.addEventListener('change',function(){
-        slider.value=input.value;
     });
-    slider.addEventListener('change',function(){
-        input.value=slider.value;
-    });
-});
-
-        function sendFilter(){
-            var inputs=$('.campo');
-            console.log(inputs);
-            var json= jsonifier(inputs);
-            $.ajax({
-                type: 'POST',
-                url: 'TODO',
-                data: inputs,
-                dataType: "json",
-                error: function (data) {
-                alert("errore");
-                },
-                success: function (data) {
-                console.log(data.messaggi);
-                console.log(data.user);
-                displayChat(data.messaggi, data.user);
-                },
-                contentType: false,
-                processData: false
-                });
-            return null;
-        }
-        function test(){
-            var inputs=$('.campo');
-            console.log(inputs);
-            var json= jsonifier(inputs);
-            console.log(json);
-        }
-    
-        function jsonifier(inputs){
-            jsonobj={};
-    
-            inputs.each ( function(){
-                var type= $(this).attr("id");
-                var value= $(this).val();
-                jsonobj[type]=value;
-            }
-            )
-            console.log(jsonobj);
-            return jsonobj;
-        }
-
-        function createOpzionamento(id){
-            if(confirm("Sei sicuro di voler opzionare quest'offerta ?")){
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    type:'POST',
-                    url: "{{route('opziona_offerta')}}",
-                    data: {
-                            id: id},
-
-                    dataType: 'json',
-                    error: function(response){
-                        console.log(response);
-                        alert("non puoi opzionare due volte la stessa offerta");
-                    },
-                    success:function(data){
-                        window.location.replace(data.redirect);
-                    },
-                })
-            }
-         }
+        
 </script>
 
 @endsection

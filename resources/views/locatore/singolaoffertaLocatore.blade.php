@@ -23,33 +23,11 @@
         // clic per inviare un messaggio
         $("#formSendMessage").on('submit', function (event) {
             event.preventDefault(); 
-            // devo passare anche l'utente, il destinatario
-            sendMessage(addUrl, id_talking);
+            sendMessageFromPopup(addUrl, id_talking);
         });
     });
 
-    function deleteOpzionamento(id, offerta_id){
-            if(confirm("sicuro di voler eliminare?")){
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    type:'POST',
-                    url: "{{route('delete.Opzionamento')}}",
-                    data: {
-                            id: id,
-                            offerta: offerta_id},
-                    dataType: 'json',
-                    error: function(response){
-                        console.log(response);
-                        alert("errore");
-                    },
-                    success:function(data){
-                        window.location.replace(data.pippo);
-                    },
-                })
-            }
-    }
+    
 </script>
 @endsection
 
@@ -195,8 +173,8 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="text-end">
-                        <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
-                        <a href="{{ route('contratto', [$opzionamento->id]) }}">Assegna</a> 
+                        <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="link-annulla">Annulla</a> 
+                        <a href="{{ route('contratto', [$opzionamento->id]) }}" class="link-website">Assegna</a> 
                     </div>
                 </div>
                 @endif
@@ -206,8 +184,8 @@
             </div>
             <div class="col-lg-3">
                 <div class="text-end">
-                    <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="btn btn-danger">Annulla</a> 
-                    <a href="{{ route('contratto', [$opzionamento->id]) }}">Assegna</a> 
+                    <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="link-annulla">Annulla</a> 
+                    <a href="{{ route('contratto', [$opzionamento->id]) }}" class="link-website">Assegna</a> 
                 </div>
             </div>
             @endif

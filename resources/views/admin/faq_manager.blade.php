@@ -5,9 +5,8 @@
 @section('scripts')
 
 @parent
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
 
-<script type="text/javascript" src="{{ asset('js/formfaq.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
 <script>
     $(function () {
         var addUrl = "{{ route('faqmanager.result') }}";
@@ -15,26 +14,25 @@
         var updateUrl = "{{ route('faqmanager.update') }}";
         var formUpdate = 'updatefaq-form';
         var id_faq = '';
-        /*$(":input").on('blur', function (event) {
-            var formElementId = $(this).attr('id');
-            doElemValidation(formElementId, actionUrl, formId);
-        });*/
+
+        $("#addfaq").on('click', function(){
+        openPopup(popupAdd);
+        });
+
         $(".delete-faq-btn").on('click', function(){
-        id_faq = $(this).attr('id');  
-        console.log(popupDel);
-        openPopup(popupDel);
+            id_faq = $(this).attr('id');  
+            openPopup(popupDel);
         });
 
         // clic per aggiungere nuova faq
         $("#newfaq-form").on('submit', function (event) {
             event.preventDefault();
-            doFormValidation(addUrl, formAdd);
+            addNewFaq(addUrl, formAdd);
         });
 
         // clic per popolare popup richiesta modifica
         $(".update-faq-btn").on('click', function(){
             id_faq = $(this).attr('id');  
-            console.log("id modifica" + id_faq);
             requestPopup(id_faq);
         });
 
@@ -51,8 +49,6 @@
             deleteFaq(id_faq);
         });
 
-
-        
     });
     </script>
 
