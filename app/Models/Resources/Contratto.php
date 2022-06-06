@@ -59,4 +59,15 @@ class Contratto extends Model
     public function get_contratto_from_offerta($id){
         return Contratto::where('offerta_id','=',$id)->get();
     }
+
+    public function get_offerte_contratto(){
+        return Offerta::join('opzionamento', function($join) {
+            $join->on('opzionamento.offerta_id', '=', 'offerta.offerta_id');
+        })->join('contratto', function($join) {
+            $join->on('contratto.studente_id', '=', 'opzionamento.user_id');
+        })
+        ->where('opzionamento.user_id', '=', auth()->user()->id)
+        ->where('contratto.studente_id', '=', auth()->user()->id)
+        ->get();
+    }
 }

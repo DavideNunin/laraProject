@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
 use App\Models\Resources\Offerta;
+use App\Models\Resources\Contratto;
 use App\Models\Resources\Opzionamento;
 use App\Http\Requests\newOpzionamentoRequest;
 use Illuminate\Http\Request;    
@@ -24,6 +25,7 @@ class LocatarioController extends Controller
     protected $_userModel;
     protected $_offertaModel;
     protected $_opzionamentoModel;
+    protected $_contrattoModel;
 
 
     public function __construct() {
@@ -32,6 +34,7 @@ class LocatarioController extends Controller
         $this->_userModel = new User;
         $this->_offertaModel = new Offerta;
         $this->_opzionamentoModel = new Opzionamento;
+        $this->_contrattoModel = new Contratto;
     }
     //
     public function index() {
@@ -44,7 +47,9 @@ class LocatarioController extends Controller
     public function offerteOpzionate($paged = 4){
         $utente_offerta = array();
         $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate($paged);
-        
+
+        $offerte_contrattualizzate = $this->_contrattoModel->get_offerte_contratto();
+
         foreach($opzionamenti as $opzionamento) {
             $id = $opzionamento->offerta_id;
             $utente = $this->_offertaModel->get_utente_by_offerta($id);
@@ -53,7 +58,8 @@ class LocatarioController extends Controller
 
         return view('locatario/offerteopzionate')
             ->with('offerte_opzionate',$opzionamenti)
-            ->with('locatori', $utente_offerta);
+            ->with('locatori', $utente_offerta)
+            ->with('offerte_contratto', $offerte_contrattualizzate);
     }
 
     public function myProfile(){
