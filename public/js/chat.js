@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/*$(document).ready(function () {
     let id_talking;
 
     $(".display-chat").click(function () {
@@ -13,7 +13,7 @@ $(document).ready(function () {
     /*$("#sendMessage-form").on('submit', function (event) {
         event.preventDefault();
         sendMessage(id_talking);
-    });*/
+    });
 });
 
 
@@ -112,4 +112,4 @@ function displayChat(messaggi, user) {
         }
     
 });
-}
+}*/

@@ -5,7 +5,7 @@
 @section('scripts')
 
 @parent
-<script src="{{ asset('js/insertInputFields.js') }}" ></script>
+<script src="{{ asset('js/function.js') }}" ></script>
 
 @endsection
 
@@ -335,6 +335,13 @@
             <div  class="row p-3 col-lg-5">
                 {{ Form::label('nome_file', 'Immagine', ['class' => 'label-input']) }}
                 {{ Form::file('nome_file', ['class' => 'input', 'id' => 'image']) }}
+                @if ($errors->first('nome_file'))
+                        <ul class="errors">
+                            @foreach ($errors->get('nome_file') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                @endif
             </div>
             <div class ="row">
                 <div class="p-3 col-lg-3">                

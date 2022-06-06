@@ -7,7 +7,7 @@
                 <span id="popuptitle" class="title-popup">Modifica</span>
             </div>
             <div class="col-lg-2 d-flex justify-content-end">
-                <span id="popupclose" class="closePopup"><i class="fa-solid fa-xmark"></i></span>
+                <span id="popupUpdate-close" class="closePopup"><i class="fa-solid fa-xmark"></i></span>
             </div>
         </div>
         <div class="popupcontent">

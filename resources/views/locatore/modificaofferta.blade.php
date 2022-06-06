@@ -125,11 +125,11 @@
     </div>
     <div class="row">
         <div class="col-lg-4 p-3">
-                {{ Form::label('periodo', 'Inizio periodo di locazione', ['class' => 'label-input col-lg-12']) }}
-                {{ Form::date('periodo', isset($offerta->periodo) ? $offerta->periodo : '', ['class' => 'input form-control', 'id' => 'name']) }}
-                @if ($errors->first('periodo'))
+                {{ Form::label('dataInizioLocazione', 'Inizio periodo di locazione', ['class' => 'label-input col-lg-12']) }}
+                {{ Form::date('dataInizioLocazione', isset($offerta->dataInizioLocazione) ? $offerta->dataInizioLocazione : '', ['class' => 'input form-control', 'id' => 'name']) }}
+                @if ($errors->first('dataInizioLocazione'))
                     <ul class="errors">
-                        @foreach ($errors->get('periodo') as $message)
+                        @foreach ($errors->get('dataInizioLocazione') as $message)
                         <li>{{ $message }}</li>
                         @endforeach
                     </ul>
@@ -349,6 +349,13 @@
         <div class="col-lg-5 p-3">
                 {{ Form::label('nome_file', 'Immagine', ['class' => 'label-input col-lg-12']) }}
                 {{ Form::file('nome_file', ['class' => 'input', 'id' => 'image']) }}
+                @if ($errors->first('nome_file'))
+                        <ul class="errors">
+                            @foreach ($errors->get('nome_file') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                @endif
         </div>
     </div>
     <div class="row col-lg-3 p-3">                

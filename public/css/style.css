@@ -200,6 +200,14 @@
 	  line-height: 1.2em;
   }
 
+  .link-footer {
+    color: #ddd;
+  }
+  .link-footer:hover{
+    color: #ddd;
+    font-weight: 500;
+  }
+
   /* style faq section */
   .faq {
 	  background-color: #fff;
@@ -293,6 +301,18 @@
   background-color: #fbfbfb;
   border-radius: 20px;
   padding: 2rem;
+}
+
+.link-annulla{
+  text-decoration: none;
+  padding: 7px;
+  font-weight: 500;
+  color: #66171A;
+}
+.link-annulla:hover{
+  font-weight: 500;
+  color: #66171A;
+  text-decoration: underline;
 }
 /*.single-offerta:hover{
   box-shadow: rgba(149, 157, 165, 0.3) 0px 8px 24px;
@@ -487,6 +507,11 @@
 }
 .single-chat-link:hover {
   color: #f9f9f9;
+}
+
+.box-messages {
+  height: 50vh;
+  overflow-y: scroll;
 }
 
 #errMessaggio {

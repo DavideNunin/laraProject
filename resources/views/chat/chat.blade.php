@@ -5,7 +5,7 @@
 @section('scripts')
 
 @parent
-<script type="text/javascript" src="{{ asset('js/chat.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
 
 <script>
 $(function () {
@@ -21,10 +21,6 @@ $(function () {
         startChat(id_talking);
     });
 
-    /*$("#sendMessage-form").on('submit', function (event) {
-        event.preventDefault();
-        sendMessage(id_talking);
-    });*/
     var addUrl = "{{ route('chat.send') }}";
     $("#sendMessage-form").on('submit', function (event) {
         event.preventDefault();
@@ -62,7 +58,7 @@ $(function () {
             </aside>
             <main class="col bg-faded flex-grow-1" id="main-chat">
                 
-                <div class="container" id="container-message">
+                <div class="container box-messages" id="container-message">
                     <!-- Messages with jQuery -->
                 </div>
 
