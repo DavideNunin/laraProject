@@ -96,7 +96,6 @@ class LocatoreController extends Controller {
         $offerta = new Offerta;
         $appartamento = new Appartamento;
         $postoLetto = new PostoLetto;
-        $foto = new Foto;
 
         $utente = auth()->user();
         $offerta->user_id = $utente->id;
@@ -118,16 +117,25 @@ class LocatoreController extends Controller {
         $postoLetto -> fill ($request->validated());
         $postoLetto->save();
         }
+        Log::debug($request->nomefile);
 
-        $foto-> offerta_id = $idOffer;
+        $index=0;
         if(!is_null (request()->nome_file)){
-        $imageName = time().'.'.request()->nome_file->getClientOriginalExtension();
-        request()->nome_file->move(public_path('images'), $imageName);
-        $foto -> nome_file = $imageName;
-        $foto -> save();    
+            foreach($request->nome_file as $file){
+            $imageName = time().'_'.$index.'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('images'), $imageName);
+            $foto= new Foto;
+            $foto-> offerta_id = $idOffer;
+            $foto->nome_file =$imageName;
+            $foto -> save();   
+            $index++;
+            }
+            
         }
 
         else{
+        $foto= new Foto;
+        $foto->offerta_id = $idOffer;
         $foto -> nome_file = 'missing_foto.jpg';
         $foto -> save(); 
         }
@@ -139,14 +147,19 @@ class LocatoreController extends Controller {
     
 
     public function eliminaOffertaLocatore($id){
-        $foto = $this->_fotoModel->get_Foto_from_offerta_id($id);
-        $filename=$foto->nome_file;
-        $foto->delete();
-
-        if(File::exists(public_path('images/' . $filename)) && $filename != 'missing_foto.jpg'){
-            File::delete(public_path('images/'.$filename));
+        $fotos = $this->_fotoModel->get_Foto_from_offerta_id($id);
+        $filenames=array();
+        foreach($fotos as $foto){
+            array_push($filenames,$foto->nome_file);
         }
-
+        foreach($fotos as $foto){
+            $foto->delete();
+        }
+        foreach($filenames as $filename){
+            if(File::exists(public_path('images/' . $filename)) && $filename != 'missing_foto.jpg'){
+                File::delete(public_path('images/'.$filename));
+            }
+        }
         $appartamento = $this->_appartamentoModel->delete_appartamento_from_offertaId($id);
         $postoLetto = $this->_postoLettoModel->delete_postoLetto_from_offertaId($id);
         $opzionamento = $this->_opzionamentoModel->delete_opzionamento_from_offertaId($id);
@@ -181,7 +194,11 @@ class LocatoreController extends Controller {
         $offerta = $this->_offertaModel->get_offerta_from_id($id);
         $appartamento = $this->_appartamentoModel->first_appartamento_from_offertaId($id);
         $postoLetto =  $this->_postoLettoModel->first_postoLetto_from_offertaId($id);
-        $foto = $this->_fotoModel->get_Foto_from_offerta_id($id);
+        $fotos = $this->_fotoModel->get_Foto_from_offerta_id($id);
+
+        foreach($fotos as $foto){
+            $foto->delete();
+        }
 
         $offerta->fill($request->validated());
         $offerta->update();
@@ -199,11 +216,18 @@ class LocatoreController extends Controller {
         }
 
 
-        if(!is_null (request()->nome_file)){
-            $imageName = time().'.'.request()->nome_file->getClientOriginalExtension();
-            request()->nome_file->move(public_path('images'), $imageName);
-            $foto -> nome_file = $imageName;
-            $foto -> save();    
+        if(!is_null ($request->nome_file)){
+            $index=0;
+            foreach($request->nome_file as $file){
+            $imageName = time().'_'.$index.'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('images'), $imageName);
+            $foto= new Foto;
+            $foto-> offerta_id = $id;
+            $foto->nome_file =$imageName;
+            $foto -> save();   
+            $index++;
+
+            }
         }
         
         return redirect()->action('LocatoreController@offerteLocatore');
