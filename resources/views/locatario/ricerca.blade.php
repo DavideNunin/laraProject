@@ -202,20 +202,18 @@ $(document).ready(function () {
 
     </div>
     {{ Form::close()}}
-  </div>
-</div>
 
-
-@isset($ricerca)
+    <div class="number_result mb-1">Abbiamo trovato {{$number_result}} offerte</div>
+    @isset($ricerca)
     <div>
     Abbiamo cercato le città che contengono le lettere:
-        <ul>
-@foreach($ricerca as $lettera)
-            <li>{{$lettera}}</li>
-        </ul>
-@endforeach
+        @foreach($ricerca as $lettera)
+            {{$lettera}} - 
+        @endforeach
     </div>
-@endisset
+    @endisset
+</div>
+
 
 @foreach ($risultati as $offerta)
 <div class="container">

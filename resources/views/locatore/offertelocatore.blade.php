@@ -8,9 +8,8 @@
 <h2> Le tue Offerte </h2>
 </div>
 
-@if($catalogo == '')
+@if($off)
     <div class="container mb-5">
-        Cazzopisciamerdaporcodioculotettefigaaggiungiunanuovaoffertacoglionebruttodown
         Non ci sono offerte da visualizzare.
         <div class="col-lg-3">
             <a type="button" href="{{route("inserisci_offerta")}}" class="link-website"> <i class="fa-solid fa-plus"></i> Aggiungi una nuova offerta </a>
