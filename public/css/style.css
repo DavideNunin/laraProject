@@ -514,6 +514,20 @@
   overflow-y: scroll;
 }
 
+.box-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.box-messages::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.box-messages::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #b9b0b0;
+}
+
 #errMessaggio {
   color: #aaa;
 }
