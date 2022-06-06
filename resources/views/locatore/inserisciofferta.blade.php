@@ -77,7 +77,7 @@
             <div class="col-lg-3">
                 <div class="row justify-content-center">Genere richiesto:</div>
                 <div class="row justify-content-center">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     {{ Form::label('genereRichiesto', 'M', ['class' => 'form-label']) }}
                     {{ Form::radio('genereRichiesto', 'M', false, ['class' => 'radio-form']) }}
                 </div>
@@ -86,7 +86,7 @@
                     {{ Form::radio('genereRichiesto', 'F', false, ['class' => 'radio-form']) }}
                 </div>
                 <div class="col-lg-3">
-                    {{ Form::label('genereRichiesto', 'A', ['class' => 'form-label']) }}
+                    {{ Form::label('genereRichiesto', 'E', ['class' => 'form-label']) }}
                     {{ Form::radio('genereRichiesto', 'A', false, ['class' => 'radio-form']) }}
                 </div>
                 @if ($errors->first('genereRichiesto'))
@@ -115,11 +115,11 @@
 
         <div class="row p-3">
             <div class="col-lg-4">
-                {{ Form::label('periodo', 'Inizio periodo di locazione', ['class' => 'label-input']) }}
-                {{ Form::date('periodo', '', ['class' => 'input form-control', 'id' => 'name']) }}
-                @if ($errors->first('periodo'))
+                {{ Form::label('dataInizioLocazione', 'Inizio dataInizioLocazione di locazione', ['class' => 'label-input']) }}
+                {{ Form::date('dataInizioLocazione', '', ['class' => 'input form-control', 'id' => 'name']) }}
+                @if ($errors->first('dataInizioLocazione'))
                     <ul class="errors">
-                        @foreach ($errors->get('periodo') as $message)
+                        @foreach ($errors->get('dataInizioLocazione') as $message)
                         <li>{{ $message }}</li>
                         @endforeach
                     </ul>
