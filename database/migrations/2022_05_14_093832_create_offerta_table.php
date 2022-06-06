@@ -20,7 +20,7 @@ class CreateOffertaTable extends Migration
             $table->string('genereRichiesto',1);
             $table->string('citta',40);
             $table->string('descrizione',700);
-            $table->string('periodo',10);
+            $table->date('dataInizioLocazione');
             $table->string('titolo',50);
             $table->string('tipologia',1);
             $table->float('prezzo');

@@ -22,37 +22,37 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('offerta')->insert([
-            ['via' => 'via 1', 'ncivico' => 5, 'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'DESC1', 'periodo' => '3 mesi', 'titolo' => 'offerta 1', 'tipologia' => 'A', 'prezzo' => 3000, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
+            ['via' => 'via dei martiri pennesi', 'ncivico' => 5, 'genereRichiesto' => 'A', 'citta' => 'Genova', 'descrizione' => 'Appartamento per studenti universitari e non, per favore astenersi perditempo', 'dataInizioLocazione' => '2022-08-08', 'titolo' => 'Appartamento a Genova', 'tipologia' => 'A', 'prezzo' => 700, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
 
-                ['via' => 'via 2', 'ncivico' => 6, 'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'DESC2', 'periodo' => '6 mesi', 'titolo' => 'offerta 2', 'tipologia' => 'P', 'prezzo' => 200, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
+                ['via' => 'via Roma', 'ncivico' => 6, 'genereRichiesto' => 'M', 'citta' => 'Ancona', 'descrizione' => 'Posto letto vicino all università', 'dataInizioLocazione' => '2022-08-09', 'titolo' => 'posto letto per studenti di ancona', 'tipologia' => 'P', 'prezzo' => 200, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
 
-            ['via' => 'via 3', 'ncivico' => 4, 'genereRichiesto' => 'F', 'citta' => 'Montesilvano', 'descrizione' => 'era una casa piccina piccina senza soff...', 'periodo' => '3 mesi', 'titolo' => 'offerta pazzesca', 'tipologia' => 'a', 'prezzo' => 3000, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 18, 'user_id' => 3],
+            ['via' => 'via diaz', 'ncivico' => 4, 'genereRichiesto' => 'F', 'citta' => 'Montesilvano', 'descrizione' => 'Appartamento a montesilvano, zona grandi alberghi', 'dataInizioLocazione' => '2022-07-05', 'titolo' => 'Appartamento montesilvano', 'tipologia' => 'A', 'prezzo' => 3000, 'dataPubblicazione' => '2022-05-20', 'etaRichiesta' => 20, 'user_id' => 3],
 
-                ['via' => 'via 3', 'ncivico' => 7, 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC3', 'periodo' => '1 anno', 'titolo' => 'offerta 3', 'tipologia' => 'A', 'prezzo' => 500, 'dataPubblicazione' => '2022-04-20', 'etaRichiesta' => 18, 'user_id' => 3],
+                ['via' => 'via Mosca', 'ncivico' => 7, 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'Appartamento per studenti e lavoratori', 'dataInizioLocazione' => '2022-07-06', 'titolo' => 'affitto appartamento ad ancona', 'tipologia' => 'A', 'prezzo' => 900, 'dataPubblicazione' => '2022-04-20', 'etaRichiesta' => 21, 'user_id' => 3],
 
-                ['via' => 'via 4', 'ncivico' => 9, 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC4', 'periodo' => '9 mesi', 'titolo' => 'offertissima', 'tipologia' => 'A', 'prezzo' => 400, 'dataPubblicazione' => '2022-05-02', 'etaRichiesta' => 18, 'user_id' => 3],
+                ['via' => 'via dandolo', 'ncivico' => 9, 'genereRichiesto' => 'A', 'citta' => 'Macerata', 'descrizione' => 'Appartamento carino a magerada', 'dataInizioLocazione' => '2022-07-10', 'titolo' => 'offertissima', 'tipologia' => 'A', 'prezzo' => 400, 'dataPubblicazione' => '2022-05-02', 'etaRichiesta' => 18, 'user_id' => 3],
 
-                ['via' => 'via 6', 'ncivico' => 10, 'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'DESC5', 'periodo' => '10 mesi', 'titolo' => 'offerta 5', 'tipologia' => 'P', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-10', 'etaRichiesta' => 18, 'user_id' => 3],
+                ['via' => 'via italia', 'ncivico' => 10, 'genereRichiesto' => 'M', 'citta' => 'Loro Piceno', 'descrizione' => 'Posto letto economico per studenti', 'dataInizioLocazione' => '2022-09-01', 'titolo' => 'posto letto a loro piceno', 'tipologia' => 'P', 'prezzo' => 150, 'dataPubblicazione' => '2022-05-10', 'etaRichiesta' => 18, 'user_id' => 3],
 
                 ['via' => 'via lazio', 'ncivico' => 14,
                 'genereRichiesto' => 'M', 'citta' => 'New York', 'descrizione' => 'Offerta di affitto per studenti di new york',
-                'periodo' => '1 Anno', 'titolo' => 'Sere Nere', 'tipologia' => 'P', 'prezzo' => 10000, 'dataPubblicazione' => '2022-02-10', 'etaRichiesta' => 18, 'user_id' => 3],
+                'dataInizioLocazione' => '2022-06-23', 'titolo' => 'Posto letto a new york', 'tipologia' => 'P', 'prezzo' => 1000, 'dataPubblicazione' => '2022-02-10', 'etaRichiesta' => 19, 'user_id' => 3],
 
                 ['via' => 'via del tutto eccezionale', 'ncivico' => 14,
-                'genereRichiesto' => 'M', 'citta' => 'New York', 'descrizione' => 'Offerta Modesta',
-                'periodo' => '1 Anno', 'titolo' => 'Rosso Relativo', 'tipologia' => 'P', 'prezzo' => 10000, 'dataPubblicazione' => '2022-02-10', 'etaRichiesta' => 18, 'user_id' => 3],
+                'genereRichiesto' => 'M', 'citta' => 'San benedetto del tronto', 'descrizione' => 'Offerta Modesta',
+                'dataInizioLocazione' => '2022-10-10', 'titolo' => 'Posto letto per universitari', 'tipologia' => 'P', 'prezzo' => 175, 'dataPubblicazione' => '2022-02-10', 'etaRichiesta' => 18, 'user_id' => 3],
                 
-                ['via' => 'via Roma', 'ncivico' => 10,
-                'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'Piccola descrizione di Mario Rossi',
-                'periodo' => '10 mesi', 'titolo' => 'Appartamento Ancona', 'tipologia' => 'P', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-24', 'etaRichiesta' => 18, 'user_id' => 2],
+                ['via' => 'via Napoli', 'ncivico' => 10,
+                'genereRichiesto' => 'F', 'citta' => 'Roma', 'descrizione' => 'Piccola descrizione di Mario Rossi',
+                'dataInizioLocazione' => '2022-06-23', 'titolo' => 'Appartamento Ancona', 'tipologia' => 'P', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-24', 'etaRichiesta' => 18, 'user_id' => 2],
 
                 ['via' => 'via Roma', 'ncivico' => 10,
-                'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'Piccola descrizione di Mario Rossi',
-                'periodo' => '10 mesi', 'titolo' => 'Appartamento Ancona ProvaImportante', 'tipologia' => 'A', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-24', 'etaRichiesta' => 18, 'user_id' => 2],
+                'genereRichiesto' => 'F', 'citta' => 'Milano', 'descrizione' => 'Piccola descrizione di Mario Rossi',
+                'dataInizioLocazione' => '2022-08-01', 'titolo' => 'Appartamento Ancona ProvaImportante', 'tipologia' => 'A', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-24', 'etaRichiesta' => 18, 'user_id' => 2],
 
                 ['via' => 'via Roma', 'ncivico' => 10,
-                'genereRichiesto' => 'F', 'citta' => 'Ancona', 'descrizione' => 'Piccola descrizione di Mario Rossi',
-                'periodo' => '10 mesi', 'titolo' => 'PostoLetto Ancona ProvaImportante', 'tipologia' => 'P', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-24', 'etaRichiesta' => 18, 'user_id' => 2]
+                'genereRichiesto' => 'F', 'citta' => 'Napoli', 'descrizione' => 'Piccola descrizione di Mario Rossi',
+                'dataInizioLocazione' => '2022-07-23', 'titolo' => 'PostoLetto Ancona ProvaImportante', 'tipologia' => 'P', 'prezzo' => 800, 'dataPubblicazione' => '2022-05-24', 'etaRichiesta' => 18, 'user_id' => 2]
 
             ]);
 
