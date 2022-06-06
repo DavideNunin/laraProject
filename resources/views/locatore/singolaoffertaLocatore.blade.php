@@ -95,7 +95,7 @@
                     </p>  
                     <p>
                     <h5> A partire dal:</h5>
-                        {{$offerta-> periodo}}
+                        {{$offerta-> dataInizioLocazione}}
                     </p>
                     </div>
                     <div class ="col-sm-2">
