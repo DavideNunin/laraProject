@@ -15,7 +15,7 @@ class CreateMessaggioTable extends Migration
     {
         Schema::create('messaggio', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned()->index();
-            $table->string('testo');
+            $table->string('testo', 2000);
             $table->boolean('letto');
             $table->dateTime('data_ora_invio');
             $table->timestamps();

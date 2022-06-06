@@ -39,7 +39,7 @@ $(function () {
 <div class="container-fluid">
     <div class="container">
         <h2>Benvenuto in chat {{Auth::user()->username}}</h2>
-        <div class="row min-vh-100 flex-column flex-md-row">
+        <div class="row flex-column flex-md-row">
             
             <aside class="col-12 col-md-2 p-0 flex-shrink-1">
                 <span class="row justify-content-center chat-subtitle"> Le tue chat </span>

@@ -42,16 +42,18 @@ class LocatarioController extends Controller
             ->with('elfaq', $elfaq);
     }
     public function offerteOpzionate($paged = 4){
+        $utente_offerta = array();
         $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate($paged);
-        //$opzionamenti= Offerta::join('opzionamento',function($join){
-         //   $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
-          //  })->paginate($paged);
-        //$opzionamenti->paginate($paged);
-
-        Log::debug($opzionamenti);
+        
+        foreach($opzionamenti as $opzionamento) {
+            $id = $opzionamento->offerta_id;
+            $utente = $this->_offertaModel->get_utente_by_offerta($id);
+            array_push($utente_offerta, $utente);
+        }
 
         return view('locatario/offerteopzionate')
-            ->with('offerte_opzionate',$opzionamenti);
+            ->with('offerte_opzionate',$opzionamenti)
+            ->with('locatori', $utente_offerta);
     }
 
     public function myProfile(){
@@ -88,11 +90,10 @@ class LocatarioController extends Controller
         //$opzionamento->delete();
         return redirect()->action('LocatarioController@index');
     }
-    public function filter($paged=4){
-    }
 
-    public function ricercaOfferte($paged = 3, FilterRequest $request){
+    public function ricercaOfferte($paged = 5, FilterRequest $request){
 
+        $locatori = $this->_userModel->get_locatori();
         Log::debug($request);
 
         if(count($request->all())!=0){
@@ -150,7 +151,8 @@ class LocatarioController extends Controller
                 return view('locatario/ricerca')
                     ->with('risultati',$offerte)
                     ->with('ricerca',str_split($request->citta))
-                    ->with('number_result', $number_result);
+                    ->with('number_result', $number_result)
+                    ->with('locatori', $locatori);
             }
             if(isset($request->data_inizio_locazione)){
                 $offerte=$offerte->DataFilter($request->data_inizio_locazione);
@@ -163,15 +165,19 @@ class LocatarioController extends Controller
             Log::debug($offerte);
             return view('locatario/ricerca')
                 ->with('risultati',$offerte)
-                ->with('number_result', $number_result);
+                ->with('number_result', $number_result)
+                ->with('locatori', $locatori);
         }
         else{
+            
             $number_result = $this->_offertaModel->get_all_offerte()->count();
-            $offerte=Offerta::paginate($paged);//->appends($request);
+            $offerte=Offerta::paginate($paged);
+            
             //dd($offerte[0]->offerta_id);
             return view('locatario/ricerca')
                 ->with('risultati',$offerte)
-                ->with('number_result', $number_result);;
+                ->with('number_result', $number_result)
+                ->with('locatori', $locatori);
         }
     }
 

@@ -31,8 +31,6 @@ class PublicController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
-
     //FUNZIONI LOCATARIO
 
     public function homelocatore(){

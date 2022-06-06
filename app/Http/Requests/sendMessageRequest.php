@@ -25,7 +25,7 @@ class sendMessageRequest extends FormRequest
     public function rules()
     {
         return [
-           'messaggio' => 'required',
+           'messaggio' => 'required|max:2000',
            'destinatario' => 'required',
         ];
     }

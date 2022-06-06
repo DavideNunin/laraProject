@@ -56,6 +56,28 @@
             });
 
     });
+
+    function createOpzionamento(id){
+    if(confirm("Sei sicuro di voler opzionare quest'offerta ?")){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            type:'POST',
+            url: "{{route('opziona_offerta')}}",
+            data: {
+                    id: id},
+
+            dataType: 'json',
+            error: function(data){
+                alert("non puoi opzionare due volte la stessa offerta");
+            },
+            success:function(data){
+                window.location.replace(data.redirect);
+            },
+        })
+    }
+ }
         
 </script>
 
@@ -65,17 +87,23 @@
 <div class="container">
 <h2>Offerte Opzionate </h2>
 </div>
+
 <!--ci andrà la navbar-->
 @include('popupmessage')
 <div class="container">
-    <div id="open-filter" class="filters-toopen col-lg-1 mb-2">Filters <i class="fa-solid fa-filter"></i></div>
+    <div class="col-lg-6 row mb-2">
+        <div id="open-filter" class="filters-toopen col-lg-3">Filters <i class="fa-solid fa-filter"></i></div>
+        <div class="col-lg-3">
+            <a href="{{route("locatario_ricerca")}}" class="filters-toopen link-see-all"><i class="fa-solid fa-table-list"></i></i> See all </a>
+        </div>
+    </div>
     {{Form::open(array( 'id' => 'form-filtri','route'=> 'locatario_ricerca', 'files' => 'true', 'method' => 'GET' , 'class' => 'form-filtri' ))}}
     <div id="filters" class="filters mb-4">
         <div class="row col-lg-12">  
             <div class="col-lg-2">
                         <div>Stai cercando in</div>
                         {{ Form::search('citta','', array( 'class' => 'form-control mr-sm-2 campo' , 'id' => 'citta-field', 'placeholder' => 'Cerca città', 'aria-label' => 'Search' )) }}
-            </div>
+            </div>  
             <div class="col-lg-2">
                 <div>Età minima</div>
                 <div id="rangeBox">
@@ -164,7 +192,6 @@
     @endisset
 </div>
 
-
 @foreach ($risultati as $offerta)
 <div class="container">
     <div class="row single-offerta mb-5">
@@ -200,9 +227,11 @@
             </div>
             <div class="row d-flex align-items-end">
                 <div class="col-lg-6 d-flex justify-content-start">
-                    
-                    <!-- qui sull'id ci metto l'id dell'utente a cui invia un messaggio -->
-                    <a type="button" class ="send-message link-website" id="{{$offerta->offerta_id}}">Invia un messaggio</a>
+                    @foreach($locatori as $locatore)
+                        @if($locatore->id == $offerta->user_id)
+                            <a type="button" class ="send-message link-website" id="{{$offerta->user_id}}">Invia un messaggio a {{$locatore->nome}} {{$locatore->cognome}}</a>
+                        @endif
+                    @endforeach
                 </div>                
                 <div class="col-lg-6 d-flex justify-content-end">
                     @if($offerta->opzionabile) 

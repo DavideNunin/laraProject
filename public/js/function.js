@@ -35,7 +35,6 @@ function closePopup(idpopup) {
     const body = document.querySelector("body");
     var overlay = document.getElementById("overlay");
     let pop = document.getElementById(idpopup.split('-')[0]);
-    console.log(pop);
     overlay.style.display = 'none';
 	pop.style.display = 'none';
     body.style.overflow = 'auto';
@@ -54,6 +53,25 @@ function openPopup(nomePopup, domanda, risposta) {
         $('#domanda_update').attr('value',domanda);
         $('#risposta_update').text(risposta);
     }
+}
+
+function sendMessageFromPopup(URL, id_talking) {
+    var form = new FormData(document.getElementById('formSendMessage'));
+    form.append("destinatario",id_talking); 
+    $.ajax({
+        type: 'POST',
+        url: URL,
+        data: form,
+        dataType: "json",
+        error: function (data) {
+            $("#errMessaggio").text("Devi scrivere un messaggio");
+        },
+        success: function (data) {
+            closePopup("popupMessage-close");
+        },
+        contentType: false,
+        processData: false
+    });
 }
 
 function sendMessageFromPopup(URL, id_talking) {
@@ -113,9 +131,6 @@ function requestPopup(id_Faq) {
             alert("errore");
         },
         success: function (data) {
-            console.log(data.domanda);
-            console.log(data.risposta);
-            console.log(data.idupdate);
             openPopup(popupUpdate, data.domanda, data.risposta);
         },
         contentType: false,
@@ -142,7 +157,6 @@ function UpdateFaq(actionUrl, formId, id_Faq) {
             }
         },
         success: function (data) {
-            console.log(data.id);
             window.location.replace(data.redirect);
         },
         contentType: false,
@@ -160,7 +174,6 @@ function deleteFaq(id_Faq) {
             alert("errore");
         },
         success: function (data) {
-            console.log(data);
             window.location.replace(data.redirect);
         },
         contentType: false,
@@ -184,19 +197,17 @@ function sendMessage(URL, id_talking) {
             if (data.status === 422) {
                 var errMsgs = JSON.parse(data.responseText);
                 if(errMsgs.errors.messaggio==undefined){
-                    console.log("entrato");
+                    $("#errMessaggio").text('');
                     $("#errMessaggio").append(errMsgs.errors.destinatario[0]);
                 }
-                else {$("#errMessaggio").append(errMsgs.errors.messaggio[0]);}
-                console.log(errMsgs.errors.messaggio);
-                //$("#errMessaggio").append(errMsgs.errors.messaggio[0]);
-                //$("#errMessaggio").append(errMsgs.errors.messaggio[1]);
+                else {
+                    $("#errMessaggio").text('');
+                    $("#errMessaggio").append(errMsgs.errors.messaggio[0]);}
             }
         },
         success: function (data) {
         $("#errMessaggio").text();
         $("#messaggio").val("");
-        console.log(data.destinatario);
         startChat(data.destinatario);
         },
         contentType: false,
@@ -216,8 +227,6 @@ function startChat(id_user) {
             alert("errore");
         },
         success: function (data) {
-            console.log(data.messaggi);
-            console.log(data.user);
             displayChat(data.messaggi, data.user);
         },
         contentType: false,
@@ -231,8 +240,6 @@ function displayChat(messaggi, user) {
     $("#container-message").append("<span class='row mb-2 chat-subtitle'> Stai parlando con " + user.username + "</span>");
     $.each(messaggi, function (i, messaggio) {
         if(messaggio.mittente == user.id) {
-            console.log("mittente" + messaggio.mittente);
-            console.log("user id" + user.id);
             $("#container-message").append("<div class='row d-flex justify-content-start'>");
         }
         else{
@@ -313,8 +320,6 @@ function sendFilter(){
         alert("errore");
         },
         success: function (data) {
-        console.log(data.messaggi);
-        console.log(data.user);
         displayChat(data.messaggi, data.user);
         },
         contentType: false,
@@ -354,8 +359,7 @@ function createOpzionamento(id){
                     id: id},
 
             dataType: 'json',
-            error: function(response){
-                console.log(response);
+            error: function(    ){
                 alert("non puoi opzionare due volte la stessa offerta");
             },
             success:function(data){
@@ -378,7 +382,6 @@ function createOpzionamento(id){
                     offerta: offerta_id},
             dataType: 'json',
             error: function(response){
-                console.log(response);
                 alert("errore");
             },
             success:function(data){
