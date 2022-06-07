@@ -15,12 +15,14 @@ class PublicController extends Controller {
     protected $_faqModel;
     protected $_userModel;
     protected $_offertaModel;
+    protected $_contrattoModel;
 
     public function __construct() {
         $this->_catalogModel = new Catalog;
         $this->_faqModel = new ElencoFaq;
         $this->_userModel = new User;
         $this->_offertaModel = new Offerta;
+        
     }
 
     public function showHomeUser1() {
@@ -41,4 +43,5 @@ class PublicController extends Controller {
             ->with('elfaq', $elfaq);
     }
 
+    
 }

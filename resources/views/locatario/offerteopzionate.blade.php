@@ -106,16 +106,17 @@
                     </div>
                     <!-- RIMUOVI OPZIONAMENTO -->
                     @if(!$offerta->opzionabile)
-                    non più opzionabile
                         @foreach($offerte_contratto as $contr)
                             @if($contr->offerta_id == $offerta->offerta_id)
-                                vedi contratto
+                            <div class="col-lg-6 d-flex justify-content-end">
+                                <a class="link-website" href="{{ route('vediContratto', [$contr->id]) }}">Vedi il contratto</a></div>
+                            </div>
                             @endif
                         @endforeach
                     @else 
-                    <div class="col-lg-6 d-flex justify-content-end">
-                        <a href="{{route('rimuoviopzionamento',['id' => $offerta->offerta_id ])}}" class ="rimuovi_opz link-website">Rimuovi opzionamento</a>
-                    </div>
+                        <div class="col-lg-6 d-flex justify-content-end">
+                            <a href="{{route('rimuoviopzionamento',['id' => $offerta->offerta_id ])}}" class ="rimuovi_opz link-website">Rimuovi opzionamento</a>
+                        </div>
                     @endif
                 </div>
 

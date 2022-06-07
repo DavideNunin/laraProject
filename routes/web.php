@@ -70,7 +70,7 @@ Route::post('/deleteOpzionamento', 'LocatoreController@deleteOpzionamento')
 
 Route::get('/contratto/{id}', 'LocatoreController@contratto')
         ->name('contratto');
-Route::get('/vistacontratto/{id}', 'LocatoreController@vediContratto')
+Route::get('/vistacontratto/{id}', 'OffertaController@vediContratto')
         ->name('vediContratto');
 
 Route::get('/locatore/myprofile', 'LocatoreController@myProfile')
