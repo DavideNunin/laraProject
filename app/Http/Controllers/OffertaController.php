@@ -66,12 +66,17 @@ class OffertaController extends Controller
 
         $appartamento = $this->_appartamentoModel->get_appartamento_from_offertaId($id);
         $postoLetto = $this->_postoLettoModel->get_postoLetto_from_offertaId($id);
+        $locatori = null;
+        $utente = auth()->user();
 
         if ($offerta != null){
             return view('locatario/dettagliooffertaLocatario')
                         ->with('offerta', $offerta)
                         ->with('appartamento', $appartamento)
-                        ->with('postoletto', $postoLetto);
+                        ->with('postoletto', $postoLetto)
+                        ->with('utente', $utente)
+                        ->with('locatori', $locatori);
+
         }
         else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un'offerta che non esiste");   
     }

@@ -98,7 +98,7 @@
                     @else {{ Form::radio('genereRichiesto', 'F', false, ['class' => 'radio-form']) }}
                     @endif
 
-                    {{ Form::label('genereRichiesto', 'A', ['class' => 'form-label']) }}
+                    {{ Form::label('genereRichiesto', 'E', ['class' => 'form-label']) }}
                     @if($offerta->genereRichiesto == 'A') {{ Form::radio('genereRichiesto', 'A', true, ['class' => 'radio-form']) }}
                     @else {{ Form::radio('genereRichiesto', 'A', false, ['class' => 'radio-form']) }}
                     @endif
