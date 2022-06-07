@@ -126,10 +126,13 @@
             <div class="row col-lg-1">
                 <div class="col-lg-12"><i class="fa-solid fa-genderless"></i> Sesso:</div>
                 <div class="col-lg-12">M
-                {{Form::radio('sesso','M',true,array('class'=>'sesso-field radio-form'))}}
+                {{Form::radio('sesso','M',false,array('class'=>'sesso-field radio-form'))}}
                 </div>
                 <div class="col-lg-12">F
                 {{Form::radio('sesso','F',false,array('class'=>'sesso-field radio-form'))}}   
+                </div>
+                <div class="col-lg-12">Entrambi
+                {{Form::radio('sesso','A',true,array('class'=>'sesso-field radio-form'))}}   
                 </div>
             </div>
             <div class="col-lg-1 d-flex align-items-center justify-content-center">
@@ -182,6 +185,10 @@
             <div class="col-lg-3">
                 <i class="fa-solid fa-person-through-window"></i> Presenza finestra:
                 {{Form::checkbox('finestra','1',false,array('class'=>'posto_letto-field', 'id'=>'finestra-field'))}}
+            </div>
+            <div class="col-lg-3">
+                <i class="fa-solid fa-person-through-window"></i> Presenza finestra:
+                {{Form::number('superficie_posto_letto','',array('class'=>'posto_letto-field', 'id'=>'superficie_posto_letto-field'))}}
             </div>
         </div> 
 

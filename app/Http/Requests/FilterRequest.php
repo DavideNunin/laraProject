@@ -40,6 +40,7 @@ class FilterRequest extends FormRequest
             'luogo_studio'=> 'nullable|sometimes|numeric',
             'finestra'=>'nullable|sometimes|numeric|max:1|min:1',
             'nposti_letto'=>'nullable|sometimes|numeric',
+            'superficie_posto_letto'=>'nullable|sometimes|numeric|min:1|max:100',
             'locale_ricreativo' => 'nullable|sometimes|numeric|max:1|min:1'
         ];
     }

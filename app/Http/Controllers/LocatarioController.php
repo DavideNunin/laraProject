@@ -150,6 +150,9 @@ class LocatarioController extends Controller
                     if(isset($request->finestra) && $request->finestra == 1){
                         $offerte=$offerte->HasFinestra();
                     }
+                    if(isset($request->superficie_posto_letto)){
+                        $offerte=$offerte->HasSupLetto($request->superficie_posto_letto);
+                    }
                 }
             }
 

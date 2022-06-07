@@ -161,5 +161,8 @@ class Offerta extends Model {
     public function scopeDataFilter($query,$date){
         return $query->whereDate('offerta.dataInizioLocazione','<=',$date);
     }
+    public function scopeHasSupLetto($query,$supmin){
+        return $query->where('posto_letto.superficie_postoletto','>=',$supmin);
+    }
 }
 
