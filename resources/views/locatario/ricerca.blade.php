@@ -222,7 +222,7 @@
 
                             <div>
                                 Genere Richiesto: @if ($offerta->genereRichiesto == 'M') Uomo  
-                                                 @elseif ($offerta->genereRichiesto == 'D') Donna
+                                                 @elseif ($offerta->genereRichiesto == 'F') Donna
                                                  @else Nessuna preferenza di genere
                                                  @endif
                             </div>

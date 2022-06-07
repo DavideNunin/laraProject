@@ -155,7 +155,7 @@ class Offerta extends Model {
             return $query->where('offerta.genereRichiesto','=','F')->orWhere('offerta.genereRichiesto','=','A');
         }
         else{
-            return $query->where('offerta.genereRichiesto','=','A');
+            return $query;
         }
     }
     public function scopeDataFilter($query,$date){
