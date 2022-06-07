@@ -35,10 +35,11 @@
                     </p>
                     <p>
                         <h5> Genere indicato:</h5>
-                        @if ($offerta->genereRichieto == 'M') Uomo(entrambi)
-                        @else Donna
+                        @if ($offerta->genereRichiesto == 'M') Uomo  
+                        @elseif ($offerta->genereRichiesto == 'D') Donna
+                        @else Nessuna preferenza di genere
                         @endif
-                        , di età minima {{$offerta->etaRichiesta}} anni
+                        , età minima richiesta: {{$offerta->etaRichiesta}} anni
                     </p>  
                     <p>
                     <h5> A partire dal:</h5>

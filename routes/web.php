@@ -34,6 +34,9 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('/offerte', 'HomeController@catalogoOfferteStandard')
         ->name('offerte');
 
+Route::get('/dettaglioofferta/{id}', 'OffertaController@dettaglioOfferta')
+        ->name('dettaglioOffertaGenerico');
+
 /* ------------------------ rotte locatore ------------------ */
 Route::get('/homelocatore', 'LocatoreController@index')
         ->name('homelocatore');

@@ -17,9 +17,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 class="title-offerta">{{ $offerta->titolo }}</h3>
+                        <h3 class="title-offerta">
+                        <a href="{{ route('dettaglioOffertaGenerico', [$offerta->offerta_id]) }}" class="link-offerta-title"> {{ $offerta->titolo }} </a>
+                        </h3>
                         <div class="subtitle-offerta">
-                            <div>Proposto da {{$offerta->user_id}}, 
+                            <div>
+                            @foreach($locatori as $locatore)
+                            @if($locatore->offerta_id == $offerta->offerta_id)
+                            Proposto da {{$locatore->nome}} {{$locatore->cognome}},
+                            @endif
+                            @endforeach
                                 @if ($offerta->tipologia == 'a')
                                     appartamento
                                 @elseif ($offerta->tipologia == 'p')

@@ -28,27 +28,8 @@ class OffertaController extends Controller
         $this->_offertaModel = new Offerta;
         $this->_contrattoModel = new Contratto;
         $this->_postoLettoModel = new PostoLetto;
-        $this->_appartamentoModel = new PostoLetto;
+        $this->_appartamentoModel = new Appartamento;
         
-    }
-
-    public function offerte_user_1() {
-        $catalogo_offerte = $this->_catalogModel->getAll();
-
-        return view('offerta/offerte')
-                        ->with('catalogo', $catalogo_offerte);
-    }
-    
-
-    public function offerta_singola($id_offerta){
-        $user_type = 1;
-        $offerta = $this->_offertaModel->get_offerta_from_id($id_offerta);
-        $utenti_opzione = $this->_userModel->get_offerte_opzionate($id_offerta);
-
-        return view('offerta/singola_locatore')  
-                        ->with('offerta', $offerta)
-                        ->with('utenti', $utenti_opzione)
-                        ->with('type_user', $user_type);
     }
 
     public function vediContratto($contratto_id) {
@@ -79,5 +60,20 @@ class OffertaController extends Controller
         else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un contratto che non hai stipulato");
     }
 
+    public function dettaglioOfferta($id){
+
+        $offerta = $this->_offertaModel->get_offerta_from_id($id);
+
+        $appartamento = $this->_appartamentoModel->get_appartamento_from_offertaId($id);
+        $postoLetto = $this->_postoLettoModel->get_postoLetto_from_offertaId($id);
+
+        if ($offerta != null){
+            return view('locatario/dettagliooffertaLocatario')
+                        ->with('offerta', $offerta)
+                        ->with('appartamento', $appartamento)
+                        ->with('postoletto', $postoLetto);
+        }
+        else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un'offerta che non esiste");   
+    }
 
 }

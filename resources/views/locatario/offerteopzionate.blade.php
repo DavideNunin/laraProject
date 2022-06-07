@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <h3 class="title-offerta">
-                            {{ $offerta->titolo }}
+                        <a href="{{ route('dettaglioOffertaLocatario', [$offerta->offerta_id]) }}" class="link-offerta-title" title = "Visualizza dettagli offerta!" > {{ $offerta->titolo }} </a> 
                         </h3>
                         <div class="subtitle-offerta">
                             <div>@if ($offerta->tipologia == 'a')

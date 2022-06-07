@@ -53,6 +53,12 @@ class LocatarioController extends Controller
         $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate($paged);
         $offerte_contrattualizzate = $this->_contrattoModel->get_offerte_contratto();
 
+        foreach($opzionamenti as $opzionamento) {
+            $id = $opzionamento->offerta_id;
+            $utente = $this->_offertaModel->get_utente_by_offerta($id);
+            array_push($utente_offerta, $utente);
+        }
+
         return view('locatario/offerteopzionate')
             ->with('offerte_opzionate',$opzionamenti)
             ->with('locatori', $utente_offerta)
@@ -81,14 +87,9 @@ class LocatarioController extends Controller
                             ->with('user_info',$user);
     }
     public function updateData(newModifyDataRequest $request){
-        Log::debug($request->validated());
         $utente=auth()->user();
-        Log::debug("utente prima dell' update");
-        Log::debug($utente);
+
         foreach( $request->validated() as $key => $value){
-                Log::debug($key);
-                Log::debug($value);
-                Log::debug(property_exists($utente,$key));
             if(!is_null($value) && $key!="old_password" && $key!="conferma_password" ){
                 if($key=="password") $value= Hash::make($value);
                 $utente->{$key} = $value;
@@ -96,9 +97,6 @@ class LocatarioController extends Controller
         }
         
         $utente->update();
-        Log::debug("utente dopo dell' update");
-        Log::debug($utente);
-
         return redirect()->action('LocatarioController@index');
     }
 
