@@ -71,12 +71,16 @@ class LocatarioController extends Controller
 
         $appartamento = $this->_appartamentoModel->get_appartamento_from_offertaId($id);
         $postoLetto = $this->_postoLettoModel->get_postoLetto_from_offertaId($id);
+        $locatori = $this->_userModel->get_locatori();
+        $utente = auth()->user();
 
         if ($offerta != null){
             return view('locatario/dettagliooffertaLocatario')
                         ->with('offerta', $offerta)
                         ->with('appartamento', $appartamento)
-                        ->with('postoletto', $postoLetto);
+                        ->with('postoletto', $postoLetto)
+                        ->with ('utente', $utente)
+                        ->with ('locatori', $locatori);
         }
         else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un'offerta che non esiste");   
     }
@@ -103,14 +107,12 @@ class LocatarioController extends Controller
     public function rimuoviOpzionamento ($id_offerta){
         $user_id=auth()->user()->id;
         $opzionamento = $this->_opzionamentoModel->remove_opzionamento($id_offerta, $user_id);
-        //$opzionamento=Opzionamento::where('offerta_id','=',$id_offerta)->where('user_id','=',$user_id);
-        //$opzionamento->delete();
+
         return redirect()->action('LocatarioController@index');
     }
 
     public function ricercaOfferte($paged = 5, FilterRequest $request){
         $locatori = $this->_userModel->get_locatori();
-        Log::debug($request);
 
         if(count($request->all())!=0){
             $offerte= new Offerta;
@@ -173,12 +175,13 @@ class LocatarioController extends Controller
                     ->with('number_result', $number_result)
                     ->with('locatori', $locatori);
             }
-            Log::debug('query:');
-            Log::debug($offerte->toSql());
+            if(isset($request->data_inizio_locazione)){
+                $offerte=$offerte->DataFilter($request->data_inizio_locazione);
+            }
+
 
             $number_result = $offerte->count();
             $offerte=$offerte->paginate($paged)->appends($request->all());
-            Log::debug($offerte);
             return view('locatario/ricerca')
                 ->with('risultati',$offerte)
                 ->with('number_result', $number_result)
