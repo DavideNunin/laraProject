@@ -50,8 +50,14 @@ class LocatarioController extends Controller
     }
     public function offerteOpzionate($paged = 4){
         $utente_offerta = array();
-        $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate($paged);
+        $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate()->paginate($paged);
         $offerte_contrattualizzate = $this->_contrattoModel->get_offerte_contratto();
+
+        $offerteOff = false;
+        $off = $this->_opzionamentoModel->get_offerte_opzionate();
+        if(!$off->count()){
+            $offerteOff = true;
+        }
 
         foreach($opzionamenti as $opzionamento) {
             $id = $opzionamento->offerta_id;
@@ -59,10 +65,12 @@ class LocatarioController extends Controller
             array_push($utente_offerta, $utente);
         }
 
+
         return view('locatario/offerteopzionate')
             ->with('offerte_opzionate',$opzionamenti)
             ->with('locatori', $utente_offerta)
-			->with('offerte_contratto', $offerte_contrattualizzate);
+			->with('offerte_contratto', $offerte_contrattualizzate)
+            ->with('off', $offerteOff);
 
     }
 

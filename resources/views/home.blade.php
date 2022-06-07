@@ -44,10 +44,49 @@
 </div>
 
 <!-- La nostra mission section -->
-<div id="mission-section" class="mission mt-5">
+<div id="mission-section" class="mission overlay-mission mt-5">
     <div class="container-fluid">
         <div class="container">
-            <div class="col-sm-12">
+            
+            <div class="col-lg-12 mt-3">
+                <h4 class="title-home">Chi siamo?</h4>
+                <div class="col-lg-12 row">
+                    <div class="col-lg-3">
+                        <div class="col-lg-12 justify-content-center d-flex align-items-center">
+                        <img src="{{asset('/images/about-d.png')}}" class="img-fluid img-about" a lt="Responsive image">
+                        </div>
+                        <div class="col-lg-12 justify-content-center d-flex">
+                            <b>Dennis Pierantozzi</b>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-12 justify-content-center d-flex align-items-center">
+                        <img src="{{asset('/images/about-c.png')}}" class="img-fluid img-about" alt="Responsive image">
+                        </div>
+                        <div class="col-lg-12 justify-content-center d-flex">
+                            <b>Francesco Maria Mosca</b>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-12 justify-content-center d-flex align-items-center">
+                        <img src="{{asset('/images/about-n.png')}}" class="img-fluid img-about" alt="Responsive image">
+                        </div>
+                        <div class="col-lg-12 justify-content-center d-flex">
+                            <b>Nicola Mochi</b>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-12 justify-content-center d-flex align-items-center">
+                        <img src="{{asset('/images/about-da.png')}}" class="img-fluid img-about" alt="Responsive image">
+                        </div>
+                        <div class="col-lg-12 justify-content-center d-flex">
+                            <b>Davide Nunin</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 mt-4">
                 <h1 class="title-home"> La nostra mission </h1>
             </div>
             <div class="col-sm-12">
@@ -55,7 +94,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 <!-- Faq Section -->
 <div class="faq container mt-5 mb-5">

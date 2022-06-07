@@ -220,7 +220,7 @@
                         <h3 class="title-offerta">
                         <a href="{{ route('dettaglioOffertaLocatario', [$offerta->offerta_id]) }}" class="link-offerta-title" title = "Visualizza dettagli offerta!" > {{ $offerta->titolo }} </a> 
                         </h3>
-                        <div class="subtitle-offerta">
+                        <div class="subtitle-offerta mb-2">
                             <div>@if ($offerta->tipologia == 'a')
                                     appartamento
                                 @elseif ($offerta->tipologia == 'p')
@@ -232,12 +232,6 @@
                                 <br>
                             </div>
 
-                            <div>
-                                Genere Richiesto: @if ($offerta->genereRichiesto == 'M') Uomo  
-                                                 @elseif ($offerta->genereRichiesto == 'F') Donna
-                                                 @else Nessuna preferenza di genere
-                                                 @endif
-                            </div>
                             <div>{{ $offerta->via }} n.{{$offerta->ncivico}}, {{$offerta->citta}}</div>
                             <div class="mt-1"> Genere accettato dal locatore: 
                                 @if($offerta->genereRichiesto == 'A')

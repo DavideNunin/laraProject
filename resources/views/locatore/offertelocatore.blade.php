@@ -38,7 +38,7 @@
                                     @endif
                                 </div>
                                 <div>{{ $offerta->via }} n.{{$offerta->ncivico}}, {{$offerta->citta}}</div>
-                                <div class="mt-2">
+                                <div class="mt-2 mb-2">
                                     Descrizione:<br>
                                     {{$offerta->descrizione}}
                                 </div>

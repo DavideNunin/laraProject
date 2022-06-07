@@ -66,6 +66,15 @@
 <h2>Offerte Opzionate </h2>
 </div>
 
+@if($off)
+    <div class="container mb-5">
+        Non hai opzionato nessuna offerta
+        <div class="col-lg-3">
+            <a type="button" href="{{route("locatario_ricerca")}}" class="link-website"> <i class="fa-solid fa-magnifying-glass-plus"></i> Vai alla ricerca </a>
+        </div>
+    </div>
+@endif
+
 @foreach ($offerte_opzionate as $offerta)
 <div class="container">
     <div class="row single-offerta mb-5">
