@@ -58,7 +58,7 @@ class LocatoreController extends Controller {
         $user =auth()->user();
         return view('/profilo')
                             ->with('user_info',$user);
-    }
+        }
 
     public function updateData(newModifyDataRequest $request){
         $utente=auth()->user();
@@ -235,8 +235,6 @@ class LocatoreController extends Controller {
     }
 
     public function singolaOfferta($id){
-        //devo spostare queste 5 righe nei model cosi da dover richiamare solo 4 funzioni, è molto bello
-        $url = "https://www.youtube.com/shorts/Pd8E3bJ04VM";
         $offerta = $this->_offertaModel->get_offerta_from_id($id);
 
         $appartamento = $this->_appartamentoModel->get_appartamento_from_offertaId($id);
@@ -303,33 +301,7 @@ class LocatoreController extends Controller {
 
     }       
 
-    public function vediContratto($contratto_id) {
-        $contratto = $this->_contrattoModel->get_contratto_info($contratto_id);
-
-        if($contratto->isEmpty()){
-            //errore! Hai cercato un contratto che non hai stipulato tu
-            return redirect()->action('LocatoreController@index');
-        }
-        $details_offerta = '';
-        if($contratto[0]->tipologia == 'A') {
-           $details_offerta = $this->_appartamentoModel->get_appartamento($contratto[0]->offerta_id); 
-        }
-        elseif($contratto[0]->tipologia == 'P'){
-            $details_offerta = $this->_postoLettoModel->get_postoLetto($contratto[0]->offerta_id);     
-        }
-
-
-        dd($contratto);
-        if($contratto != null){
-            if (Gate::forUser(Auth()->user())->allows('yourContract', auth()->user(), $contratto)){       
-            return view('locatore.contratto')
-                    ->with('contratto_info', $contratto)
-                    ->with('info_casa', $details_offerta[0]);
-                             }
-        else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un contratto che non hai stipulato");
-        }
-        else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un contratto che non hai stipulato");
-    }
+    
 
     
 

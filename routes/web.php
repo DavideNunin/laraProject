@@ -70,7 +70,7 @@ Route::post('/deleteOpzionamento', 'LocatoreController@deleteOpzionamento')
 
 Route::get('/contratto/{id}', 'LocatoreController@contratto')
         ->name('contratto');
-Route::get('/vistacontratto/{id}', 'LocatoreController@vediContratto')
+Route::get('/vistacontratto/{id}', 'OffertaController@vediContratto')
         ->name('vediContratto');
 
 Route::get('/locatore/myprofile', 'LocatoreController@myProfile')
@@ -127,6 +127,9 @@ Route::get('locatario/chatmenu', 'LocatarioController@chatMenu')
 
 Route::get('locatario/ricercaofferte', 'LocatarioController@ricercaOfferte')
         ->name('locatario_ricerca');
+
+Route::get('/locatario/dettaglioofferta/{id}', 'LocatarioController@singolaOfferta')
+        ->name('dettaglioOffertaLocatario');
 
 //Route::post('/offerte', 'ChatController@sendMessage')
 //        ->name('offerte.sendMessage');

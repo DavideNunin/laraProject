@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
 use App\Models\Resources\Offerta;
+use App\Models\Resources\Contratto;
 use App\Models\Resources\Opzionamento;
+use App\Models\Resources\Appartamento;
+use App\Models\Resources\PostoLetto;
 use App\Http\Requests\newOpzionamentoRequest;
 use Illuminate\Http\Request;    
 use App\User;
@@ -24,6 +27,7 @@ class LocatarioController extends Controller
     protected $_userModel;
     protected $_offertaModel;
     protected $_opzionamentoModel;
+    protected $_contrattoModel;
 
 
     public function __construct() {
@@ -31,7 +35,10 @@ class LocatarioController extends Controller
         $this->_faqModel = new ElencoFaq;
         $this->_userModel = new User;
         $this->_offertaModel = new Offerta;
+        $this->_appartamentoModel = new Appartamento;
+        $this->_postoLettoModel = new PostoLetto;
         $this->_opzionamentoModel = new Opzionamento;
+        $this->_contrattoModel = new Contratto;
     }
     //
     public function index() {
@@ -44,16 +51,28 @@ class LocatarioController extends Controller
     public function offerteOpzionate($paged = 4){
         $utente_offerta = array();
         $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate($paged);
-        
-        foreach($opzionamenti as $opzionamento) {
-            $id = $opzionamento->offerta_id;
-            $utente = $this->_offertaModel->get_utente_by_offerta($id);
-            array_push($utente_offerta, $utente);
-        }
+        $offerte_contrattualizzate = $this->_contrattoModel->get_offerte_contratto();
 
         return view('locatario/offerteopzionate')
             ->with('offerte_opzionate',$opzionamenti)
-            ->with('locatori', $utente_offerta);
+            ->with('locatori', $utente_offerta)
+			->with('offerte_contratto', $offerte_contrattualizzate);
+
+    }
+
+    public function singolaOfferta($id){
+        $offerta = $this->_offertaModel->get_offerta_from_id($id);
+
+        $appartamento = $this->_appartamentoModel->get_appartamento_from_offertaId($id);
+        $postoLetto = $this->_postoLettoModel->get_postoLetto_from_offertaId($id);
+
+        if ($offerta != null){
+            return view('locatario/dettagliooffertaLocatario')
+                        ->with('offerta', $offerta)
+                        ->with('appartamento', $appartamento)
+                        ->with('postoletto', $postoLetto);
+        }
+        else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un'offerta che non esiste");   
     }
 
     public function myProfile(){
@@ -92,7 +111,6 @@ class LocatarioController extends Controller
     }
 
     public function ricercaOfferte($paged = 5, FilterRequest $request){
-
         $locatori = $this->_userModel->get_locatori();
         Log::debug($request);
 
@@ -206,3 +224,4 @@ class LocatarioController extends Controller
         return response()->json(['redirect'=>route('offerteopzionate')]);
     }
 }
+
