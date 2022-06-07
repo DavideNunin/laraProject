@@ -237,7 +237,7 @@
                                     <i class="fa-solid fa-venus-mars"></i>
                                 @elseif($offerta->genereRichiesto == 'M')
                                     <i class="fa-solid fa-mars"></i>
-                                @elseif($offerta->genereRichiesto == 'M')
+                                @elseif($offerta->genereRichiesto == 'F')
                                     <i class="fa-solid fa-venus"></i>
                                 @endif
                             </div>                                
@@ -253,7 +253,7 @@
             </div>
             <div class="row d-flex align-items-end">
                 <div class="col-lg-6 d-flex justify-content-start">
-                            <a type="button" class ="send-message link-website" id="{{$offerta->user_id}}">Invia un messaggio a {{$locatore->nome}} {{$locatore->cognome}}</a>
+                            <a type="button" class ="send-message link-website" id="{{$locatore->id}}">Invia un messaggio a {{$locatore->nome}} {{$locatore->cognome}}</a>
                         @endif
                     @endforeach
                 </div>                
