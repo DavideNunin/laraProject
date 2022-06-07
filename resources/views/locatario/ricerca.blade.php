@@ -215,6 +215,14 @@
                             </div>
                             <div>
                                 Offerta Pubblicata da {{$locatore->nome}} {{$locatore->cognome}}
+                                <br>
+                            </div>
+
+                            <div>
+                                Genere Richiesto: @if ($offerta->genereRichiesto == 'M') Uomo  
+                                                 @elseif ($offerta->genereRichiesto == 'D') Donna
+                                                 @else Nessuna preferenza di genere
+                                                 @endif
                             </div>
                             <div>{{ $offerta->via }} n.{{$offerta->ncivico}}, {{$offerta->citta}}</div>
                             <div class="mt-2">

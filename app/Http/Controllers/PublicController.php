@@ -32,16 +32,5 @@ class PublicController extends Controller {
             ->with('utente', $user)
             ->with('elfaq', $elfaq);
     }
-
-    //FUNZIONI LOCATARIO
-
-    public function homelocatore(){
-        $user = 1;
-        $elfaq= $this->_faqModel->getAll();
-        return view('home')
-            ->with('utente', $user)
-            ->with('elfaq', $elfaq);
-    }
-
     
 }
