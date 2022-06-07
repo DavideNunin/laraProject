@@ -117,7 +117,7 @@
             </div>
             <div class="col-lg-2">
                 <div>Fascia di prezzo</div>
-                {{Form::select('fascia_prezzo',array(null => "Seleziona","0-100" => "0-100€", "100-300" => "100€-300€", "300-1000"=>"300€-1000€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+                {{Form::select('fascia_prezzo',array(null => "Seleziona","0-100" => "0-100€", "100-300" => "100€-300€", "300-600"=>"300€-600€", "600-900"=>"600€-900€", "0-1000000"=>"Tutti i prezzi"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
             </div>
             <div class="col-lg-2">
                 <div>Tipo</div>
@@ -125,10 +125,12 @@
             </div>
             <div class="col-lg-1">
                 <div>Sesso:</div>
-                <div>Maschio</div>
+                    <div>Maschio</div>
                 {{Form::radio('sesso','M',true,array('class'=>'sesso-field'))}}
                     <div>Femmina</div>
-                {{Form::radio('sesso','F',false,array('class'=>'sesso-field'))}}            </div>
+                {{Form::radio('sesso','F',false,array('class'=>'sesso-field'))}}            
+                    <div>Entrambi</div>
+                {{Form::radio('sesso','A',false,array('class'=>'sesso-field'))}}            </div>
             <div class="col-lg-1 d-flex align-items-center justify-content-center">
                 {{Form::submit()}}
             </div>
