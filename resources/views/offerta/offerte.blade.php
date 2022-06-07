@@ -34,15 +34,15 @@
                                 @endif
                             </div>
                             <div>{{ $offerta->via }} n.{{$offerta->ncivico}}, {{$offerta->citta}}</div>
-                            <div> Annuncio 
+                            <div class="mt-1"> Genere accettato dal locatore: 
                                 @if($offerta->genereRichiesto == 'A')
-                                    per tutti
+                                    <i class="fa-solid fa-venus-mars"></i>
                                 @elseif($offerta->genereRichiesto == 'M')
-                                    per soli uomini
-                                @elseif($offerta->genereRichiesto == 'M')
-                                    per sole donne
+                                    <i class="fa-solid fa-mars"></i>
+                                @elseif($offerta->genereRichiesto == 'F')
+                                    <i class="fa-solid fa-venus"></i>
                                 @endif
-                            </div>
+                            </div>         
                             <div class="mt-2">
                                 Descrizione:<br>
                                 {{$offerta->descrizione}}

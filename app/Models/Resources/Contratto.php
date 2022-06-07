@@ -68,6 +68,7 @@ class Contratto extends Model
         })
         ->where('opzionamento.user_id', '=', auth()->user()->id)
         ->where('contratto.studente_id', '=', auth()->user()->id)
+        ->where('offerta.opzionabile', '=', 0)
         ->get();
     }
 }
