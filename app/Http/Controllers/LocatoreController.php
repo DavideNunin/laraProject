@@ -58,7 +58,7 @@ class LocatoreController extends Controller {
         $user =auth()->user();
         return view('/profilo')
                             ->with('user_info',$user);
-    }
+        }
 
     public function updateData(newModifyDataRequest $request){
         $utente=auth()->user();
@@ -211,8 +211,6 @@ class LocatoreController extends Controller {
     }
 
     public function singolaOfferta($id){
-        //devo spostare queste 5 righe nei model cosi da dover richiamare solo 4 funzioni, è molto bello
-        $url = "https://www.youtube.com/shorts/Pd8E3bJ04VM";
         $offerta = $this->_offertaModel->get_offerta_from_id($id);
 
         $appartamento = $this->_appartamentoModel->get_appartamento_from_offertaId($id);

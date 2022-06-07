@@ -1,37 +1,6 @@
 @extends('layouts.public',['home_type' => '0'])
 @section('title', 'Singola Offerta')
 
-@section('scripts')
-
-@parent
-
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
-
-<script>
-    $(function () {
-        var addUrl = "{{ route('chat.send') }}";
-        var formAdd = 'newfaq-form';
-        let id_talking;
-
-        $(".open-chat").on('click', function(){
-        id_talking = $(this).attr("id");
-        console.log(id_talking);
-        openPopup(popupMessage);
-        });
-
-        // clic per inviare un messaggio
-        $("#formSendMessage").on('submit', function (event) {
-            event.preventDefault(); 
-            sendMessageFromPopup(addUrl, id_talking);
-        });
-    });
-
-    
-</script>
-@endsection
-
-
 @section('content')
 @include('popupmessage')
 
@@ -147,70 +116,4 @@
     </div>
 </div>
 </div>
-
-<div class="container">
-    @foreach($opz as $opzionamento)
-    @foreach($user as $utente)
-    @if($opzionamento->user_id == $utente->id)
-
-        <div class="row mb-5">             
-            @if($contratti->isNotEmpty())
-                @if($contratti[0]->studente_id == $utente->id)
-                <div class="col-lg-9">
-                    <h5> Hai assegnato l'offerta all'utente {{$utente->username}} che ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
-                </div>
-                <div class="col-lg-3">
-                    <div class="text-end"><a class="link-website" href="{{ route('vediContratto', [$contratti[0]->id]) }}">Vedi il contratto</a></div>
-                </div>
-                @else
-                <div class="col-lg-9">
-                    <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
-                </div>
-                <div class="col-lg-3">
-                    <div class="text-end">
-                        <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="link-annulla">Annulla</a> 
-                        <a href="{{ route('contratto', [$opzionamento->id]) }}" class="link-website">Assegna</a> 
-                    </div>
-                </div>
-                @endif
-            @else
-            <div class="col-lg-9">
-                <h5> L'utente {{$utente->username}} ha opzionato l'offerta in data {{$opzionamento->data}} </h5> 
-            </div>
-            <div class="col-lg-3">
-                <div class="text-end">
-                    <a href = "javascript:void(0)" onclick="deleteOpzionamento({{$opzionamento->id}}, {{$offerta->offerta_id}})" class="link-annulla">Annulla</a> 
-                    <a href="{{ route('contratto', [$opzionamento->id]) }}" class="link-website">Assegna</a> 
-                </div>
-            </div>
-            @endif
-            <hr>
-        </div>
-        <div class="row mb-3">
-            <div class="col-lg-4">
-                <p class ="subtitle">
-                    Nome: {{$utente->nome}} <br>
-                    Cognome: {{$utente->cognome}}
-                </p>
-            </div>
-            <div class="col-lg-4">
-                <p class = "subtitle">
-                    Genere: @if($utente->sesso == 'M') Uomo
-                            @else Donna
-                            @endif <br>
-                    Nato il: {{$utente->data_nascita}}        
-                </p>
-            </div>
-            <div class="col-lg-4 justify-content-end align-items-center d-flex">
-                <div class="text-end">
-                    <a type="button" id="{{$utente->id}}" class="open-chat link-open-chat">Invia un messaggio a {{$utente->username}}</a> 
-                </div>
-            </div>
-        </div>   
-    @endif
-    @endforeach
-    @endforeach
-
-</div>
 @endsection
-

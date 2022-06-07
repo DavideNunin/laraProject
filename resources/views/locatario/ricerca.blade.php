@@ -85,7 +85,7 @@
 
 @section('content')
 <div class="container">
-<h2>Offerte Opzionate </h2>
+<h2>Catalogo Offerte </h2>
 </div>
 
 <!--ci andrà la navbar-->
@@ -193,6 +193,8 @@
 </div>
 
 @foreach ($risultati as $offerta)
+@foreach($locatori as $locatore)
+@if($locatore->id == $offerta->user_id)
 <div class="container">
     <div class="row single-offerta mb-5">
         <div class="col-sm-4">
@@ -202,7 +204,7 @@
             <div class="row">
                     <div class="col-sm-10">
                         <h3 class="title-offerta">
-                            {{ $offerta->titolo }}
+                        <a href="{{ route('dettaglioOffertaLocatario', [$offerta->offerta_id]) }}" class="link-offerta-title" title = "Visualizza dettagli offerta!" > {{ $offerta->titolo }} </a> 
                         </h3>
                         <div class="subtitle-offerta">
                             <div>@if ($offerta->tipologia == 'a')
@@ -212,7 +214,7 @@
                                 @endif
                             </div>
                             <div>
-                                Offerta Pubblicata da {{$offerta->username}}
+                                Offerta Pubblicata da {{$locatore->nome}} {{$locatore->cognome}}
                             </div>
                             <div>{{ $offerta->via }} n.{{$offerta->ncivico}}, {{$offerta->citta}}</div>
                             <div class="mt-2">
@@ -227,8 +229,6 @@
             </div>
             <div class="row d-flex align-items-end">
                 <div class="col-lg-6 d-flex justify-content-start">
-                    @foreach($locatori as $locatore)
-                        @if($locatore->id == $offerta->user_id)
                             <a type="button" class ="send-message link-website" id="{{$offerta->user_id}}">Invia un messaggio a {{$locatore->nome}} {{$locatore->cognome}}</a>
                         @endif
                     @endforeach
