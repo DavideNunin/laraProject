@@ -34,6 +34,15 @@
                                 @endif
                             </div>
                             <div>{{ $offerta->via }} n.{{$offerta->ncivico}}, {{$offerta->citta}}</div>
+                            <div> Annuncio 
+                                @if($offerta->genereRichiesto == 'A')
+                                    per tutti
+                                @elseif($offerta->genereRichiesto == 'M')
+                                    per soli uomini
+                                @elseif($offerta->genereRichiesto == 'M')
+                                    per sole donne
+                                @endif
+                            </div>
                             <div class="mt-2">
                                 Descrizione:<br>
                                 {{$offerta->descrizione}}

@@ -11,7 +11,7 @@ class Foto extends Model
     public $timestamps = false;
 
     public function get_Foto_from_offerta_id($id){
-        return Foto::where('offerta_id', '=', $id)->first();
+        return Foto::where('offerta_id', '=', $id)->get();
     }
 
 }

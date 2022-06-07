@@ -55,24 +55,7 @@ function openPopup(nomePopup, domanda, risposta) {
     }
 }
 
-function sendMessageFromPopup(URL, id_talking) {
-    var form = new FormData(document.getElementById('formSendMessage'));
-    form.append("destinatario",id_talking); 
-    $.ajax({
-        type: 'POST',
-        url: URL,
-        data: form,
-        dataType: "json",
-        error: function (data) {
-            $("#errMessaggio").text("Devi scrivere un messaggio");
-        },
-        success: function (data) {
-            closePopup("popupMessage-close");
-        },
-        contentType: false,
-        processData: false
-    });
-}
+
 
 function sendMessageFromPopup(URL, id_talking) {
     var form = new FormData(document.getElementById('formSendMessage'));
@@ -359,7 +342,7 @@ function createOpzionamento(id){
                     id: id},
 
             dataType: 'json',
-            error: function(    ){
+            error: function(response){
                 alert("non puoi opzionare due volte la stessa offerta");
             },
             success:function(data){

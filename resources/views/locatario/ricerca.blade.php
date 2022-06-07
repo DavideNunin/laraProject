@@ -92,88 +92,95 @@
 @include('popupmessage')
 <div class="container">
     <div class="col-lg-6 row mb-2">
-        <div id="open-filter" class="filters-toopen col-lg-3">Filters <i class="fa-solid fa-filter"></i></div>
+        <div id="open-filter" class="filters-toopen col-lg-3"><i class="fa-solid fa-sliders"></i> Filters</div>
         <div class="col-lg-3">
             <a href="{{route("locatario_ricerca")}}" class="filters-toopen link-see-all"><i class="fa-solid fa-table-list"></i></i> See all </a>
         </div>
     </div>
     {{Form::open(array( 'id' => 'form-filtri','route'=> 'locatario_ricerca', 'files' => 'true', 'method' => 'GET' , 'class' => 'form-filtri' ))}}
     <div id="filters" class="filters mb-4">
-        <div class="row col-lg-12">  
+        <div class="row col-lg-12 row-filter">  
             <div class="col-lg-2">
-                        <div>Stai cercando in</div>
+                        <div><i class="fa-solid fa-tree-city"></i> Stai cercando in</div>
                         {{ Form::search('citta','', array( 'class' => 'form-control mr-sm-2 campo' , 'id' => 'citta-field', 'placeholder' => 'Cerca città', 'aria-label' => 'Search' )) }}
             </div>  
             <div class="col-lg-2">
-                <div>Età minima</div>
+                <div>Età attuale</div>
                 <div id="rangeBox">
                             {{Form::number('eta_minima',null, array('id'=>'numberfield', 'type' => 'number', 'min' => '18', 'max'=> '100', 'class' => 'form-control campo')) }}
                             {{Form::range('ciaone', null ,array('step'=>'1', 'id' => 'slider','min' => '18', 'max' => '100'))}}
                 </div>
             </div>
             <div class="col-lg-2">
-                <div>Data inizio locazione</div>
+                <div><i class="fa-solid fa-calendar-check"></i> inizio locazione</div>
                 {{ Form::date('data_inizio_locazione', '', array( 'class' => 'form-control campo') ) }}
             </div>
             <div class="col-lg-2">
-                <div>Fascia di prezzo</div>
-                {{Form::select('fascia_prezzo',array(null => "Seleziona","0-100" => "0-100€", "100-300" => "100€-300€", "300-1000"=>"300€-1000€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel nav-link dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+                <div><i class="fa-solid fa-tag"></i> Fascia di prezzo</div>
+                {{Form::select('fascia_prezzo',array(null => "Seleziona","0-100" => "0-100€", "100-300" => "100€-300€", "300-1000"=>"300€-1000€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
             </div>
             <div class="col-lg-2">
-                <div>Tipo</div>
+                <div><i class="fa-solid fa-bed"></i>Tipo</div>
                 {{Form::select('tipologia',array(null =>"Seleziona","A" => "Appartamento", "P" => "Posto letto"), null ,array( 'id'=>'tipo-filter', 'class' => 'form-control dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false'))}}
             </div>
-            <div class="col-lg-1">
-                <div>Sesso:</div>
-                <div>Maschio</div>
-                {{Form::radio('sesso','M',true,array('class'=>'sesso-field'))}}
-                    <div>Femmina</div>
-                {{Form::radio('sesso','F',false,array('class'=>'sesso-field'))}}            </div>
+            <div class="row col-lg-1">
+                <div class="col-lg-12"><i class="fa-solid fa-genderless"></i> Sesso:</div>
+                <div class="col-lg-12">M
+                {{Form::radio('sesso','M',true,array('class'=>'sesso-field radio-form'))}}
+                </div>
+                <div class="col-lg-12">F
+                {{Form::radio('sesso','F',false,array('class'=>'sesso-field radio-form'))}}   
+                </div>
+            </div>
             <div class="col-lg-1 d-flex align-items-center justify-content-center">
-                {{Form::submit()}}
+                {{Form::submit('Filtra', array('class' => 'button-form'))}}
             </div>
         </div>
 
         <div class="col-lg-12 row filter-over" id="filters-appartamento">
             <div class="col-lg-1">
-                <div>Presenza locale ricreativo</div>
+                <div><i class="fa-solid fa-book"></i> Locale ricreativo</div>
                 {{ Form::checkbox('locale_ricreativo' , 1, array('class' =>'appartamento-field'))}}
             </div>
             <div class="col-lg-1">
-                <div>Terrazzo/<br>balcone:</div>
+                <div><i class="fa-solid fa-vector-square"></i> Terrazzo/<br>balcone:</div>
                     {{Form::checkbox('terrazzo','1',array('class'=>'appartamento-field', 'id'=>'terrazzo-field'))}}
             </div>
             <div class="col-lg-2">
-                    <div>Numero minimo di camere richieste:</div>
+                    <div><i class="fa-solid fa-person-booth"></i> Numero minimo di camere richieste:</div>
                     {{Form::number('ncamere',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'ncamere-field' ))}}
             </div>
             <div class="col-lg-2">
-                <div>Numero minimo di bagni richiesti:</div>
+                <div><i class="fa-solid fa-spray-can"></i> Numero minimo di bagni richiesti:</div>
                 {{Form::number('nbagni',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'nbagni-field' ))}}
             </div>
             <div class="col-lg-2">
-                <div>Numero minimo di posti letto richiesti:</div>
+                <div><i class="fa-solid fa-bed"></i>Numero minimo di posti letto richiesti:</div>
                 {{Form::number('nposti_letto',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'nposti_letto-field' ))}}
             </div>
             <div class="col-lg-2">
-                <div>Supreficie minima accettata:</div>
+                <div><i class="fa-solid fa-vector-square"></i> Supreficie minima accettata:</div>
                 {{Form::number('superficie',null,array( 'class' => 'form-control mr-sm-2 campo appartamento-field' , 'id' => 'superficie-field' ))}}
             </div>
         </div>  
 
         <div class="col-lg-12 row filter-over" id="filters-postoletto">
-            <div class="col-lg-3">
-                <div>Tipo di camera</div>
-                <div>Singola</div>
+            <div class="col-lg-3 row">
+                <div class="col-lg-12"><i class="fa-solid fa-person-booth"></i> Tipo di camera</div>
+                <div class="col-lg-6">Singola
                 {{Form::radio('doppia','0',true,array('class'=>'posto_letto-field'))}}
-                    <div>Doppia</div>
-                {{Form::radio('doppia','1',false,array('class'=>'posto_letto-field'))}}            </div>
-            <div class="col-lg-3">
-                <div>Luogo studio:</div>
+                </div>
+                <div class="col-lg-6">Doppia
+                {{Form::radio('doppia','1',false,array('class'=>'posto_letto-field'))}}
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div><i class="fa-solid fa-desktop"></i> Luogo studio:
                 {{Form::checkbox('luogo_studio','1',false,array('class'=>'posto_letto-field', 'id'=>'luogo_studio-field'))}}
+                </div>
             </div>
             <div class="col-lg-3">
-                <div>Presenza finestra:</div>
+                <i class="fa-solid fa-person-through-window"></i> Presenza finestra:
                 {{Form::checkbox('finestra','1',false,array('class'=>'posto_letto-field', 'id'=>'finestra-field'))}}
             </div>
         </div> 
@@ -220,11 +227,20 @@
 
                             <div>
                                 Genere Richiesto: @if ($offerta->genereRichiesto == 'M') Uomo  
-                                                 @elseif ($offerta->genereRichiesto == 'D') Donna
+                                                 @elseif ($offerta->genereRichiesto == 'F') Donna
                                                  @else Nessuna preferenza di genere
                                                  @endif
                             </div>
                             <div>{{ $offerta->via }} n.{{$offerta->ncivico}}, {{$offerta->citta}}</div>
+                            <div class="mt-1"> Genere accettato dal locatore: 
+                                @if($offerta->genereRichiesto == 'A')
+                                    <i class="fa-solid fa-venus-mars"></i>
+                                @elseif($offerta->genereRichiesto == 'M')
+                                    <i class="fa-solid fa-mars"></i>
+                                @elseif($offerta->genereRichiesto == 'M')
+                                    <i class="fa-solid fa-venus"></i>
+                                @endif
+                            </div>                                
                             <div class="mt-2">
                                 Descrizione:<br>
                                 {{$offerta->descrizione}}

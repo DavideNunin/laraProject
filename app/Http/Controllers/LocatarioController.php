@@ -162,6 +162,9 @@ class LocatarioController extends Controller
             if(isset($request->sesso)){
                 $offerte=$offerte->IsGender($request->sesso);
             }
+            if(isset($request->data_inizio_locazione)){
+                $offerte=$offerte->DataFilter($request->data_inizio_locazione);
+            }
 
             if(isset($request->citta)){
                 $number_result = $offerte->SearchByCity($request->citta)->count();

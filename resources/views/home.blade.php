@@ -15,7 +15,7 @@
 	</div>
 </section>
 
-<section id="how">
+<div id="how">
     <div class="pt-4 container-fluid">
     <div class="d-flex justify-content-center"> <h1 class="text-how-title">Come funziona?</h1> </div>
     <div class="container mt-5">
@@ -24,28 +24,28 @@
                 <div class="d-flex justify-content-center">
                     <span class="how-icon"> <i class="fa-solid fa-door-open fa-5x"></i> </span>
                 </div>
-                    <p class="text-center mt-5 text-how">Registrati al sito e cerca la città in cui studierai</p>
+                    <p class="text-center mt-2 text-how">Registrati al sito e cerca la città in cui studierai</p>
             </div>
             <div class="col-sm-4">
                 <div class="d-flex justify-content-center">
                     <span class="how-icon"> <i class="fa-brands fa-searchengin fa-5x"></i> </span>
                 </div>
-                    <p class="text-center mt-5 text-how">Offri o scegli tra le proposte dei locatori</p>
+                    <p class="text-center mt-2 text-how">Offri o scegli tra le proposte dei locatori</p>
             </div>
             <div class="col-sm-4">
                 <div class="d-flex justify-content-center">
                     <span class="how-icon"> <i class="fa-solid fa-file-contract fa-5x"></i> </span>
                 </div>
-                    <p class="text-center mt-5 text-how">Opzioni l’offerta e concludi il contratto</p>
+                    <p class="text-center mt-2 text-how">Opzioni l’offerta e concludi il contratto</p>
             </div>
         </div>
     </div>
     </div>
-</section>
+</div>
 
 <!-- La nostra mission section -->
-<section id="mission-section" class="mission">
-    <div class="container-fluid mission-container">
+<div id="mission-section" class="mission mt-5">
+    <div class="container-fluid">
         <div class="container">
             <div class="col-sm-12">
                 <h1 class="title-home"> La nostra mission </h1>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-</section> 
+</div> 
 
 <!-- Faq Section -->
 <div class="faq container mt-5 mb-5">

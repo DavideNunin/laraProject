@@ -348,7 +348,7 @@
     <div class="row">
         <div class="col-lg-5 p-3">
                 {{ Form::label('nome_file', 'Immagine', ['class' => 'label-input col-lg-12']) }}
-                {{ Form::file('nome_file', ['class' => 'input', 'id' => 'image']) }}
+                {{ Form::file('nome_file[]', ['class' => 'input','multiple', 'id' => 'image']) }}
                 @if ($errors->first('nome_file'))
                         <ul class="errors">
                             @foreach ($errors->get('nome_file') as $message)

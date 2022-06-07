@@ -50,6 +50,7 @@
         {{ Form::label('gender', 'Sesso', ['class' => 'form-label']) }}
             <div class="row">
                 <div class="col-lg-4">
+@if    ($user_info->sesso == 'M')
                     Maschio
                     {{ Form::radio('sesso', 'M', ['class' => 'radio-form', 'id' => 'button-maschio']) }}  
 
@@ -57,7 +58,17 @@
                     <div class="custom-control custom-radio custom-control-inline">
 
                     Femmina
-                    {{ Form::radio('sesso', 'F', ['class' => 'radio-form', 'id' => 'button-femmina']) }}        
+                    {{ Form::radio('sesso', 'F', false,['class' => 'radio-form', 'id' => 'button-femmina']) }}        
+@else
+                    Maschio
+                    {{ Form::radio('sesso', 'M', false,['class' => 'radio-form', 'id' => 'button-maschio']) }}  
+
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+
+                    Femmina
+                    {{ Form::radio('sesso', 'F',['class' => 'radio-form', 'id' => 'button-femmina']) }}        
+@endif
                 </div>
             </div>
         </div>
