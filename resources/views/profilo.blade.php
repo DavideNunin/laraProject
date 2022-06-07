@@ -10,6 +10,7 @@
 </div>
 <div class="container mb-3">
         {{ Form::open(array( 'id' => 'modifica_user', 'files' => 'true', 'class' => 'modify-form')) }}
+@csrf
     <div class="row">   
         <div class="col-lg-4 ">
         {{ Form::label('nome', 'Nome', ['class' => 'form-label']) }}
