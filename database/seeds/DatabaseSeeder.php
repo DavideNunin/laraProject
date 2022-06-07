@@ -99,8 +99,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('contratto')->insert([
-            ['dataStipula' => '2022-05-10', 'studente_id' => 1, 'locatore_id' => 2, 'offerta_id' => 6],
-            ['data' => '2022-05-20', 'studente_id' => 3, 'locatore_id' => 2, 'offerta_id' => 6]
         ]);
 
         DB::table('messaggio')->insert([

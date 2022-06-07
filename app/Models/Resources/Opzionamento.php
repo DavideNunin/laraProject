@@ -43,6 +43,10 @@ class Opzionamento extends Model
             $join->on('offerta.offerta_id','=','opzionamento.offerta_id')->where('opzionamento.user_id','=',auth()->user()->id);
         })->paginate($paged);
     }
+
+    public function get_id_offerte_opzionate(){
+        return Opzionamento::get(['offerta_id']);
+    }
 }
 
 

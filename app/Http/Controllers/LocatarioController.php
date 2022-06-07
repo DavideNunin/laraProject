@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\ElencoFaq;
 use App\Models\Resources\Offerta;
+use App\Models\Resources\Contratto;
 use App\Models\Resources\Opzionamento;
 use App\Models\Resources\Appartamento;
 use App\Models\Resources\PostoLetto;
@@ -26,6 +27,7 @@ class LocatarioController extends Controller
     protected $_userModel;
     protected $_offertaModel;
     protected $_opzionamentoModel;
+    protected $_contrattoModel;
 
 
     public function __construct() {
@@ -36,6 +38,7 @@ class LocatarioController extends Controller
         $this->_appartamentoModel = new Appartamento;
         $this->_postoLettoModel = new PostoLetto;
         $this->_opzionamentoModel = new Opzionamento;
+        $this->_contrattoModel = new Contratto;
     }
     //
     public function index() {
@@ -48,17 +51,13 @@ class LocatarioController extends Controller
     public function offerteOpzionate($paged = 4){
         $utente_offerta = array();
         $opzionamenti = $this->_opzionamentoModel->get_offerte_opzionate($paged);
-        $utente_autenticato = auth()->user();        
-        foreach($opzionamenti as $opzionamento) {
-            $id = $opzionamento->offerta_id;
-            $utente = $this->_offertaModel->get_utente_by_offerta($id);
-            array_push($utente_offerta, $utente);
-        }
+        $offerte_contrattualizzate = $this->_contrattoModel->get_offerte_contratto();
 
         return view('locatario/offerteopzionate')
             ->with('offerte_opzionate',$opzionamenti)
             ->with('locatori', $utente_offerta)
-            ->with('utente', $utente_autenticato);
+			->with('offerte_contratto', $offerte_contrattualizzate);
+
     }
 
     public function singolaOfferta($id){
@@ -74,7 +73,6 @@ class LocatarioController extends Controller
                         ->with('postoletto', $postoLetto);
         }
         else return redirect()->back()->with('success', "Attenzione! Hai provato ad accedere ad un'offerta che non esiste");   
-
     }
 
     public function myProfile(){
@@ -226,3 +224,4 @@ class LocatarioController extends Controller
         return response()->json(['redirect'=>route('offerteopzionate')]);
     }
 }
+
