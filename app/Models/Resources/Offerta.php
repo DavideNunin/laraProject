@@ -99,10 +99,10 @@ class Offerta extends Model {
 
 
     public function scopeIsAppartamento($query){
-        return $query->join('appartamento','appartamento.offerta_id','=','offerta.offerta_id',)->select('offerta.*');
+        return $query->join('appartamento','appartamento.offerta_id','=','offerta.offerta_id')->select('offerta.*');
     }
     public function scopeIsPostoletto($query){
-        return $query->join('posto_letto','posto_letto.offerta_id','=','offerta.offerta_id',)->select('offerta.*');
+        return $query->join('posto_letto','posto_letto.offerta_id','=','offerta.offerta_id')->select('offerta.*');
     }
     public function scopeHasLocRic($query){
         return $query->where('appartamento.loc_ricr',1);

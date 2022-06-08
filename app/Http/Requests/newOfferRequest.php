@@ -52,7 +52,7 @@ class newOfferRequest extends FormRequest {
             'finestra'=>'integer|max:1|required_if:tipologia,P',
 
             //campi foto
-            'nome_file.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000|nullable'
+            'nome_file.*' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:5000|nullable'
         ];
     }
 

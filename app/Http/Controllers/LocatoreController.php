@@ -194,10 +194,27 @@ class LocatoreController extends Controller {
         $offerta = $this->_offertaModel->get_offerta_from_id($id);
         $appartamento = $this->_appartamentoModel->first_appartamento_from_offertaId($id);
         $postoLetto =  $this->_postoLettoModel->first_postoLetto_from_offertaId($id);
-        $fotos = $this->_fotoModel->get_Foto_from_offerta_id($id);
+        if(!is_null($request->nome_file)){
+            $fotos = $this->_fotoModel->get_Foto_from_offerta_id($id);
+            foreach($fotos as $foto){
+                $filename=$foto->nome_file;
+                if(File::exists(public_path('images/' . $filename)) && $filename != 'missing_foto.jpg'){
+                    File::delete(public_path('images/'.$filename));
+                }
+                $foto->delete();
+            }
+            $index=0;
+            foreach($request->nome_file as $file){
+            $imageName = time().'_'.$index.'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('images'), $imageName);
+            $foto= new Foto;
+            $foto->offerta_id = $id;
+            $foto->nome_file =$imageName;
+            $foto->save();   
+            $index++;
 
-        foreach($fotos as $foto){
-            $foto->delete();
+        }
+
         }
 
         $offerta->fill($request->validated());
@@ -215,20 +232,6 @@ class LocatoreController extends Controller {
         $postoLetto->update();
         }
 
-
-        if(!is_null ($request->nome_file)){
-            $index=0;
-            foreach($request->nome_file as $file){
-            $imageName = time().'_'.$index.'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('images'), $imageName);
-            $foto= new Foto;
-            $foto-> offerta_id = $id;
-            $foto->nome_file =$imageName;
-            $foto -> save();   
-            $index++;
-
-            }
-        }
         
         return redirect()->action('LocatoreController@offerteLocatore');
         
