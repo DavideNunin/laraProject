@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            ['data_nascita' => '2005-08-10','nome' => 'adminNome', 'cognome' => 'adminCognome', 'username' => 'adminadmin', 'password' => Hash::make('adminadmin'), 'tipologia' => 'a', 'sesso' => 'F', 'telefono' => '5235656498',],
-            ['data_nascita' => '1995-08-10','nome' => 'lario', 'cognome' => 'lario', 'username' => 'lariolario', 'password' => Hash::make('lariolario'), 'tipologia' => 's', 'sesso' => 'F', 'telefono' => '5235656498',],
-            ['data_nascita' => '2005-08-10','nome' => 'lore', 'cognome' => 'lore', 'username' => 'lorelore', 'password' => Hash::make('lorelore'), 'tipologia' => 'l', 'sesso' => 'F', 'telefono' => '5235656498',]   
+            ['data_nascita' => '2005-08-10','nome' => 'adminNome', 'cognome' => 'adminCognome', 'username' => 'adminadmin', 'password' => Hash::make('ETNlXj14'), 'tipologia' => 'a', 'sesso' => 'F', 'telefono' => '5235656498',],
+            ['data_nascita' => '1995-08-10','nome' => 'lario', 'cognome' => 'lario', 'username' => 'lariolario', 'password' => Hash::make('ETNlXj14'), 'tipologia' => 's', 'sesso' => 'F', 'telefono' => '5235656498',],
+            ['data_nascita' => '2005-08-10','nome' => 'lore', 'cognome' => 'lore', 'username' => 'lorelore', 'password' => Hash::make('ETNlXj14'), 'tipologia' => 'l', 'sesso' => 'F', 'telefono' => '5235656498',]   
         ]);
 
         DB::table('offerta')->insert([
