@@ -26,9 +26,9 @@ class newOfferRequest extends FormRequest {
     public function rules() {
         return [
             'ncivico' => 'required|integer',
-            'via' => 'required|max:25',
+            'via' => 'required|max:25|alpha',
             'genereRichiesto' => 'required|max:1',
-            'citta'=>'required|max:40',
+            'citta'=>'required|max:40|alpha',
             'descrizione' => 'max:700',
             'dataInizioLocazione' => 'required|max:10|date',
             'titolo'=>'required|max:40',

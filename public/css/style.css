@@ -140,6 +140,7 @@
   .text-how-title {
     color: #161A26;
     font-weight: 700;
+    font-size: 50px;
   }
   
   .btn-home{
@@ -160,14 +161,13 @@
   }
 
   .img-about {
-    height: auto;
+    height: 30vh;
     width: auto;
-    border-radius: 40px;
-  }
+    }
   
   /*mission section */
   .mission {
-	background-image: url(../images/image-mission.jpg);
+	background-image: url(../images/image-mission.jpg );
 	background-position: left;
 	background-repeat: no-repeat;
   background-size: cover;
@@ -175,7 +175,8 @@
 	justify-content: space-evenly;
 	align-items: center;
 	color: white;
-  box-shadow:inset 0 0 0 2000px hwb(0deg 0% 100% / 30%);
+  box-shadow:inset 0 0 0 2000px hwb(0deg 0% 100% / 24%);
+  height: 80vh;
   }
 
   
@@ -189,17 +190,20 @@
   font-size: 60px;
   line-height: 1.0em;
   }
-  .title-chisiamo {
-    font-size: 40px;
-    font-weight: 500;
-  }
+
   
   .text-home {
 	  font-weight: 500;
 	  font-size: 20px;
 	  line-height: 1.2em
   }
-  
+
+  .title-chisiamo {
+    color: #161A26;
+    font-weight: 700;
+    font-size: 35px;
+  }
+
   .footer-home {
 	  background-color: #161A26;
 	  color: #fff;
@@ -224,14 +228,22 @@
 
   /* style faq section */
   .faq {
-	  background-color: #fff;
+	  background-color: #161a2617;
+    color: #161A26;
+  }
+  .title-faq {
+    color: #161A26;
+    font-weight: 700;
   }
   .card {
     border-radius: 0.5rem;
-    margin-bottom: 1rem;
   }
   .card-header {
+    background-color: transparent;
     border-bottom: 0px transparent!important;
+  }
+  .card-body{
+    background-color: #fbfbfb;
   }
 /* ----------------- end style home -------------- */
 
@@ -350,6 +362,23 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 125.8%;
+  overflow-x: auto;
+}
+.subtitle-offerta::-webkit-scrollbar {
+  background-color: #b9b0b0;;
+  width: 2px;
+  height: 5px;
+  border-radius: 10px;
+}
+
+.subtitle-offerta::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.subtitle-offerta::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(94, 94, 94)
 }
 .image-offerta{
     border-radius: 20px;

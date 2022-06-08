@@ -43,7 +43,7 @@
                                     <i class="fa-solid fa-venus"></i>
                                 @endif
                             </div>         
-                            <div class="mt-2">
+                            <div class="mt-2 ">
                                 Descrizione:<br>
                                 {{$offerta->descrizione}}
                             </div>
