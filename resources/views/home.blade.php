@@ -97,7 +97,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="col-lg-12 justify-content-center d-flex align-items-center">
-                    <img src="{{asset('/images/about-da.png')}}" class="img-fluid img-about" alt="Responsive image" style="height: 45vh">
+                    <img src="{{asset('/images/about-da.png')}}" class="img-fluid img-about" alt="Responsive image">
                     </div>
                     <div class="col-lg-12 justify-content-center d-flex">
                         Davide Nunin
