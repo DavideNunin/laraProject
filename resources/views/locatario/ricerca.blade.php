@@ -100,7 +100,7 @@
     {{Form::open(array( 'id' => 'form-filtri','route'=> 'locatario_ricerca', 'files' => 'true', 'method' => 'GET' , 'class' => 'form-filtri' ))}}
     <div id="filters" class="filters mb-4">
         <div class="row col-lg-12 row-filter">  
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                         <div><i class="fa-solid fa-tree-city"></i> Stai cercando in</div>
                         {{ Form::search('citta','', array( 'class' => 'form-control mr-sm-2 campo' , 'id' => 'citta-field', 'placeholder' => 'Cerca città', 'aria-label' => 'Search' )) }}
             </div>  
@@ -123,24 +123,25 @@
                 <div><i class="fa-solid fa-bed"></i>Tipo</div>
                 {{Form::select('tipologia',array(null =>"Seleziona","A" => "Appartamento", "P" => "Posto letto"), null ,array( 'id'=>'tipo-filter', 'class' => 'form-control dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false'))}}
             </div>
-            <div class="row col-lg-1">
-                <div class="col-lg-12"><i class="fa-solid fa-genderless"></i> Sesso:</div>
-                <div class="col-lg-12">M
-                {{Form::radio('sesso','M',false,array('class'=>'sesso-field radio-form'))}}
-                </div>
-                <div class="col-lg-12">F
-                {{Form::radio('sesso','F',false,array('class'=>'sesso-field radio-form'))}}   
-                </div>
-                <div class="col-lg-12">Entrambi
-                {{Form::radio('sesso','A',true,array('class'=>'sesso-field radio-form'))}}   
-                </div>
-            </div>
             <div class="col-lg-1 d-flex align-items-center justify-content-center">
                 {{Form::submit('Filtra', array('class' => 'button-form'))}}
             </div>
+            <div class="row col-lg-3">
+                <div class="col-lg-12"><i class="fa-solid fa-genderless"></i> Sesso:</div>
+                <div class="col-lg-4">M
+                {{Form::radio('sesso','M',false,array('class'=>'sesso-field radio-form'))}}
+                </div>
+                <div class="col-lg-4">F
+                {{Form::radio('sesso','F',false,array('class'=>'sesso-field radio-form'))}}   
+                </div>
+                <div class="col-lg-4">Both
+                {{Form::radio('sesso','A',true,array('class'=>'sesso-field radio-form'))}}   
+                </div>
+            </div>
+            
         </div>
 
-        <div class="col-lg-12 row filter-over" id="filters-appartamento">
+        <div class="col-lg-12 row row-filter mt-3" id="filters-appartamento">
             <div class="col-lg-1">
                 <div><i class="fa-solid fa-book"></i> Locale ricreativo</div>
                 {{ Form::checkbox('locale_ricreativo' , 1, array('class' =>'appartamento-field'))}}
@@ -167,22 +168,22 @@
             </div>
         </div>  
 
-        <div class="col-lg-12 row filter-over" id="filters-postoletto">
+        <div class="col-lg-12 row row-filter mt-3" id="filters-postoletto">
             <div class="col-lg-3 row">
                 <div class="col-lg-12"><i class="fa-solid fa-person-booth"></i> Tipo di camera</div>
                 <div class="col-lg-6">Singola
-                {{Form::radio('doppia','0',true,array('class'=>'posto_letto-field'))}}
+                {{Form::radio('doppia','0',true,array('class'=>'posto_letto-field radio-form'))}}
                 </div>
                 <div class="col-lg-6">Doppia
-                {{Form::radio('doppia','1',false,array('class'=>'posto_letto-field'))}}
+                {{Form::radio('doppia','1',false,array('class'=>'posto_letto-field radio-form'))}}
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 d-flex align-items-end">
                 <div><i class="fa-solid fa-desktop"></i> Luogo studio:
                 {{Form::checkbox('luogo_studio','1',false,array('class'=>'posto_letto-field', 'id'=>'luogo_studio-field'))}}
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 d-flex align-items-end">
                 <i class="fa-solid fa-person-through-window"></i> Presenza finestra:
                 {{Form::checkbox('finestra','1',false,array('class'=>'posto_letto-field', 'id'=>'finestra-field'))}}
             </div>
