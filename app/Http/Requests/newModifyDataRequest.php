@@ -29,7 +29,7 @@ class newModifyDataRequest extends FormRequest
         return [
             'nome'=> 'sometimes',
             'cognome'=> 'sometimes',
-            'username' => 'sometimes',
+            'username' => 'sometimes|alpha_dash',
             'data_nascita' => 'sometimes',
             'sesso' => 'sometimes',
             'telefono' => 'sometimes',
