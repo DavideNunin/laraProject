@@ -2,7 +2,7 @@
 <div class="accordion" id="accordionExample">
 @foreach($elfaq as $singlefaq)
 
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header" id="heading{{ $singlefaq->id}}">
                 <h2 class="mb-0">
                     <button class="btn link-faq text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $singlefaq->id}}" aria-expanded="true" aria-controls="collapse{{ $singlefaq->id }}">
