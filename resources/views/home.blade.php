@@ -51,8 +51,7 @@
 
 <!-- La nostra mission section -->
 <div id="mission-section" class="mission  mt-5">
-    <div>
-        <div class="container mb-5 mt-5">
+    <div class="container mb-5 mt-5">
             
             <div class="col-sm-12 mt-4">
                 <h1 class="title-home"> La nostra mission  </h1>
@@ -62,54 +61,52 @@
             </div>
 
         </div>
+    </div>
+</div>
 
-        <div id="chisiamo-section">
-            <div class="container mb-5 p-3">
-                <div class="col-lg-12">
-                    <h4 class="title-chisiamo">Who</h4>
-                    <span>Siamo studenti dell'Università Politecnica delle Marche. <br>Strani ma non troppo</span>
-                    <div class="col-lg-12 row">
-                        <div class="col-lg-3">
-                            <div class="col-lg-12 justify-content-center d-flex align-items-center">
-                            <img src="{{asset('/images/about-d.png')}}" class="img-fluid img-about" a lt="Responsive image">
-                            </div>
-                            <div class="col-lg-12 justify-content-center d-flex">
-                                Dennis Pierantozzi
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="col-lg-12 justify-content-center d-flex align-items-center">
-                            <img src="{{asset('/images/about-c.png')}}" class="img-fluid img-about" alt="Responsive image">
-                            </div>
-                            <div class="col-lg-12 justify-content-center d-flex">
-                                Francesco Maria Mosca
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="col-lg-12 justify-content-center d-flex align-items-center">
-                            <img src="{{asset('/images/about-n.png')}}" class="img-fluid img-about" alt="Responsive image">
-                            </div>
-                            <div class="col-lg-12 justify-content-center d-flex">
-                                Nicola Mochi
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="col-lg-12 justify-content-center d-flex align-items-center">
-                            <img src="{{asset('/images/about-da.png')}}" class="img-fluid img-about" alt="Responsive image">
-                            </div>
-                            <div class="col-lg-12 justify-content-center d-flex">
-                                Davide Nunin
-                            </div>
-                        </div>
+<!-- Chi siamo -->
+<div id="chisiamo-section">
+    <div class="container mb-5 mt-5 p-3">
+        <div class="col-lg-12">
+            <h4 class="text-how-title">Who</h4>
+            <span>Siamo studenti dell'Università Politecnica delle Marche. <br>Strani ma non troppo</span>
+            <div class="col-lg-12 row">
+                <div class="col-lg-3">
+                    <div class="col-lg-12 justify-content-center d-flex align-items-center">
+                    <img src="{{asset('/images/about-d.png')}}" class="img-fluid img-about" a lt="Responsive image">
+                    </div>
+                    <div class="col-lg-12 justify-content-center d-flex">
+                        Dennis Pierantozzi
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="col-lg-12 justify-content-center d-flex align-items-center">
+                    <img src="{{asset('/images/about-c.png')}}" class="img-fluid img-about" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-12 justify-content-center d-flex">
+                        Francesco Maria Mosca
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="col-lg-12 justify-content-center d-flex align-items-center">
+                    <img src="{{asset('/images/about-n.png')}}" class="img-fluid img-about" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-12 justify-content-center d-flex">
+                        Nicola Mochi
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="col-lg-12 justify-content-center d-flex align-items-center">
+                    <img src="{{asset('/images/about-da.png')}}" class="img-fluid img-about" alt="Responsive image" style="height: 45vh">
+                    </div>
+                    <div class="col-lg-12 justify-content-center d-flex">
+                        Davide Nunin
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Chi siamo -->
-
     
 <!-- Faq Section -->
 <div class="faq p-5">

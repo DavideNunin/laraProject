@@ -176,6 +176,7 @@
 	align-items: center;
 	color: white;
   box-shadow:inset 0 0 0 2000px hwb(0deg 0% 100% / 24%);
+  height: 80vh;
   }
 
   
@@ -198,7 +199,7 @@
   }
 
   .title-chisiamo {
-    color: #fff;
+    color: #161A26;
     font-weight: 700;
     font-size: 35px;
   }
@@ -227,7 +228,7 @@
 
   /* style faq section */
   .faq {
-	  background-color: transparent;
+	  background-color: #161a2617;
     color: #161A26;
   }
   .title-faq {
