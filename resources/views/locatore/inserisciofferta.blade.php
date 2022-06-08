@@ -21,7 +21,7 @@
                 @if ($errors->first('titolo'))
                 <ul class="errors">
                     @foreach ($errors->get('titolo') as $message)
-                    <li>{{ $message }}</li>
+                    {{ $message }}
                     @endforeach
                 </ul>
                 @endif
@@ -34,7 +34,7 @@
                 @if ($errors->first('citta'))
                     <ul class="errors">
                         @foreach ($errors->get('citta') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -46,7 +46,7 @@
                 @if ($errors->first('via'))
                     <ul class="errors">
                         @foreach ($errors->get('via') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -57,7 +57,7 @@
                 @if ($errors->first('ncivico'))
                     <ul class="errors">
                         @foreach ($errors->get('ncivico') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -70,7 +70,7 @@
                 @if ($errors->first('descrizione'))
                     <ul class="errors">
                         @foreach ($errors->get('descrizione') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -79,7 +79,7 @@
             <div class="col-lg-3">
                 <div class="row justify-content-center">Genere richiesto:</div>
                 <div class="row justify-content-center">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     {{ Form::label('genereRichiesto', 'M', ['class' => 'form-label']) }}
                     {{ Form::radio('genereRichiesto', 'M', false, ['class' => 'radio-form']) }}
                 </div>
@@ -94,7 +94,7 @@
                 @if ($errors->first('genereRichiesto'))
                     <ul class="errors">
                         @foreach ($errors->get('genereRichiesto') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -107,7 +107,7 @@
                 @if ($errors->first('etaRichiesta'))
                     <ul class="errors">
                         @foreach ($errors->get('etaRichiesta') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -122,7 +122,7 @@
                 @if ($errors->first('dataInizioLocazione'))
                     <ul class="errors">
                         @foreach ($errors->get('dataInizioLocazione') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -133,7 +133,7 @@
                 @if ($errors->first('prezzo'))
                     <ul class="errors">
                         @foreach ($errors->get('prezzo') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -154,7 +154,7 @@
                 @if ($errors->first('tipologia'))
                     <ul class="errors">
                         @foreach ($errors->get('tipologia') as $message)
-                        <li>{{ $message }}</li>
+                        {{ $message }}
                         @endforeach
                     </ul>
                 @endif
@@ -175,7 +175,7 @@
                         @if ($errors->first('superficie'))
                             <ul class="errors">
                                 @foreach ($errors->get('superficie') as $message)
-                                <li>{{ $message }}</li>
+                                {{ $message }}
                                 @endforeach
                             </ul>
                         @endif  
@@ -210,7 +210,7 @@
                         @if ($errors->first('loc_ricr'))
                             <ul class="errors">
                                 @foreach ($errors->get('loc_ricr') as $message)
-                                <li>{{ $message }}</li>
+                                {{ $message }}
                                 @endforeach
                             </ul>
                         @endif
@@ -229,7 +229,7 @@
                         @if ($errors->first('cucina'))
                             <ul class="errors">
                                 @foreach ($errors->get('cucina') as $message)
-                                <li>{{ $message }}</li>
+                                {{ $message }}
                                 @endforeach
                             </ul>
                         @endif
@@ -247,7 +247,7 @@
                         @if ($errors->first('terrazzo'))
                             <ul class="errors">
                                 @foreach ($errors->get('terrazzo') as $message)
-                                <li>{{ $message }}</li>
+                                {{ $message }}
                                 @endforeach
                             </ul>
                         @endif
@@ -272,7 +272,7 @@
                     @if ($errors->first('doppia'))
                         <ul class="errors">
                             @foreach ($errors->get('doppia') as $message)
-                            <li>{{ $message }}</li>
+                            {{ $message }}
                             @endforeach
                         </ul>
                     @endif
@@ -285,7 +285,7 @@
                     @if ($errors->first('superficie_postoletto'))
                         <ul class="errors">
                             @foreach ($errors->get('superficie_postoletto') as $message)
-                            <li>{{ $message }}</li>
+                            {{ $message }}
                             @endforeach
                         </ul>
                     @endif
@@ -305,7 +305,7 @@
                     @if ($errors->first('luogoStudio'))
                         <ul class="errors">
                             @foreach ($errors->get('luogoStudio') as $message)
-                            <li>{{ $message }}</li>
+                            {{ $message }}
                             @endforeach
                         </ul>
                     @endif
@@ -322,7 +322,7 @@
                     @if ($errors->first('finestra'))
                         <ul class="errors">
                             @foreach ($errors->get('finestra') as $message)
-                            <li>{{ $message }}</li>
+                            {{ $message }}
                             @endforeach
                         </ul>
                     @endif
@@ -338,7 +338,7 @@
                 @if ($errors->first('nome_file'))
                         <ul class="errors">
                             @foreach ($errors->get('nome_file') as $message)
-                            <li>{{ $message }}</li>
+                            {{ $message }}
                             @endforeach
                         </ul>
                 @endif
