@@ -178,18 +178,22 @@
                 {{Form::radio('doppia','1',false,array('class'=>'posto_letto-field radio-form'))}}
                 </div>
             </div>
-            <div class="col-lg-2 d-flex align-items-end">
+            <div class="col-lg-2 d-flex align-items-end justify-content-center">
                 <div><i class="fa-solid fa-desktop"></i> Luogo studio:
                 {{Form::checkbox('luogo_studio','1',false,array('class'=>'posto_letto-field', 'id'=>'luogo_studio-field'))}}
                 </div>
             </div>
-            <div class="col-lg-3 d-flex align-items-end">
+            <div class="col-lg-3 d-flex align-items-end justify-content-center">
                 <i class="fa-solid fa-person-through-window"></i> Presenza finestra:
                 {{Form::checkbox('finestra','1',false,array('class'=>'posto_letto-field', 'id'=>'finestra-field'))}}
             </div>
             <div class="col-lg-3">
-                <i class="fa-solid fa-person-through-window"></i> Presenza finestra:
-                {{Form::number('superficie_posto_letto','',array('class'=>'posto_letto-field', 'id'=>'superficie_posto_letto-field'))}}
+                <div class="col-lg-12">
+                <i class="fa-solid fa-vector-square"></i> Superficie posto letto:
+                </div>
+                <div class="col-lg-5">
+                    {{Form::number('superficie_posto_letto','',array('class'=>'posto_letto-field form-control', 'id'=>'superficie_posto_letto-field'))}}
+                </div>
             </div>
         </div> 
 
