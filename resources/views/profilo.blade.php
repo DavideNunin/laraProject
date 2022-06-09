@@ -53,7 +53,7 @@
                 <div class="col-lg-4">
 @if    ($user_info->sesso == 'M')
                     Maschio
-                    {{ Form::radio('sesso', 'M', ['class' => 'radio-form', 'id' => 'button-maschio']) }}  
+                    {{ Form::radio('sesso', 'M', true,['class' => 'radio-form', 'id' => 'button-maschio']) }}  
 
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
@@ -68,7 +68,7 @@
                     <div class="custom-control custom-radio custom-control-inline">
 
                     Femmina
-                    {{ Form::radio('sesso', 'F',['class' => 'radio-form', 'id' => 'button-femmina']) }}        
+                    {{ Form::radio('sesso', 'F',true,['class' => 'radio-form', 'id' => 'button-femmina']) }}        
 @endif
                 </div>
             </div>

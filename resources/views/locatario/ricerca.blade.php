@@ -117,7 +117,7 @@
             </div>
             <div class="col-lg-2">
                 <div><i class="fa-solid fa-tag"></i> Fascia di prezzo</div>
-                {{Form::select('fascia_prezzo',array(null => "Seleziona","0-100" => "0-100€", "100-300" => "100€-300€", "300-1000"=>"300€-1000€"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
+                {{Form::select('fascia_prezzo',array(null => "Seleziona","0-100" => "0-100€", "100-300" => "100€-300€", "300-500"=>"300€-500€", "500-1000" => "500€-1000€","0-100000" =>"Tutti i prezzi"), null ,array( 'id'=>'mysel', 'class' => 'form-control mysel dropdown-toggle', 'role' => 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false')  )}}
             </div>
             <div class="col-lg-2">
                 <div><i class="fa-solid fa-bed"></i>Tipo</div>

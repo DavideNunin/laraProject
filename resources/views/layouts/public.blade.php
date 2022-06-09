@@ -65,7 +65,7 @@
                          <a href="mailto:s1093366@studenti.unipvm.it" class="link-footer"> Scrivi qui! </a>
 
                          <div class="col-lg-8 mt-5">
-                            <a href="#" class="link-doc"> <i class="fa-solid fa-file-lines"></i> Leggi la documentazione </a>
+                            <a href="{{asset('Documentazione_techweb.pdf')}}" class="link-doc"> <i class="fa-solid fa-file-lines"></i> Leggi la documentazione </a>
                          </div>
                         </div>
                         <div class="col-sm-6 pt-5">
