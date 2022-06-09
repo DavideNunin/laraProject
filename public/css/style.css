@@ -15,6 +15,21 @@
     color: #66171A;
     font-weight: 500;
   }
+
+  .link-doc {
+    transition: .2s ease-in-out;
+    text-decoration: none;
+    padding: 7px;
+    border-radius: 7px;
+    font-weight: 500;
+    color: #161A26;
+    background-color: #eee;
+  }
+  .link-doc:hover {
+    color: #161A26;
+    background-color: #fff;
+    padding: 7px;
+  }
   
   .link-website {
     transition: .2s ease-in-out;

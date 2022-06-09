@@ -63,6 +63,10 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium rhoncus maximus. <br> 
                                 Mauris at purus nec velit elementum gravida eu porttitor magna. </p>
                          <a href="mailto:s1093366@studenti.unipvm.it" class="link-footer"> Scrivi qui! </a>
+
+                         <div class="col-lg-8 mt-5">
+                            <a href="#" class="link-doc"> <i class="fa-solid fa-file-lines"></i> Leggi la documentazione </a>
+                         </div>
                         </div>
                         <div class="col-sm-6 pt-5">
                             <h6 class ="title-footer-home">Dove siamo? </h6>
